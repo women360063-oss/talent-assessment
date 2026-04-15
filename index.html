@@ -27,23 +27,69 @@
             overflow: hidden;
         }
         
-        .header {
+        .header-banner {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 35px 25px;
+            padding: 18px 25px;
+            text-align: center;
+            font-size: 0.95em;
+            opacity: 0.95;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        
+        .welcome-title {
+            font-size: 2em;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 25px;
+            line-height: 1.3;
             text-align: center;
         }
         
-        .header h1 {
-            font-size: 1.8em;
-            margin-bottom: 10px;
-            font-weight: 800;
+        .welcome-desc {
+            font-size: 1.05em;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            text-align: center;
         }
         
-        .header p {
-            font-size: 1em;
-            opacity: 0.95;
-            line-height: 1.5;
+        .welcome-desc p {
+            margin-bottom: 12px;
+        }
+        
+        .dimensions-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 35px 0;
+        }
+        
+        .dimension-card {
+            background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+            padding: 20px 15px;
+            border-radius: 16px;
+            border: 1px solid #e8ecf4;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .dimension-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102,126,234,0.15);
+            border-color: #667eea;
+        }
+        
+        .dimension-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .dimension-name {
+            font-size: 0.9em;
+            font-weight: 600;
+            color: #333;
         }
         
         .content {
@@ -62,11 +108,7 @@
             text-align: center;
         }
         
-        .start-page h2 {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-            color: #333;
-        }
+
         
         .intro-box {
             background: linear-gradient(135deg, #f8f9ff 0%, #fff0f5 100%);
@@ -499,10 +541,26 @@
             font-size: 1.05em;
         }
         
-        @media (max-width: 600px) {
-            .header h1 {
-                font-size: 1.5em;
+        @media (max-width: 768px) {
+            .content {
+                padding: 30px 20px;
             }
+            
+            .welcome-title {
+                font-size: 1.6em;
+            }
+            
+            .dimensions-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            
+            .dimension-card {
+                padding: 18px 12px;
+            }
+        }
+        
+        @media (max-width: 600px) {
             
             .content {
                 padding: 20px 15px;
@@ -530,15 +588,67 @@
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>✨ 真我天赋探索测评</h1>
-            <p>探索你的内在，找到你的热爱与天赋</p>
+        <div class="header-banner">
+            探索内在 · 构建自己 · 创造财富 · 收获幸福
         </div>
         
         <div class="content">
             <!-- 开始页面 -->
             <div id="startPage" class="page active start-page">
-                <h2>🎯 测试说明</h2>
+                <h1 class="welcome-title">
+                    🌟 欢迎来到真我蜕变之旅
+                </h1>
+                
+                <div class="welcome-desc">
+                    <p>这不仅是一个测评，更是一次深入的自我探索。</p>
+                    <p>通过发现你的天赋优势，构建属于你的财富力、幸福力和事业力。</p>
+                    <p>共<span style="font-weight: 700; color: #667eea;">30</span>道题目，预计用时<span style="font-weight: 700; color: #667eea;">5-8分钟</span>，请跟随直觉做出选择。</p>
+                </div>
+                
+                <div class="dimensions-grid">
+                    <div class="dimension-card">
+                        <div class="dimension-icon">🧠</div>
+                        <div class="dimension-name">思维认知</div>
+                    </div>
+                    <div class="dimension-card">
+                        <div class="dimension-icon">🎨</div>
+                        <div class="dimension-name">创意表达</div>
+                    </div>
+                    <div class="dimension-card">
+                        <div class="dimension-icon">🤝</div>
+                        <div class="dimension-name">人际互动</div>
+                    </div>
+                    <div class="dimension-card">
+                        <div class="dimension-icon">📊</div>
+                        <div class="dimension-name">执行规划</div>
+                    </div>
+                    <div class="dimension-card">
+                        <div class="dimension-icon">🌟</div>
+                        <div class="dimension-name">领导力</div>
+                    </div>
+                    <div class="dimension-card">
+                        <div class="dimension-icon">💪</div>
+                        <div class="dimension-name">韧性</div>
+                    </div>
+                    <div class="dimension-card">
+                        <div class="dimension-icon">💡</div>
+                        <div class="dimension-name">洞察力</div>
+                    </div>
+                    <div class="dimension-card">
+                        <div class="dimension-icon">❤️</div>
+                        <div class="dimension-name">共情力</div>
+                    </div>
+                </div>
+                
+                <div class="intro-box">
+                    <h3>🎯 测试说明</h3>
+                    <ul>
+                        <li><strong>探索内在</strong> —— 了解你的自然倾向</li>
+                        <li><strong>找到天赋</strong> —— 发现你天生擅长的事情</li>
+                        <li><strong>事业方向</strong> —— 找到既能赚钱，又能自洽的事业</li>
+                        <li><strong>自我接纳</strong> —— 接纳并热爱真实的自己</li>
+                    </ul>
+                </div>
                 
                 <div class="intro-box">
                     <h3>这个测试可以帮助你：</h3>
@@ -550,10 +660,7 @@
                     </ul>
                 </div>
                 
-                <div class="intro-box">
-                    <h3>⏱️ 测试时长</h3>
-                    <p style="color: #555; line-height: 1.7;">15-20 分钟</p>
-                </div>
+
                 
                 <div class="rules-box">
                     <h3>📝 测试规则</h3>
