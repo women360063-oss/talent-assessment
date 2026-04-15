@@ -602,7 +602,7 @@
                 <div class="welcome-desc">
                     <p>这不仅是一个测评，更是一次深入的自我探索。</p>
                     <p>通过发现你的天赋优势，构建属于你的财富力、幸福力和事业力。</p>
-                    <p>共<span style="font-weight: 700; color: #667eea;">30</span>道题目，预计用时<span style="font-weight: 700; color: #667eea;">5-8分钟</span>，请跟随直觉做出选择。</p>
+                    <p>共<span style="font-weight: 700; color: #667eea;">36</span>道题目，预计用时<span style="font-weight: 700; color: #667eea;">5-8分钟</span>，请跟随直觉做出选择。</p>
                 </div>
                 
                 <div class="dimensions-grid">
@@ -692,7 +692,7 @@
             
             <!-- 测评页面 -->
             <div id="quizPage" class="page">
-                <div class="progress-text" id="progressText">第 1 题 / 共 30 题</div>
+                <div class="progress-text" id="progressText">第 1 题 / 共 36 题</div>
                 <div class="progress">
                     <div class="progress-bar" id="progressBar" style="width: 0%"></div>
                 </div>
@@ -742,7 +742,7 @@
     </div>
     
     <script>
-        // 30道题目
+        // 36道题目（升级版）
         const questions = [
             { text: '当你需要做决定时，你更倾向于：', options: ['先分析数据和事实，再做决定', '先感受自己的内心，再做决定', '先听听别人的建议，再做决定', '先想象最好的结果，再做决定'] },
             { text: '在一个聚会中，你更像是：', options: ['观察别人，不太主动说话', '和几个人深入聊天', '和很多人打招呼，到处走动', '成为焦点，带动气氛'] },
@@ -773,7 +773,13 @@
             { text: '你更愿意花时间在：', options: ['提升能力、实现目标', '维护关系、和爱的人在一起', '体验生活、享受乐趣', '探索未来、实现愿景'] },
             { text: '你更擅长的是：', options: ['解决问题、完成任务', '理解他人、维护关系', '创造乐趣、带来活力', '看到可能性、激励他人'] },
             { text: '当你感到迷茫时，你更倾向于：', options: ['分析原因，找到方向', '找人聊聊，寻求支持', '去体验、去放松，重新连接自己', '想象未来，找到愿景'] },
-            { text: '你更想成为的是：', options: ['有能力、有成就的人', '有爱心、有温度的人', '有趣、有活力的人', '有愿景、有影响力的人'] }
+            { text: '你更想成为的是：', options: ['有能力、有成就的人', '有爱心、有温度的人', '有趣、有活力的人', '有愿景、有影响力的人'] },
+            { text: '面对突发情况，你更倾向于：', options: ['冷静分析，制定应对方案', '先安抚大家的情绪', '灵活应变，边走边看', '把它看成新的机会'] },
+            { text: '在团队中，你更常扮演的角色是：', options: ['出谋划策的军师', '凝聚人心的粘合剂', '带来活力的开心果', '指引方向的引领者'] },
+            { text: '你对"成功"的理解是：', options: ['达成目标，实现价值', '关系和谐，内心平静', '体验丰富，活得开心', '不断成长，突破自我'] },
+            { text: '当有人向你求助时，你更倾向于：', options: ['帮他分析问题，找到解决方案', '倾听和陪伴，给予情感支持', '带他去放松，转移注意力', '鼓励他，激发他的潜能'] },
+            { text: '你对未来的态度是：', options: ['做好规划，按部就班', '珍惜当下，顺其自然', '保持好奇，充满期待', '充满信心，主动创造'] },
+            { text: '在做重要决定时，你最看重的是：', options: ['是否合理、是否可行', '是否走心、是否和谐', '是否有趣、是否开心', '是否成长、是否突破'] }
         ];
         
         // 类型信息
@@ -894,7 +900,7 @@
             
             let html = `
                 <div class="question">
-                    <div class="question-number">第 ${currentPage + 1} 题 / 共 30 题</div>
+                    <div class="question-number">第 ${currentPage + 1} 题 / 共 36 题</div>
                     <div class="question-text">${q.text}</div>
                     <div class="options">
                         ${q.options.map((opt, j) => `
