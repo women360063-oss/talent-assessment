@@ -72,6 +72,8 @@
             border-radius: 16px;
             border: 1px solid #e8ecf4;
             text-align: center;
+            pointer-events: none;
+            cursor: default;
         }
         
         .dimension-icon {
@@ -858,9 +860,21 @@
         const questionsPerPage = 1; // 每题一页，手机体验更好
         
         function startAssessment() {
-            document.getElementById('startPage').classList.remove('active');
-            document.getElementById('quizPage').classList.add('active');
-            renderQuestions();
+            console.log('🚀 startAssessment called!');
+            try {
+                const startPage = document.getElementById('startPage');
+                const quizPage = document.getElementById('quizPage');
+                console.log('startPage:', startPage);
+                console.log('quizPage:', quizPage);
+                
+                startPage.classList.remove('active');
+                quizPage.classList.add('active');
+                renderQuestions();
+                console.log('✅ Navigation complete!');
+            } catch (error) {
+                console.error('❌ Error in startAssessment:', error);
+                alert('出错了，请刷新页面重试！');
+            }
         }
         
         function renderQuestions() {
