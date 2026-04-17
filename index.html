@@ -72,8 +72,6 @@
             border-radius: 16px;
             border: 1px solid #e8ecf4;
             text-align: center;
-            pointer-events: none;
-            cursor: default;
         }
         
         .dimension-icon {
@@ -860,21 +858,9 @@
         const questionsPerPage = 1; // 每题一页，手机体验更好
         
         function startAssessment() {
-            console.log('🚀 startAssessment called!');
-            try {
-                const startPage = document.getElementById('startPage');
-                const quizPage = document.getElementById('quizPage');
-                console.log('startPage:', startPage);
-                console.log('quizPage:', quizPage);
-                
-                startPage.classList.remove('active');
-                quizPage.classList.add('active');
-                renderQuestions();
-                console.log('✅ Navigation complete!');
-            } catch (error) {
-                console.error('❌ Error in startAssessment:', error);
-                alert('出错了，请刷新页面重试！');
-            }
+            document.getElementById('startPage').classList.remove('active');
+            document.getElementById('quizPage').classList.add('active');
+            renderQuestions();
         }
         
         function renderQuestions() {
@@ -1042,3 +1028,62 @@
             document.getElementById('resultsPage').classList.remove('active');
             document.getElementById('startPage').classList.add('active');
         }
+        
+        // 确保DOM加载完成后绑定事件
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('✅ DOM完全加载，开始绑定事件...');
+            
+            const startBtn = document.querySelector('button[onclick="startAssessment()"]');
+            if (startBtn) {
+                console.log('✅ 找到开始测试按钮');
+                startBtn.removeAttribute('onclick');
+                startBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('🖱️ 开始测试按钮被点击了!');
+                    startAssessment();
+                });
+            } else {
+                console.log('❌ 没找到开始测试按钮!');
+            }
+            
+            const prevBtn = document.getElementById('prevBtn');
+            if (prevBtn) {
+                prevBtn.removeAttribute('onclick');
+                prevBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    prevPage();
+                });
+            }
+            
+            const nextBtn = document.getElementById('nextBtn');
+            if (nextBtn) {
+                nextBtn.removeAttribute('onclick');
+                nextBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    nextPage();
+                });
+            }
+            
+            const submitBtn = document.getElementById('submitBtn');
+            if (submitBtn) {
+                submitBtn.removeAttribute('onclick');
+                submitBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    submitAssessment();
+                });
+            }
+            
+            const restartBtn = document.querySelector('button[onclick="restartAssessment()"]');
+            if (restartBtn) {
+                restartBtn.removeAttribute('onclick');
+                restartBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    restartAssessment();
+                });
+            }
+            
+            console.log('✅ 所有事件绑定完成!');
+        });
+        
+        console.log('⏳ 脚本加载完毕，等待DOM...');
