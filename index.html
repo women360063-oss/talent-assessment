@@ -3,21 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>真我天赋探索测评 - 找到你的热爱与天赋</title>
+    <title>真我天赋探索测评</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        * { margin:0; padding:0; box-sizing:border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 15px;
         }
-        
         .container {
             max-width: 700px;
             margin: 0 auto;
@@ -26,1064 +20,247 @@
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             overflow: hidden;
         }
-        
-        .header-banner {
+        .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 18px 25px;
-            text-align: center;
-            font-size: 0.95em;
-            opacity: 0.95;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-        }
-        
-        .welcome-title {
-            font-size: 2em;
-            font-weight: 800;
-            color: #333;
-            margin-bottom: 25px;
-            line-height: 1.3;
-            text-align: center;
-        }
-        
-        .welcome-desc {
-            font-size: 1.05em;
-            color: #666;
-            line-height: 1.8;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-        
-        .welcome-desc p {
-            margin-bottom: 12px;
-        }
-        
-        .dimensions-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin: 35px 0;
-        }
-        
-        .dimension-card {
-            background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
-            padding: 20px 15px;
-            border-radius: 16px;
-            border: 1px solid #e8ecf4;
-            text-align: center;
-        }
-        
-        .dimension-icon {
-            font-size: 2em;
-            margin-bottom: 10px;
-        }
-        
-        .dimension-name {
-            font-size: 0.9em;
-            font-weight: 600;
-            color: #333;
-        }
-        
-        .authority-box {
-            background: linear-gradient(135deg, #e0f2fe 0%, #dbeafe 100%);
-            padding: 20px;
-            border-radius: 15px;
-            margin-bottom: 25px;
-            border: 2px solid #0ea5e9;
-            text-align: left;
-        }
-        
-        .authority-box h3 {
-            color: #0369a1;
-            margin-bottom: 12px;
-            font-size: 1.1em;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .authority-box ul {
-            color: #555;
-            line-height: 1.8;
-            padding-left: 20px;
-        }
-        
-        .authority-box li {
-            margin-bottom: 8px;
-        }
-        
-        .authority-note {
-            background: #f0f9ff;
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 15px;
-            border-left: 3px solid #0ea5e9;
-        }
-        
-        .authority-note p {
-            color: #555;
-            line-height: 1.7;
-            font-size: 0.95em;
-        }
-        
-        .content {
             padding: 30px 20px;
-        }
-        
-        .page {
-            display: none;
-        }
-        
-        .page.active {
-            display: block;
-        }
-        
-        .start-page {
             text-align: center;
         }
-        
-        .start-page h2 {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-            color: #333;
-        }
-        
-        .intro-box {
-            background: linear-gradient(135deg, #f8f9ff 0%, #fff0f5 100%);
-            padding: 20px;
-            border-radius: 15px;
-            margin-bottom: 25px;
-            border-left: 4px solid #667eea;
-            text-align: left;
-        }
-        
-        .intro-box h3 {
-            color: #667eea;
-            margin-bottom: 12px;
-            font-size: 1.1em;
-        }
-        
-        .intro-box ul {
-            color: #555;
-            line-height: 1.8;
-            padding-left: 20px;
-        }
-        
-        .intro-box li {
-            margin-bottom: 8px;
-        }
-        
-        .rules-box {
-            background: #fff9e6;
-            padding: 20px;
-            border-radius: 15px;
-            margin-bottom: 25px;
-            border: 2px dashed #fbbf24;
-            text-align: left;
-        }
-        
-        .rules-box h3 {
-            color: #d97706;
-            margin-bottom: 12px;
-            font-size: 1.1em;
-        }
-        
-        .rules-box ul {
-            color: #555;
-            line-height: 1.8;
-            padding-left: 20px;
-        }
-        
-        .rules-box li {
-            margin-bottom: 8px;
-        }
-        
+        .header h1 { font-size: 1.8em; font-weight: 800; margin-bottom: 8px; }
+        .content { padding: 30px 20px; }
+        .page { display: none; }
+        .page.active { display: block; }
         .btn {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
-            padding: 15px 40px;
+            padding: 16px 40px;
             font-size: 1.1em;
             border-radius: 30px;
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            margin-top: 10px;
             font-weight: 600;
             width: 100%;
+            margin-top: 20px;
         }
-        
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-        }
-        
-        .btn-small {
-            padding: 12px 30px;
-            font-size: 1em;
-            width: auto;
-            margin: 5px;
-        }
-        
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(102,126,234,0.4); }
+        h2 { color: #333; margin-bottom: 20px; text-align: center; }
+        .intro { color: #555; line-height: 1.8; margin-bottom: 20px; text-align: center; }
         .question {
-            margin-bottom: 25px;
-            padding: 20px;
             background: #fafbff;
+            padding: 20px;
             border-radius: 15px;
+            margin-bottom: 20px;
             border: 1px solid #e8ecf4;
         }
-        
-        .question-number {
-            color: #667eea;
-            font-weight: 700;
-            font-size: 0.9em;
-            margin-bottom: 10px;
-        }
-        
-        .question-text {
-            font-size: 1.1em;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 18px;
-            line-height: 1.6;
-        }
-        
-        .options {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        
+        .question-text { font-size: 1.1em; font-weight: 600; color: #333; margin-bottom: 15px; }
+        .options { display: flex; flex-direction: column; gap: 10px; }
         .option {
-            padding: 15px 18px;
+            padding: 14px 18px;
             border: 2px solid #e0e0e0;
             border-radius: 12px;
             cursor: pointer;
-            transition: all 0.3s;
-            font-size: 1em;
             background: white;
             text-align: left;
-            line-height: 1.5;
         }
-        
-        .option:hover {
-            border-color: #667eea;
-            background: #f8f9ff;
-            transform: translateX(3px);
-        }
-        
-        .option.selected {
-            border-color: #667eea;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            transform: translateX(3px);
-        }
-        
+        .option:hover { border-color: #667eea; background: #f8f9ff; }
+        .option.selected { border-color: #667eea; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
         .progress {
             background: #f0f0f0;
             height: 8px;
             border-radius: 4px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             overflow: hidden;
         }
-        
         .progress-bar {
             background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
             height: 100%;
-            border-radius: 4px;
             transition: width 0.3s;
         }
-        
-        .progress-text {
-            text-align: center;
-            color: #888;
-            margin-bottom: 15px;
-            font-size: 0.9em;
-        }
-        
-        .button-group {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-        
-        .results {
-            text-align: center;
-        }
-        
-        .results h2 {
-            font-size: 1.8em;
-            margin-bottom: 20px;
-            color: #333;
-        }
-        
-        .type-result {
-            background: linear-gradient(135deg, #f8f9ff 0%, #fff0f5 100%);
-            border-left: 5px solid #667eea;
-            padding: 25px;
-            margin-bottom: 25px;
-            border-radius: 15px;
-            text-align: left;
-        }
-        
-        .type-result h3 {
-            color: #667eea;
-            margin-bottom: 15px;
-            font-size: 1.4em;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .type-icon {
-            font-size: 1.5em;
-        }
-        
-        .type-result h4 {
-            color: #333;
-            margin: 18px 0 10px 0;
-            font-size: 1.1em;
-        }
-        
-        .type-result p {
-            color: #555;
-            line-height: 1.7;
-            margin-bottom: 10px;
-        }
-        
-        .type-result ul {
-            color: #555;
-            line-height: 1.8;
-            padding-left: 20px;
-            margin-bottom: 10px;
-        }
-        
-        .type-result li {
-            margin-bottom: 8px;
-        }
-        
-        .type-tags {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin: 15px 0;
-        }
-        
-        .type-tag {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            font-weight: 500;
-        }
-        
-        .affirmation-box {
-            background: #fff0f5;
-            padding: 20px;
-            border-radius: 15px;
-            margin: 20px 0;
-            border-left: 4px solid #f093fb;
-        }
-        
-        .affirmation-box h4 {
-            color: #764ba2;
-            margin-bottom: 12px;
-        }
-        
-        .affirmation-box p {
-            color: #555;
-            font-style: italic;
-            line-height: 1.8;
-        }
-        
-        .qr-section {
-            background: linear-gradient(135deg, #f8f9ff 0%, #e0e7ff 100%);
-            padding: 30px 25px;
-            border-radius: 20px;
-            margin: 30px 0;
-            text-align: center;
-            border: 3px solid #667eea;
-        }
-        
-        .qr-section h3 {
-            color: #667eea;
-            margin-bottom: 15px;
-            font-size: 1.3em;
-        }
-        
-        .qr-section p {
-            color: #555;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-        
-        .qr-placeholder {
-            width: 200px;
-            height: 200px;
-            background: white;
-            border: 3px dashed #667eea;
-            border-radius: 15px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #667eea;
-            font-weight: 600;
-            font-size: 0.95em;
-        }
-        
-        .scores-display {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin: 25px 0;
-        }
-        
-        .score-card {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            border: 2px solid #f0f0f0;
-        }
-        
-        .score-card.primary {
-            border-color: #667eea;
-            background: linear-gradient(135deg, #f8f9ff 0%, #fff0f5 100%);
-        }
-        
-        .score-type {
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 0.95em;
-        }
-        
-        .score-value {
-            font-size: 2em;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .score-label {
-            font-size: 0.85em;
-            color: #888;
-            margin-top: 5px;
-        }
-        
-        .mixed-type {
-            background: #fff9e6;
-            padding: 20px;
-            border-radius: 15px;
-            margin: 20px 0;
-            border: 2px dashed #fbbf24;
-        }
-        
-        .mixed-type h4 {
-            color: #d97706;
-            margin-bottom: 12px;
-        }
-        
-        .mixed-type p {
-            color: #555;
-            line-height: 1.7;
-        }
-        
-        .career-box {
-            background: #f0fdf4;
-            padding: 20px;
-            border-radius: 15px;
-            margin: 20px 0;
-            border-left: 4px solid #10b981;
-        }
-        
-        .career-box h4 {
-            color: #059669;
-            margin-bottom: 12px;
-        }
-        
-        .career-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        
-        .career-item {
-            background: white;
-            padding: 8px 14px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            color: #555;
-            border: 1px solid #d1fae5;
-        }
-        
-        .final-message {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px 25px;
-            border-radius: 20px;
-            margin: 30px 0;
-            text-align: center;
-        }
-        
-        .final-message p {
-            line-height: 1.9;
-            font-size: 1.05em;
-        }
-        
-        @media (max-width: 768px) {
-            .content {
-                padding: 30px 20px;
-            }
-            
-            .welcome-title {
-                font-size: 1.6em;
-            }
-            
-            .dimensions-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-            
-            .dimension-card {
-                padding: 18px 12px;
-            }
-        }
-        
-        @media (max-width: 600px) {
-            
-            .content {
-                padding: 20px 15px;
-            }
-            
-            .btn {
-                padding: 12px 30px;
-                font-size: 1em;
-            }
-            
-            .question {
-                padding: 15px;
-            }
-            
-            .option {
-                padding: 12px 15px;
-                font-size: 0.95em;
-            }
-            
-            .scores-display {
-                grid-template-columns: 1fr;
-            }
-        }
+        .btn-group { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+        .btn-small { padding: 12px 30px; font-size: 1em; width: auto; }
+        .result { background: linear-gradient(135deg, #f8f9ff 0%, #fff0f5 100%); padding: 25px; border-radius: 15px; border-left: 5px solid #667eea; margin: 20px 0; text-align: left; }
+        .result h3 { color: #667eea; font-size: 1.4em; margin-bottom: 15px; }
+        .result p { color: #555; line-height: 1.7; }
+        .type-tag { display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.85em; margin: 3px; }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header-banner">
-            探索内在 · 构建自己 · 创造财富 · 收获幸福
+        <div class="header">
+            <h1>✨ 真我天赋探索测评</h1>
+            <p>探索你的内在，找到你的热爱与天赋</p>
         </div>
-        
         <div class="content">
             <!-- 开始页面 -->
-            <div id="startPage" class="page active start-page">
-                <h1 class="welcome-title">
-                    🌟 欢迎来到真我蜕变之旅
-                </h1>
-                
-                <div class="welcome-desc">
-                    <p>这不仅是一个测评，更是一次深入的自我探索。</p>
-                    <p>通过发现你的天赋优势，构建属于你的财富力、幸福力和事业力。</p>
-                    <p>共<span style="font-weight: 700; color: #667eea;">30</span>道题目，预计用时<span style="font-weight: 700; color: #667eea;">5-8分钟</span>，请跟随直觉做出选择。</p>
+            <div id="page1" class="page active">
+                <h2>🎯 测试说明</h2>
+                <div class="intro">
+                    <p>共 30 道题目，预计用时 5-8 分钟</p>
+                    <p>请凭第一直觉选择，没有好坏对错</p>
                 </div>
-                
-                <div class="dimensions-grid">
-                    <div class="dimension-card">
-                        <div class="dimension-icon">🧠</div>
-                        <div class="dimension-name">思维认知</div>
-                    </div>
-                    <div class="dimension-card">
-                        <div class="dimension-icon">🎨</div>
-                        <div class="dimension-name">创意表达</div>
-                    </div>
-                    <div class="dimension-card">
-                        <div class="dimension-icon">🤝</div>
-                        <div class="dimension-name">人际互动</div>
-                    </div>
-                    <div class="dimension-card">
-                        <div class="dimension-icon">📊</div>
-                        <div class="dimension-name">执行规划</div>
-                    </div>
-                    <div class="dimension-card">
-                        <div class="dimension-icon">🌟</div>
-                        <div class="dimension-name">领导力</div>
-                    </div>
-                    <div class="dimension-card">
-                        <div class="dimension-icon">💪</div>
-                        <div class="dimension-name">韧性</div>
-                    </div>
-                    <div class="dimension-card">
-                        <div class="dimension-icon">💡</div>
-                        <div class="dimension-name">洞察力</div>
-                    </div>
-                    <div class="dimension-card">
-                        <div class="dimension-icon">❤️</div>
-                        <div class="dimension-name">共情力</div>
-                    </div>
-                </div>
-                
-                <div class="rules-box">
-                    <h3>📝 测试规则</h3>
-                    <ul>
-                        <li><strong>凭第一直觉选择</strong> —— 不要思考太久，第一反应往往最准确</li>
-                        <li><strong>没有好坏对错</strong> —— 所有选项都是平等的，只是不同</li>
-                        <li><strong>选最像你的</strong> —— 不是选"你想成为的"，而是选"你本来就是的"</li>
-                        <li><strong>诚实面对自己</strong> —— 这是给你自己的测试，不需要给任何人看</li>
-                    </ul>
-                </div>
-                
-                <div class="authority-box">
-                    <h3>🏛️ 测评权威参考</h3>
-                    <p style="color: #555; margin-bottom: 12px; line-height: 1.6;">本《内在天赋测评》由心理学与成长领域专业整合编制，参考以下国际权威体系：</p>
-                    <ul>
-                        <li><strong>霍华德・加德纳</strong>「多元智能理论」</li>
-                        <li><strong>盖洛普</strong>「克利夫顿优势识别器」</li>
-                        <li><strong>丹尼尔・戈尔曼</strong>「情绪智力（EQ）理论」</li>
-                        <li><strong>积极心理学</strong>「天赋与优势发展」理念</li>
-                        <li><strong>荣格心理学</strong>「内在觉察与能量类型」</li>
-                    </ul>
-                    <div class="authority-note">
-                        <p>测评聚焦 8 大核心天赋维度，科学、中立、成长导向，可用于自我探索、疗愈方向定位、天赋发展与生命规划参考。</p>
-                    </div>
-                </div>
-                
-                <button class="btn" onclick="startAssessment()">🚀 开始测试</button>
+                <button id="startBtn" class="btn">🚀 开始测试</button>
             </div>
             
-            <!-- 测评页面 -->
-            <div id="quizPage" class="page">
-                <div class="progress-text" id="progressText">第 1 题 / 共 30 题</div>
-                <div class="progress">
-                    <div class="progress-bar" id="progressBar" style="width: 0%"></div>
-                </div>
-                
-                <div id="questionsContainer"></div>
-                
-                <div class="button-group">
-                    <button class="btn btn-small" id="prevBtn" onclick="prevPage()" style="display: none;">⬅️ 上一题</button>
-                    <button class="btn btn-small" id="nextBtn" onclick="nextPage()">下一题 ➡️</button>
-                    <button class="btn btn-small" id="submitBtn" onclick="submitAssessment()" style="display: none;">✨ 查看结果</button>
+            <!-- 答题页面 -->
+            <div id="page2" class="page">
+                <div class="progress"><div id="progressBar" class="progress-bar" style="width: 0%"></div></div>
+                <div id="questionArea"></div>
+                <div class="btn-group">
+                    <button id="prevBtn" class="btn btn-small" style="display:none;">⬅️ 上一题</button>
+                    <button id="nextBtn" class="btn btn-small">下一题 ➡️</button>
+                    <button id="submitBtn" class="btn btn-small" style="display:none;">✨ 查看结果</button>
                 </div>
             </div>
             
             <!-- 结果页面 -->
-            <div id="resultsPage" class="page results">
+            <div id="page3" class="page">
                 <h2>🎉 你的天赋测评结果</h2>
-                
-                <div id="scoresDisplay"></div>
-                
-                <div id="detailedResults"></div>
-                
-                <div class="qr-section">
-                    <h3>💬 专属天赋解读顾问</h3>
-                    <p style="margin-bottom: 15px;">扫码添加我的微信，<strong>免费梳理你的天赋</strong>，再定制专属方案！</p>
-                    <div class="qr-placeholder">
-                        📱 这里放置<br>你的微信二维码
-                    </div>
-                </div>
-                
-                <div class="final-message">
-                    <p>
-                        <strong>这个测试，只是一个工具。</strong><br>
-                        真正的答案，在你心里。<br><br>
-                        找到那件事——<br>
-                        既能发挥你的天赋，<br>
-                        又能赚到钱，<br>
-                        还能让你自洽。<br><br>
-                        那件事，就是你的天命。<br><br>
-                        <strong>从今天起，做真实的自己！</strong><br>
-                        ✨ 你，值得！
-                    </p>
-                </div>
-                
-                <button class="btn" onclick="restartAssessment()">🔄 重新测试</button>
+                <div id="resultArea"></div>
+                <button id="restartBtn" class="btn">🔄 重新测试</button>
             </div>
         </div>
     </div>
     
     <script>
-        // 30道题目
+        console.log('🚀 脚本加载成功');
+        
         const questions = [
-            { text: '当你需要做决定时，你更倾向于：', options: ['先分析数据和事实，再做决定', '先感受自己的内心，再做决定', '先听听别人的建议，再做决定', '先想象最好的结果，再做决定'] },
-            { text: '在一个聚会中，你更像是：', options: ['观察别人，不太主动说话', '和几个人深入聊天', '和很多人打招呼，到处走动', '成为焦点，带动气氛'] },
-            { text: '你更喜欢的工作方式是：', options: ['独立完成，有自己的空间', '和一小群人合作', '和很多人一起，热闹', '带领团队，指挥方向'] },
-            { text: '当你学习新东西时，你更倾向于：', options: ['看书、查资料，自己研究', '听别人讲解，然后理解', '动手做，在实践中学习', '想象它的样子，然后创造'] },
-            { text: '你更看重的是：', options: ['效率、结果、准确性', '和谐、感受、关系', '体验、过程、快乐', '愿景、可能性、成长'] },
-            { text: '当你遇到困难时，你更倾向于：', options: ['分析问题，找到解决方案', '找人倾诉，寻求支持', '先放一放，做点别的', '挑战它，把它看成机会'] },
-            { text: '你更喜欢的环境是：', options: ['安静、整洁、有条理', '温暖、舒适、有人情味', '热闹、有趣、有活力', '有挑战性、有可能性、有成长空间'] },
-            { text: '你更擅长的是：', options: ['分析、计算、逻辑', '倾听、共情、理解', '动手、操作、实践', '想象、创造、灵感'] },
-            { text: '当别人评价你时，你更常听到的是：', options: ['"你很理性/很有条理"', '"你很温暖/很懂我"', '"你很有趣/很有活力"', '"你很有想法/很有远见"'] },
-            { text: '你更愿意花时间在：', options: ['学习新技能、提升能力', '和朋友在一起、维护关系', '做自己喜欢的事、享受生活', '探索可能性、实现愿景'] },
-            { text: '当你要开始一个新项目时，你更倾向于：', options: ['先做计划，分解步骤', '先找伙伴，一起商量', '先动手做，边做边调整', '先想象愿景，充满激情'] },
-            { text: '你更在意的是：', options: ['有没有用、有没有价值', '会不会伤人、会不会和谐', '会不会开心、会不会有趣', '会不会成长、会不会突破'] },
-            { text: '当你感到压力时，你更倾向于：', options: ['自己处理，不给别人添麻烦', '找朋友聊聊，寻求安慰', '去玩、去放松，转移注意力', '挑战压力，把它变成动力'] },
-            { text: '你更喜欢的娱乐方式是：', options: ['看书、看纪录片、学习', '和朋友聊天、聚会', '运动、旅行、体验', '创作、想象、思考未来'] },
-            { text: '你更认同的是：', options: ['"知识就是力量"', '"爱是一切的答案"', '"活在当下，享受生活"', '"人生就是要不断成长"'] },
-            { text: '当你要向别人介绍自己时，你更倾向于：', options: ['说你的技能、能力、成就', '说你的性格、感受、关系', '说你的爱好、体验、有趣的事', '说你的愿景、梦想、未来的方向'] },
-            { text: '你更看重的金钱观是：', options: ['钱是工具，用来实现目标', '钱是安全感，用来照顾自己和家人', '钱是资源，用来体验和享受', '钱是燃料，用来实现愿景和成长'] },
-            { text: '当你选择一份工作时，你更看重：', options: ['能不能发挥能力、有没有成长空间', '人际关系好不好、环境舒不舒服', '有没有意思、能不能开心', '有没有挑战、能不能实现愿景'] },
-            { text: '你更擅长的沟通方式是：', options: ['逻辑清晰、有条理', '温暖共情、懂人心', '有趣幽默、带动气氛', '有感染力、点燃希望'] },
-            { text: '你更愿意成为的是：', options: ['专家、专业人士', '陪伴者、支持者', '体验者、生活家', '引领者、创造者'] },
-            { text: '当你要做选择时，你更倾向于：', options: ['列 pros and cons（优缺点），理性分析', '问自己的内心，感受哪个更对', '选那个更有趣的', '选那个更有挑战的'] },
-            { text: '你更在意的是：', options: ['对不对、准不准确', '好不好、和不和谐', '开不开心、有没有意思', '值不值、有没有成长'] },
-            { text: '你更喜欢的学习方式是：', options: ['上课、看书、系统化学习', '向人请教、在关系中学习', '实践、体验、做中学', '灵感、直觉、顿悟'] },
-            { text: '当你和人合作时，你更倾向于：', options: ['负责分析、计划、执行', '负责沟通、协调、维护关系', '负责创意、执行、带来乐趣', '负责愿景、方向、激励团队'] },
-            { text: '你更认同的人生态度是：', options: ['"精益求精，追求卓越"', '"和谐共处，爱是答案"', '"活在当下，享受生活"', '"不断成长，突破限制"'] },
-            { text: '当你要购买东西时，你更看重：', options: ['品质、实用性、性价比', '感觉、喜欢、和自己配不配', '有趣、独特、能不能带来体验', '可能性、成长、能不能帮助自己'] },
-            { text: '你更愿意花时间在：', options: ['提升能力、实现目标', '维护关系、和爱的人在一起', '体验生活、享受乐趣', '探索未来、实现愿景'] },
-            { text: '你更擅长的是：', options: ['解决问题、完成任务', '理解他人、维护关系', '创造乐趣、带来活力', '看到可能性、激励他人'] },
-            { text: '当你感到迷茫时，你更倾向于：', options: ['分析原因，找到方向', '找人聊聊，寻求支持', '去体验、去放松，重新连接自己', '想象未来，找到愿景'] },
-            { text: '你更想成为的是：', options: ['有能力、有成就的人', '有爱心、有温度的人', '有趣、有活力的人', '有愿景、有影响力的人'] }
+            { text: '当你需要做决定时，你更倾向于：', options: ['先分析数据和事实', '先感受自己的内心', '先听听别人的建议', '先想象最好的结果'] },
+            { text: '在聚会中，你更像是：', options: ['观察别人', '和几个人深入聊天', '和很多人打招呼', '成为焦点'] },
+            { text: '你更喜欢的工作方式：', options: ['独立完成', '和一小群人合作', '和很多人一起', '带领团队'] },
+            { text: '学习新东西时，你倾向于：', options: ['看书查资料', '听别人讲解', '动手实践', '想象创造'] },
+            { text: '你更看重：', options: ['效率结果', '和谐关系', '体验快乐', '愿景成长'] },
+            { text: '遇到困难时，你倾向于：', options: ['分析解决', '找人倾诉', '先放一放', '挑战它'] },
+            { text: '你更喜欢的环境：', options: ['安静有条理', '温暖有人情味', '热闹有趣', '有挑战性'] },
+            { text: '你更擅长：', options: ['分析逻辑', '倾听共情', '动手实践', '想象创造'] },
+            { text: '别人常说你：', options: ['很理性', '很温暖', '很有趣', '很有想法'] },
+            { text: '你愿意花时间在：', options: ['学习技能', '维护关系', '享受生活', '探索未来'] },
+            { text: '开始新项目时，你倾向于：', options: ['先做计划', '先找伙伴', '先动手做', '先想象愿景'] },
+            { text: '你更在意：', options: ['有没有用', '会不会伤人', '开不开心', '有没有成长'] },
+            { text: '感到压力时，你倾向于：', options: ['自己处理', '找人聊聊', '去放松', '挑战压力'] },
+            { text: '你更喜欢的娱乐：', options: ['看书学习', '朋友聚会', '运动旅行', '创作思考'] },
+            { text: '你更认同：', options: ['知识就是力量', '爱是一切', '活在当下', '不断成长'] },
+            { text: '介绍自己时，你倾向于说：', options: ['技能成就', '性格感受', '爱好体验', '愿景梦想'] },
+            { text: '你的金钱观：', options: ['工具实现目标', '安全感', '资源体验', '燃料实现愿景'] },
+            { text: '选工作时，你更看重：', options: ['能力成长', '人际环境', '有意思', '挑战愿景'] },
+            { text: '你擅长的沟通：', options: ['逻辑清晰', '温暖共情', '有趣幽默', '有感染力'] },
+            { text: '你愿意成为：', options: ['专家', '陪伴者', '体验者', '引领者'] },
+            { text: '做选择时，你倾向于：', options: ['理性分析', '问内心', '选有趣的', '选有挑战的'] },
+            { text: '你更在意：', options: ['对不对', '好不好', '开不开心', '值不值'] },
+            { text: '你喜欢的学习方式：', options: ['系统化', '请教别人', '做中学', '顿悟'] },
+            { text: '合作时，你倾向于：', options: ['分析执行', '沟通协调', '创意乐趣', '愿景激励'] },
+            { text: '你的人生态度：', options: ['精益求精', '和谐共处', '活在当下', '不断突破'] },
+            { text: '买东西时，你看重：', options: ['品质实用', '感觉喜欢', '有趣独特', '可能性成长'] },
+            { text: '你愿意花时间在：', options: ['实现目标', '维护关系', '体验生活', '探索未来'] },
+            { text: '你更擅长：', options: ['解决问题', '理解他人', '创造乐趣', '看到可能'] },
+            { text: '迷茫时，你倾向于：', options: ['分析找方向', '找人聊聊', '去体验', '想象未来'] },
+            { text: '你更想成为：', options: ['有能力', '有爱心', '有趣', '有愿景'] }
         ];
         
-        // 类型信息
         const typeInfo = {
-            A: {
-                name: '专家/建设者',
-                icon: '🏗️',
-                keywords: ['理性', '逻辑', '目标', '能力', '专业', '效率'],
-                strengths: ['分析问题，找到解决方案', '制定计划，分解执行', '学习技能，精益求精', '完成任务，达到目标'],
-                source: '能力、成就、专业度',
-                careAbout: '对不对、准不准确、有没有价值',
-                careers: ['医生', '律师', '工程师', '科学家', '会计师', '程序员', '数据分析师', '产品经理', '项目经理', '运营总监', 'CEO', '教师', '培训师', '教练', '技术写作', '知识付费'],
-                affirmations: [
-                    '我是一个有能力的人。',
-                    '我的专业度，就是我的价值。',
-                    '我用我的能力，帮助自己和他人。',
-                    '我值得为我的专业能力收费。'
-                ],
-                advice: '发挥天赋：用你的专业能力解决问题；建立边界：给自己足够的独立空间；持续成长：不断学习，提升专业度；认可自己：为你的能力和成就感到骄傲'
-            },
-            B: {
-                name: '陪伴者/支持者',
-                icon: '🤗',
-                keywords: ['感受', '关系', '和谐', '爱', '理解', '支持'],
-                strengths: ['倾听他人，理解感受', '维护关系，创造和谐', '共情他人，给予支持', '温暖人心，带来安慰'],
-                source: '关系、爱、连接',
-                careAbout: '和不和谐、会不会伤人、有没有爱',
-                careers: ['心理咨询师', '疗愈师', '社工', '教师', '培训师', '亲子教练', '客服', '人力资源', '社区工作', '艺术疗愈', '音乐疗愈', '舞蹈疗愈', '育儿嫂', '陪护', '陪伴师'],
-                affirmations: [
-                    '我是一个有爱心的人。',
-                    '我的温暖，就是我的价值。',
-                    '我用我的陪伴，帮助自己和他人。',
-                    '我值得为我的陪伴和支持收费。'
-                ],
-                advice: '发挥天赋：用你的陪伴和支持帮助他人；建立边界：不要过度付出，照顾好自己；接受爱：允许自己接受他人的支持；认可自己：为你的温暖和爱感到骄傲'
-            },
-            C: {
-                name: '体验者/生活家',
-                icon: '🎉',
-                keywords: ['体验', '活力', '快乐', '有趣', '当下', '享受'],
-                strengths: ['体验生活，享受当下', '创造乐趣，带来活力', '动手实践，在做中学', '活在当下，感受美好'],
-                source: '体验、快乐、活力',
-                careAbout: '开不开心、有没有意思、能不能享受',
-                careers: ['旅行体验师', '美食博主', '活动策划', '演员', '舞者', '画家', '音乐家', '健身教练', '瑜伽老师', '运动博主', '手作人', '设计师', '创意总监', '生活方式博主', '收纳师', '花艺师'],
-                affirmations: [
-                    '我是一个有趣的人。',
-                    '我的活力，就是我的价值。',
-                    '我用我的体验，感染自己和他人。',
-                    '我值得为我的体验和活力收费。'
-                ],
-                advice: '发挥天赋：用你的体验和活力感染他人；接纳自己：不需要"很有用"，"有趣"就够了；享受当下：在过程中感受快乐；认可自己：为你的活力和有趣感到骄傲'
-            },
-            D: {
-                name: '引领者/创造者',
-                icon: '🚀',
-                keywords: ['愿景', '可能性', '成长', '创造', '引领', '突破'],
-                strengths: ['看到愿景，想象未来', '抓住可能性，创造新事物', '激励他人，引领方向', '突破限制，实现成长'],
-                source: '愿景、可能性、成长',
-                careAbout: '有没有成长、能不能突破、有没有可能性',
-                careers: ['创始人', 'CEO', '创业者', '作家', '导演', '设计师', '创意总监', '战略咨询', '领导力教练', '人生教练', '投资人', '风险投资家', '励志讲师', '人生导师', '心灵导师'],
-                affirmations: [
-                    '我是一个有愿景的人。',
-                    '我的创造力，就是我的价值。',
-                    '我用我的引领，帮助自己和他人。',
-                    '我值得为我的愿景和引领收费。'
-                ],
-                advice: '发挥天赋：用你的愿景和引领激励他人；接受挑战：把限制看成机会；持续成长：不断突破，不断创造；认可自己：为你的愿景和引领感到骄傲'
-            }
+            A: { name: '专家/建设者', icon: '🏗️', tags: ['理性', '逻辑', '目标', '专业'], desc: '你擅长分析问题、制定计划，用专业能力创造价值' },
+            B: { name: '陪伴者/支持者', icon: '🤗', tags: ['感受', '关系', '和谐', '爱'], desc: '你擅长倾听、共情，用温暖和陪伴支持他人' },
+            C: { name: '体验者/生活家', icon: '🎉', tags: ['体验', '活力', '快乐', '当下'], desc: '你擅长体验生活、创造乐趣，用活力感染他人' },
+            D: { name: '引领者/创造者', icon: '🚀', tags: ['愿景', '可能性', '成长', '创造'], desc: '你擅长看到愿景、激励他人，用创造实现突破' }
         };
         
-        // 混合类型解析
-        const mixedTypes = {
-            'A+B': {
-                name: '专家+陪伴者',
-                description: '既有专业能力，又懂人心',
-                examples: ['医生+心理咨询', '技术+HR', '教师+教练']
-            },
-            'A+C': {
-                name: '专家+体验者',
-                description: '既有专业能力，又懂体验',
-                examples: ['美食+营养学', '运动+康复', '设计+技术']
-            },
-            'A+D': {
-                name: '专家+引领者',
-                description: '既有专业能力，又有愿景',
-                examples: ['技术+创业', '专业+投资', '医生+医疗管理']
-            },
-            'B+C': {
-                name: '陪伴者+体验者',
-                description: '既懂陪伴，又懂体验',
-                examples: ['育儿+亲子活动', '疗愈+艺术', '陪伴+旅行']
-            },
-            'B+D': {
-                name: '陪伴者+引领者',
-                description: '既懂陪伴，又有愿景',
-                examples: ['心理咨询+人生教练', '社工+创业', '教育+校长']
-            },
-            'C+D': {
-                name: '体验者+引领者',
-                description: '既懂体验，又有愿景',
-                examples: ['旅行+文旅创业', '艺术+创意品牌', '运动+健身品牌']
-            }
-        };
-        
+        let currentQ = 0;
         const answers = {};
-        let currentPage = 0;
-        const questionsPerPage = 1; // 每题一页，手机体验更好
         
-        function startAssessment() {
-            document.getElementById('startPage').classList.remove('active');
-            document.getElementById('quizPage').classList.add('active');
-            renderQuestions();
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
         }
         
-        function renderQuestions() {
-            const container = document.getElementById('questionsContainer');
-            const q = questions[currentPage];
-            
+        function renderQuestion() {
+            const q = questions[currentQ];
             let html = `
                 <div class="question">
-                    <div class="question-number">第 ${currentPage + 1} 题 / 共 30 题</div>
+                    <div style="color:#667eea; font-weight:700; margin-bottom:10px;">第 ${currentQ + 1} 题 / 共 30 题</div>
                     <div class="question-text">${q.text}</div>
                     <div class="options">
-                        ${q.options.map((opt, j) => `
-                            <div class="option ${answers[currentPage] === j ? 'selected' : ''}" 
-                                 onclick="selectOption(${currentPage}, ${j})">
-                                <span style="font-weight: 600; margin-right: 10px;">${String.fromCharCode(65 + j)}.</span>
-                                ${opt}
+                        ${q.options.map((opt, i) => `
+                            <div class="option ${answers[currentQ] === i ? 'selected' : ''}" data-index="${i}">
+                                <span style="font-weight:600; margin-right:10px;">${String.fromCharCode(65 + i)}.</span>${opt}
                             </div>
                         `).join('')}
                     </div>
                 </div>
             `;
+            document.getElementById('questionArea').innerHTML = html;
+            document.getElementById('progressBar').style.width = ((currentQ + 1) / 30 * 100) + '%';
             
-            container.innerHTML = html;
-            updateProgress();
-            updateButtons();
-        }
-        
-        function selectOption(questionIndex, optionIndex) {
-            answers[questionIndex] = optionIndex;
-            renderQuestions();
+            document.getElementById('prevBtn').style.display = currentQ > 0 ? 'inline-block' : 'none';
+            document.getElementById('nextBtn').style.display = (currentQ < 29 && answers[currentQ] !== undefined) ? 'inline-block' : 'none';
+            document.getElementById('submitBtn').style.display = (currentQ === 29 && answers[currentQ] !== undefined) ? 'inline-block' : 'none';
             
-            // 自动跳转下一题（可选体验）
-            setTimeout(() => {
-                if (currentPage < questions.length - 1) {
-                    nextPage();
-                }
-            }, 300);
+            document.querySelectorAll('.option').forEach(el => {
+                el.onclick = function() {
+                    answers[currentQ] = parseInt(this.dataset.index);
+                    renderQuestion();
+                };
+            });
         }
         
-        function updateProgress() {
-            const progress = ((currentPage + 1) / questions.length) * 100;
-            document.getElementById('progressBar').style.width = progress + '%';
-            document.getElementById('progressText').textContent = `第 ${currentPage + 1} 题 / 共 ${questions.length} 题`;
-        }
-        
-        function updateButtons() {
-            document.getElementById('prevBtn').style.display = currentPage > 0 ? 'inline-block' : 'none';
-            document.getElementById('nextBtn').style.display = (currentPage < questions.length - 1 && answers[currentPage] !== undefined) ? 'inline-block' : 'none';
-            document.getElementById('submitBtn').style.display = currentPage === questions.length - 1 && answers[currentPage] !== undefined ? 'inline-block' : 'none';
-        }
-        
-        function nextPage() {
-            if (currentPage < questions.length - 1) {
-                currentPage++;
-                renderQuestions();
-            }
-        }
-        
-        function prevPage() {
-            if (currentPage > 0) {
-                currentPage--;
-                renderQuestions();
-            }
-        }
-        
-        function submitAssessment() {
-            if (Object.keys(answers).length < questions.length) {
-                alert('请回答所有问题后再提交！');
-                return;
-            }
-            calculateResults();
-        }
-        
-        function calculateResults() {
-            // 计分
-            const scores = { A: 0, B: 0, C: 0, D: 0 };
-            
-            for (let i = 0; i < questions.length; i++) {
+        function calcResult() {
+            const scores = { A:0, B:0, C:0, D:0 };
+            for (let i = 0; i < 30; i++) {
                 if (answers[i] !== undefined) {
-                    const type = String.fromCharCode(65 + answers[i]); // A, B, C, D
+                    const type = String.fromCharCode(65 + answers[i]);
                     scores[type]++;
                 }
             }
+            const sorted = Object.entries(scores).sort((a,b) => b[1]-a[1]);
+            const primary = sorted[0][0];
+            const info = typeInfo[primary];
             
-            // 找出主导类型和辅助类型
-            const sortedScores = Object.entries(scores).sort((a, b) => b[1] - a[1]);
-            const primaryType = sortedScores[0][0];
-            const secondaryType = sortedScores[1][0];
-            const hasSecondary = sortedScores[1][1] >= 5; // 辅助类型至少5题
-            
-            // 显示结果
-            document.getElementById('quizPage').classList.remove('active');
-            document.getElementById('resultsPage').classList.add('active');
-            
-            // 分数显示
-            let scoresHTML = '<div class="scores-display">';
-            for (const [type, score] of sortedScores) {
-                const isPrimary = type === primaryType;
-                scoresHTML += `
-                    <div class="score-card ${isPrimary ? 'primary' : ''}">
-                        <div class="score-type">${typeInfo[type].icon} ${typeInfo[type].name}</div>
-                        <div class="score-value">${score}</div>
-                        <div class="score-label">${isPrimary ? '主导类型' : ''}</div>
+            let html = `
+                <div class="result">
+                    <h3>${info.icon} ${info.name}</h3>
+                    <div style="margin:15px 0;">
+                        ${info.tags.map(t => `<span class="type-tag">${t}</span>`).join('')}
                     </div>
-                `;
-            }
-            scoresHTML += '</div>';
-            document.getElementById('scoresDisplay').innerHTML = scoresHTML;
-            
-            // 详细结果
-            let detailHTML = '';
-            
-            // 主导类型解析
-            const primary = typeInfo[primaryType];
-            detailHTML += `
-                <div class="type-result">
-                    <h3><span class="type-icon">${primary.icon}</span> 你的主导类型：${primary.name}</h3>
-                    <div class="type-tags">
-                        ${primary.keywords.map(k => `<span class="type-tag">${k}</span>`).join('')}
-                    </div>
-                    <h4>🎯 你天生擅长：</h4>
-                    <ul>
-                        ${primary.strengths.map(s => `<li>${s}</li>`).join('')}
-                    </ul>
-                    <h4>⚡ 你的力量来源：</h4>
-                    <p>${primary.source}</p>
-                    <h4>🔍 你最在意的是：</h4>
-                    <p>${primary.careAbout}</p>
-                    <h4>💼 适合你的事业方向：</h4>
-                    <div class="career-box">
-                        <div class="career-list">
-                            ${primary.careers.map(c => `<span class="career-item">${c}</span>`).join('')}
-                        </div>
-                    </div>
-                    <div class="affirmation-box">
-                        <h4>✨ 你的天赋肯定语：</h4>
-                        ${primary.affirmations.map(a => `<p>"${a}"</p>`).join('')}
-                    </div>
-                    <h4>💡 既能赚钱又能自洽的方式：</h4>
-                    <p>${primary.advice}</p>
+                    <p style="margin-top:15px; font-size:1.05em;">${info.desc}</p>
+                    <p style="margin-top:20px; color:#666;">
+                        <strong>得分：</strong><br>
+                        ${Object.entries(scores).map(([k,v]) => `${typeInfo[k].icon} ${typeInfo[k].name}: ${v}分`).join(' | ')}
+                    </p>
                 </div>
             `;
-            
-            // 混合类型解析（如果有）
-            if (hasSecondary && primaryType !== secondaryType) {
-                const mixedKey = `${primaryType}+${secondaryType}`;
-                const mixed = mixedTypes[mixedKey] || mixedTypes[`${secondaryType}+${primaryType}`];
-                if (mixed) {
-                    detailHTML += `
-                        <div class="mixed-type">
-                            <h4>🔀 混合类型：${mixed.name}</h4>
-                            <p>${mixed.description}</p>
-                            <p style="margin-top: 10px;"><strong>例子：</strong>${mixed.examples.join('、')}</p>
-                        </div>
-                    `;
-                }
-            }
-            
-            document.getElementById('detailedResults').innerHTML = detailHTML;
+            document.getElementById('resultArea').innerHTML = html;
         }
         
-        function restartAssessment() {
-            Object.keys(answers).forEach(key => delete answers[key]);
-            currentPage = 0;
-            document.getElementById('resultsPage').classList.remove('active');
-            document.getElementById('startPage').classList.add('active');
-        }
+        // 绑定所有按钮事件
+        document.getElementById('startBtn').onclick = function() {
+            console.log('🖱️ 开始测试按钮点击');
+            currentQ = 0;
+            Object.keys(answers).forEach(k => delete answers[k]);
+            showPage('page2');
+            renderQuestion();
+        };
         
-        // 确保DOM加载完成后绑定事件
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('✅ DOM完全加载，开始绑定事件...');
-            
-            const startBtn = document.querySelector('button[onclick="startAssessment()"]');
-            if (startBtn) {
-                console.log('✅ 找到开始测试按钮');
-                startBtn.removeAttribute('onclick');
-                startBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    console.log('🖱️ 开始测试按钮被点击了!');
-                    startAssessment();
-                });
-            } else {
-                console.log('❌ 没找到开始测试按钮!');
-            }
-            
-            const prevBtn = document.getElementById('prevBtn');
-            if (prevBtn) {
-                prevBtn.removeAttribute('onclick');
-                prevBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    prevPage();
-                });
-            }
-            
-            const nextBtn = document.getElementById('nextBtn');
-            if (nextBtn) {
-                nextBtn.removeAttribute('onclick');
-                nextBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    nextPage();
-                });
-            }
-            
-            const submitBtn = document.getElementById('submitBtn');
-            if (submitBtn) {
-                submitBtn.removeAttribute('onclick');
-                submitBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    submitAssessment();
-                });
-            }
-            
-            const restartBtn = document.querySelector('button[onclick="restartAssessment()"]');
-            if (restartBtn) {
-                restartBtn.removeAttribute('onclick');
-                restartBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    restartAssessment();
-                });
-            }
-            
-            console.log('✅ 所有事件绑定完成!');
-        });
+        document.getElementById('prevBtn').onclick = function() {
+            if (currentQ > 0) { currentQ--; renderQuestion(); }
+        };
         
-        console.log('⏳ 脚本加载完毕，等待DOM...');
+        document.getElementById('nextBtn').onclick = function() {
+            if (currentQ < 29) { currentQ++; renderQuestion(); }
+        };
+        
+        document.getElementById('submitBtn').onclick = function() {
+            if (Object.keys(answers).length < 30) {
+                alert('请回答所有问题！');
+                return;
+            }
+            calcResult();
+            showPage('page3');
+        };
+        
+        document.getElementById('restartBtn').onclick = function() {
+            showPage('page1');
+        };
+        
+        console.log('✅ 所有事件绑定完成');
+    </script>
+</body>
+</html>
