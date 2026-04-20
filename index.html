@@ -104,6 +104,75 @@
             font-weight: 500;
         }
         
+        .hero-keywords {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+        
+        .keyword {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: var(--primary-pink);
+            padding: 10px 25px;
+            background: linear-gradient(135deg, rgba(255,107,157,0.1), rgba(214,51,132,0.1));
+            border-radius: 30px;
+            border: 2px solid var(--secondary-pink);
+        }
+        
+        /* Parallel Universe Letter Section */
+        .letter-section {
+            background: linear-gradient(135deg, rgba(255,236,210,0.95), rgba(252,182,159,0.95));
+            border: 3px solid var(--gold);
+            position: relative;
+        }
+        
+        .letter-section::before {
+            content: '💌';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 60px;
+            background: white;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .letter-content {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.15em;
+            line-height: 2.2;
+            color: var(--dark-text);
+            text-align: left;
+            padding: 20px;
+            background: rgba(255,255,255,0.8);
+            border-radius: 20px;
+            margin-top: 30px;
+        }
+        
+        .letter-greeting {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: var(--primary-pink);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .letter-closing {
+            text-align: right;
+            font-style: italic;
+            margin-top: 30px;
+            color: var(--primary-pink);
+        }
+        
         .cta-button {
             display: inline-block;
             padding: 22px 55px;
@@ -502,6 +571,12 @@
                 <div class="hero-icon">🌟</div>
                 <h1>假我旧版本清洗与真我新版本认同课程</h1>
                 <p class="hero-subtitle">构建内在秩序 · 自爱显化</p>
+                <div class="hero-keywords">
+                    <span class="keyword">改写创造人生剧本</span>
+                    <span class="keyword">活出高版本的自己</span>
+                    <span class="keyword">线上疗愈</span>
+                    <span class="keyword">远程潜意识探索</span>
+                </div>
                 <p class="hero-tagline">从"假我"到"真我"，重建你的内在力量</p>
                 <a href="#journey" class="cta-button">Now or Never! 开始你的蜕变之旅 ✨</a>
             </section>
@@ -515,6 +590,28 @@
                         帮助你从被限制性信念困住、情绪冻结僵住、找不到自己主体性的状态，
                         转变为情绪自由流动、建立能量边界、活出高能量状态的全新版本。
                     </p>
+                </div>
+            </section>
+
+            <!-- Parallel Universe Letter Section -->
+            <section class="section letter-section animate-on-scroll">
+                <div class="section-header">
+                    <div class="section-icon">💫</div>
+                    <h2>来自平行宇宙的一封疗愈来信</h2>
+                </div>
+                <div class="letter-content">
+                    <p class="letter-greeting">小小hero heroine，好久不见 ✨</p>
+                    <p>我是来自那个已经实现理想状态平行宇宙的你。</p>
+                    <p>当你想起你是谁，准备好改变，游戏规则才会重新改写。</p>
+                    <p>如果你准备好了，现在我邀请你，进入改写创造自己人生剧本的频率中，探索你的灵魂课题以及使命。</p>
+                    <p><strong>灵魂课题，需要去面对、看见、转化它。</strong></p>
+                    <p>创造属于你的人生剧本，但改写的第一步需要找到自己，找到真我。</p>
+                    <p>你可以有两种选择：</p>
+                    <p>一种是不带觉察地继续迷茫，活在他人创造的楚门世界中，活在集体潜意识里。</p>
+                    <p>一种是面对、看见、转化，活出原本的你自己。</p>
+                    <p>所有问题的根源，都深藏在潜意识中。你的情绪、你的感受都是叫醒你的信号，它是决定我们内在力量的底层代码。</p>
+                    <p><strong>生命的意义在于不断地向内探索，创造属于自己的生命蓝图。</strong></p>
+                    <p class="letter-closing">✨ 来自平行宇宙的另一个你</p>
                 </div>
             </section>
 
