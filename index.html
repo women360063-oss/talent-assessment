@@ -3,264 +3,761 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>真我天赋探索测评</title>
+    <meta name="description" content="假我旧版本清洗与真我新版本认同课程 - 构建内在秩序，自爱显化">
+    <title>构建内在秩序 自爱显化 | 个人成长课程</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 15px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
+        
+        :root {
+            --primary-pink: #d63384;
+            --secondary-pink: #ff6b9d;
+            --warm-peach: #fcb69f;
+            --cream: #ffecd2;
+            --gold: #ffd700;
+            --dark-text: #2d2d2d;
+            --light-text: #666;
+        }
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--warm-peach) 25%, #f093fb 50%, #f5576c 75%, var(--cream) 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 20s ease infinite;
+            min-height: 100vh;
+            color: var(--dark-text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
         .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-pink), var(--gold), var(--secondary-pink));
+        }
+        
+        .hero-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .hero h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 3.2em;
+            color: var(--primary-pink);
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.6em;
+            color: var(--light-text);
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+        
+        .hero-tagline {
+            font-size: 1.3em;
+            color: var(--primary-pink);
+            margin: 25px 0;
+            font-weight: 500;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 22px 55px;
+            background: linear-gradient(45deg, var(--secondary-pink), var(--primary-pink));
+            color: white;
+            text-decoration: none;
+            border-radius: 60px;
+            font-size: 1.3em;
+            font-weight: 600;
+            box-shadow: 0 15px 40px rgba(255,107,157,0.4);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+            cursor: pointer;
+            letter-spacing: 1px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(255,107,157,0.5);
+        }
+        
+        /* Section Styles */
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 50px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+        
+        .section h2 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2.5em;
+            color: var(--primary-pink);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .section-description {
+            font-size: 1.2em;
+            color: var(--light-text);
             max-width: 700px;
             margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        /* Journey Grid */
+        .journey-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .journey-card {
+            background: linear-gradient(135deg, #ffeef8, #fff0f5);
+            padding: 35px;
+            border-radius: 25px;
+            border-left: 6px solid var(--secondary-pink);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        
+        .journey-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, rgba(255,107,157,0.1) 0%, transparent 70%);
+            border-radius: 0 25px 0 25px;
+        }
+        
+        .journey-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255,107,157,0.25);
+        }
+        
+        .journey-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--secondary-pink), var(--primary-pink));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .journey-card h3 {
+            color: var(--primary-pink);
+            margin-bottom: 20px;
+            font-size: 1.4em;
+            font-weight: 600;
+        }
+        
+        .journey-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .journey-card li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: var(--dark-text);
+        }
+        
+        .journey-card li:before {
+            content: "✨";
+            position: absolute;
+            left: 0;
+            font-size: 1.1em;
+        }
+        
+        /* Comparison Section */
+        .comparison-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .comparison-box {
+            padding: 40px;
+            border-radius: 25px;
+            text-align: center;
+            position: relative;
             overflow: hidden;
         }
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px 20px;
-            text-align: center;
+        
+        .comparison-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            animation: shimmer 3s ease-in-out infinite;
         }
-        .header h1 { font-size: 1.8em; font-weight: 800; margin-bottom: 8px; }
-        .content { padding: 30px 20px; }
-        .page { display: none; }
-        .page.active { display: block; }
-        .btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 16px 40px;
-            font-size: 1.1em;
-            border-radius: 30px;
-            cursor: pointer;
+        
+        @keyframes shimmer {
+            0%, 100% { transform: translate(-30%, -30%); }
+            50% { transform: translate(30%, 30%); }
+        }
+        
+        .comparison-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .comparison-box.before {
+            background: linear-gradient(135deg, #ffcccc, #ffe0e0);
+            border: 4px solid #ff6b6b;
+        }
+        
+        .comparison-box.after {
+            background: linear-gradient(135deg, #ccffcc, #e0ffe0);
+            border: 4px solid #51cf66;
+        }
+        
+        .comparison-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .comparison-box h3 {
+            font-size: 1.8em;
+            margin-bottom: 25px;
             font-weight: 600;
-            width: 100%;
+        }
+        
+        .comparison-box p {
+            font-size: 1.2em;
+            margin: 15px 0;
+            padding: 10px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 10px;
+        }
+        
+        /* Meditation Grid */
+        .meditation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .meditation-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            border: 3px solid #dee2e6;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        
+        .meditation-card::before {
+            content: '🧘‍♀️';
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            font-size: 30px;
+            background: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .meditation-card:hover {
+            border-color: var(--secondary-pink);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(255,107,157,0.2);
+        }
+        
+        .meditation-card:hover::before {
+            opacity: 1;
+        }
+        
+        .meditation-card h4 {
+            color: var(--primary-pink);
+            margin-bottom: 12px;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+        
+        .meditation-card p {
+            color: var(--light-text);
+            font-size: 1em;
+            line-height: 1.6;
+        }
+        
+        .meditation-category {
+            display: inline-block;
+            padding: 5px 15px;
+            background: linear-gradient(135deg, var(--cream), var(--warm-peach));
+            border-radius: 20px;
+            font-size: 0.85em;
+            color: var(--primary-pink);
+            margin-top: 15px;
+            font-weight: 500;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+        
+        footer h2 {
+            border: none;
+            padding: 0;
+            margin-bottom: 25px;
+            font-family: 'Noto Serif SC', serif;
+        }
+        
+        .footer-message {
+            font-size: 1.4em;
+            color: var(--primary-pink);
+            margin: 25px 0;
+            font-weight: 500;
+        }
+        
+        .footer-tagline {
+            font-size: 1.2em;
+            color: var(--light-text);
             margin-top: 20px;
         }
-        .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(102,126,234,0.4); }
-        h2 { color: #333; margin-bottom: 20px; text-align: center; }
-        .intro { color: #555; line-height: 1.8; margin-bottom: 20px; text-align: center; }
-        .question {
-            background: #fafbff;
-            padding: 20px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            border: 1px solid #e8ecf4;
-        }
-        .question-text { font-size: 1.1em; font-weight: 600; color: #333; margin-bottom: 15px; }
-        .options { display: flex; flex-direction: column; gap: 10px; }
-        .option {
-            padding: 14px 18px;
-            border: 2px solid #e0e0e0;
-            border-radius: 12px;
-            cursor: pointer;
-            background: white;
-            text-align: left;
-        }
-        .option:hover { border-color: #667eea; background: #f8f9ff; }
-        .option.selected { border-color: #667eea; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
-        .progress {
-            background: #f0f0f0;
-            height: 8px;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
-        .progress-bar {
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        
+        /* Floating Stars */
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 100%;
-            transition: width 0.3s;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
         }
-        .btn-group { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-        .btn-small { padding: 12px 30px; font-size: 1em; width: auto; }
-        .result { background: linear-gradient(135deg, #f8f9ff 0%, #fff0f5 100%); padding: 25px; border-radius: 15px; border-left: 5px solid #667eea; margin: 20px 0; text-align: left; }
-        .result h3 { color: #667eea; font-size: 1.4em; margin-bottom: 15px; }
-        .result p { color: #555; line-height: 1.7; }
-        .type-tag { display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.85em; margin: 3px; }
+        
+        .floating-star {
+            position: absolute;
+            font-size: 25px;
+            animation: twinkle 4s ease-in-out infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { 
+                opacity: 0.3; 
+                transform: scale(1) rotate(0deg);
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.3) rotate(180deg);
+            }
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Scroll Animation */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 50px 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2em;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2em;
+            }
+            
+            .hero-icon {
+                font-size: 50px;
+            }
+            
+            .section {
+                padding: 30px 20px;
+            }
+            
+            .section h2 {
+                font-size: 1.8em;
+            }
+            
+            .journey-grid,
+            .meditation-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .comparison-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-button {
+                padding: 18px 40px;
+                font-size: 1.1em;
+            }
+        }
+        
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>✨ 真我天赋探索测评</h1>
-            <p>探索你的内在，找到你的热爱与天赋</p>
-        </div>
-        <div class="content">
-            <!-- 开始页面 -->
-            <div id="page1" class="page active">
-                <h2>🎯 测试说明</h2>
-                <div class="intro">
-                    <p>共 30 道题目，预计用时 5-8 分钟</p>
-                    <p>请凭第一直觉选择，没有好坏对错</p>
+    <div class="stars-container" id="stars"></div>
+    <div class="content-wrapper">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-icon">🌟</div>
+                <h1>假我旧版本清洗与真我新版本认同课程</h1>
+                <p class="hero-subtitle">构建内在秩序 · 自爱显化</p>
+                <p class="hero-tagline">从"假我"到"真我"，重建你的内在力量</p>
+                <a href="#journey" class="cta-button">Now or Never! 开始你的蜕变之旅 ✨</a>
+            </section>
+
+            <!-- Value Proposition Section -->
+            <section class="section animate-on-scroll">
+                <div class="section-header">
+                    <div class="section-icon">💫</div>
+                    <h2>核心价值主张</h2>
+                    <p class="section-description">
+                        帮助你从被限制性信念困住、情绪冻结僵住、找不到自己主体性的状态，
+                        转变为情绪自由流动、建立能量边界、活出高能量状态的全新版本。
+                    </p>
                 </div>
-                <button id="startBtn" class="btn">🚀 开始测试</button>
-            </div>
-            
-            <!-- 答题页面 -->
-            <div id="page2" class="page">
-                <div class="progress"><div id="progressBar" class="progress-bar" style="width: 0%"></div></div>
-                <div id="questionArea"></div>
-                <div class="btn-group">
-                    <button id="prevBtn" class="btn btn-small" style="display:none;">⬅️ 上一题</button>
-                    <button id="nextBtn" class="btn btn-small">下一题 ➡️</button>
-                    <button id="submitBtn" class="btn btn-small" style="display:none;">✨ 查看结果</button>
+            </section>
+
+            <!-- Journey Section -->
+            <section class="section animate-on-scroll" id="journey">
+                <div class="section-header">
+                    <div class="section-icon">🚀</div>
+                    <h2>四阶段蜕变路径</h2>
+                    <p class="section-description">
+                        系统性的成长路径，带你一步步完成从旧版本到新版本的完整蜕变
+                    </p>
                 </div>
-            </div>
-            
-            <!-- 结果页面 -->
-            <div id="page3" class="page">
-                <h2>🎉 你的天赋测评结果</h2>
-                <div id="resultArea"></div>
-                <button id="restartBtn" class="btn">🔄 重新测试</button>
-            </div>
-        </div>
-    </div>
-    
-    <script>
-        console.log('🚀 脚本加载成功');
-        
-        const questions = [
-            { text: '当你需要做决定时，你更倾向于：', options: ['先分析数据和事实', '先感受自己的内心', '先听听别人的建议', '先想象最好的结果'] },
-            { text: '在聚会中，你更像是：', options: ['观察别人', '和几个人深入聊天', '和很多人打招呼', '成为焦点'] },
-            { text: '你更喜欢的工作方式：', options: ['独立完成', '和一小群人合作', '和很多人一起', '带领团队'] },
-            { text: '学习新东西时，你倾向于：', options: ['看书查资料', '听别人讲解', '动手实践', '想象创造'] },
-            { text: '你更看重：', options: ['效率结果', '和谐关系', '体验快乐', '愿景成长'] },
-            { text: '遇到困难时，你倾向于：', options: ['分析解决', '找人倾诉', '先放一放', '挑战它'] },
-            { text: '你更喜欢的环境：', options: ['安静有条理', '温暖有人情味', '热闹有趣', '有挑战性'] },
-            { text: '你更擅长：', options: ['分析逻辑', '倾听共情', '动手实践', '想象创造'] },
-            { text: '别人常说你：', options: ['很理性', '很温暖', '很有趣', '很有想法'] },
-            { text: '你愿意花时间在：', options: ['学习技能', '维护关系', '享受生活', '探索未来'] },
-            { text: '开始新项目时，你倾向于：', options: ['先做计划', '先找伙伴', '先动手做', '先想象愿景'] },
-            { text: '你更在意：', options: ['有没有用', '会不会伤人', '开不开心', '有没有成长'] },
-            { text: '感到压力时，你倾向于：', options: ['自己处理', '找人聊聊', '去放松', '挑战压力'] },
-            { text: '你更喜欢的娱乐：', options: ['看书学习', '朋友聚会', '运动旅行', '创作思考'] },
-            { text: '你更认同：', options: ['知识就是力量', '爱是一切', '活在当下', '不断成长'] },
-            { text: '介绍自己时，你倾向于说：', options: ['技能成就', '性格感受', '爱好体验', '愿景梦想'] },
-            { text: '你的金钱观：', options: ['工具实现目标', '安全感', '资源体验', '燃料实现愿景'] },
-            { text: '选工作时，你更看重：', options: ['能力成长', '人际环境', '有意思', '挑战愿景'] },
-            { text: '你擅长的沟通：', options: ['逻辑清晰', '温暖共情', '有趣幽默', '有感染力'] },
-            { text: '你愿意成为：', options: ['专家', '陪伴者', '体验者', '引领者'] },
-            { text: '做选择时，你倾向于：', options: ['理性分析', '问内心', '选有趣的', '选有挑战的'] },
-            { text: '你更在意：', options: ['对不对', '好不好', '开不开心', '值不值'] },
-            { text: '你喜欢的学习方式：', options: ['系统化', '请教别人', '做中学', '顿悟'] },
-            { text: '合作时，你倾向于：', options: ['分析执行', '沟通协调', '创意乐趣', '愿景激励'] },
-            { text: '你的人生态度：', options: ['精益求精', '和谐共处', '活在当下', '不断突破'] },
-            { text: '买东西时，你看重：', options: ['品质实用', '感觉喜欢', '有趣独特', '可能性成长'] },
-            { text: '你愿意花时间在：', options: ['实现目标', '维护关系', '体验生活', '探索未来'] },
-            { text: '你更擅长：', options: ['解决问题', '理解他人', '创造乐趣', '看到可能'] },
-            { text: '迷茫时，你倾向于：', options: ['分析找方向', '找人聊聊', '去体验', '想象未来'] },
-            { text: '你更想成为：', options: ['有能力', '有爱心', '有趣', '有愿景'] }
-        ];
-        
-        const typeInfo = {
-            A: { name: '专家/建设者', icon: '🏗️', tags: ['理性', '逻辑', '目标', '专业'], desc: '你擅长分析问题、制定计划，用专业能力创造价值' },
-            B: { name: '陪伴者/支持者', icon: '🤗', tags: ['感受', '关系', '和谐', '爱'], desc: '你擅长倾听、共情，用温暖和陪伴支持他人' },
-            C: { name: '体验者/生活家', icon: '🎉', tags: ['体验', '活力', '快乐', '当下'], desc: '你擅长体验生活、创造乐趣，用活力感染他人' },
-            D: { name: '引领者/创造者', icon: '🚀', tags: ['愿景', '可能性', '成长', '创造'], desc: '你擅长看到愿景、激励他人，用创造实现突破' }
-        };
-        
-        let currentQ = 0;
-        const answers = {};
-        
-        function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById(pageId).classList.add('active');
-        }
-        
-        function renderQuestion() {
-            const q = questions[currentQ];
-            let html = `
-                <div class="question">
-                    <div style="color:#667eea; font-weight:700; margin-bottom:10px;">第 ${currentQ + 1} 题 / 共 30 题</div>
-                    <div class="question-text">${q.text}</div>
-                    <div class="options">
-                        ${q.options.map((opt, i) => `
-                            <div class="option ${answers[currentQ] === i ? 'selected' : ''}" data-index="${i}">
-                                <span style="font-weight:600; margin-right:10px;">${String.fromCharCode(65 + i)}.</span>${opt}
-                            </div>
-                        `).join('')}
+                <div class="journey-grid">
+                    <div class="journey-card">
+                        <div class="journey-number">1</div>
+                        <h3>假我旧版本清洗</h3>
+                        <ul>
+                            <li>卡点疏通 · 清理限制性信念</li>
+                            <li>情绪溯源旧信念行为系统情绪解冻</li>
+                            <li>学会自我接纳和自爱</li>
+                            <li>通过内在小孩的回溯潜意识练习</li>
+                            <li>让冻结僵住的情绪能量流动起来</li>
+                            <li>用更高的心智状态与过去和解</li>
+                            <li>学会自我接纳、学会自爱、学会慈悲</li>
+                        </ul>
+                    </div>
+                    <div class="journey-card">
+                        <div class="journey-number">2</div>
+                        <h3>重塑稳定&强大内核</h3>
+                        <ul>
+                            <li>主体性建立 + 课题分离</li>
+                            <li>高能量状态 + 正念冥想</li>
+                            <li>如何建立主体性做自己？</li>
+                            <li>如何建立自信？</li>
+                            <li>如何课题分离建立自己的能量边界？</li>
+                            <li>情绪管理能力培养</li>
+                            <li>刻意练习情绪触发</li>
+                        </ul>
+                    </div>
+                    <div class="journey-card">
+                        <div class="journey-number">3</div>
+                        <h3>真我新版本认同</h3>
+                        <ul>
+                            <li>内在预演 · 通过视觉化冥想练习</li>
+                            <li>锚定愿景画面</li>
+                            <li>让未来的你接管现在的你</li>
+                            <li>新版本行动对齐迭代</li>
+                            <li>将新版本的原子习惯插入日常生活</li>
+                            <li>让新循环能量打破旧有循环</li>
+                        </ul>
+                    </div>
+                    <div class="journey-card">
+                        <div class="journey-number">4</div>
+                        <h3>新版本行动对齐迭代</h3>
+                        <ul>
+                            <li>刻意练习-反馈-优化复盘</li>
+                            <li>行动迭代</li>
+                            <li>新信念系统重塑</li>
+                            <li>朝向新版本的自己前进</li>
+                            <li>让新循环能量打破旧有循环</li>
+                            <li>持续优化和迭代</li>
+                        </ul>
                     </div>
                 </div>
-            `;
-            document.getElementById('questionArea').innerHTML = html;
-            document.getElementById('progressBar').style.width = ((currentQ + 1) / 30 * 100) + '%';
+            </section>
+
+            <!-- Comparison Section -->
+            <section class="section animate-on-scroll">
+                <div class="section-header">
+                    <div class="section-icon">💔</div>
+                    <h2>从痛到绽放的转变</h2>
+                    <p class="section-description">
+                        看见改变，相信改变，成为改变
+                    </p>
+                </div>
+                <div class="comparison-container">
+                    <div class="comparison-box before">
+                        <div class="comparison-content">
+                            <div class="comparison-icon">😢</div>
+                            <h3>曾经的你</h3>
+                            <p>被限制性信念困住</p>
+                            <p>情绪冻结、僵住</p>
+                            <p>找不到自己的主体性</p>
+                        </div>
+                    </div>
+                    <div class="comparison-box after">
+                        <div class="comparison-content">
+                            <div class="comparison-icon">🌸</div>
+                            <h3>现在的你</h3>
+                            <p>情绪自由流动</p>
+                            <p>建立能量边界</p>
+                            <p>活出高能量状态</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Meditation Section -->
+            <section class="section animate-on-scroll">
+                <div class="section-header">
+                    <div class="section-icon">🧘‍♀️</div>
+                    <h2>冥想工具包（12个专项冥想）</h2>
+                    <p class="section-description">
+                        每个冥想都精心设计，助力你的蜕变之旅
+                    </p>
+                </div>
+                <div class="meditation-grid">
+                    <div class="meditation-card">
+                        <h4>卡点清理冥想</h4>
+                        <p>让冻结、僵住的情绪流动起来</p>
+                        <span class="meditation-category">情绪清理类</span>
+                    </div>
+                    <div class="meditation-card">
+                        <h4>情绪觉察冥想</h4>
+                        <p>觉察每个感受出发的情绪</p>
+                        <span class="meditation-category">情绪清理类</span>
+                    </div>
+                    <div class="meditation-card">
+                        <h4>边界建立冥想</h4>
+                        <p>建立透明而坚固的能量边界</p>
+                        <span class="meditation-category">边界建立类</span>
+                    </div>
+                    <div class="meditation-card">
+                        <h4>内在预演冥想</h4>
+                        <p>让未来的你接管现在的你</p>
+                        <span class="meditation-category">愿景锚定类</span>
+                    </div>
+                    <div class="meditation-card">
+                        <h4>视觉化冥想</h4>
+                        <p>通过视觉化冥想练习，锚定愿景画面</p>
+                        <span class="meditation-category">愿景锚定类</span>
+                    </div>
+                    <div class="meditation-card">
+                        <h4>内核稳定冥想</h4>
+                        <p>建立主体性，做自己的主人</p>
+                        <span class="meditation-category">边界建立类</span>
+                    </div>
+                    <div class="meditation-card">
+                        <h4>信念升级冥想</h4>
+                        <p>替换限制性信念为支持性信念</p>
+                        <span class="meditation-category">信念升级类</span>
+                    </div>
+                    <div class="meditation-card">
+                        <h4>习惯植入冥想</h4>
+                        <p>把新习惯植入潜意识</p>
+                        <span class="meditation-category">信念升级类</span>
+                    </div>
+                    <div class="meditation-card">
+                        <h4>小步验证冥想</h4>
+                        <p>通过小步验证强化新身份</p>
+                        <span class="meditation-category">身份强化类</span>
+                    </div>
+                    <div class="meditation-card">
+                        <h4>挑战突破冥想</h4>
+                        <p>突破你的限制</p>
+                        <span class="meditation-category">身份强化类</span>
+                    </div>
+                    <div class="meditation-card">
+                        <h4>持续迭代冥想</h4>
+                        <p>建立持续迭代的意识</p>
+                        <span class="meditation-category">持续成长类</span>
+                    </div>
+                    <div class="meditation-card">
+                        <h4>真我显化冥想</h4>
+                        <p>让真我完全显化</p>
+                        <span class="meditation-category">持续成长类</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="animate-on-scroll">
+                <div class="section-icon">✨</div>
+                <h2>一起构建内在秩序</h2>
+                <p class="footer-message">让自爱成为你最强大的显化力量</p>
+                <p class="footer-tagline">今天可以是你命运齿轮的转动点，而不是普通的又一天 🌟</p>
+                <a href="#top" class="cta-button" style="margin-top: 30px;">重新开始蜕变之旅 💫</a>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // Create floating stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starSymbols = ['✨', '⭐', '🌟', '💫', '🌸', '💖'];
             
-            document.getElementById('prevBtn').style.display = currentQ > 0 ? 'inline-block' : 'none';
-            document.getElementById('nextBtn').style.display = (currentQ < 29 && answers[currentQ] !== undefined) ? 'inline-block' : 'none';
-            document.getElementById('submitBtn').style.display = (currentQ === 29 && answers[currentQ] !== undefined) ? 'inline-block' : 'none';
+            for (let i = 0; i < 25; i++) {
+                const star = document.createElement('div');
+                star.className = 'floating-star';
+                star.textContent = starSymbols[Math.floor(Math.random() * starSymbols.length)];
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 4 + 's';
+                star.style.animationDuration = (3 + Math.random() * 3) + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        // Intersection Observer for scroll animations
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
             
-            document.querySelectorAll('.option').forEach(el => {
-                el.onclick = function() {
-                    answers[currentQ] = parseInt(this.dataset.index);
-                    renderQuestion();
-                };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
             });
         }
         
-        function calcResult() {
-            const scores = { A:0, B:0, C:0, D:0 };
-            for (let i = 0; i < 30; i++) {
-                if (answers[i] !== undefined) {
-                    const type = String.fromCharCode(65 + answers[i]);
-                    scores[type]++;
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#top') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    return;
                 }
-            }
-            const sorted = Object.entries(scores).sort((a,b) => b[1]-a[1]);
-            const primary = sorted[0][0];
-            const info = typeInfo[primary];
-            
-            let html = `
-                <div class="result">
-                    <h3>${info.icon} ${info.name}</h3>
-                    <div style="margin:15px 0;">
-                        ${info.tags.map(t => `<span class="type-tag">${t}</span>`).join('')}
-                    </div>
-                    <p style="margin-top:15px; font-size:1.05em;">${info.desc}</p>
-                    <p style="margin-top:20px; color:#666;">
-                        <strong>得分：</strong><br>
-                        ${Object.entries(scores).map(([k,v]) => `${typeInfo[k].icon} ${typeInfo[k].name}: ${v}分`).join(' | ')}
-                    </p>
-                </div>
-            `;
-            document.getElementById('resultArea').innerHTML = html;
-        }
+                const target = document.querySelector(targetId);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
         
-        // 绑定所有按钮事件
-        document.getElementById('startBtn').onclick = function() {
-            console.log('🖱️ 开始测试按钮点击');
-            currentQ = 0;
-            Object.keys(answers).forEach(k => delete answers[k]);
-            showPage('page2');
-            renderQuestion();
-        };
-        
-        document.getElementById('prevBtn').onclick = function() {
-            if (currentQ > 0) { currentQ--; renderQuestion(); }
-        };
-        
-        document.getElementById('nextBtn').onclick = function() {
-            if (currentQ < 29) { currentQ++; renderQuestion(); }
-        };
-        
-        document.getElementById('submitBtn').onclick = function() {
-            if (Object.keys(answers).length < 30) {
-                alert('请回答所有问题！');
-                return;
-            }
-            calcResult();
-            showPage('page3');
-        };
-        
-        document.getElementById('restartBtn').onclick = function() {
-            showPage('page1');
-        };
-        
-        console.log('✅ 所有事件绑定完成');
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            createStars();
+            initScrollAnimations();
+        });
     </script>
 </body>
 </html>
