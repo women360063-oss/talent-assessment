@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="假我旧版本清洗与真我新版本认同课程 - 构建内在秩序，自爱显化">
-    <title>构建内在秩序 自爱显化 | 个人成长课程</title>
+    <title>构建内在秩序 自爱显化 | 真我蜕变 主导人生</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -16,18 +16,19 @@
         }
         
         :root {
-            --primary-pink: #d63384;
-            --secondary-pink: #ff6b9d;
-            --warm-peach: #fcb69f;
-            --cream: #ffecd2;
-            --gold: #ffd700;
-            --dark-text: #2d2d2d;
-            --light-text: #666;
+            --primary-green: #8fa98f;
+            --secondary-green: #a8c4a8;
+            --light-green: #d4e4d4;
+            --cream-green: #f0f5f0;
+            --accent-orange: #e6a23c;
+            --light-orange: #f5d8a6;
+            --dark-text: #4a5568;
+            --light-text: #718096;
         }
         
         body {
             font-family: 'Noto Sans SC', sans-serif;
-            background: linear-gradient(135deg, var(--cream) 0%, var(--warm-peach) 25%, #f093fb 50%, #f5576c 75%, var(--cream) 100%);
+            background: linear-gradient(135deg, var(--cream-green) 0%, var(--light-green) 25%, var(--secondary-green) 50%, var(--light-green) 75%, var(--cream-green) 100%);
             background-size: 400% 400%;
             animation: gradientShift 20s ease infinite;
             min-height: 100vh;
@@ -67,7 +68,7 @@
             left: 0;
             right: 0;
             height: 5px;
-            background: linear-gradient(90deg, var(--primary-pink), var(--gold), var(--secondary-pink));
+            background: linear-gradient(90deg, var(--primary-green), var(--accent-orange), var(--secondary-green));
         }
         
         .hero-icon {
@@ -84,7 +85,7 @@
         .hero h1 {
             font-family: 'Noto Serif SC', serif;
             font-size: 3.2em;
-            color: var(--primary-pink);
+            color: var(--primary-green);
             margin-bottom: 15px;
             font-weight: 700;
             letter-spacing: 2px;
@@ -99,7 +100,7 @@
         
         .hero-tagline {
             font-size: 1.3em;
-            color: var(--primary-pink);
+            color: var(--accent-orange);
             margin: 25px 0;
             font-weight: 500;
         }
@@ -115,17 +116,157 @@
         .keyword {
             font-size: 1.4em;
             font-weight: 600;
-            color: var(--primary-pink);
+            color: var(--primary-green);
             padding: 10px 25px;
-            background: linear-gradient(135deg, rgba(255,107,157,0.1), rgba(214,51,132,0.1));
+            background: linear-gradient(135deg, rgba(168,196,168,0.15), rgba(143,169,143,0.15));
             border-radius: 30px;
-            border: 2px solid var(--secondary-pink);
+            border: 2px solid var(--accent-orange);
+        }
+        
+        /* Pricing Section */
+        .pricing-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 40px;
+            padding: 60px 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.15);
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .pricing-card {
+            background: linear-gradient(145deg, #f0f5f0, #e8f0e8);
+            border-radius: 30px;
+            padding: 40px 30px;
+            border: 3px solid var(--secondary-green);
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(143,169,143,0.3);
+        }
+        
+        .pricing-card.featured {
+            border: 4px solid var(--accent-orange);
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.featured:hover {
+            transform: translateY(-10px) scale(1.07);
+        }
+        
+        .pricing-badge {
+            position: absolute;
+            top: -20px;
+            right: 20px;
+            background: linear-gradient(45deg, var(--accent-orange), var(--primary-green));
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9em;
+            box-shadow: 0 10px 30px rgba(230,162,60,0.3);
+        }
+        
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .pricing-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2em;
+            color: var(--primary-green);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .pricing-price {
+            font-size: 3em;
+            color: var(--dark-text);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .pricing-price span {
+            font-size: 0.4em;
+            color: var(--light-text);
+            font-weight: 400;
+        }
+        
+        .pricing-value {
+            font-size: 1.2em;
+            color: var(--light-text);
+            margin-bottom: 30px;
+        }
+        
+        .pricing-value strong {
+            color: var(--accent-orange);
+            font-size: 1.3em;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .pricing-features li {
+            padding: 12px 0;
+            padding-left: 35px;
+            position: relative;
+            border-bottom: 1px solid rgba(143,169,143,0.15);
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-features li::before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+        }
+        
+        .pricing-cta {
+            display: block;
+            text-align: center;
+            padding: 18px 30px;
+            background: linear-gradient(45deg, var(--accent-orange), var(--primary-green));
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.2em;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .pricing-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(230,162,60,0.4);
+        }
+        
+        .pricing-urgency {
+            text-align: center;
+            margin-top: 15px;
+            color: var(--accent-orange);
+            font-weight: 600;
+            font-size: 0.95em;
         }
         
         /* Parallel Universe Letter Section */
         .letter-section {
-            background: linear-gradient(135deg, rgba(255,236,210,0.95), rgba(252,182,159,0.95));
-            border: 3px solid var(--gold);
+            background: linear-gradient(135deg, rgba(240,245,240,0.95), rgba(212,228,212,0.95));
+            border: 3px solid var(--accent-orange);
             position: relative;
         }
         
@@ -161,7 +302,7 @@
         .letter-greeting {
             font-size: 1.3em;
             font-weight: 600;
-            color: var(--primary-pink);
+            color: var(--primary-green);
             margin-bottom: 20px;
             text-align: center;
         }
@@ -170,19 +311,19 @@
             text-align: right;
             font-style: italic;
             margin-top: 30px;
-            color: var(--primary-pink);
+            color: var(--accent-orange);
         }
         
         .cta-button {
             display: inline-block;
             padding: 22px 55px;
-            background: linear-gradient(45deg, var(--secondary-pink), var(--primary-pink));
+            background: linear-gradient(45deg, var(--accent-orange), var(--primary-green));
             color: white;
             text-decoration: none;
             border-radius: 60px;
             font-size: 1.3em;
-            font-weight: 600;
-            box-shadow: 0 15px 40px rgba(255,107,157,0.4);
+            font-weight: 700;
+            box-shadow: 0 15px 40px rgba(230,162,60,0.4);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border: none;
             cursor: pointer;
@@ -191,7 +332,7 @@
         
         .cta-button:hover {
             transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 20px 50px rgba(255,107,157,0.5);
+            box-shadow: 0 20px 50px rgba(230,162,60,0.5);
         }
         
         /* Section Styles */
@@ -217,9 +358,9 @@
         .section h2 {
             font-family: 'Noto Serif SC', serif;
             font-size: 2.5em;
-            color: var(--primary-pink);
+            color: var(--primary-green);
             margin-bottom: 15px;
-            font-weight: 600;
+            font-weight: 700;
         }
         
         .section-description {
@@ -238,10 +379,10 @@
         }
         
         .journey-card {
-            background: linear-gradient(135deg, #ffeef8, #fff0f5);
+            background: linear-gradient(135deg, #f0f5f0, #e8f0e8);
             padding: 35px;
             border-radius: 25px;
-            border-left: 6px solid var(--secondary-pink);
+            border-left: 6px solid var(--accent-orange);
             transition: all 0.4s ease;
             position: relative;
         }
@@ -253,20 +394,20 @@
             right: 0;
             width: 80px;
             height: 80px;
-            background: radial-gradient(circle, rgba(255,107,157,0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(143,169,143,0.15) 0%, transparent 70%);
             border-radius: 0 25px 0 25px;
         }
         
         .journey-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(255,107,157,0.25);
+            box-shadow: 0 20px 40px rgba(143,169,143,0.25);
         }
         
         .journey-number {
             display: inline-block;
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, var(--secondary-pink), var(--primary-pink));
+            background: linear-gradient(135deg, var(--accent-orange), var(--primary-green));
             color: white;
             border-radius: 50%;
             display: flex;
@@ -278,10 +419,10 @@
         }
         
         .journey-card h3 {
-            color: var(--primary-pink);
+            color: var(--primary-green);
             margin-bottom: 20px;
             font-size: 1.4em;
-            font-weight: 600;
+            font-weight: 700;
         }
         
         .journey-card ul {
@@ -358,7 +499,7 @@
         .comparison-box h3 {
             font-size: 1.8em;
             margin-bottom: 25px;
-            font-weight: 600;
+            font-weight: 700;
         }
         
         .comparison-box p {
@@ -406,9 +547,9 @@
         }
         
         .meditation-card:hover {
-            border-color: var(--secondary-pink);
+            border-color: var(--accent-orange);
             transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 15px 35px rgba(255,107,157,0.2);
+            box-shadow: 0 15px 35px rgba(143,169,143,0.2);
         }
         
         .meditation-card:hover::before {
@@ -416,10 +557,10 @@
         }
         
         .meditation-card h4 {
-            color: var(--primary-pink);
+            color: var(--primary-green);
             margin-bottom: 12px;
             font-size: 1.2em;
-            font-weight: 600;
+            font-weight: 700;
         }
         
         .meditation-card p {
@@ -431,12 +572,12 @@
         .meditation-category {
             display: inline-block;
             padding: 5px 15px;
-            background: linear-gradient(135deg, var(--cream), var(--warm-peach));
+            background: linear-gradient(135deg, var(--light-green), var(--secondary-green));
             border-radius: 20px;
             font-size: 0.85em;
-            color: var(--primary-pink);
+            color: var(--primary-green);
             margin-top: 15px;
-            font-weight: 500;
+            font-weight: 600;
         }
         
         /* Footer */
@@ -458,7 +599,7 @@
         
         .footer-message {
             font-size: 1.4em;
-            color: var(--primary-pink);
+            color: var(--accent-orange);
             margin: 25px 0;
             font-weight: 500;
         }
@@ -554,6 +695,18 @@
                 padding: 18px 40px;
                 font-size: 1.1em;
             }
+            
+            .pricing-section {
+                padding: 40px 20px;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-card.featured {
+                transform: scale(1);
+            }
         }
         
         /* Smooth Scroll */
@@ -569,7 +722,7 @@
             <!-- Hero Section -->
             <section class="hero">
                 <div class="hero-icon">🌟</div>
-                <h1>假我旧版本清洗与真我新版本认同课程</h1>
+                <h1>假我旧版本清洗与真我新版本认同</h1>
                 <p class="hero-subtitle">构建内在秩序 · 自爱显化</p>
                 <div class="hero-keywords">
                     <span class="keyword">改写创造人生剧本</span>
@@ -578,7 +731,7 @@
                     <span class="keyword">远程潜意识探索</span>
                 </div>
                 <p class="hero-tagline">从"假我"到"真我"，重建你的内在力量</p>
-                <a href="#journey" class="cta-button">Now or Never! 开始你的蜕变之旅 ✨</a>
+                <a href="#pricing" class="cta-button">Now or Never！选择你的蜕变之旅 🚀</a>
             </section>
 
             <!-- Value Proposition Section -->
@@ -596,7 +749,7 @@
             <!-- Parallel Universe Letter Section -->
             <section class="section letter-section animate-on-scroll">
                 <div class="section-header">
-                    <div class="section-icon">💫</div>
+                    <div class="section-icon">💌</div>
                     <h2>来自平行宇宙的一封疗愈来信</h2>
                 </div>
                 <div class="letter-content">
@@ -614,6 +767,83 @@
                     <p style="text-align: center; font-size: 1.3em; font-weight: 700; color: var(--primary-pink); margin: 30px 0;">当你能接收到我的频率 说明未来已来 准备好出发了吗？</p>
                     <p style="text-align: center; font-size: 1.2em; font-weight: 600; color: var(--primary-pink); margin-top: 20px;">✨ Now or Never！</p>
                     <p class="letter-closing">✨ 来自平行宇宙的另一个你</p>
+                </div>
+            </section>
+
+            <!-- Pricing Section -->
+            <section class="pricing-section animate-on-scroll" id="pricing">
+                <div class="section-header">
+                    <div class="section-icon">💰</div>
+                    <h2>选择你的蜕变路径</h2>
+                    <p class="section-description">
+                        从基础陪伴到深度私教，总有一款适合你的蜕变方案
+                    </p>
+                </div>
+                
+                <div class="pricing-grid">
+                    <!-- 基础版 -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <div class="pricing-title">✨ 基础版</div>
+                            <div class="pricing-price">2980元<span>/12周</span></div>
+                            <div class="pricing-value">
+                                总价值 <strong>8038元</strong>
+                            </div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li>12次直播课（每周1次，90分钟/次）</li>
+                            <li>12周社群陪伴</li>
+                            <li>2次1对1咨询（30分钟/次）</li>
+                            <li>超值礼包（冥想音频+工具包）</li>
+                            <li>每日打卡 + 每周复盘</li>
+                            <li>死党制（3人小组）</li>
+                        </ul>
+                        <button class="pricing-cta">立即报名</button>
+                        <p class="pricing-urgency">🔥 只相当于8小时1v1咨询的钱！</p>
+                    </div>
+                    
+                    <!-- 尊享版（推荐） -->
+                    <div class="pricing-card featured">
+                        <div class="pricing-badge">🔥 推荐</div>
+                        <div class="pricing-header">
+                            <div class="pricing-title">🌟 尊享版</div>
+                            <div class="pricing-price">9800元<span>/12周</span></div>
+                            <div class="pricing-value">
+                                总价值 <strong>36812元</strong>
+                            </div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li>✅ 基础版全部内容</li>
+                            <li>4次1对1深度咨询（60分钟/次）</li>
+                            <li>2次线下旅修（2天1夜/次）</li>
+                            <li>专属复盘1对1（每周1次）</li>
+                            <li>优先复训资格</li>
+                            <li>3-5年规划1对1（2小时）</li>
+                        </ul>
+                        <button class="pricing-cta">选择尊享版</button>
+                        <p class="pricing-urgency">💡 单是2次线下旅修就值19800元！</p>
+                    </div>
+                    
+                    <!-- 私教版 -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <div class="pricing-title">👑 私教版</div>
+                            <div class="pricing-price">29800元<span>/3个月</span></div>
+                            <div class="pricing-value">
+                                总价值 <strong>92452元</strong>
+                            </div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li>✅ 尊享版全部内容</li>
+                            <li>每周2次1对1咨询（60分钟/次）</li>
+                            <li>定制化练习方案</li>
+                            <li>3次线下深度疗愈（1天/次）</li>
+                            <li>1年复训资格</li>
+                            <li>个人品牌/影响力建立指导</li>
+                        </ul>
+                        <button class="pricing-cta">申请私教</button>
+                        <p class="pricing-urgency">⚠️ 一年只收10个私教学员！</p>
+                    </div>
                 </div>
             </section>
 
@@ -647,216 +877,3 @@
                             <li>主体性建立 + 课题分离</li>
                             <li>高能量状态 + 正念冥想</li>
                             <li>如何建立主体性做自己？</li>
-                            <li>如何建立自信？</li>
-                            <li>如何课题分离建立自己的能量边界？</li>
-                            <li>情绪管理能力培养</li>
-                            <li>刻意练习情绪触发</li>
-                        </ul>
-                    </div>
-                    <div class="journey-card">
-                        <div class="journey-number">3</div>
-                        <h3>真我新版本认同</h3>
-                        <ul>
-                            <li>内在预演 · 通过视觉化冥想练习</li>
-                            <li>锚定愿景画面</li>
-                            <li>让未来的你接管现在的你</li>
-                            <li>新版本行动对齐迭代</li>
-                            <li>将新版本的原子习惯插入日常生活</li>
-                            <li>让新循环能量打破旧有循环</li>
-                        </ul>
-                    </div>
-                    <div class="journey-card">
-                        <div class="journey-number">4</div>
-                        <h3>新版本行动对齐迭代</h3>
-                        <ul>
-                            <li>刻意练习-反馈-优化复盘</li>
-                            <li>行动迭代</li>
-                            <li>新信念系统重塑</li>
-                            <li>朝向新版本的自己前进</li>
-                            <li>让新循环能量打破旧有循环</li>
-                            <li>持续优化和迭代</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Comparison Section -->
-            <section class="section animate-on-scroll">
-                <div class="section-header">
-                    <div class="section-icon">💔</div>
-                    <h2>从痛到绽放的转变</h2>
-                    <p class="section-description">
-                        看见改变，相信改变，成为改变
-                    </p>
-                </div>
-                <div class="comparison-container">
-                    <div class="comparison-box before">
-                        <div class="comparison-content">
-                            <div class="comparison-icon">😢</div>
-                            <h3>曾经的你</h3>
-                            <p>被限制性信念困住</p>
-                            <p>情绪冻结、僵住</p>
-                            <p>找不到自己的主体性</p>
-                        </div>
-                    </div>
-                    <div class="comparison-box after">
-                        <div class="comparison-content">
-                            <div class="comparison-icon">🌸</div>
-                            <h3>现在的你</h3>
-                            <p>情绪自由流动</p>
-                            <p>建立能量边界</p>
-                            <p>活出高能量状态</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Meditation Section -->
-            <section class="section animate-on-scroll">
-                <div class="section-header">
-                    <div class="section-icon">🧘‍♀️</div>
-                    <h2>冥想工具包（12个专项冥想）</h2>
-                    <p class="section-description">
-                        每个冥想都精心设计，助力你的蜕变之旅
-                    </p>
-                </div>
-                <div class="meditation-grid">
-                    <div class="meditation-card">
-                        <h4>卡点清理冥想</h4>
-                        <p>让冻结、僵住的情绪流动起来</p>
-                        <span class="meditation-category">情绪清理类</span>
-                    </div>
-                    <div class="meditation-card">
-                        <h4>情绪觉察冥想</h4>
-                        <p>觉察每个感受出发的情绪</p>
-                        <span class="meditation-category">情绪清理类</span>
-                    </div>
-                    <div class="meditation-card">
-                        <h4>边界建立冥想</h4>
-                        <p>建立透明而坚固的能量边界</p>
-                        <span class="meditation-category">边界建立类</span>
-                    </div>
-                    <div class="meditation-card">
-                        <h4>内在预演冥想</h4>
-                        <p>让未来的你接管现在的你</p>
-                        <span class="meditation-category">愿景锚定类</span>
-                    </div>
-                    <div class="meditation-card">
-                        <h4>视觉化冥想</h4>
-                        <p>通过视觉化冥想练习，锚定愿景画面</p>
-                        <span class="meditation-category">愿景锚定类</span>
-                    </div>
-                    <div class="meditation-card">
-                        <h4>内核稳定冥想</h4>
-                        <p>建立主体性，做自己的主人</p>
-                        <span class="meditation-category">边界建立类</span>
-                    </div>
-                    <div class="meditation-card">
-                        <h4>信念升级冥想</h4>
-                        <p>替换限制性信念为支持性信念</p>
-                        <span class="meditation-category">信念升级类</span>
-                    </div>
-                    <div class="meditation-card">
-                        <h4>习惯植入冥想</h4>
-                        <p>把新习惯植入潜意识</p>
-                        <span class="meditation-category">信念升级类</span>
-                    </div>
-                    <div class="meditation-card">
-                        <h4>小步验证冥想</h4>
-                        <p>通过小步验证强化新身份</p>
-                        <span class="meditation-category">身份强化类</span>
-                    </div>
-                    <div class="meditation-card">
-                        <h4>挑战突破冥想</h4>
-                        <p>突破你的限制</p>
-                        <span class="meditation-category">身份强化类</span>
-                    </div>
-                    <div class="meditation-card">
-                        <h4>持续迭代冥想</h4>
-                        <p>建立持续迭代的意识</p>
-                        <span class="meditation-category">持续成长类</span>
-                    </div>
-                    <div class="meditation-card">
-                        <h4>真我显化冥想</h4>
-                        <p>让真我完全显化</p>
-                        <span class="meditation-category">持续成长类</span>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Footer -->
-            <footer class="animate-on-scroll">
-                <div class="section-icon">✨</div>
-                <h2>一起构建内在秩序</h2>
-                <p class="footer-message">让自爱成为你最强大的显化力量</p>
-                <p class="footer-tagline">今天可以是你命运齿轮的转动点，而不是普通的又一天 🌟</p>
-                <a href="#top" class="cta-button" style="margin-top: 30px;">重新开始蜕变之旅 💫</a>
-            </footer>
-        </div>
-    </div>
-
-    <script>
-        // Create floating stars
-        function createStars() {
-            const starsContainer = document.getElementById('stars');
-            const starSymbols = ['✨', '⭐', '🌟', '💫', '🌸', '💖'];
-            
-            for (let i = 0; i < 25; i++) {
-                const star = document.createElement('div');
-                star.className = 'floating-star';
-                star.textContent = starSymbols[Math.floor(Math.random() * starSymbols.length)];
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                star.style.animationDelay = Math.random() * 4 + 's';
-                star.style.animationDuration = (3 + Math.random() * 3) + 's';
-                starsContainer.appendChild(star);
-            }
-        }
-        
-        // Intersection Observer for scroll animations
-        function initScrollAnimations() {
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -100px 0px'
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, observerOptions);
-            
-            document.querySelectorAll('.animate-on-scroll').forEach(el => {
-                observer.observe(el);
-            });
-        }
-        
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#top') {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                    return;
-                }
-                const target = document.querySelector(targetId);
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-        
-        // Initialize everything when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            createStars();
-            initScrollAnimations();
-        });
-    </script>
-</body>
-</html>
