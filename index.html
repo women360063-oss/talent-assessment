@@ -16,30 +16,46 @@
         }
         
         :root {
+            /* 莫兰迪绿色系 */
             --primary-green: #8fa98f;
             --secondary-green: #a8c4a8;
             --light-green: #d4e4d4;
             --cream-green: #f0f5f0;
+            /* 莫兰迪蓝色系 */
+            --primary-blue: #9fb7c7;
+            --secondary-blue: #bfd4e3;
+            --light-blue: #e3eff6;
+            /* 莫兰迪橙色系 */
             --accent-orange: #e6a23c;
             --light-orange: #f5d8a6;
+            /* 白色系 */
+            --pure-white: #ffffff;
+            --warm-white: #faf8f5;
+            /* 文字颜色 */
             --dark-text: #4a5568;
             --light-text: #718096;
         }
         
         body {
             font-family: 'Noto Sans SC', sans-serif;
-            background: linear-gradient(135deg, var(--cream-green) 0%, var(--light-green) 25%, var(--secondary-green) 50%, var(--light-green) 75%, var(--cream-green) 100%);
+            background: 
+                radial-gradient(ellipse at 20% 30%, rgba(159, 183, 199, 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(168, 196, 168, 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(230, 162, 60, 0.15) 0%, transparent 60%),
+                linear-gradient(120deg, var(--warm-white) 0%, var(--cream-green) 30%, var(--light-blue) 60%, var(--light-green) 100%);
             background-size: 400% 400%;
-            animation: gradientShift 20s ease infinite;
+            animation: monetGgradientShift 25s ease infinite;
             min-height: 100vh;
             color: var(--dark-text);
             line-height: 1.8;
             overflow-x: hidden;
         }
         
-        @keyframes gradientShift {
+        @keyframes monetGgradientShift {
             0% { background-position: 0% 50%; }
+            25% { background-position: 50% 100%; }
             50% { background-position: 100% 50%; }
+            75% { background-position: 50% 0%; }
             100% { background-position: 0% 50%; }
         }
         
@@ -53,10 +69,15 @@
         .hero {
             text-align: center;
             padding: 80px 20px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 40px;
+            background: 
+                radial-gradient(ellipse at 30% 20%, rgba(168, 196, 168, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(159, 183, 199, 0.2) 0%, transparent 50%),
+                rgba(255, 255, 255, 0.92);
+            border-radius: 50px;
             margin-bottom: 50px;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.15);
+            box-shadow: 
+                0 30px 80px rgba(143, 169, 143, 0.18),
+                inset 0 0 100px rgba(245, 216, 166, 0.1);
             position: relative;
             overflow: hidden;
         }
@@ -67,8 +88,9 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary-green), var(--accent-orange), var(--secondary-green));
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-orange), var(--primary-green), var(--primary-blue));
+            border-radius: 50px 50px 0 0;
         }
         
         .hero-icon {
@@ -117,16 +139,23 @@
             font-size: 1.4em;
             font-weight: 600;
             color: var(--primary-green);
-            padding: 10px 25px;
-            background: linear-gradient(135deg, rgba(168,196,168,0.15), rgba(143,169,143,0.15));
-            border-radius: 30px;
+            padding: 12px 30px;
+            background: 
+                radial-gradient(ellipse at 30% 30%, rgba(230,162,60,0.2) 0%, transparent 50%),
+                linear-gradient(135deg, rgba(168,196,168,0.2), rgba(159,183,199,0.2));
+            border-radius: 40px;
             border: 2px solid var(--accent-orange);
+            box-shadow: 0 8px 25px rgba(143,169,143,0.15);
         }
         
         /* Parallel Universe Letter Section */
         .letter-section {
-            background: linear-gradient(135deg, rgba(240,245,240,0.95), rgba(212,228,212,0.95));
+            background: 
+                radial-gradient(ellipse at 20% 30%, rgba(159,183,199,0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(245,216,166,0.2) 0%, transparent 50%),
+                linear-gradient(135deg, rgba(240,245,240,0.96), rgba(212,228,212,0.96));
             border: 3px solid var(--accent-orange);
+            border-radius: 40px;
             position: relative;
         }
         
@@ -176,14 +205,18 @@
         
         .cta-button {
             display: inline-block;
-            padding: 22px 55px;
-            background: linear-gradient(45deg, var(--accent-orange), var(--primary-green));
+            padding: 24px 60px;
+            background: 
+                radial-gradient(ellipse at 30% 30%, rgba(255,255,255,0.3) 0%, transparent 50%),
+                linear-gradient(45deg, var(--accent-orange), var(--primary-green), var(--primary-blue));
             color: white;
             text-decoration: none;
-            border-radius: 60px;
+            border-radius: 80px;
             font-size: 1.3em;
             font-weight: 600;
-            box-shadow: 0 15px 40px rgba(230,162,60,0.4);
+            box-shadow: 
+                0 20px 50px rgba(230,162,60,0.35),
+                0 8px 25px rgba(143,169,143,0.25);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border: none;
             cursor: pointer;
@@ -191,17 +224,24 @@
         }
         
         .cta-button:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 20px 50px rgba(230,162,60,0.5);
+            transform: translateY(-6px) scale(1.06);
+            box-shadow: 
+                0 28px 60px rgba(230,162,60,0.45),
+                0 12px 35px rgba(143,169,143,0.35);
         }
         
         /* Section Styles */
         .section {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 30px;
-            padding: 50px;
-            margin-bottom: 40px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            background: 
+                radial-gradient(ellipse at 10% 10%, rgba(159,183,199,0.15) 0%, transparent 40%),
+                radial-gradient(ellipse at 90% 90%, rgba(168,196,168,0.15) 0%, transparent 40%),
+                rgba(255, 255, 255, 0.94);
+            border-radius: 40px;
+            padding: 55px;
+            margin-bottom: 45px;
+            box-shadow: 
+                0 25px 60px rgba(143,169,143,0.15),
+                inset 0 0 80px rgba(250,248,245,0.5);
             position: relative;
         }
         
@@ -239,10 +279,13 @@
         }
         
         .journey-card {
-            background: linear-gradient(135deg, #ffeef8, #fff0f5);
-            padding: 35px;
-            border-radius: 25px;
-            border-left: 6px solid var(--secondary-pink);
+            background: 
+                radial-gradient(ellipse at 30% 20%, rgba(159,183,199,0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(168,196,168,0.2) 0%, transparent 50%),
+                linear-gradient(135deg, var(--warm-white), var(--cream-green));
+            padding: 38px;
+            border-radius: 35px;
+            border-left: 6px solid var(--accent-orange);
             transition: all 0.4s ease;
             position: relative;
         }
@@ -252,22 +295,26 @@
             position: absolute;
             top: 0;
             right: 0;
-            width: 80px;
-            height: 80px;
-            background: radial-gradient(circle, rgba(255,107,157,0.1) 0%, transparent 70%);
-            border-radius: 0 25px 0 25px;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(230,162,60,0.18) 0%, transparent 70%);
+            border-radius: 0 35px 0 35px;
         }
         
         .journey-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(255,107,157,0.25);
+            transform: translateY(-12px);
+            box-shadow: 
+                0 25px 50px rgba(143,169,143,0.25),
+                0 10px 25px rgba(159,183,199,0.2);
         }
         
         .journey-number {
             display: inline-block;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--secondary-pink), var(--primary-pink));
+            width: 55px;
+            height: 55px;
+            background: 
+                radial-gradient(ellipse at 30% 30%, rgba(255,255,255,0.4) 0%, transparent 50%),
+                linear-gradient(135deg, var(--accent-orange), var(--primary-green), var(--primary-blue));
             color: white;
             border-radius: 50%;
             display: flex;
@@ -276,6 +323,7 @@
             font-size: 1.5em;
             font-weight: 700;
             margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(143,169,143,0.3);
         }
         
         .journey-card h3 {
@@ -342,13 +390,19 @@
         }
         
         .comparison-box.before {
-            background: linear-gradient(135deg, #ffcccc, #ffe0e0);
-            border: 4px solid #ff6b6b;
+            background: 
+                radial-gradient(ellipse at 30% 30%, rgba(230,162,60,0.25) 0%, transparent 50%),
+                linear-gradient(135deg, #fff0f0, #ffe8e8);
+            border: 4px solid var(--accent-orange);
+            border-radius: 35px;
         }
         
         .comparison-box.after {
-            background: linear-gradient(135deg, #ccffcc, #e0ffe0);
-            border: 4px solid #51cf66;
+            background: 
+                radial-gradient(ellipse at 30% 30%, rgba(143,169,143,0.25) 0%, transparent 50%),
+                linear-gradient(135deg, #e8f8e8, #e0ffe0);
+            border: 4px solid var(--primary-green);
+            border-radius: 35px;
         }
         
         .comparison-icon {
@@ -379,29 +433,32 @@
         }
         
         .meditation-card {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            padding: 30px;
-            border-radius: 20px;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(159,183,199,0.18) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(168,196,168,0.18) 0%, transparent 50%),
+                linear-gradient(135deg, var(--warm-white), var(--light-green));
+            padding: 32px;
+            border-radius: 30px;
             text-align: center;
-            border: 3px solid #dee2e6;
+            border: 3px solid var(--secondary-green);
             transition: all 0.4s ease;
             position: relative;
         }
         
         .meditation-card::before {
-            content: '🧘‍♀️';
+            content: '🍃';
             position: absolute;
             top: -15px;
             right: -15px;
             font-size: 30px;
-            background: white;
+            background: var(--warm-white);
             border-radius: 50%;
             width: 50px;
             height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 20px rgba(143,169,143,0.2);
             opacity: 0;
             transition: all 0.3s ease;
         }
@@ -569,9 +626,9 @@
         <div class="container">
             <!-- Hero Section -->
             <section class="hero">
-                <div class="hero-icon">🌿</div>
+                <div class="hero-icon">🍃</div>
                 <h1>探索潜意识底层的情绪创伤</h1>
-                <p class="hero-subtitle">找回内在的动力与自信 · 活出自己</p>
+                <p class="hero-subtitle">找回内在的动力与自信 · 做自己</p>
                 <div class="hero-keywords">
                     <span class="keyword">情绪疗愈</span>
                     <span class="keyword">潜意识探索</span>
@@ -579,13 +636,13 @@
                     <span class="keyword">内在力量</span>
                 </div>
                 <p class="hero-tagline">看见创伤，疗愈自己，重获生命的动力与自信</p>
-                <a href="#pricing" class="cta-button">Now or Never！选择你的蜕变之旅 🚀</a>
+                <a href="#pricing" class="cta-button">开启蜕变之旅</a>
             </section>
 
             <!-- Value Proposition Section -->
             <section class="section animate-on-scroll">
                 <div class="section-header">
-                    <div class="section-icon">💫</div>
+                    <div class="section-icon">✨</div>
                     <h2>核心价值主张</h2>
                     <p class="section-description">
                         帮助你从被限制性信念困住、情绪冻结僵住、找不到自己主体性的状态，
@@ -597,12 +654,12 @@
             <!-- Parallel Universe Letter Section -->
             <section class="section letter-section animate-on-scroll">
                 <div class="section-header">
-                    <div class="section-icon">💫</div>
-                    <h2>来自平行宇宙的一封疗愈来信</h2>
+                    <div class="section-icon">🍃</div>
+                    <h2>来自平行世界的一封疗愈来信</h2>
                 </div>
                 <div class="letter-content">
                     <p class="letter-greeting">亲爱的你，好久不见 ✨</p>
-                    <p>我是来自那个已经疗愈创伤、活出自己的平行宇宙的你。</p>
+                    <p>我是来自那个已经疗愈创伤、做自己的平行世界的你。</p>
                     <p>我知道，在你的内心深处，有一些未曾被看见的情绪创伤，它们在影响着你的生活。</p>
                     <p>但你知道吗？那些让你痛苦的经历，也蕴含着你成长的密码。</p>
                     <p><strong>看见是疗愈的开始。</strong></p>
@@ -613,14 +670,14 @@
                     <p><strong>疗愈不是抹去过去，而是让过去不再定义你的现在和未来。</strong></p>
                     <p style="text-align: center; font-size: 1.3em; font-weight: 700; color: var(--primary-green); margin: 30px 0;">当你准备好看见自己、疗愈自己，新的人生就已开启</p>
                     <p style="text-align: center; font-size: 1.2em; font-weight: 600; color: var(--accent-orange); margin-top: 20px;">✨ 你值得活出闪闪发光的自己！</p>
-                    <p class="letter-closing">✨ 来自平行宇宙已活出自己的你</p>
+                    <p class="letter-closing">✨ 来自平行世界已做自己的你</p>
                 </div>
             </section>
 
             <!-- Pricing Section -->
             <section class="section animate-on-scroll" id="pricing">
                 <div class="section-header">
-                    <div class="section-icon">💰</div>
+                    <div class="section-icon">✨</div>
                     <h2>选择你的蜕变路径</h2>
                     <p class="section-description">
                         从基础陪伴到深度私教，总有一款适合你的蜕变方案
@@ -760,7 +817,7 @@
             <!-- Comparison Section -->
             <section class="section animate-on-scroll">
                 <div class="section-header">
-                    <div class="section-icon">💔</div>
+                    <div class="section-icon">🍃</div>
                     <h2>从痛到绽放的转变</h2>
                     <p class="section-description">
                         看见改变，相信改变，成为改变
@@ -791,7 +848,7 @@
             <!-- Meditation Section -->
             <section class="section animate-on-scroll">
                 <div class="section-header">
-                    <div class="section-icon">🧘‍♀️</div>
+                    <div class="section-icon">✨</div>
                     <h2>冥想工具包（12个专项冥想）</h2>
                     <p class="section-description">
                         每个冥想都精心设计，助力你的蜕变之旅
@@ -861,13 +918,47 @@
                 </div>
             </section>
 
+            <!-- Testimonials Section -->
+            <section class="section animate-on-scroll" id="testimonials">
+                <div class="section-header">
+                    <div class="section-icon">🍃</div>
+                    <h2>真实蜕变故事</h2>
+                    <p class="section-description">
+                        来自真实用户的分享，见证生命的绽放
+                    </p>
+                </div>
+                
+                <div class="meditation-grid">
+                    <div class="meditation-card">
+                        <h4>从焦虑到平静</h4>
+                        <p style="color: var(--dark-text); margin-bottom: 15px;">32岁职场女性，长期焦虑失眠，通过12周疗愈，学会与情绪共处，睡眠质量大幅改善。</p>
+                        <span class="meditation-category">情绪疗愈</span>
+                    </div>
+                    <div class="meditation-card">
+                        <h4>找回自信</h4>
+                        <p style="color: var(--dark-text); margin-bottom: 15px;">28岁女生，自我价值感低，通过潜意识探索，看见童年创伤，重建自信，开启新事业。</p>
+                        <span class="meditation-category">潜意识探索</span>
+                    </div>
+                    <div class="meditation-card">
+                        <h4>关系重建</h4>
+                        <p style="color: var(--dark-text); margin-bottom: 15px;">35岁离婚女性，疗愈情感创伤，建立健康边界，重新找到爱与被爱的能力。</p>
+                        <span class="meditation-category">关系疗愈</span>
+                    </div>
+                    <div class="meditation-card">
+                        <h4>职业突破</h4>
+                        <p style="color: var(--dark-text); margin-bottom: 15px;">40岁职场瓶颈期，清理限制性信念，找回内在动力，成功转型找到热爱事业。</p>
+                        <span class="meditation-category">职业突破</span>
+                    </div>
+                </div>
+            </section>
+
             <!-- Footer -->
             <footer class="animate-on-scroll">
                 <div class="section-icon">✨</div>
                 <h2>一起构建内在秩序</h2>
                 <p class="footer-message">让自爱成为你最强大的显化力量</p>
-                <p class="footer-tagline">今天可以是你命运齿轮的转动点，而不是普通的又一天 🌟</p>
-                <a href="#top" class="cta-button" style="margin-top: 30px;">重新开始蜕变之旅 💫</a>
+                <p class="footer-tagline">今天可以是你命运齿轮的转动点，而不是普通的又一天</p>
+                <a href="#top" class="cta-button" style="margin-top: 30px;">重新开始蜕变之旅</a>
             </footer>
         </div>
     </div>
@@ -876,7 +967,7 @@
         // Create floating stars
         function createStars() {
             const starsContainer = document.getElementById('stars');
-            const starSymbols = ['✨', '⭐', '🌟', '💫', '🌸', '💖'];
+            const starSymbols = ['✨', '🍃'];
             
             for (let i = 0; i < 25; i++) {
                 const star = document.createElement('div');
