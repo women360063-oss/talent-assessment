@@ -27,6 +27,11 @@
             --light-text: #94a3b8;
             --gradient-start: #1e40af;
             --gradient-end: #7c3aed;
+            --primary-green: #10b981;
+            --secondary-green: #6ee7b7;
+            --light-green: #d1fae5;
+            --accent-orange: #f59e0b;
+            --primary-pink: #ec4899;
         }
         
         body {
@@ -581,6 +586,111 @@
             font-weight: 600;
         }
         
+        /* Transformation Stories Section */
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+        
+        .story-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 2px solid var(--border-gray);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        
+        .story-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 24px 60px rgba(0,0,0,0.12);
+            border-color: var(--accent-orange);
+        }
+        
+        .story-image {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .story-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
+            animation: shimmer 4s ease-in-out infinite;
+        }
+        
+        .story-image span {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .story-content {
+            padding: 28px;
+        }
+        
+        .story-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.4em;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+        
+        .story-quote {
+            font-size: 1.05em;
+            line-height: 1.8;
+            color: var(--medium-text);
+            margin-bottom: 20px;
+            font-style: italic;
+            position: relative;
+            padding-left: 16px;
+            border-left: 3px solid var(--accent-orange);
+        }
+        
+        .story-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        
+        .story-tag {
+            display: inline-block;
+            padding: 6px 12px;
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            color: #92400e;
+            border-radius: 16px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        
+        .story-transformation {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-gray);
+        }
+        
+        .story-arrow {
+            font-size: 2em;
+            color: var(--accent-orange);
+        }
+        
         /* Footer */
         footer {
             text-align: center;
@@ -684,7 +794,8 @@
             }
             
             .journey-grid,
-            .meditation-grid {
+            .meditation-grid,
+            .stories-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -768,6 +879,204 @@
                     <p style="text-align: center; font-size: 1.3em; font-weight: 700; color: var(--primary-pink); margin: 30px 0;">当你能接收到我的频率 说明未来已来 准备好出发了吗？</p>
                     <p style="text-align: center; font-size: 1.2em; font-weight: 600; color: var(--primary-pink); margin-top: 20px;">✨ Now or Never！</p>
                     <p class="letter-closing">✨ 来自平行宇宙的另一个你</p>
+                </div>
+            </section>
+
+            <!-- Real Transformation Stories Section -->
+            <section class="section animate-on-scroll" id="stories">
+                <div class="section-header">
+                    <div class="section-icon">🌟</div>
+                    <h2>真实蜕变故事</h2>
+                    <p class="section-description">
+                        每一个故事，都是一次心灵的觉醒与重生。
+                        她们都做到了，你也可以。
+                    </p>
+                </div>
+                
+                <div class="stories-grid">
+                    <!-- Story 1 -->
+                    <div class="story-card">
+                        <div class="story-image" style="background: linear-gradient(135deg, #fef3c7, #fde68a);">
+                            <span>☀️</span>
+                        </div>
+                        <div class="story-content">
+                            <h3 class="story-title">离婚后，我重新找回了光</h3>
+                            <p class="story-quote">
+                                "34岁，结婚7年，离婚1年。刚离婚那半年，我把自己关在房间里，觉得人生全毁了。后来接触到内在天赋测评，才发现我原来不是'失败的妻子'，我是个天生的创作者。现在的我，做着自己热爱的事，经济独立，眼里有光。"
+                            </p>
+                            <div class="story-tags">
+                                <span class="story-tag">离婚</span>
+                                <span class="story-tag">觉醒</span>
+                                <span class="story-tag">重生</span>
+                            </div>
+                            <div class="story-transformation">
+                                <span>💔 失去</span>
+                                <span class="story-arrow">→</span>
+                                <span>✨ 光芒</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Story 2 -->
+                    <div class="story-card">
+                        <div class="story-image" style="background: linear-gradient(135deg, #d1fae5, #6ee7b7);">
+                            <span>👩‍👧</span>
+                        </div>
+                        <div class="story-content">
+                            <h3 class="story-title">从全职妈妈到找到热爱</h3>
+                            <p class="story-quote">
+                                "38岁，全职妈妈8年。每天围着孩子转，忘了自己是谁。看到以前的同事事业有成，心里既羡慕又自卑。做了天赋测评后，才发现我的'敏感'不是缺点，是我的天赋。现在既能陪伴孩子，又能实现自己的价值。"
+                            </p>
+                            <div class="story-tags">
+                                <span class="story-tag">全职妈妈</span>
+                                <span class="story-tag">自我发现</span>
+                                <span class="story-tag">平衡</span>
+                            </div>
+                            <div class="story-transformation">
+                                <span>🏠 迷失</span>
+                                <span class="story-arrow">→</span>
+                                <span>💖 价值</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Story 3 -->
+                    <div class="story-card">
+                        <div class="story-image" style="background: linear-gradient(135deg, #ddd6fe, #a78bfa);">
+                            <span>🧘‍♀️</span>
+                        </div>
+                        <div class="story-content">
+                            <h3 class="story-title">走出焦虑，我学会了爱自己</h3>
+                            <p class="story-quote">
+                                "32岁，职场妈妈，焦虑了3年。每天像个救火队员，怕工作做不好，怕孩子教育不好。跟着疗愈系统练习了3个月，现在的我，依然很忙，但心很定。真正的强大不是'什么都能搞定'，而是'允许自己搞不定'。"
+                            </p>
+                            <div class="story-tags">
+                                <span class="story-tag">焦虑</span>
+                                <span class="story-tag">平静</span>
+                                <span class="story-tag">自爱</span>
+                            </div>
+                            <div class="story-transformation">
+                                <span>😰 焦虑</span>
+                                <span class="story-arrow">→</span>
+                                <span>🧘 平静</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Story 4 -->
+                    <div class="story-card">
+                        <div class="story-image" style="background: linear-gradient(135deg, #fbcfe8, #f472b6);">
+                            <span>👨‍👩‍👧‍👦</span>
+                        </div>
+                        <div class="story-content">
+                            <h3 class="story-title">重组家庭后，我找到了幸福</h3>
+                            <p class="story-quote">
+                                "36岁，重组家庭，带着女儿再婚。刚再婚时，忐忑不安，怕处理不好关系，怕女儿受委屈。现在的我们，一家四口，虽然不完美，但很真实，很温暖。幸福不是找到完美的人，而是允许不完美，依然用心去爱。"
+                            </p>
+                            <div class="story-tags">
+                                <span class="story-tag">重组家庭</span>
+                                <span class="story-tag">接纳</span>
+                                <span class="story-tag">温暖</span>
+                            </div>
+                            <div class="story-transformation">
+                                <span>😟 不安</span>
+                                <span class="story-arrow">→</span>
+                                <span>🏡 幸福</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Story 5 -->
+                    <div class="story-card">
+                        <div class="story-image" style="background: linear-gradient(135deg, #bfdbfe, #60a5fa);">
+                            <span>🦋</span>
+                        </div>
+                        <div class="story-content">
+                            <h3 class="story-title">35岁，我终于敢做自己</h3>
+                            <p class="story-quote">
+                                "35岁，活在别人的期待里30多年。从小就是'乖孩子'，选专业听父母的，找工作听朋友的，连结婚都觉得'到年纪了'。35岁那年，我决定为自己活一次。现在的我，可能没有以前'成功'，但我很快乐。"
+                            </p>
+                            <div class="story-tags">
+                                <span class="story-tag">期待</span>
+                                <span class="story-tag">勇气</span>
+                                <span class="story-tag">自由</span>
+                            </div>
+                            <div class="story-transformation">
+                                <span>🎭 伪装</span>
+                                <span class="story-arrow">→</span>
+                                <span>💫 做自己</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Story 6 -->
+                    <div class="story-card">
+                        <div class="story-image" style="background: linear-gradient(135deg, #fce7f3, #f9a8d4);">
+                            <span>🪞</span>
+                        </div>
+                        <div class="story-content">
+                            <h3 class="story-title">从自我否定到自我接纳</h3>
+                            <p class="story-quote">
+                                "33岁，自我否定了20年。总觉得自己不够好——不够漂亮，不够聪明，不够努力。无论取得什么成就，第一个念头永远是'这没什么'。现在的我，依然不完美，但我开始接纳不完美的自己。真正的自信，是接纳。"
+                            </p>
+                            <div class="story-tags">
+                                <span class="story-tag">否定</span>
+                                <span class="story-tag">看见</span>
+                                <span class="story-tag">接纳</span>
+                            </div>
+                            <div class="story-transformation">
+                                <span>👎 否定</span>
+                                <span class="story-arrow">→</span>
+                                <span>❤️ 自爱</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Story 7 -->
+                    <div class="story-card">
+                        <div class="story-image" style="background: linear-gradient(135deg, #fef3c7, #fbbf24);">
+                            <span>👯‍♀️</span>
+                        </div>
+                        <div class="story-content">
+                            <h3 class="story-title">当我不再讨好，关系反而变好了</h3>
+                            <p class="story-quote">
+                                "37岁，'老好人'做了30年。从小就会察言观色，怕别人不开心，怕别人不喜欢自己。从不敢拒绝，从不敢说'不'。现在的我，依然友善，但不再讨好。我发现，真正喜欢你的人，不需要你讨好。"
+                            </p>
+                            <div class="story-tags">
+                                <span class="story-tag">讨好</span>
+                                <span class="story-tag">边界</span>
+                                <span class="story-tag">真实</span>
+                            </div>
+                            <div class="story-transformation">
+                                <span>🙏 讨好</span>
+                                <span class="story-arrow">→</span>
+                                <span>💜 被爱</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Story 8 -->
+                    <div class="story-card">
+                        <div class="story-image" style="background: linear-gradient(135deg, #e0e7ff, #818cf8);">
+                            <span>⚔️</span>
+                        </div>
+                        <div class="story-content">
+                            <h3 class="story-title">走出创伤，我把经历变成了礼物</h3>
+                            <p class="story-quote">
+                                "39岁，童年有过一些不想提起的经历。那些经历像根刺，时不时扎我一下。现在的我，依然记得那些经历，但它们不再是伤口，而是让我变得更强大的铠甲。那些杀不死你的，终将让你更强大。"
+                            </p>
+                            <div class="story-tags">
+                                <span class="story-tag">创伤</span>
+                                <span class="story-tag">面对</span>
+                                <span class="story-tag">蜕变</span>
+                            </div>
+                            <div class="story-transformation">
+                                <span>💔 伤口</span>
+                                <span class="story-arrow">→</span>
+                                <span>🎁 礼物</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
