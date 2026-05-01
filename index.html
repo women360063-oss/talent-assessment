@@ -179,8 +179,17 @@
         .hero-subtitle {
             font-size: 18px;
             color: var(--medium-text);
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             font-weight: 300;
+        }
+
+        .hero-slogan {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 24px;
+            color: var(--accent-warm);
+            margin-bottom: 40px;
+            font-weight: 500;
+            letter-spacing: 2px;
         }
 
         .hero-cta {
@@ -274,6 +283,12 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 40px;
+        }
+
+        .credibility-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 24px;
         }
 
         .credibility-card {
@@ -647,6 +662,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .credibility-grid-5 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
             .guarantees-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
@@ -674,6 +693,10 @@
                 font-size: 16px;
             }
 
+            .hero-slogan {
+                font-size: 20px;
+            }
+
             .section {
                 padding: 48px 16px;
             }
@@ -689,8 +712,9 @@
             }
 
             .process-grid,
-            .guarantees-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .guarantees-grid,
+            .credibility-grid-5 {
+                grid-template-columns: 1fr;
             }
 
             .form-row {
@@ -729,7 +753,7 @@
             <li><a href="#retreat">疗愈旅修</a></li>
             <li><a href="#eap">企业EAP</a></li>
             <li><a href="#team">疗愈师团队</a></li>
-            <li><a href="about.html">关于我</a></li>
+            <li><a href="about.html">科学期刊</a></li>
             <li><a href="#booking">预约咨询</a></li>
             <li><a href="#contact">联系我们</a></li>
         </ul>
@@ -744,6 +768,7 @@
         <div class="hero-content">
             <h1>身心归位 · 向内自愈</h1>
             <p class="hero-subtitle">心理咨询｜个人成长｜疗愈旅修定制｜企业EAP员工关爱</p>
+            <p class="hero-slogan">禅于心・柔于行・旅愈身心</p>
             <div class="hero-cta">
                 <a href="#booking" class="btn btn-primary">免费评估</a>
                 <a href="#booking" class="btn btn-outline">定制方案</a>
@@ -784,9 +809,9 @@
     <!-- Credibility Section -->
     <section class="section credibility-section">
         <div class="section-header fade-in">
-            <h2>科学疗愈 · 三大学科支撑</h2>
+            <h2>科学疗愈 · 五大学科支撑</h2>
         </div>
-        <div class="credibility-grid">
+        <div class="credibility-grid-5">
             <div class="credibility-card fade-in">
                 <div class="credibility-icon">🧠</div>
                 <h3>心理学</h3>
@@ -801,6 +826,16 @@
                 <div class="credibility-icon">☯️</div>
                 <h3>东方哲学</h3>
                 <p>融合正念、内观、身心合一理念，打造贴合中国人的本土化疗愈方案，实现情绪与身心的双重平衡</p>
+            </div>
+            <div class="credibility-card fade-in">
+                <div class="credibility-icon">🎯</div>
+                <h3>认知行为科学</h3>
+                <p>参考斯坦福大学行为心理学研究，通过行为锚定与刻意练习，重塑自动化反应模式，打破旧习惯循环，让正向改变固化为大脑肌肉记忆</p>
+            </div>
+            <div class="credibility-card fade-in">
+                <div class="credibility-icon">✨</div>
+                <h3>量子心智科学</h3>
+                <p>依托印第安纳大学、伦敦大学学院等全球顶尖高校的量子认知与意识科学研究，结合意识聚焦与潜意识解绑技术，提升自主意识掌控力，实现心智调频与内在赋能</p>
             </div>
         </div>
     </section>
