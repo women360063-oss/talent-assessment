@@ -136,7 +136,7 @@
         /* Hero Section */
         .hero {
             margin-top: 72px;
-            min-height: 85vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -145,7 +145,6 @@
             padding: 80px 24px;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(180deg, rgba(61,64,71,0.15) 0%, rgba(255,255,255,0.9) 100%);
         }
 
         .hero-video-container {
@@ -168,7 +167,8 @@
             width: auto;
             height: auto;
             object-fit: cover;
-            opacity: 0.6;
+            opacity: 0.7;
+            filter: saturate(0.8);
         }
 
         .hero-overlay {
@@ -177,7 +177,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, rgba(61,64,71,0.2) 0%, rgba(255,255,255,0.85) 100%);
+            background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(61,64,71,0.2) 50%, rgba(255,255,255,0.9) 100%);
             z-index: 1;
         }
 
@@ -770,7 +770,7 @@
         <ul class="nav-menu">
             <li><a href="#home">首页</a></li>
             <li><a href="#services">心理咨询</a></li>
-            <li><a href="about.html">个人成长</a></li>
+            <li><a href="#growth">个人成长</a></li>
             <li><a href="retreats.html">疗愈旅修</a></li>
             <li><a href="#eap">企业EAP</a></li>
             <li><a href="#team">疗愈师团队</a></li>
