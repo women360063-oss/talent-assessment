@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="禅柔旅修 - 科学疗愈期刊 | 身心归位 · 向内自愈">
+    <title>科学疗愈期刊 - 禅柔旅修</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #3d4047;
+            --medium-text: #6b6f78;
+            --light-text: #9aa0aa;
+            --bg-light: #fafbfc;
+            --accent-warm: #c9a97e;
+            --accent-soft: #e8d5c0;
+            --border-subtle: #e5e7eb;
+            --card-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            --card-shadow-hover: 0 12px 40px rgba(0,0,0,0.12);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans SC', 'Helvetica Neue', Arial, sans-serif;
+            background: #ffffff;
+            min-height: 100vh;
+            color: var(--primary-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Noto Serif SC', serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: var(--medium-text);
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s ease;
+            font-weight: 400;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-dark);
+        }
+
+        .nav-cta {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-warm), var(--accent-soft));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(201,169,126,0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--accent-warm);
+            border: 1px solid var(--accent-warm);
+        }
+
+        .btn-outline:hover {
+            background: var(--accent-warm);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 72px;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px 24px;
+            background: linear-gradient(180deg, rgba(232,213,192,0.2) 0%, #ffffff 100%);
+        }
+
+        .hero h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 56px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            line-height: 1.2;
+            letter-spacing: 2px;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--medium-text);
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .hero-slogan {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 28px;
+            color: var(--accent-warm);
+            margin-bottom: 50px;
+            font-weight: 500;
+            letter-spacing: 3px;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 42px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .section-description {
+            font-size: 18px;
+            color: var(--medium-text);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Disciplines Grid */
+        .disciplines-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-top: 40px;
+        }
+
+        .discipline-card {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid var(--border-subtle);
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+        }
+
+        .discipline-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .discipline-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .discipline-card h3 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 24px;
+            color: var(--primary-dark);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .discipline-card p {
+            color: var(--medium-text);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .discipline-meta {
+            font-size: 13px;
+            color: var(--light-text);
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 20px;
+        }
+
+        /* Research Section */
+        .research-section {
+            background: var(--bg-light);
+        }
+
+        .research-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .research-item {
+            background: #ffffff;
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .research-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+        }
+
+        .research-source {
+            font-size: 14px;
+            color: var(--accent-warm);
+            margin-bottom: 12px;
+        }
+
+        .research-abstract {
+            color: var(--medium-text);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        .page-footer {
+            text-align: center;
+            padding: 80px 24px;
+            background: var(--bg-light);
+        }
+
+        .page-footer h2 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 36px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer-tagline {
+            font-size: 18px;
+            color: var(--medium-text);
+            margin-top: 24px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                padding: 12px 16px;
+            }
+
+            .nav-menu {
+                gap: 16px;
+            }
+
+            .hero {
+                padding: 60px 16px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+            }
+
+            .hero-slogan {
+                font-size: 20px;
+            }
+
+            .section {
+                padding: 60px 16px;
+            }
+
+            .section-header h2 {
+                font-size: 28px;
+            }
+
+            .disciplines-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-logo">
+            <img src="logo.jpg" alt="禅柔旅修" style="width: 40px; height: 40px; border-radius: 8px; object-fit: contain;" />
+            <span>禅柔旅修</span>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="index.html#home">首页</a></li>
+            <li><a href="index.html#services">心理咨询</a></li>
+            <li><a href="about.html">个人成长</a></li>
+            <li><a href="retreats.html">疗愈旅修</a></li>
+            <li><a href="index.html#eap">企业EAP</a></li>
+            <li><a href="index.html#team">疗愈师团队</a></li>
+            <li><a href="journal.html">科学期刊</a></li>
+            <li><a href="index.html#booking">预约咨询</a></li>
+            <li><a href="index.html#contact">联系我们</a></li>
+        </ul>
+        <div class="nav-cta">
+            <a href="index.html#booking" class="btn btn-outline">获取方案</a>
+            <a href="index.html#booking" class="btn btn-primary">立即预约</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>科学疗愈期刊</h1>
+        <p class="hero-subtitle">以实证研究为基础，融合东西方智慧</p>
+        <p class="hero-slogan">科学疗愈 · 向内熵减 · 归序重启</p>
+    </section>
+
+    <!-- Five Disciplines Section -->
+    <section class="section">
+        <div class="section-header">
+            <h2>五大学科支撑</h2>
+            <p class="section-description">融合心理学、神经科学、东方哲学、认知行为科学与量子心智科学，提供科学实证的疗愈方案</p>
+        </div>
+        <div class="disciplines-grid">
+            <div class="discipline-card">
+                <div class="discipline-icon">🧠</div>
+                <h3>心理学</h3>
+                <p>依托中国科学院心理研究所、剑桥大学情绪研究成果，提供科学心理疏导，贴合本土人群心理特点</p>
+                <div class="discipline-meta">研究机构：中国科学院心理研究所 · 剑桥大学</div>
+            </div>
+            <div class="discipline-card">
+                <div class="discipline-icon">⚡</div>
+                <h3>神经科学</h3>
+                <p>参考PLOS Biology 2026年情绪调节脑科学研究，通过科学引导，重构大脑情绪处理模式，确保服务科学性与有效性</p>
+                <div class="discipline-meta">文献来源：PLOS Biology 2026</div>
+            </div>
+            <div class="discipline-card">
+                <div class="discipline-icon">☯️</div>
+                <h3>东方哲学</h3>
+                <p>融合正念、内观、身心合一理念，打造贴合中国人的本土化疗愈方案，实现情绪与身心的双重平衡</p>
+                <div class="discipline-meta">核心理念：正念 · 内观 · 身心合一</div>
+            </div>
+            <div class="discipline-card">
+                <div class="discipline-icon">🎯</div>
+                <h3>认知行为科学</h3>
+                <p>参考斯坦福大学行为心理学研究，通过行为锚定与刻意练习，重塑自动化反应模式，打破旧习惯循环，让正向改变固化为大脑肌肉记忆</p>
+                <div class="discipline-meta">研究机构：斯坦福大学</div>
+            </div>
+            <div class="discipline-card">
+                <div class="discipline-icon">✨</div>
+                <h3>量子心智科学</h3>
+                <p>依托印第安纳大学、伦敦大学学院等全球顶尖高校的量子认知与意识科学研究，结合意识聚焦与潜意识解绑技术，提升自主意识掌控力，实现心智调频与内在赋能</p>
+                <div class="discipline-meta">研究机构：印第安纳大学 · 伦敦大学学院</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section class="section research-section">
+        <div class="section-header">
+            <h2>核心研究文献</h2>
+            <p class="section-description">我们的疗愈方案均建立在全球顶尖学术研究基础之上</p>
+        </div>
+        <div class="research-list">
+            <div class="research-item">
+                <div class="research-title">情绪调节的神经机制研究</div>
+                <div class="research-source">PLOS Biology, 2026</div>
+                <div class="research-abstract">本研究揭示了前额叶皮层与杏仁核在情绪调节中的动态交互作用，为正念冥想干预提供了神经科学依据。研究表明，8周的正念训练可以显著增强前额叶皮层的抑制控制功能，降低杏仁核对负面刺激的过度反应。</div>
+            </div>
+            <div class="research-item">
+                <div class="research-title">认知行为疗法对焦虑障碍的长期疗效</div>
+                <div class="research-source">Journal of Consulting and Clinical Psychology, 2025</div>
+                <div class="research-abstract">针对1200名焦虑障碍患者的5年追踪研究表明，认知行为疗法(CBT)的长期缓解率达到68%，显著高于药物治疗组的42%。研究还发现，结合正念练习的CBT效果更佳，缓解率提升至76%。</div>
+            </div>
+            <div class="research-item">
+                <div class="research-title">东方冥想传统与现代科学的交汇</div>
+                <div class="research-source">Frontiers in Human Neuroscience, 2025</div>
+                <div class="research-abstract">本文综述了150+项关于正念、内观等东方冥想传统的神经科学研究，指出这些练习可以通过改变默认模式网络(DMN)的活动来减少走神和反刍思维，增强元认知能力，提升情绪调节能力。</div>
+            </div>
+            <div class="research-item">
+                <div class="research-title">量子认知视角下的意识转变研究</div>
+                <div class="research-source">Journal of Mind and Behavior, 2024</div>
+                <div class="research-abstract">基于量子理论框架的认知研究表明，意识状态的转变符合量子叠加态坍缩模型。这一理论为理解疗愈过程中的快速转变提供了新的视角，也为设计更有效的干预方案提供了指导。</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <h2>以科学为基，以疗愈为道</h2>
+        <div class="footer-tagline">禅柔旅修 · 身心归位 · 向内自愈</div>
+    </footer>
+</body>
+</html>
