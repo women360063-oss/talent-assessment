@@ -167,45 +167,8 @@
             width: auto;
             height: auto;
             object-fit: cover;
-            opacity: 0;
-            filter: saturate(0.8);
-            transition: opacity 1.5s ease-in-out;
-        }
-
-        .hero-video.active {
             opacity: 0.7;
-        }
-
-        /* 视频切换指示器 */
-        .video-indicators {
-            position: absolute;
-            bottom: 32px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 12px;
-            z-index: 10;
-        }
-
-        .video-indicator {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.5);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid rgba(255,255,255,0.8);
-        }
-
-        .video-indicator:hover {
-            background: rgba(255,255,255,0.8);
-        }
-
-        .video-indicator.active {
-            width: 36px;
-            border-radius: 6px;
-            background: rgba(201,169,126,0.9);
-            border-color: rgba(201,169,126,1);
+            filter: saturate(0.8);
         }
 
         .hero-overlay {
@@ -807,11 +770,11 @@
         <ul class="nav-menu">
             <li><a href="#home">首页</a></li>
             <li><a href="#services">心理咨询</a></li>
-            <li><a href="about.html">个人成长</a></li>
+            <li><a href="#growth">个人成长</a></li>
             <li><a href="retreats.html">疗愈旅修</a></li>
             <li><a href="#eap">企业EAP</a></li>
             <li><a href="#team">疗愈师团队</a></li>
-            <li><a href="#">科学期刊</a></li>
+            <li><a href="about.html">科学期刊</a></li>
             <li><a href="#booking">预约咨询</a></li>
             <li><a href="#contact">联系我们</a></li>
         </ul>
@@ -824,10 +787,10 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-video-container">
-            <!-- 视频轮播 - 法国大山、印尼的海、禅修 -->
-            <video class="hero-video active" autoplay muted loop playsinline id="video1" src="https://videos.pexels.com/video-files/857251/857251-hd_1920_1080_30fps.mp4"></video>
-            <video class="hero-video" autoplay muted loop playsinline id="video2" src="https://videos.pexels.com/video-files/854402/854402-hd_1920_1080_30fps.mp4"></video>
-            <video class="hero-video" autoplay muted loop playsinline id="video3" src="https://videos.pexels.com/video-files/855029/855029-hd_1920_1080_30fps.mp4"></video>
+            <!-- 使用无版权的自然疗愈视频 - 法国大山 -->
+            <video class="hero-video" autoplay muted loop playsinline poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 800'%3E%3Crect fill='%23fafbfc' width='1200' height='800'/%3E%3Cpath d='M0 400 Q300 300 600 400 T1200 400 L1200 800 L0 800 Z' fill='%23e8d5c0' opacity='0.3'/%3E%3C/svg%3E" src="https://videos.pexels.com/video-files/857251/857251-hd_1920_1080_30fps.mp4">
+                <!-- 备用图片背景 -->
+            </video>
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content" style="position: relative; z-index: 2;">
@@ -838,12 +801,6 @@
                 <a href="#booking" class="btn btn-primary">免费评估</a>
                 <a href="#booking" class="btn btn-outline">定制方案</a>
             </div>
-        </div>
-        <!-- 视频切换指示器 -->
-        <div class="video-indicators">
-            <div class="video-indicator active" onclick="switchVideo(0)"></div>
-            <div class="video-indicator" onclick="switchVideo(1)"></div>
-            <div class="video-indicator" onclick="switchVideo(2)"></div>
         </div>
     </section>
 
@@ -1166,43 +1123,6 @@
     </footer>
 
     <script>
-        // 视频轮播功能
-        let currentVideoIndex = 0;
-        const videos = document.querySelectorAll('.hero-video');
-        const indicators = document.querySelectorAll('.video-indicator');
-        const totalVideos = videos.length;
-        let autoPlayInterval;
-
-        function switchVideo(index) {
-            // 移除当前激活状态
-            videos[currentVideoIndex].classList.remove('active');
-            indicators[currentVideoIndex].classList.remove('active');
-            
-            // 更新索引
-            currentVideoIndex = index;
-            
-            // 添加新的激活状态
-            videos[currentVideoIndex].classList.add('active');
-            indicators[currentVideoIndex].classList.add('active');
-            
-            // 重置自动播放计时器
-            resetAutoPlay();
-        }
-
-        function nextVideo() {
-            const nextIndex = (currentVideoIndex + 1) % totalVideos;
-            switchVideo(nextIndex);
-        }
-
-        function startAutoPlay() {
-            autoPlayInterval = setInterval(nextVideo, 8000); // 8秒切换一次
-        }
-
-        function resetAutoPlay() {
-            clearInterval(autoPlayInterval);
-            startAutoPlay();
-        }
-
         // Scroll animation
         const observerOptions = {
             threshold: 0.1,
@@ -1243,11 +1163,6 @@
                 }
             });
         });
-
-        // 初始化视频轮播
-        if (videos.length > 0) {
-            startAutoPlay();
-        }
     </script>
 </body>
 </html>
