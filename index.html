@@ -22,6 +22,7 @@
             --bg-light: #fafbfc;
             --accent-warm: #c9a97e;
             --accent-soft: #e8d5c0;
+            --icon-bg: #d4bea6;
             --border-subtle: #e5e7eb;
             --card-shadow: 0 4px 20px rgba(0,0,0,0.06);
             --card-shadow-hover: 0 12px 40px rgba(0,0,0,0.12);
@@ -60,6 +61,15 @@
             font-size: 20px;
             font-weight: 600;
             color: var(--primary-dark);
+        }
+
+        .nav-slogan {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 16px;
+            color: var(--accent-warm);
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-left: 16px;
         }
 
         .nav-logo-icon {
@@ -179,9 +189,11 @@
         .hero-subtitle {
             font-size: 18px;
             color: var(--medium-text);
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             font-weight: 300;
         }
+
+
 
         .hero-cta {
             display: flex;
@@ -276,21 +288,27 @@
             gap: 40px;
         }
 
+        .credibility-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 24px;
+        }
+
         .credibility-card {
             text-align: center;
             padding: 32px 24px;
         }
 
         .credibility-icon {
-            width: 64px;
-            height: 64px;
-            background: linear-gradient(135deg, var(--accent-soft), var(--accent-warm));
+            width: 80px;
+            height: 80px;
+            background: var(--icon-bg);
             border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 20px;
-            font-size: 28px;
+            font-size: 32px;
         }
 
         .credibility-card h3 {
@@ -647,6 +665,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .credibility-grid-5 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
             .guarantees-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
@@ -674,6 +696,10 @@
                 font-size: 16px;
             }
 
+            .hero-slogan {
+                font-size: 20px;
+            }
+
             .section {
                 padding: 48px 16px;
             }
@@ -689,8 +715,9 @@
             }
 
             .process-grid,
-            .guarantees-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .guarantees-grid,
+            .credibility-grid-5 {
+                grid-template-columns: 1fr;
             }
 
             .form-row {
@@ -721,15 +748,16 @@
         <div class="nav-logo">
             <img src="logo.jpg" alt="禅柔旅修" style="width: 40px; height: 40px; border-radius: 8px; object-fit: contain;" />
             <span>禅柔旅修</span>
+            <span class="nav-slogan">禅于心・柔于行・旅愈身心</span>
         </div>
         <ul class="nav-menu">
             <li><a href="#home">首页</a></li>
             <li><a href="#services">心理咨询</a></li>
-            <li><a href="#growth">个人成长</a></li>
+            <li><a href="about.html">个人成长</a></li>
             <li><a href="#retreat">疗愈旅修</a></li>
             <li><a href="#eap">企业EAP</a></li>
             <li><a href="#team">疗愈师团队</a></li>
-            <li><a href="about.html">关于我</a></li>
+            <li><a href="about.html">科学期刊</a></li>
             <li><a href="#booking">预约咨询</a></li>
             <li><a href="#contact">联系我们</a></li>
         </ul>
@@ -743,7 +771,6 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <h1>身心归位 · 向内自愈</h1>
-            <p class="hero-subtitle">心理咨询｜个人成长｜疗愈旅修定制｜企业EAP员工关爱</p>
             <div class="hero-cta">
                 <a href="#booking" class="btn btn-primary">免费评估</a>
                 <a href="#booking" class="btn btn-outline">定制方案</a>
@@ -784,23 +811,60 @@
     <!-- Credibility Section -->
     <section class="section credibility-section">
         <div class="section-header fade-in">
-            <h2>科学疗愈 · 三大学科支撑</h2>
+            <h2>科学疗愈 · 向内熵减 · 归序重启 · 五大学科支撑</h2>
         </div>
-        <div class="credibility-grid">
+        <div class="credibility-grid-5">
             <div class="credibility-card fade-in">
-                <div class="credibility-icon">🧠</div>
+                <div class="credibility-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#3d4047" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/>
+                        <path d="M12 9v4"/>
+                        <path d="M9.5 10.5h5"/>
+                    </svg>
+                </div>
                 <h3>心理学</h3>
                 <p>依托中国科学院心理研究所、剑桥大学情绪研究成果，提供科学心理疏导，贴合本土人群心理特点</p>
             </div>
             <div class="credibility-card fade-in">
-                <div class="credibility-icon">⚡</div>
+                <div class="credibility-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#3d4047" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                    </svg>
+                </div>
                 <h3>神经科学</h3>
                 <p>参考PLOS Biology 2026年情绪调节脑科学研究，通过科学引导，重构大脑情绪处理模式，确保服务科学性与有效性</p>
             </div>
             <div class="credibility-card fade-in">
-                <div class="credibility-icon">☯️</div>
+                <div class="credibility-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#3d4047" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 2a10 10 0 0 0 0 20"/>
+                        <path d="M12 22c5.5 0 10-4.5 10-10s-4.5-10-10-10"/>
+                        <path d="M12 18c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6"/>
+                    </svg>
+                </div>
                 <h3>东方哲学</h3>
                 <p>融合正念、内观、身心合一理念，打造贴合中国人的本土化疗愈方案，实现情绪与身心的双重平衡</p>
+            </div>
+            <div class="credibility-card fade-in">
+                <div class="credibility-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#3d4047" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                </div>
+                <h3>认知行为科学</h3>
+                <p>参考斯坦福大学行为心理学研究，通过行为锚定与刻意练习，重塑自动化反应模式，打破旧习惯循环，让正向改变固化为大脑肌肉记忆</p>
+            </div>
+            <div class="credibility-card fade-in">
+                <div class="credibility-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#3d4047" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        <circle cx="12" cy="12" r="10" fill="none" stroke="#3d4047" stroke-width="1" opacity="0.3"/>
+                    </svg>
+                </div>
+                <h3>量子心智科学</h3>
+                <p>依托印第安纳大学、伦敦大学学院等全球顶尖高校的量子认知与意识科学研究，结合意识聚焦与潜意识解绑技术，提升自主意识掌控力，实现心智调频与内在赋能</p>
             </div>
         </div>
     </section>
@@ -898,21 +962,21 @@
         </div>
         <div class="team-grid">
             <div class="team-card fade-in">
-                <div class="team-avatar">👩‍⚕️</div>
+                <div class="team-avatar"></div>
                 <h3>陈安然</h3>
                 <p class="role">持证心理咨询师</p>
                 <p class="credentials">中国科学院心理研究所认证<br>10年心理咨询经验<br>剑桥大学情绪研究访问学者</p>
                 <a href="#booking" class="btn btn-outline">预约这位疗愈师</a>
             </div>
             <div class="team-card fade-in">
-                <div class="team-avatar">🧘‍♀️</div>
+                <div class="team-avatar"></div>
                 <h3>林静怡</h3>
                 <p class="role">正念疗愈师</p>
                 <p class="credentials">正念冥想认证导师<br>8年疗愈旅修带领经验<br>东方哲学与心理学融合实践者</p>
                 <a href="#booking" class="btn btn-outline">预约这位疗愈师</a>
             </div>
             <div class="team-card fade-in">
-                <div class="team-avatar">👨‍⚕️</div>
+                <div class="team-avatar"></div>
                 <h3>王明德</h3>
                 <p class="role">企业EAP专家</p>
                 <p class="credentials">组织心理学硕士<br>15年企业培训与EAP服务经验<br>服务过50+知名企业团队</p>
@@ -928,27 +992,56 @@
         </div>
         <div class="guarantees-grid">
             <div class="guarantee-card fade-in">
-                <div class="guarantee-icon">✅</div>
+                <div class="guarantee-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3d4047" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                </div>
                 <p>持证专业师资</p>
             </div>
             <div class="guarantee-card fade-in">
-                <div class="guarantee-icon">🔒</div>
+                <div class="guarantee-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3d4047" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                    </svg>
+                </div>
                 <p>严格隐私保密</p>
             </div>
             <div class="guarantee-card fade-in">
-                <div class="guarantee-icon">✨</div>
+                <div class="guarantee-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3d4047" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                </div>
                 <p>1V1定制方案</p>
             </div>
             <div class="guarantee-card fade-in">
-                <div class="guarantee-icon">🤝</div>
+                <div class="guarantee-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3d4047" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                </div>
                 <p>全程陪伴支持</p>
             </div>
             <div class="guarantee-card fade-in">
-                <div class="guarantee-icon">💰</div>
+                <div class="guarantee-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3d4047" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="1" x2="12" y2="23"/>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                    </svg>
+                </div>
                 <p>无隐形消费</p>
             </div>
             <div class="guarantee-card fade-in">
-                <div class="guarantee-icon">⚡</div>
+                <div class="guarantee-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3d4047" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                    </svg>
+                </div>
                 <p>快速响应咨询</p>
             </div>
         </div>
