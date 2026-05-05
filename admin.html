@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>后台管理 | 禅柔旅修</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2C5F4A;
+            --primary-light: #4A8B6F;
+            --accent: #c9a97e;
+            --accent-soft: #e8d5c0;
+            --dark: #3d4047;
+            --light: #fafbfc;
+            --cream: #fdfcf9;
+            --text: #3d4047;
+            --text-light: #6b6f78;
+            --border: #e5e7eb;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--light);
+            line-height: 1.8;
+        }
+
+        /* Login Page */
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .login-box {
+            background: white;
+            border-radius: 16px;
+            padding: 48px;
+            max-width: 420px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .login-logo {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .login-logo h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .login-logo p {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 15px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(201,169,126,0.3);
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 13px;
+            text-align: center;
+            margin-top: 16px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        /* Admin Dashboard */
+        .admin-container {
+            display: none;
+        }
+
+        .admin-container.show {
+            display: block;
+        }
+
+        .admin-header {
+            background: var(--dark);
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .admin-header h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .admin-actions {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .btn-secondary {
+            padding: 10px 20px;
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .btn-danger {
+            padding: 10px 20px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-danger:hover {
+            background: #c0392b;
+        }
+
+        .admin-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 28px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .section-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .booking-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .booking-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+
+        .booking-card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        }
+
+        .booking-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .booking-name {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .booking-service {
+            background: var(--light);
+            color: var(--accent);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .booking-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .booking-detail-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .booking-detail-label {
+            font-size: 12px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .booking-detail-value {
+            font-size: 15px;
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        .booking-needs {
+            padding: 16px;
+            background: var(--light);
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+
+        .booking-needs-label {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+
+        .booking-needs-text {
+            font-size: 14px;
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        .booking-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .booking-date {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .booking-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 13px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-contact {
+            background: var(--primary);
+            color: white;
+            border: none;
+        }
+
+        .btn-contact:hover {
+            background: var(--primary-light);
+        }
+
+        .btn-delete {
+            background: transparent;
+            color: #e74c3c;
+            border: 1px solid #e74c3c;
+        }
+
+        .btn-delete:hover {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 24px;
+            background: white;
+            border: 1px dashed var(--border);
+            border-radius: 16px;
+        }
+
+        .empty-state-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .empty-state-text {
+            font-size: 16px;
+            color: var(--text-light);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .admin-header {
+                padding: 16px;
+                flex-direction: column;
+                gap: 12px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .login-box {
+                padding: 32px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Page -->
+    <div class="login-container" id="loginPage">
+        <div class="login-box">
+            <div class="login-logo">
+                <h1>禅柔旅修</h1>
+                <p>后台管理系统</p>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="password">管理员密码</label>
+                    <input type="password" id="password" placeholder="请输入管理员密码" required>
+                </div>
+                <button type="submit" class="btn-primary">登录</button>
+                <p class="error-message" id="errorMessage">密码错误，请重试</p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div class="admin-container" id="adminPage">
+        <header class="admin-header">
+            <h1>禅柔旅修 · 后台管理</h1>
+            <div class="admin-actions">
+                <button class="btn-secondary" onclick="exportData()">导出数据</button>
+                <button class="btn-secondary" onclick="refreshData()">刷新</button>
+                <button class="btn-danger" onclick="logout()">退出</button>
+            </div>
+        </header>
+        <div class="admin-content">
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalBookings">0</div>
+                    <div class="stat-label">总预约数</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="todayBookings">0</div>
+                    <div class="stat-label">今日新增</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="pendingBookings">0</div>
+                    <div class="stat-label">待处理</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="retreatBookings">0</div>
+                    <div class="stat-label">疗愈旅修</div>
+                </div>
+            </div>
+
+            <!-- Bookings List -->
+            <h2 class="section-title">预约咨询列表</h2>
+            <div class="booking-list" id="bookingList">
+                <!-- Bookings will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const ADMIN_PASSWORD = 'chanrou2026'; // 老板自己的密码
+        let bookings = JSON.parse(localStorage.getItem('chanrouBookings') || '[]');
+
+        // Check if already logged in
+        if (sessionStorage.getItem('adminLoggedIn') === 'true') {
+            showAdmin();
+        }
+
+        // Login Form
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const password = document.getElementById('password').value;
+            if (password === ADMIN_PASSWORD) {
+                sessionStorage.setItem('adminLoggedIn', 'true');
+                showAdmin();
+            } else {
+                document.getElementById('errorMessage').classList.add('show');
+            }
+        });
+
+        function showAdmin() {
+            document.getElementById('loginPage').style.display = 'none';
+            document.getElementById('adminPage').classList.add('show');
+            loadBookings();
+            updateStats();
+        }
+
+        function logout() {
+            sessionStorage.removeItem('adminLoggedIn');
+            location.reload();
+        }
+
+        function refreshData() {
+            bookings = JSON.parse(localStorage.getItem('chanrouBookings') || '[]');
+            loadBookings();
+            updateStats();
+        }
+
+        function updateStats() {
+            const today = new Date().toDateString();
+            const todayCount = bookings.filter(b => new Date(b.createdAt).toDateString() === today).length;
+            const retreatCount = bookings.filter(b => b.service === 'retreat').length;
+
+            document.getElementById('totalBookings').textContent = bookings.length;
+            document.getElementById('todayBookings').textContent = todayCount;
+            document.getElementById('pendingBookings').textContent = bookings.filter(b => !b.contacted).length;
+            document.getElementById('retreatBookings').textContent = retreatCount;
+        }
+
+        function loadBookings() {
+            const container = document.getElementById('bookingList');
+            if (bookings.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📭</div>
+                        <p class="empty-state-text">暂无预约咨询，请到网站首页预约表单测试</p>
+                    </div>
+                `;
+                return;
+            }
+
+            bookings.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+            container.innerHTML = bookings.map((booking, index) => {
+                const serviceLabels = {
+                    'counseling': '心理咨询',
+                    'growth': '个人成长',
+                    'retreat': '疗愈旅修',
+                    'eap': '企业EAP'
+                };
+                return `
+                    <div class="booking-card">
+                        <div class="booking-header">
+                            <div class="booking-name">${escapeHtml(booking.name)}</div>
+                            <div class="booking-service">${serviceLabels[booking.service] || booking.service}</div>
+                        </div>
+                        <div class="booking-details">
+                            <div class="booking-detail-item">
+                                <span class="booking-detail-label">联系方式</span>
+                                <span class="booking-detail-value">${escapeHtml(booking.contact)}</span>
+                            </div>
+                            <div class="booking-detail-item">
+                                <span class="booking-detail-label">状态</span>
+                                <span class="booking-detail-value">${booking.contacted ? '已联系' : '待联系'}</span>
+                            </div>
+                            <div class="booking-detail-item">
+                                <span class="booking-detail-label">预约时间</span>
+                                <span class="booking-detail-value">${formatDate(booking.createdAt)}</span>
+                            </div>
+                        </div>
+                        <div class="booking-needs">
+                            <div class="booking-needs-label">需求描述</div>
+                            <div class="booking-needs-text">${escapeHtml(booking.needs)}</div>
+                        </div>
+                        <div class="booking-footer">
+                            <span class="booking-date">${formatDateTime(booking.createdAt)}</span>
+                            <div class="booking-actions">
+                                <button class="btn-small btn-contact" onclick="markContacted(${index})">
+                                    ${booking.contacted ? '已联系' : '标记已联系'}
+                                </button>
+                                <button class="btn-small btn-delete" onclick="deleteBooking(${index})">删除</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function markContacted(index) {
+            bookings[index].contacted = !bookings[index].contacted;
+            saveBookings();
+            loadBookings();
+            updateStats();
+        }
+
+        function deleteBooking(index) {
+            if (confirm('确定要删除这条预约记录吗？')) {
+                bookings.splice(index, 1);
+                saveBookings();
+                loadBookings();
+                updateStats();
+            }
+        }
+
+        function saveBookings() {
+            localStorage.setItem('chanrouBookings', JSON.stringify(bookings));
+        }
+
+        function exportData() {
+            const dataStr = JSON.stringify(bookings, null, 2);
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `禅柔旅修预约数据_${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
+        }
+
+        function formatDateTime(dateStr) {
+            const date = new Date(dateStr);
+            return date.toLocaleString('zh-CN', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+    </script>
+</body>
+</html>

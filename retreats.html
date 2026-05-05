@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="禅柔旅修 - 巴厘岛疗愈旅修定制 | 身心归位 · 向内自愈">
-    <title>巴厘岛疗愈旅修 - 禅柔旅修</title>
+    <meta name="description" content="禅柔旅修 - 巴厘岛隐奢疗愈旅修 | 身心归位 · 向内自愈">
+    <title>巴厘岛隐奢疗愈旅修 - 禅柔旅修</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -32,7 +32,7 @@
             background: #ffffff;
             min-height: 100vh;
             color: var(--primary-dark);
-            line-height: 1.6;
+            line-height: 1.8;
             overflow-x: hidden;
         }
 
@@ -60,6 +60,13 @@
             font-size: 20px;
             font-weight: 600;
             color: var(--primary-dark);
+        }
+
+        .nav-logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            object-fit: contain;
         }
 
         .nav-menu {
@@ -131,7 +138,7 @@
             align-items: center;
             text-align: center;
             padding: 80px 24px;
-            background: linear-gradient(180deg, rgba(232,213,192,0.2) 0%, #ffffff 100%),
+            background: linear-gradient(135deg, rgba(44,95,74,0.08) 0%, rgba(201,169,126,0.12) 100%),
                         url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23fafbfc" width="1200" height="800"/><path d="M0 400 Q300 300 600 400 T1200 400 L1200 800 L0 800 Z" fill="%23e8d5c0" opacity="0.3"/></svg>');
             background-size: cover;
             background-position: center;
@@ -143,6 +150,18 @@
             position: relative;
             z-index: 1;
             max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 24px;
+            border: 1px solid var(--accent-warm);
+            border-radius: 20px;
+            font-size: 13px;
+            letter-spacing: 3px;
+            color: var(--accent-warm);
+            margin-bottom: 30px;
+            font-weight: 500;
         }
 
         .hero h1 {
@@ -195,6 +214,14 @@
             margin-bottom: 80px;
         }
 
+        .section-label {
+            font-size: 12px;
+            letter-spacing: 6px;
+            color: var(--accent-warm);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
         .section-header h2 {
             font-family: 'Noto Serif SC', serif;
             font-size: 42px;
@@ -211,7 +238,7 @@
             line-height: 1.8;
         }
 
-        /* Retreat Features */
+        /* Retreat Features Grid */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -260,6 +287,53 @@
             line-height: 1.8;
         }
 
+        /* Highlights Grid */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0;
+        }
+
+        .highlight-item {
+            display: flex;
+            padding: 50px;
+            border-bottom: 1px solid var(--border-subtle);
+            border-right: 1px solid var(--border-subtle);
+            background: white;
+            transition: all 0.4s ease;
+        }
+
+        .highlight-item:nth-child(2n) { border-right: none; }
+        .highlight-item:nth-last-child(-n+2) { border-bottom: none; }
+
+        .highlight-item:hover {
+            background: var(--bg-light);
+        }
+
+        .highlight-number {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 48px;
+            font-weight: 300;
+            color: var(--accent-warm);
+            margin-right: 30px;
+            line-height: 1;
+            opacity: 0.6;
+        }
+
+        .highlight-content h4 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--primary-dark);
+        }
+
+        .highlight-content p {
+            font-size: 14px;
+            color: var(--medium-text);
+            line-height: 1.8;
+        }
+
         /* Programs Section */
         .programs-section {
             background: var(--bg-light);
@@ -267,8 +341,8 @@
 
         .programs-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 60px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
         }
 
         .program-card {
@@ -277,6 +351,7 @@
             overflow: hidden;
             box-shadow: var(--card-shadow);
             transition: all 0.4s ease;
+            position: relative;
         }
 
         .program-card:hover {
@@ -284,57 +359,79 @@
             box-shadow: var(--card-shadow-hover);
         }
 
+        .program-card.featured {
+            border: 2px solid var(--accent-warm);
+            transform: scale(1.02);
+        }
+
+        .program-card.featured:hover {
+            transform: scale(1.02) translateY(-8px);
+        }
+
+        .program-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent-warm);
+            color: white;
+            padding: 6px 20px;
+            font-size: 13px;
+            border-radius: 20px;
+            font-weight: 500;
+            z-index: 10;
+        }
+
         .program-image {
-            height: 300px;
+            height: 240px;
             background: linear-gradient(135deg, var(--accent-warm), var(--accent-soft));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 120px;
+            font-size: 100px;
             color: white;
         }
 
         .program-content {
-            padding: 50px 40px;
+            padding: 40px 32px;
         }
 
         .program-tag {
             display: inline-block;
             background: var(--accent-soft);
             color: var(--primary-dark);
-            padding: 8px 20px;
-            border-radius: 20px;
+            padding: 6px 16px;
+            border-radius: 16px;
             font-size: 13px;
             font-weight: 500;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .program-card h3 {
             font-family: 'Noto Serif SC', serif;
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 600;
             color: var(--primary-dark);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .program-description {
-            font-size: 16px;
+            font-size: 15px;
             color: var(--medium-text);
             line-height: 1.8;
-            margin-bottom: 30px;
+            margin-bottom: 24px;
         }
 
         .program-features {
             list-style: none;
-            margin-bottom: 30px;
+            margin-bottom: 28px;
         }
 
         .program-features li {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 12px 0;
-            font-size: 15px;
+            gap: 10px;
+            padding: 10px 0;
+            font-size: 14px;
             color: var(--medium-text);
             border-bottom: 1px dashed var(--border-subtle);
         }
@@ -349,9 +446,14 @@
 
         .price-text {
             font-family: 'Noto Serif SC', serif;
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 600;
             color: var(--accent-warm);
+        }
+
+        .price-note {
+            font-size: 13px;
+            color: var(--light-text);
         }
 
         /* Daily Schedule */
@@ -363,7 +465,7 @@
             background: white;
             border: 1px solid var(--border-subtle);
             border-radius: 16px;
-            padding: 50px;
+            padding: 48px;
             margin-bottom: 40px;
         }
 
@@ -371,7 +473,7 @@
             display: flex;
             align-items: center;
             gap: 20px;
-            margin-bottom: 40px;
+            margin-bottom: 36px;
         }
 
         .day-number {
@@ -390,7 +492,7 @@
 
         .day-title h3 {
             font-family: 'Noto Serif SC', serif;
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 600;
             color: var(--primary-dark);
             margin-bottom: 8px;
@@ -404,13 +506,13 @@
         .day-schedule {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
+            gap: 24px;
         }
 
         .schedule-item {
             display: flex;
-            gap: 20px;
-            padding: 20px;
+            gap: 18px;
+            padding: 18px;
             background: var(--bg-light);
             border-radius: 12px;
         }
@@ -418,12 +520,12 @@
         .schedule-time {
             font-weight: 600;
             color: var(--accent-warm);
-            min-width: 90px;
-            font-size: 15px;
+            min-width: 80px;
+            font-size: 14px;
         }
 
         .schedule-content h4 {
-            font-size: 17px;
+            font-size: 16px;
             font-weight: 600;
             color: var(--primary-dark);
             margin-bottom: 6px;
@@ -435,11 +537,66 @@
             line-height: 1.6;
         }
 
-        /* Testimonials */
-        .testimonials-section {
+        /* Team Section */
+        .team-section {
             background: var(--bg-light);
         }
 
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .team-card {
+            background: white;
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--accent-soft), var(--accent-warm));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 28px;
+            font-size: 56px;
+            color: white;
+        }
+
+        .team-card h3 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+        }
+
+        .team-card .role {
+            font-size: 14px;
+            color: var(--accent-warm);
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+
+        .team-card .bio {
+            font-size: 14px;
+            color: var(--medium-text);
+            line-height: 1.8;
+        }
+
+        /* Testimonials */
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -450,8 +607,9 @@
             background: white;
             border: 1px solid var(--border-subtle);
             border-radius: 20px;
-            padding: 50px 40px;
+            padding: 48px 40px;
             transition: all 0.4s ease;
+            position: relative;
         }
 
         .testimonial-card:hover {
@@ -459,35 +617,48 @@
             box-shadow: var(--card-shadow);
         }
 
+        .testimonial-card::before {
+            content: '"';
+            font-family: 'Noto Serif SC', serif;
+            font-size: 80px;
+            color: var(--accent-warm);
+            opacity: 0.3;
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            line-height: 1;
+        }
+
         .testimonial-quote {
-            font-size: 16px;
+            font-size: 15px;
             color: var(--primary-dark);
             line-height: 1.9;
             margin-bottom: 30px;
-            font-style: italic;
+            position: relative;
+            z-index: 1;
         }
 
         .testimonial-author {
             display: flex;
             align-items: center;
-            gap: 18px;
-            padding-top: 20px;
+            gap: 16px;
+            padding-top: 24px;
             border-top: 1px solid var(--border-subtle);
         }
 
         .author-avatar {
-            width: 60px;
-            height: 60px;
+            width: 56px;
+            height: 56px;
             background: linear-gradient(135deg, var(--accent-soft), var(--accent-warm));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
             color: white;
+            font-size: 24px;
         }
 
-        .author-info h4 {
+        .author-info h5 {
             font-size: 16px;
             font-weight: 600;
             color: var(--primary-dark);
@@ -497,6 +668,59 @@
         .author-info p {
             font-size: 13px;
             color: var(--accent-warm);
+        }
+
+        /* FAQ */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin-bottom: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--accent-soft);
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        .faq-toggle {
+            font-size: 24px;
+            color: var(--accent-warm);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s, padding-top 0.4s;
+            font-size: 15px;
+            color: var(--medium-text);
+            line-height: 1.8;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding-top: 20px;
         }
 
         /* Booking Section */
@@ -665,6 +889,14 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .highlight-item {
+                border-right: none;
+            }
+
             .day-schedule {
                 grid-template-columns: 1fr;
             }
@@ -710,6 +942,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .program-card.featured {
+                transform: scale(1);
+            }
+
             .form-row {
                 grid-template-columns: 1fr;
             }
@@ -721,6 +957,16 @@
             .schedule-day {
                 padding: 35px 25px;
             }
+
+            .highlight-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .highlight-number {
+                margin-right: 0;
+                margin-bottom: 16px;
+            }
         }
     </style>
 </head>
@@ -728,19 +974,18 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-logo">
-            <img src="logo.jpg" alt="禅柔旅修" style="width: 40px; height: 40px; border-radius: 8px; object-fit: contain;" />
+            <img src="logo.jpg" alt="禅柔旅修" />
             <span>禅柔旅修</span>
         </div>
         <ul class="nav-menu">
             <li><a href="index.html#home">首页</a></li>
             <li><a href="index.html#services">心理咨询</a></li>
             <li><a href="index.html#growth">个人成长</a></li>
-            <li><a href="#programs">疗愈旅修</a></li>
+            <li><a href="#features">疗愈旅修</a></li>
             <li><a href="index.html#eap">企业EAP</a></li>
             <li><a href="index.html#team">疗愈师团队</a></li>
-            <li><a href="about.html">科学期刊</a></li>
+            <li><a href="journal.html">科学期刊</a></li>
             <li><a href="#booking">预约咨询</a></li>
-            <li><a href="#contact">联系我们</a></li>
         </ul>
         <div class="nav-cta">
             <a href="#booking" class="btn btn-outline">获取方案</a>
@@ -751,133 +996,136 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content fade-in">
-            <h1>巴厘岛疗愈旅修</h1>
-            <p class="hero-subtitle">在众神之岛，开启一场身心蜕变之旅</p>
+            <div class="hero-badge">CHANROU BALI RETREAT · 2026</div>
+            <h1>巴厘岛隐奢旅修</h1>
+            <p class="hero-subtitle">在乌布丛林深处，以正念冥想唤醒内在觉知，用瑜伽与音疗重构身心秩序</p>
             <p class="hero-slogan">禅于心・柔于行・旅愈身心</p>
             <div class="hero-cta">
-                <a href="#programs" class="btn btn-primary">探索项目</a>
-                <a href="#booking" class="btn btn-outline">定制方案</a>
+                <a href="#programs" class="btn btn-primary">开启疗愈之旅</a>
+                <a href="#schedule" class="btn btn-outline">查看行程详情</a>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section class="section">
+    <section class="section" id="features">
         <div class="section-header fade-in">
-            <h2>为什么选择巴厘岛</h2>
-            <p class="section-description">这里是世界著名的疗愈圣地，融合了原始自然、灵性文化与身心智慧</p>
+            <div class="section-label">BRAND PHILOSOPHY</div>
+            <h2>三重疗愈维度</h2>
         </div>
         <div class="features-grid">
             <div class="feature-card fade-in">
-                <div class="feature-icon">🏝️</div>
-                <h3>原始自然</h3>
-                <p>乌布稻田、火山温泉、圣猴森林<br/>在大自然的怀抱中找回内心的平静</p>
+                <div class="feature-icon">🌿</div>
+                <h3>自然疗愈</h3>
+                <p>深入乌布原始丛林与稻田，在巴厘岛独有的地气能量中，通过森林浴、稻田漫步、瀑布净化等自然仪式，重建人与大地的连接</p>
             </div>
             <div class="feature-card fade-in">
-                <div class="feature-icon">🧘‍♀️</div>
-                <h3>灵性传统</h3>
-                <p>千年神庙、瑜伽传承、祭祀仪式<br/>感受巴厘岛独特的灵性文化与祝福</p>
+                <div class="feature-icon">🧘</div>
+                <h3>身心整合</h3>
+                <p>融合哈他瑜伽、正念冥想、颂钵音疗与呼吸法，由国际认证导师带领，每日三小时深度练习，释放积压情绪，找回身体觉知</p>
             </div>
             <div class="feature-card fade-in">
-                <div class="feature-icon">💆</div>
-                <h3>疗愈传承</h3>
-                <p>传统SPA、草药疗法、能量平衡<br/>世代相传的本地疗愈智慧与实践</p>
+                <div class="feature-icon">✨</div>
+                <h3>内在觉醒</h3>
+                <p>通过一对一生命教练对话、艺术表达工坊与星空静默夜，在安全容器中探索自我议题，完成从"疗愈"到"觉醒"的深层转化</p>
             </div>
         </div>
     </section>
 
-    <!-- Programs Section -->
-    <section class="section programs-section" id="programs">
+    <!-- Highlights Section -->
+    <section class="section programs-section" id="highlights">
         <div class="section-header fade-in">
-            <h2>精选疗愈项目</h2>
-            <p class="section-description">为您精心设计的巴厘岛疗愈之旅，每一个项目都是一次深度蜕变</p>
+            <div class="section-label">EXPERIENCE HIGHLIGHTS</div>
+            <h2>六大核心体验</h2>
         </div>
-        <div class="programs-grid">
-            <div class="program-card fade-in">
-                <div class="program-image">🌺</div>
-                <div class="program-content">
-                    <span class="program-tag">7天6晚</span>
-                    <h3>身心重启之旅</h3>
-                    <p class="program-description">适合渴望从疲惫中恢复的都市人，通过瑜伽、冥想与自然疗愈，重获身心平衡</p>
-                    <ul class="program-features">
-                        <li>✅ 每日瑜伽与冥想课程</li>
-                        <li>✅ 2次传统巴厘岛SPA</li>
-                        <li>✅ 乌布稻田徒步</li>
-                        <li>✅ 圣泉寺净化仪式</li>
-                        <li>✅ 1对1疗愈咨询</li>
-                        <li>✅ 健康素食餐饮</li>
-                    </ul>
-                    <div class="program-price">
-                        <div class="price-text">¥29,800/人</div>
-                        <a href="#booking" class="btn btn-outline">立即预约</a>
-                    </div>
+        <div class="highlights-grid">
+            <div class="highlight-item fade-in">
+                <div class="highlight-number">01</div>
+                <div class="highlight-content">
+                    <h4>丛林秘境瑜伽</h4>
+                    <p>每日清晨在270°丛林环绕的开放式瑜伽亭中练习，伴随鸟鸣与晨雾，由印度瑞诗凯诗认证导师带领，融合传统哈他与流瑜伽</p>
                 </div>
             </div>
-            <div class="program-card fade-in">
-                <div class="program-image">✨</div>
-                <div class="program-content">
-                    <span class="program-tag">14天13晚</span>
-                    <h3>深度蜕变之旅</h3>
-                    <p class="program-description">全面的身心灵深度疗愈体验，结合东方智慧与科学方法，实现由内而外的蜕变</p>
-                    <ul class="program-features">
-                        <li>✅ 每日瑜伽与冥想课程</li>
-                        <li>✅ 5次定制化疗愈SPA</li>
-                        <li>✅ 火山日出徒步</li>
-                        <li>✅ 神庙祈福仪式</li>
-                        <li>✅ 4次1对1深度疗愈咨询</li>
-                        <li>✅ 全维度健康餐饮计划</li>
-                    </ul>
-                    <div class="program-price">
-                        <div class="price-text">¥59,800/人</div>
-                        <a href="#booking" class="btn btn-outline">立即预约</a>
-                    </div>
+            <div class="highlight-item fade-in">
+                <div class="highlight-number">02</div>
+                <div class="highlight-content">
+                    <h4>圣泉寺净化仪式</h4>
+                    <p>前往千年圣泉寺Tirta Empul，在巴厘岛祭司引导下进行Melukat净化仪式，以圣水洗涤身心，体验当地神圣文化传统</p>
+                </div>
+            </div>
+            <div class="highlight-item fade-in">
+                <div class="highlight-number">03</div>
+                <div class="highlight-content">
+                    <h4>颂钵铜锣音疗</h4>
+                    <p>专业音疗师运用尼泊尔颂钵、铜锣与水晶钵进行集体音疗，通过特定频率振动调节脑波，深度放松神经系统</p>
+                </div>
+            </div>
+            <div class="highlight-item fade-in">
+                <div class="highlight-number">04</div>
+                <div class="highlight-content">
+                    <h4>稻田正念行走</h4>
+                    <p>在乌布梯田中进行两小时静默行走冥想，赤脚接触大地，观察稻作生态，在行走中培养当下觉知与内在平静</p>
+                </div>
+            </div>
+            <div class="highlight-item fade-in">
+                <div class="highlight-number">05</div>
+                <div class="highlight-content">
+                    <h4>阿育吠陀SPA</h4>
+                    <p>体验正宗阿育吠陀油疗（Abhyanga）与草药蒸汽浴，由印度籍理疗师根据体质类型（Dosha）定制精油配方</p>
+                </div>
+            </div>
+            <div class="highlight-item fade-in">
+                <div class="highlight-number">06</div>
+                <div class="highlight-content">
+                    <h4>星空静默夜</h4>
+                    <p>最后一晚在私人泳池别墅露台进行星空下的静默冥想与分享圈，在安全容器中敞开心扉，完成旅程的整合与告别</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Schedule Section -->
-    <section class="section">
+    <section class="section" id="schedule">
         <div class="section-header fade-in">
-            <h2>每日行程安排</h2>
-            <p class="section-description">以7天行程为例，每一天都精心设计，在节奏中感受内在的变化</p>
+            <div class="section-label">RETREAT SCHEDULE</div>
+            <h2>五天四晚 · 深度疗愈日程</h2>
         </div>
         <div class="schedule-timeline">
             <div class="schedule-day fade-in">
                 <div class="day-header">
                     <div class="day-number">1</div>
                     <div class="day-title">
-                        <h3>抵达与欢迎</h3>
-                        <p>放下疲惫，开启疗愈之旅</p>
+                        <h3>抵达与落地</h3>
+                        <p>归野 · 落地扎根</p>
                     </div>
                 </div>
                 <div class="day-schedule">
                     <div class="schedule-item">
-                        <span class="schedule-time">上午</span>
+                        <span class="schedule-time">14:00</span>
                         <div class="schedule-content">
-                            <h4>接机与入住</h4>
-                            <p>专车接机，入住乌布精品疗愈度假村</p>
+                            <h4>专车接机</h4>
+                            <p>登巴萨机场接机，入住乌布丛林别墅</p>
                         </div>
                     </div>
                     <div class="schedule-item">
-                        <span class="schedule-time">下午</span>
+                        <span class="schedule-time">16:00</span>
                         <div class="schedule-content">
                             <h4>欢迎茶会</h4>
-                            <p>与疗愈师见面，了解个人需求与期望</p>
+                            <p>行程说明会与个人意图设定</p>
                         </div>
                     </div>
                     <div class="schedule-item">
-                        <span class="schedule-time">傍晚</span>
+                        <span class="schedule-time">17:30</span>
                         <div class="schedule-content">
-                            <h4>日落冥想</h4>
-                            <p>稻田边的冥想仪式，开启内在连接</p>
+                            <h4>日落瑜伽</h4>
+                            <p>温和修复序列与欢迎晚宴</p>
                         </div>
                     </div>
                     <div class="schedule-item">
-                        <span class="schedule-time">晚上</span>
+                        <span class="schedule-time">20:00</span>
                         <div class="schedule-content">
-                            <h4>欢迎晚宴</h4>
-                            <p>健康有机的巴厘岛特色素食晚餐</p>
+                            <h4>颂钵入眠</h4>
+                            <p>颂钵音疗入眠仪式</p>
                         </div>
                     </div>
                 </div>
@@ -887,37 +1135,37 @@
                 <div class="day-header">
                     <div class="day-number">2</div>
                     <div class="day-title">
-                        <h3>身心放松</h3>
-                        <p>在瑜伽与自然中慢慢打开</p>
+                        <h3>身体觉醒</h3>
+                        <p>唤醒 · 身体觉知</p>
                     </div>
                 </div>
                 <div class="day-schedule">
                     <div class="schedule-item">
-                        <span class="schedule-time">07:00</span>
+                        <span class="schedule-time">06:30</span>
                         <div class="schedule-content">
                             <h4>晨间瑜伽</h4>
-                            <p>唤醒身体的温和流瑜伽练习</p>
+                            <p>丛林中完成拜日式与呼吸法</p>
                         </div>
                     </div>
                     <div class="schedule-item">
                         <span class="schedule-time">09:00</span>
                         <div class="schedule-content">
-                            <h4>营养早餐</h4>
-                            <p>新鲜有机的当地食材早餐</p>
+                            <h4>有机早餐</h4>
+                            <p>阿育吠陀体质咨询</p>
                         </div>
                     </div>
                     <div class="schedule-item">
                         <span class="schedule-time">10:30</span>
                         <div class="schedule-content">
-                            <h4>稻田散步</h4>
-                            <p>乌布梯田的自然漫步与静心</p>
+                            <h4>稻田行走</h4>
+                            <p>两小时静默练习</p>
                         </div>
                     </div>
                     <div class="schedule-item">
                         <span class="schedule-time">15:00</span>
                         <div class="schedule-content">
-                            <h4>传统SPA</h4>
-                            <p>巴厘岛传统草药按摩疗愈</p>
+                            <h4>阿育吠陀SPA</h4>
+                            <p>90分钟定制油疗</p>
                         </div>
                     </div>
                 </div>
@@ -927,37 +1175,117 @@
                 <div class="day-header">
                     <div class="day-number">3</div>
                     <div class="day-title">
-                        <h3>内在探索</h3>
-                        <p>深入了解自己，看见内心的真实需求</p>
+                        <h3>文化沉浸</h3>
+                        <p>洗礼 · 文化净化</p>
                     </div>
                 </div>
                 <div class="day-schedule">
                     <div class="schedule-item">
-                        <span class="schedule-time">07:00</span>
+                        <span class="schedule-time">06:00</span>
                         <div class="schedule-content">
                             <h4>日出冥想</h4>
-                            <p>清晨的静心冥想与呼吸练习</p>
+                            <p>呼吸法进阶（Pranayama）</p>
                         </div>
                     </div>
                     <div class="schedule-item">
-                        <span class="schedule-time">10:00</span>
+                        <span class="schedule-time">09:00</span>
                         <div class="schedule-content">
-                            <h4>疗愈咨询</h4>
-                            <p>1对1深度疗愈对话与探索</p>
+                            <h4>圣泉寺</h4>
+                            <p>Tirta Empul净化仪式</p>
                         </div>
                     </div>
                     <div class="schedule-item">
                         <span class="schedule-time">14:00</span>
                         <div class="schedule-content">
-                            <h4>艺术疗愈</h4>
-                            <p>通过艺术表达进行内在探索</p>
+                            <h4>巴厘舞蹈</h4>
+                            <p>传统舞蹈体验课程</p>
                         </div>
                     </div>
                     <div class="schedule-item">
-                        <span class="schedule-time">18:00</span>
+                        <span class="schedule-time">19:00</span>
                         <div class="schedule-content">
-                            <h4>冥想晚会</h4>
-                            <p>晚间冥想与分享圈子</p>
+                            <h4>铜锣浴</h4>
+                            <p>集体音疗与分享圈</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="schedule-day fade-in">
+                <div class="day-header">
+                    <div class="day-number">4</div>
+                    <div class="day-title">
+                        <h3>内在探索</h3>
+                        <p>深入 · 内在转化</p>
+                    </div>
+                </div>
+                <div class="day-schedule">
+                    <div class="schedule-item">
+                        <span class="schedule-time">06:30</span>
+                        <div class="schedule-content">
+                            <h4>力量瑜伽</h4>
+                            <p>倒立工作坊</p>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">09:00</span>
+                        <div class="schedule-content">
+                            <h4>艺术疗愈</h4>
+                            <p>曼陀罗绘画与自由书写</p>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">14:00</span>
+                        <div class="schedule-content">
+                            <h4>教练对话</h4>
+                            <p>一对一深度生命议题探索</p>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">17:00</span>
+                        <div class="schedule-content">
+                            <h4>感恩仪式</h4>
+                            <p>日落瑜伽与告别晚宴</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="schedule-day fade-in">
+                <div class="day-header">
+                    <div class="day-number">5</div>
+                    <div class="day-title">
+                        <h3>整合回归</h3>
+                        <p>归心 · 带着觉知离开</p>
+                    </div>
+                </div>
+                <div class="day-schedule">
+                    <div class="schedule-item">
+                        <span class="schedule-time">06:00</span>
+                        <div class="schedule-content">
+                            <h4>星空冥想</h4>
+                            <p>静默冥想与意图回顾</p>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">07:30</span>
+                        <div class="schedule-content">
+                            <h4>告别瑜伽</h4>
+                            <p>团体祝福仪式</p>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">09:00</span>
+                        <div class="schedule-content">
+                            <h4>回家指南</h4>
+                            <p>21天练习方案发放</p>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-time">11:00</span>
+                        <div class="schedule-content">
+                            <h4>返程</h4>
+                            <p>专车送机，结束疗愈之旅</p>
                         </div>
                     </div>
                 </div>
@@ -965,47 +1293,219 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="section testimonials-section">
+    <!-- Programs Section -->
+    <section class="section programs-section" id="programs">
         <div class="section-header fade-in">
-            <h2>来自旅修者的分享</h2>
-            <p class="section-description">每一个真实的改变，都是疗愈最好的证明</p>
+            <div class="section-label">PRICING PLANS</div>
+            <h2>旅修套餐选择</h2>
+        </div>
+        <div class="programs-grid">
+            <div class="program-card fade-in">
+                <div class="program-image">🌺</div>
+                <div class="program-content">
+                    <span class="program-tag">3天2晚</span>
+                    <h3>初阶旅修</h3>
+                    <p class="program-description">周末快闪，在短时间内获得深度放松与重启</p>
+                    <ul class="program-features">
+                        <li>✅ 丛林景观房（双人入住）</li>
+                        <li>✅ 每日2节瑜伽课程</li>
+                        <li>✅ 1次颂钵音疗体验</li>
+                        <li>✅ 有机素食三餐</li>
+                        <li>✅ 机场接送服务</li>
+                        <li>✅ 7天线上跟进</li>
+                    </ul>
+                    <div class="program-price">
+                        <div>
+                            <div class="price-text">¥6,800</div>
+                            <div class="price-note">原价 ¥8,800</div>
+                        </div>
+                        <a href="#booking" class="btn btn-outline">选择套餐</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="program-card featured fade-in">
+                <div class="program-badge">最受欢迎</div>
+                <div class="program-image">✨</div>
+                <div class="program-content">
+                    <span class="program-tag">5天4晚</span>
+                    <h3>深度旅修</h3>
+                    <p class="program-description">完整疗愈体验，实现身心深层蜕变与成长</p>
+                    <ul class="program-features">
+                        <li>✅ 丛林景观套房（双人入住）</li>
+                        <li>✅ 每日3节瑜伽/冥想课程</li>
+                        <li>✅ 2次颂钵/铜锣音疗</li>
+                        <li>✅ 圣泉寺净化仪式</li>
+                        <li>✅ 阿育吠陀SPA（60分钟）</li>
+                        <li>✅ 一对一教练对话</li>
+                        <li>✅ 有机素食三餐</li>
+                        <li>✅ 机场接送与全程交通</li>
+                        <li>✅ 21天回家练习指南</li>
+                    </ul>
+                    <div class="program-price">
+                        <div>
+                            <div class="price-text">¥9,800</div>
+                            <div class="price-note">原价 ¥12,800</div>
+                        </div>
+                        <a href="#booking" class="btn btn-outline">选择套餐</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="program-card fade-in">
+                <div class="program-image">🌴</div>
+                <div class="program-content">
+                    <span class="program-tag">7天6晚</span>
+                    <h3>尊享旅修</h3>
+                    <p class="program-description">蜕变之旅，定制化体验，专属管家服务</p>
+                    <ul class="program-features">
+                        <li>✅ 私人泳池别墅（单人入住）</li>
+                        <li>✅ 每日4节定制课程</li>
+                        <li>✅ 3次深度音疗体验</li>
+                        <li>✅ 圣泉寺+瀑布双重净化</li>
+                        <li>✅ 阿育吠陀SPA（90分钟×2）</li>
+                        <li>✅ 3次一对一教练对话</li>
+                        <li>✅ 有机素食+私厨定制</li>
+                        <li>✅ 全程专车+专属管家</li>
+                        <li>✅ 60天线上教练跟进</li>
+                        <li>✅ 旅修纪念影像记录</li>
+                    </ul>
+                    <div class="program-price">
+                        <div>
+                            <div class="price-text">¥15,800</div>
+                            <div class="price-note">原价 ¥19,800</div>
+                        </div>
+                        <a href="#booking" class="btn btn-outline">选择套餐</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section team-section">
+        <div class="section-header fade-in">
+            <div class="section-label">RETREAT MENTORS</div>
+            <h2>核心导师团队</h2>
+        </div>
+        <div class="team-grid">
+            <div class="team-card fade-in">
+                <div class="team-avatar">👩‍⚕️</div>
+                <h3>林元嘉</h3>
+                <p class="role">创始人 · 首席瑜伽导师</p>
+                <p class="bio">RYT-500认证，印度瑞诗凯诗游学经历，专注正念瑜伽与阴瑜伽教学8年，擅长将东方哲学融入现代生活</p>
+            </div>
+            <div class="team-card fade-in">
+                <div class="team-avatar">🎵</div>
+                <h3>Ade Rahman</h3>
+                <p class="role">音疗师 · 巴厘岛本土</p>
+                <p class="bio">尼泊尔颂钵学院认证音疗师，10年音疗实践经验，精通铜锣、颂钵与水晶钵演奏</p>
+            </div>
+            <div class="team-card fade-in">
+                <div class="team-avatar">💫</div>
+                <h3>Dr. Sarah Chen</h3>
+                <p class="role">生命教练 · 心理学博士</p>
+                <p class="bio">美国ICF认证PCC教练，临床心理学博士，专注创伤知情教练与正念减压（MBSR）</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section programs-section">
+        <div class="section-header fade-in">
+            <div class="section-label">TESTIMONIALS</div>
+            <h2>学员真实反馈</h2>
         </div>
         <div class="testimonials-grid">
             <div class="testimonial-card fade-in">
                 <p class="testimonial-quote">
-                    "在巴厘岛的7天，是我这几年最平静的时光。每天在稻田边做瑜伽，那种感觉真的太美好了。回来后，我学会了更好地照顾自己，工作和生活也找到了平衡。"
+                    这是我参加过最有质感的旅修。不是那种走马观花的打卡，而是真正沉下来与自己相处。林老师的瑜伽课让我第一次感受到呼吸的力量。
                 </p>
                 <div class="testimonial-author">
-                    <div class="author-avatar">👩</div>
+                    <div class="author-avatar">L</div>
                     <div class="author-info">
-                        <h4>林女士</h4>
-                        <p>互联网产品经理 · 32岁</p>
+                        <h5>李小姐</h5>
+                        <p>互联网产品经理</p>
                     </div>
                 </div>
             </div>
             <div class="testimonial-card fade-in">
                 <p class="testimonial-quote">
-                    "带着一堆生活中的问题来到巴厘岛，离开的时候却发现答案就在自己心里。很感谢这段旅程，让我重新找回了对生活的热爱和勇气。"
+                    作为一个常年焦虑的创业者，这次旅修给了我一个暂停键。Dr. Sarah的教练对话帮我理清了很多困惑，回来后整个人状态完全不一样。
                 </p>
                 <div class="testimonial-author">
-                    <div class="author-avatar">👨</div>
+                    <div class="author-avatar">W</div>
                     <div class="author-info">
-                        <h4>张先生</h4>
-                        <p>创业者 · 36岁</p>
+                        <h5>张先生</h5>
+                        <p>科技公司创始人</p>
                     </div>
                 </div>
             </div>
             <div class="testimonial-card fade-in">
                 <p class="testimonial-quote">
-                    "第二次来参加禅柔的旅修了，每次都有新的收获。这不仅仅是一次旅行，更是一次深度的自我对话。很珍惜这样的体验。"
+                    住宿环境超出预期，丛林别墅的清晨瑜伽是此行最难忘的记忆。食物也很用心，每一餐都能感受到团队对细节的把控。
                 </p>
                 <div class="testimonial-author">
-                    <div class="author-avatar">👩‍🦰</div>
+                    <div class="author-avatar">Z</div>
                     <div class="author-info">
-                        <h4>王女士</h4>
-                        <p>律师 · 40岁</p>
+                        <h5>王女士</h5>
+                        <p>品牌设计师</p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" id="faq">
+        <div class="section-header fade-in">
+            <div class="section-label">FAQ</div>
+            <h2>常见问题</h2>
+        </div>
+        <div class="faq-container">
+            <div class="faq-item fade-in" onclick="this.classList.toggle('active')">
+                <div class="faq-question">
+                    没有瑜伽基础可以参加吗？
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    完全可以。我们的课程设计兼顾初学者与进阶练习者，导师会根据每位学员的身体状况提供替代体式。旅修的核心是"疗愈"而非"竞技"。
+                </div>
+            </div>
+            <div class="faq-item fade-in" onclick="this.classList.toggle('active')">
+                <div class="faq-question">
+                    费用包含机票吗？
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    费用不包含国际机票，但包含巴厘岛登巴萨机场的专车接送、行程期间的全部交通、住宿、餐饮、课程及活动费用。
+                </div>
+            </div>
+            <div class="faq-item fade-in" onclick="this.classList.toggle('active')">
+                <div class="faq-question">
+                    行程中有自由活动时间吗？
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    每天下午15:00-17:00为自由探索时间，您可以选择在别墅休息、前往乌布市区探索，或预约额外SPA（尊享套餐已包含）。
+                </div>
+            </div>
+            <div class="faq-item fade-in" onclick="this.classList.toggle('active')">
+                <div class="faq-question">
+                    如果临时取消行程怎么办？
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    出发前30天取消可全额退款；15-30天取消退还70%定金；7-15天取消退还50%定金；7天内取消不可退款但可转让名额。
+                </div>
+            </div>
+            <div class="faq-item fade-in" onclick="this.classList.toggle('active')">
+                <div class="faq-question">
+                    餐食有特殊饮食需求可以调整吗？
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    当然可以。我们在预订问卷中会收集您的饮食偏好与过敏信息，厨房团队会据此调整菜单。支持素食、纯素、无麸质等多种饮食需求。
                 </div>
             </div>
         </div>
@@ -1014,8 +1514,8 @@
     <!-- Booking Section -->
     <section class="section booking-section" id="booking">
         <div class="section-header fade-in">
-            <h2>定制你的巴厘岛之旅</h2>
-            <p class="section-description">填写信息，我们将在24小时内为您提供专属方案</p>
+            <h2>开启你的疗愈之旅</h2>
+            <p class="section-description">填写信息，我们将在12小时内与您联系，定制专属方案</p>
         </div>
         <div class="booking-container fade-in">
             <form class="booking-form" onsubmit="handleSubmit(event)">
@@ -1031,52 +1531,35 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="dates">期望日期</label>
-                        <input type="text" id="dates" name="dates" placeholder="如：2026年7月" required>
+                        <label for="service">服务类型</label>
+                        <select id="service" name="service" required>
+                            <option value="">请选择服务类型</option>
+                            <option value="counseling">心理咨询</option>
+                            <option value="growth">个人成长</option>
+                            <option value="retreat">疗愈旅修</option>
+                            <option value="eap">企业EAP</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="duration">行程时长</label>
                         <select id="duration" name="duration" required>
                             <option value="">请选择时长</option>
-                            <option value="7">7天6晚</option>
-                            <option value="10">10天9晚</option>
-                            <option value="14">14天13晚</option>
+                            <option value="7">3天2晚</option>
+                            <option value="10">5天4晚</option>
+                            <option value="14">7天6晚</option>
                             <option value="custom">定制时长</option>
                         </select>
                     </div>
                 </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="participants">参与人数</label>
-                        <select id="participants" name="participants" required>
-                            <option value="">请选择人数</option>
-                            <option value="1">1人</option>
-                            <option value="2">2人</option>
-                            <option value="3-5">3-5人</option>
-                            <option value="6+">6人以上</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="focus">主要需求</label>
-                        <select id="focus" name="focus" required>
-                            <option value="">请选择重点</option>
-                            <option value="relax">身心放松</option>
-                            <option value="growth">个人成长</option>
-                            <option value="relationship">关系疗愈</option>
-                            <option value="stress">压力释放</option>
-                            <option value="custom">其他需求</option>
-                        </select>
-                    </div>
-                </div>
                 <div class="form-group full">
-                    <label for="needs">详细需求</label>
-                    <textarea id="needs" name="needs" placeholder="请告诉我们您的期望与特殊需求..." required></textarea>
+                    <label for="needs">需求简述</label>
+                    <textarea id="needs" name="needs" placeholder="请告诉我们您的期望与需求..." required></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 17px; padding: 16px;">
-                    获取专属方案 →
+                <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 16px; padding: 16px;">
+                    提交预约 → 一对一对接
                 </button>
             </form>
-            <p class="booking-note">所有信息严格保密，仅用于定制您的专属旅修方案</p>
+            <p class="booking-note">所有信息严格保密，仅用于服务对接</p>
         </div>
     </section>
 
@@ -1093,7 +1576,9 @@
                         <li><a href="index.html#growth">个人成长</a></li>
                         <li><a href="#programs">疗愈旅修</a></li>
                         <li><a href="index.html#eap">企业EAP</a></li>
-                        <li><a href="#contact">联系我们</a></li>
+                        <li><a href="journal.html">科学期刊</a></li>
+                        <li><a href="partners.html">合作伙伴</a></li>
+                        <li><a href="admin.html">管理后台</a></li>
                     </ul>
                 </div>
                 <div class="footer-col footer-contact">
@@ -1114,7 +1599,7 @@
                 </div>
             </div>
             <div class="footer-copyright">
-                ©2026 禅柔旅修 保留所有权利 | ICP备案号：__________
+                ©2026 禅柔旅修 保留所有权利 | <a href="admin.html" style="color: rgba(154,160,170,0.3); text-decoration: none; font-size: 12px;">后台</a> | ICP备案号：__________
             </div>
         </div>
     </footer>
@@ -1143,20 +1628,25 @@
             event.preventDefault();
             const formData = new FormData(event.target);
             const data = Object.fromEntries(formData);
-            alert('感谢您的预约！我们将在24小时内与您联系，为您定制专属的巴厘岛疗愈之旅。');
+            data.createdAt = new Date().toISOString();
+            data.contacted = false;
+            
+            // Save to localStorage
+            let bookings = JSON.parse(localStorage.getItem('chanrouBookings') || '[]');
+            bookings.push(data);
+            localStorage.setItem('chanrouBookings', JSON.stringify(bookings));
+            
+            alert('感谢您的预约！我们将在12小时内与您联系，为您定制专属的巴厘岛疗愈之旅。');
             event.target.reset();
         }
 
-        // Smooth scroll for navigation links
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
         });

@@ -81,6 +81,21 @@
             align-items: center;
         }
 
+        .nav-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .nav-menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--primary-dark);
+            transition: all 0.3s ease;
+        }
+
         .nav-menu a {
             color: var(--medium-text);
             text-decoration: none;
@@ -667,7 +682,26 @@
         /* Responsive Design */
         @media (max-width: 1024px) {
             .nav-menu {
-                display: none;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                justify-content: center;
+                gap: 24px;
+                padding: 40px 24px;
+                box-shadow: -4px 0 20px rgba(0,0,0,0.1);
+                transition: right 0.3s ease;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-menu-toggle {
+                display: flex;
             }
 
             .services-grid,
@@ -767,14 +801,15 @@
             <img src="logo.jpg" alt="禅柔旅修" style="width: 40px; height: 40px; border-radius: 8px; object-fit: contain;" />
             <span>禅柔旅修</span>
         </div>
-        <ul class="nav-menu">
+        <ul class="nav-menu" id="navMenu">
             <li><a href="#home">首页</a></li>
             <li><a href="#services">心理咨询</a></li>
-            <li><a href="about.html">个人成长</a></li>
-            <li><a href="retreats.html">疗愈旅修</a></li>
+            <li><a href="#growth">个人成长</a></li>
+            <li><a href="bali-retreat.html">巴厘岛旅修</a></li>
             <li><a href="#eap">企业EAP</a></li>
             <li><a href="#team">疗愈师团队</a></li>
             <li><a href="journal.html">科学期刊</a></li>
+            <li><a href="partners.html">合作伙伴</a></li>
             <li><a href="#booking">预约咨询</a></li>
             <li><a href="#contact">联系我们</a></li>
         </ul>
@@ -782,11 +817,23 @@
             <a href="#booking" class="btn btn-outline">获取方案</a>
             <a href="#booking" class="btn btn-primary">立即预约</a>
         </div>
+        <div class="nav-menu-toggle" id="navToggle" onclick="toggleNavMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="hero-content">
+        <div class="hero-video-container">
+            <!-- 使用无版权的自然疗愈视频 - 可后续替换为实际视频 -->
+            <video class="hero-video" autoplay muted loop playsinline poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 800'%3E%3Crect fill='%23fafbfc' width='1200' height='800'/%3E%3Cpath d='M0 400 Q300 300 600 400 T1200 400 L1200 800 L0 800 Z' fill='%23e8d5c0' opacity='0.3'/%3E%3C/svg%3E" src="https://videos.pexels.com/video-files/855029/855029-hd_1920_1080_30fps.mp4">
+                <!-- 备用图片背景 -->
+            </video>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content" style="position: relative; z-index: 2;">
             <h1>身心归位 · 向内自愈</h1>
             <p class="hero-subtitle">心理咨询｜个人成长｜疗愈旅修定制｜企业EAP员工关爱</p>
             <p class="hero-slogan">禅于心・柔于行・旅愈身心</p>
@@ -809,7 +856,7 @@
                 <p>针对焦虑、压力、亲密关系、原生家庭、职场内耗等情绪困扰，提供专业疏导，线上线下灵活可选，全程严格保密</p>
                 <a href="#booking" class="btn btn-outline">了解详情 → 预约</a>
             </div>
-            <div class="service-card fade-in">
+            <div class="service-card fade-in" id="growth">
                 <h3>个人成长服务 · 自我突破与内在重建</h3>
                 <p>自我认知探索、情绪管理、心理韧性提升、成长目标规划，助力自我突破，实现全方面个人成长</p>
                 <a href="#booking" class="btn btn-outline">了解详情 → 预约</a>
@@ -817,12 +864,12 @@
             <div class="service-card fade-in">
                 <h3>疗愈旅修 · 自然静心深度疗愈</h3>
                 <p>单人/闺蜜/小众团体定制，融合正念、静修、自然体验，一站式行程规划，实现身心双重疗愈</p>
-                <a href="#booking" class="btn btn-outline">立即定制 → 获取方案</a>
+                <a href="bali-retreat.html" class="btn btn-outline">查看巴厘岛旅修 →</a>
             </div>
-            <div class="service-card fade-in">
+            <div class="service-card fade-in" id="eap">
                 <h3>企业EAP · 员工心理健康整体方案</h3>
                 <p>职场减压讲座、团体疗愈、一对一保密咨询、年度员工心理关怀，提升团队凝聚力，缓解职业倦怠</p>
-                <a href="#booking" class="btn btn-outline">商务合作 → 获取方案</a>
+                <a href="partners.html#corporate" class="btn btn-outline">查看合作企业 →</a>
             </div>
         </div>
     </section>
@@ -1087,8 +1134,11 @@
                         <li><a href="#home">首页</a></li>
                         <li><a href="#services">心理咨询</a></li>
                         <li><a href="#growth">个人成长</a></li>
-                        <li><a href="#retreat">疗愈旅修</a></li>
+                        <li><a href="bali-retreat.html">巴厘岛旅修</a></li>
                         <li><a href="#eap">企业EAP</a></li>
+                        <li><a href="journal.html">科学期刊</a></li>
+                        <li><a href="partners.html">合作伙伴</a></li>
+                        <li><a href="admin.html">管理后台</a></li>
                         <li><a href="#contact">联系我们</a></li>
                     </ul>
                 </div>
@@ -1110,7 +1160,7 @@
                 </div>
             </div>
             <div class="footer-copyright">
-                ©2026 禅柔旅修 保留所有权利 | ICP备案号：__________
+                ©2026 禅柔旅修 保留所有权利 | <a href="admin.html" style="color: rgba(154,160,170,0.3); text-decoration: none; font-size: 12px;">后台</a> | ICP备案号：__________
             </div>
         </div>
     </footer>
@@ -1134,11 +1184,19 @@
             observer.observe(el);
         });
 
-        // Form submission
+        // Form submission - Save to localStorage for admin
         function handleSubmit(event) {
             event.preventDefault();
             const formData = new FormData(event.target);
             const data = Object.fromEntries(formData);
+            data.createdAt = new Date().toISOString();
+            data.contacted = false;
+
+            // Load existing bookings
+            let bookings = JSON.parse(localStorage.getItem('chanrouBookings') || '[]');
+            bookings.push(data);
+            localStorage.setItem('chanrouBookings', JSON.stringify(bookings));
+
             alert('预约信息已提交！我们将在12小时内与你联系。');
             event.target.reset();
         }
@@ -1156,6 +1214,13 @@
                 }
             });
         });
+
+        // Mobile Navigation Menu
+        function toggleNavMenu() {
+            const menu = document.getElementById('navMenu');
+            const toggle = document.getElementById('navToggle');
+            menu.classList.toggle('active');
+        }
     </script>
 </body>
 </html>
