@@ -891,9 +891,14 @@
    - 核心问题：前额叶内部回路异常，而非杏仁核-前额叶连接
    - 关键发现：preSMA（前辅助运动区）在观察时对dlPFC抑制性连接，调节时与vmPFC双向兴奋性连接
    - 治疗启示：需要针对前额叶内部调控进行认知训练
+7. 量子意识、大脑与认知（Journal of Consciousness Studies 2025, Busemeyer & Lu）：
+   - 核心理论：意识就像量子测量装置，有意识注意→坍缩多种解释的概率分布→只感知一个
+   - 冯·诺伊曼链：叠加态最终停止在意识体验
+   - 量子认知：用量子原理建模人类决策、判断、冲突
+   - 应用：可以通过有意识聚焦，主动选择进入哪一个可能性
 
 【核心疗愈技术】
-- 正念引导、情绪日记、认知校准、潜意识解绑、意识聚焦、心智调频
+- 正念引导、情绪日记、认知校准、潜意识解绑、意识聚焦、心智调频、量子坍缩
 `;
 
         const SOULIGHT_RESPONSES = {
@@ -904,6 +909,10 @@
             "社交": [
                 "谢谢你告诉我。根据2026年最新的《英国精神病学杂志》研究，社交焦虑的核心问题可能在于前额叶内部回路的异常，特别是preSMA（前辅助运动区）和vmPFC/dlPFC的连接。我们可以试试一些认知练习：当你感到社交焦虑时，先尝试觉察你的身体感受，然后做3个深呼吸，把注意力锚定在当下的感官上（比如脚踩在地上的感觉）。你最近遇到的社交情境是什么？",
                 "我听到了。社交焦虑时，我们的前额叶内部调控网络需要被激活。一个简单的练习：下次社交时，试着把注意力从自己的感受（别人怎么看我）转移到外界（对方在说什么，环境是什么样）。这有助于激活dlPFC的执行控制功能。你愿意试试吗？"
+            ],
+            "量子": [
+                "从量子意识的角度（Busemeyer & Lu, 2025），意识就像一个量子测量装置。当你有意识地聚焦，就会坍缩多种可能性的概率分布，进入一个确定的状态。此刻，你面前有无数个可能性，但你的聚焦会让其中一个成为现实。你想聚焦在哪个状态上？",
+                "根据2025年《意识研究杂志》的研究，我们可以通过有意识的注意来主动选择可能性。一个练习：现在闭上眼睛，想象你想要成为的状态（平静、自信、专注），然后把意识聚焦在上面，就像测量一个量子系统。这样可以让你的大脑进入那个对应的神经网络状态。你想试试吗？"
             ],
             "压力": [
                 "压力大时，我们的身体会进入战斗或逃跑模式。根据PLOS Biology 2026的研究，正念可以有效调节这一模式。我们先做一个简短的落地练习：感受你的双脚踩在地上，你的手放的位置，慢慢深呼吸3次。现在感觉如何？",
@@ -992,7 +1001,8 @@
             const input = userInput.toLowerCase();
             let candidates = SOULIGHT_RESPONSES.default;
 
-            if (input.includes('社交') || input.includes('聚会') || input.includes('演讲') || input.includes('当众')) candidates = SOULIGHT_RESPONSES['社交'];
+            if (input.includes('量子') || input.includes('意识') || input.includes('可能性') || input.includes('叠加')) candidates = SOULIGHT_RESPONSES['量子'];
+            else if (input.includes('社交') || input.includes('聚会') || input.includes('演讲') || input.includes('当众')) candidates = SOULIGHT_RESPONSES['社交'];
             else if (input.includes('焦虑')) candidates = SOULIGHT_RESPONSES['焦虑'];
             else if (input.includes('压力')) candidates = SOULIGHT_RESPONSES['压力'];
             else if (input.includes('正念')) candidates = SOULIGHT_RESPONSES['正念'];
