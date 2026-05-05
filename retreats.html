@@ -3,35 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="禅柔旅修 - 巴厘岛隐奢疗愈旅修 | 身心归位 · 向内自愈">
-    <title>巴厘岛隐奢疗愈旅修 - 禅柔旅修</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>巴厘岛隐奢疗愈旅修 | 禅柔旅修</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --primary: #2C5F4A;
+            --primary-light: #4A8B6F;
+            --accent: #c9a97e;
+            --accent-soft: #e8d5c0;
+            --dark: #3d4047;
+            --light: #fafbfc;
+            --cream: #fdfcf9;
+            --text: #3d4047;
+            --text-light: #6b6f78;
+            --border: #e5e7eb;
         }
 
-        :root {
-            --primary-dark: #3d4047;
-            --medium-text: #6b6f78;
-            --light-text: #9aa0aa;
-            --bg-light: #fafbfc;
-            --accent-warm: #c9a97e;
-            --accent-soft: #e8d5c0;
-            --border-subtle: #e5e7eb;
-            --card-shadow: 0 4px 20px rgba(0,0,0,0.06);
-            --card-shadow-hover: 0 12px 40px rgba(0,0,0,0.12);
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans SC', 'Helvetica Neue', Arial, sans-serif;
-            background: #ffffff;
-            min-height: 100vh;
-            color: var(--primary-dark);
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--cream);
             line-height: 1.8;
             overflow-x: hidden;
         }
@@ -39,17 +32,16 @@
         /* Navigation */
         nav {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
+            top: 0; left: 0; right: 0;
             z-index: 1000;
             padding: 16px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid var(--border-subtle);
+            transition: all 0.4s ease;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
         }
 
         .nav-logo {
@@ -59,7 +51,7 @@
             font-family: 'Noto Serif SC', serif;
             font-size: 20px;
             font-weight: 600;
-            color: var(--primary-dark);
+            color: var(--dark);
         }
 
         .nav-logo img {
@@ -77,214 +69,229 @@
         }
 
         .nav-menu a {
-            color: var(--medium-text);
+            color: var(--text-light);
             text-decoration: none;
             font-size: 15px;
-            transition: color 0.3s ease;
+            transition: color 0.3s;
             font-weight: 400;
         }
 
         .nav-menu a:hover {
-            color: var(--primary-dark);
+            color: var(--dark);
         }
 
         .nav-cta {
-            display: flex;
-            gap: 12px;
-        }
-
-        .btn {
             padding: 10px 24px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+            color: white;
+            border: none;
             border-radius: 8px;
             font-size: 14px;
-            font-weight: 500;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: none;
             cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+            transition: all 0.3s;
+            text-decoration: none;
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent-warm), var(--accent-soft));
-            color: white;
-        }
-
-        .btn-primary:hover {
+        .nav-cta:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(201,169,126,0.3);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--accent-warm);
-            border: 1px solid var(--accent-warm);
-        }
-
-        .btn-outline:hover {
-            background: var(--accent-warm);
-            color: white;
         }
 
         /* Hero Section */
         .hero {
             margin-top: 72px;
-            min-height: 90vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 80px 24px;
-            background: linear-gradient(135deg, rgba(44,95,74,0.08) 0%, rgba(201,169,126,0.12) 100%),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23fafbfc" width="1200" height="800"/><path d="M0 400 Q300 300 600 400 T1200 400 L1200 800 L0 800 Z" fill="%23e8d5c0" opacity="0.3"/></svg>');
-            background-size: cover;
-            background-position: center;
+            min-height: 100vh;
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, #1a3c2e 0%, var(--primary) 50%, var(--primary-light) 100%);
         }
 
         .hero-content {
             position: relative;
-            z-index: 1;
-            max-width: 900px;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            max-width: 800px;
+            padding: 0 24px;
         }
 
         .hero-badge {
             display: inline-block;
             padding: 8px 24px;
-            border: 1px solid var(--accent-warm);
-            border-radius: 20px;
-            font-size: 13px;
-            letter-spacing: 3px;
-            color: var(--accent-warm);
-            margin-bottom: 30px;
-            font-weight: 500;
+            border: 1px solid rgba(255,255,255,0.3);
+            font-size: 12px;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
         }
 
         .hero h1 {
             font-family: 'Noto Serif SC', serif;
-            font-size: 64px;
-            font-weight: 600;
-            color: var(--primary-dark);
-            margin-bottom: 20px;
+            font-size: 56px;
+            font-weight: 300;
             line-height: 1.2;
-            letter-spacing: 2px;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
         }
 
-        .hero-subtitle {
+        .hero h1 span {
+            display: block;
             font-size: 20px;
-            color: var(--medium-text);
-            margin-bottom: 30px;
+            letter-spacing: 12px;
+            margin-top: 20px;
+            opacity: 0.8;
             font-weight: 300;
         }
 
-        .hero-slogan {
-            font-family: 'Noto Serif SC', serif;
-            font-size: 28px;
-            color: var(--accent-warm);
-            margin-bottom: 50px;
-            font-weight: 500;
-            letter-spacing: 3px;
+        .hero-subtitle {
+            font-size: 18px;
+            font-weight: 300;
+            opacity: 0.85;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 2;
         }
 
-        .hero-cta {
+        .hero-cta-group {
             display: flex;
-            gap: 20px;
+            gap: 16px;
             justify-content: center;
+            align-items: center;
             flex-wrap: wrap;
         }
 
-        .hero-cta .btn {
-            padding: 16px 40px;
-            font-size: 16px;
+        .hero-cta-primary {
+            padding: 14px 32px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: all 0.4s;
+            text-decoration: none;
+        }
+
+        .hero-cta-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(201,169,126,0.4);
+        }
+
+        .hero-cta-secondary {
+            padding: 14px 32px;
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 8px;
+            font-size: 14px;
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: all 0.4s;
+            text-decoration: none;
+        }
+
+        .hero-cta-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: white;
         }
 
         /* Section Styles */
         .section {
-            padding: 100px 24px;
+            padding: 80px 24px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 80px;
+            margin-bottom: 60px;
         }
 
         .section-label {
             font-size: 12px;
             letter-spacing: 6px;
-            color: var(--accent-warm);
+            color: var(--accent);
             margin-bottom: 16px;
             text-transform: uppercase;
         }
 
-        .section-header h2 {
+        .section-title {
             font-family: 'Noto Serif SC', serif;
-            font-size: 42px;
-            font-weight: 600;
-            color: var(--primary-dark);
-            margin-bottom: 20px;
+            font-size: 36px;
+            font-weight: 300;
+            color: var(--dark);
+            margin-bottom: 16px;
+            letter-spacing: 4px;
         }
 
         .section-description {
-            font-size: 18px;
-            color: var(--medium-text);
-            max-width: 700px;
+            font-size: 16px;
+            color: var(--text-light);
+            max-width: 600px;
             margin: 0 auto;
-            line-height: 1.8;
         }
 
-        /* Retreat Features Grid */
-        .features-grid {
+        .section-light {
+            background: var(--light);
+        }
+
+        .section-dark {
+            background: var(--dark);
+            color: white;
+        }
+
+        .section-dark .section-title {
+            color: white;
+        }
+
+        /* Philosophy Grid */
+        .philosophy-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            margin-top: 60px;
+            gap: 32px;
         }
 
-        .feature-card {
+        .philosophy-card {
+            padding: 40px 32px;
             background: white;
-            border: 1px solid var(--border-subtle);
+            border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 50px 40px;
+            transition: all 0.4s;
             text-align: center;
-            transition: all 0.4s ease;
         }
 
-        .feature-card:hover {
+        .philosophy-card:hover {
             transform: translateY(-8px);
-            border-color: var(--accent-soft);
-            box-shadow: var(--card-shadow-hover);
+            box-shadow: 0 16px 48px rgba(0,0,0,0.08);
         }
 
-        .feature-icon {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, var(--accent-soft), var(--accent-warm));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 30px;
+        .philosophy-icon {
             font-size: 48px;
+            margin-bottom: 24px;
         }
 
-        .feature-card h3 {
+        .philosophy-card h3 {
             font-family: 'Noto Serif SC', serif;
-            font-size: 22px;
-            font-weight: 600;
-            color: var(--primary-dark);
-            margin-bottom: 15px;
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 16px;
+            color: var(--dark);
         }
 
-        .feature-card p {
-            font-size: 15px;
-            color: var(--medium-text);
-            line-height: 1.8;
+        .philosophy-card p {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.9;
         }
 
         /* Highlights Grid */
@@ -296,25 +303,23 @@
 
         .highlight-item {
             display: flex;
-            padding: 50px;
-            border-bottom: 1px solid var(--border-subtle);
-            border-right: 1px solid var(--border-subtle);
+            padding: 48px;
+            border-bottom: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+            transition: all 0.4s;
             background: white;
-            transition: all 0.4s ease;
         }
 
         .highlight-item:nth-child(2n) { border-right: none; }
         .highlight-item:nth-last-child(-n+2) { border-bottom: none; }
 
-        .highlight-item:hover {
-            background: var(--bg-light);
-        }
+        .highlight-item:hover { background: var(--light); }
 
         .highlight-number {
             font-family: 'Noto Serif SC', serif;
             font-size: 48px;
             font-weight: 300;
-            color: var(--accent-warm);
+            color: var(--accent);
             margin-right: 30px;
             line-height: 1;
             opacity: 0.6;
@@ -322,306 +327,369 @@
 
         .highlight-content h4 {
             font-family: 'Noto Serif SC', serif;
-            font-size: 20px;
-            font-weight: 600;
+            font-size: 18px;
+            font-weight: 400;
             margin-bottom: 12px;
-            color: var(--primary-dark);
+            color: var(--dark);
         }
 
         .highlight-content p {
             font-size: 14px;
-            color: var(--medium-text);
+            color: var(--text-light);
             line-height: 1.8;
         }
 
-        /* Programs Section */
-        .programs-section {
-            background: var(--bg-light);
-        }
-
-        .programs-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-        }
-
-        .program-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--card-shadow);
-            transition: all 0.4s ease;
+        /* Timeline */
+        .timeline {
             position: relative;
+            padding-left: 60px;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
-        .program-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--card-shadow-hover);
-        }
-
-        .program-card.featured {
-            border: 2px solid var(--accent-warm);
-            transform: scale(1.02);
-        }
-
-        .program-card.featured:hover {
-            transform: scale(1.02) translateY(-8px);
-        }
-
-        .program-badge {
+        .timeline::before {
+            content: '';
             position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--accent-warm);
-            color: white;
-            padding: 6px 20px;
-            font-size: 13px;
-            border-radius: 20px;
-            font-weight: 500;
-            z-index: 10;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, var(--accent), var(--primary));
         }
 
-        .program-image {
-            height: 240px;
-            background: linear-gradient(135deg, var(--accent-warm), var(--accent-soft));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 100px;
-            color: white;
-        }
-
-        .program-content {
-            padding: 40px 32px;
-        }
-
-        .program-tag {
-            display: inline-block;
-            background: var(--accent-soft);
-            color: var(--primary-dark);
-            padding: 6px 16px;
+        .timeline-item {
+            position: relative;
+            padding: 40px 0;
+            border-bottom: 1px solid var(--border);
+            background: white;
+            margin-bottom: 24px;
             border-radius: 16px;
-            font-size: 13px;
+            padding-left: 40px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -52px;
+            top: 50px;
+            width: 16px;
+            height: 16px;
+            background: var(--accent);
+            border: 4px solid var(--light);
+            border-radius: 50%;
+            box-shadow: 0 0 0 1px var(--accent);
+        }
+
+        .timeline-day {
+            font-size: 12px;
+            letter-spacing: 4px;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .timeline-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 22px;
+            font-weight: 400;
+            margin-bottom: 16px;
+            color: var(--dark);
+        }
+
+        .timeline-activities {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .activity {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px;
+            background: var(--light);
+            border-left: 3px solid var(--primary-light);
+            border-radius: 8px;
+        }
+
+        .activity-time {
+            font-size: 12px;
+            color: var(--accent);
             font-weight: 500;
+            min-width: 60px;
+        }
+
+        .activity-desc {
+            font-size: 14px;
+            color: var(--text);
+        }
+
+        /* Accommodation */
+        .accommodation-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        .accommodation-card {
+            background: rgba(255,255,255,0.05);
+            padding: 48px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            transition: all 0.4s;
+        }
+
+        .accommodation-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .accommodation-card h3 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 24px;
+            font-weight: 400;
             margin-bottom: 16px;
         }
 
-        .program-card h3 {
-            font-family: 'Noto Serif SC', serif;
-            font-size: 24px;
-            font-weight: 600;
-            color: var(--primary-dark);
-            margin-bottom: 15px;
+        .accommodation-card .price {
+            font-size: 36px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: 300;
         }
 
-        .program-description {
-            font-size: 15px;
-            color: var(--medium-text);
-            line-height: 1.8;
+        .accommodation-card .price-note {
+            font-size: 13px;
+            opacity: 0.6;
             margin-bottom: 24px;
         }
 
-        .program-features {
+        .accommodation-features {
             list-style: none;
-            margin-bottom: 28px;
+            text-align: left;
         }
 
-        .program-features li {
+        .accommodation-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 14px;
+            opacity: 0.8;
             display: flex;
             align-items: center;
             gap: 10px;
-            padding: 10px 0;
-            font-size: 14px;
-            color: var(--medium-text);
-            border-bottom: 1px dashed var(--border-subtle);
         }
 
-        .program-price {
+        .accommodation-features li::before {
+            content: '◆';
+            color: var(--accent);
+            font-size: 8px;
+        }
+
+        /* Process Steps */
+        .process-steps {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 20px;
-            border-top: 1px solid var(--border-subtle);
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
         }
 
-        .price-text {
-            font-family: 'Noto Serif SC', serif;
-            font-size: 28px;
-            font-weight: 600;
-            color: var(--accent-warm);
-        }
-
-        .price-note {
-            font-size: 13px;
-            color: var(--light-text);
-        }
-
-        /* Daily Schedule */
-        .schedule-timeline {
-            margin-top: 60px;
-        }
-
-        .schedule-day {
+        .process-step {
+            flex: 1;
+            min-width: 200px;
+            max-width: 260px;
+            padding: 32px 24px;
             background: white;
-            border: 1px solid var(--border-subtle);
+            border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 48px;
-            margin-bottom: 40px;
+            text-align: center;
+            transition: all 0.4s;
         }
 
-        .day-header {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 36px;
+        .process-step:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
         }
 
-        .day-number {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--accent-warm), var(--accent-soft));
+        .step-number {
+            width: 64px;
+            height: 64px;
+            border: 2px solid var(--accent);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
             font-family: 'Noto Serif SC', serif;
             font-size: 28px;
-            font-weight: 600;
+            color: var(--accent);
+            margin: 0 auto 20px;
+            transition: all 0.4s;
         }
 
-        .day-title h3 {
+        .process-step:hover .step-number {
+            background: var(--accent);
+            color: white;
+        }
+
+        .step-title {
             font-family: 'Noto Serif SC', serif;
-            font-size: 26px;
-            font-weight: 600;
-            color: var(--primary-dark);
+            font-size: 18px;
+            font-weight: 400;
+            margin-bottom: 12px;
+        }
+
+        .step-desc {
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* Pricing */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .pricing-card {
+            padding: 48px 32px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: white;
+            position: relative;
+            transition: all 0.4s;
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--accent);
+            transform: scale(1.05);
+            box-shadow: 0 24px 64px rgba(0,0,0,0.1);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 48px rgba(0,0,0,0.08);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-8px);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            padding: 6px 24px;
+            font-size: 12px;
+            letter-spacing: 2px;
+            border-radius: 20px;
+        }
+
+        .pricing-name {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 22px;
+            font-weight: 400;
             margin-bottom: 8px;
         }
 
-        .day-title p {
+        .pricing-duration {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 24px;
+        }
+
+        .pricing-price {
+            font-size: 48px;
+            font-weight: 300;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .pricing-price span {
             font-size: 16px;
-            color: var(--medium-text);
+            color: var(--text-light);
         }
 
-        .day-schedule {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-        }
-
-        .schedule-item {
-            display: flex;
-            gap: 18px;
-            padding: 18px;
-            background: var(--bg-light);
-            border-radius: 12px;
-        }
-
-        .schedule-time {
-            font-weight: 600;
-            color: var(--accent-warm);
-            min-width: 80px;
+        .pricing-original {
             font-size: 14px;
+            color: #9aa0aa;
+            text-decoration: line-through;
+            margin-bottom: 32px;
         }
 
-        .schedule-content h4 {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--primary-dark);
-            margin-bottom: 6px;
+        .pricing-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 32px;
         }
 
-        .schedule-content p {
+        .pricing-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
             font-size: 14px;
-            color: var(--medium-text);
-            line-height: 1.6;
-        }
-
-        /* Team Section */
-        .team-section {
-            background: var(--bg-light);
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-        }
-
-        .team-card {
-            background: white;
-            border: 1px solid var(--border-subtle);
-            border-radius: 16px;
-            padding: 40px;
-            text-align: center;
-            transition: all 0.4s ease;
-        }
-
-        .team-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--card-shadow-hover);
-        }
-
-        .team-avatar {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, var(--accent-soft), var(--accent-warm));
-            border-radius: 50%;
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin: 0 auto 28px;
-            font-size: 56px;
+            gap: 10px;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .pricing-btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--dark);
             color: white;
-        }
-
-        .team-card h3 {
-            font-family: 'Noto Serif SC', serif;
-            font-size: 22px;
-            font-weight: 600;
-            color: var(--primary-dark);
-            margin-bottom: 10px;
-        }
-
-        .team-card .role {
+            border: none;
+            border-radius: 8px;
             font-size: 14px;
-            color: var(--accent-warm);
-            margin-bottom: 16px;
-            font-weight: 500;
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: all 0.4s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
         }
 
-        .team-card .bio {
-            font-size: 14px;
-            color: var(--medium-text);
-            line-height: 1.8;
+        .pricing-card.featured .pricing-btn {
+            background: var(--accent);
+        }
+
+        .pricing-btn:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
         }
 
         /* Testimonials */
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
+            gap: 32px;
         }
 
         .testimonial-card {
             background: white;
-            border: 1px solid var(--border-subtle);
-            border-radius: 20px;
-            padding: 48px 40px;
-            transition: all 0.4s ease;
+            padding: 40px 32px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
             position: relative;
+            text-align: left;
+            transition: all 0.4s;
         }
 
         .testimonial-card:hover {
-            border-color: var(--accent-soft);
-            box-shadow: var(--card-shadow);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.06);
         }
 
         .testimonial-card::before {
             content: '"';
             font-family: 'Noto Serif SC', serif;
             font-size: 80px;
-            color: var(--accent-warm);
+            color: var(--accent);
             opacity: 0.3;
             position: absolute;
             top: 20px;
@@ -629,11 +697,11 @@
             line-height: 1;
         }
 
-        .testimonial-quote {
+        .testimonial-text {
             font-size: 15px;
-            color: var(--primary-dark);
             line-height: 1.9;
-            margin-bottom: 30px;
+            color: var(--text);
+            margin-bottom: 24px;
             position: relative;
             z-index: 1;
         }
@@ -642,165 +710,129 @@
             display: flex;
             align-items: center;
             gap: 16px;
-            padding-top: 24px;
-            border-top: 1px solid var(--border-subtle);
         }
 
         .author-avatar {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, var(--accent-soft), var(--accent-warm));
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 24px;
+            font-size: 20px;
         }
 
         .author-info h5 {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--primary-dark);
+            font-size: 15px;
+            font-weight: 500;
             margin-bottom: 4px;
         }
 
         .author-info p {
-            font-size: 13px;
-            color: var(--accent-warm);
+            font-size: 12px;
+            color: var(--text-light);
         }
 
         /* FAQ */
         .faq-container {
             max-width: 800px;
             margin: 0 auto;
+            text-align: left;
         }
 
         .faq-item {
-            background: white;
-            border: 1px solid var(--border-subtle);
-            border-radius: 12px;
-            padding: 24px 28px;
-            margin-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+            padding: 24px 0;
             cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .faq-item:hover {
-            border-color: var(--accent-soft);
+            transition: all 0.3s;
+            background: white;
+            padding-left: 24px;
+            padding-right: 24px;
+            border-radius: 12px;
+            margin-bottom: 12px;
         }
 
         .faq-question {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 17px;
-            font-weight: 600;
-            color: var(--primary-dark);
+            font-size: 16px;
+            font-weight: 500;
         }
 
         .faq-toggle {
             font-size: 24px;
-            color: var(--accent-warm);
+            color: var(--accent);
             transition: transform 0.3s;
         }
 
-        .faq-item.active .faq-toggle {
-            transform: rotate(45deg);
-        }
+        .faq-item.active .faq-toggle { transform: rotate(45deg); }
 
         .faq-answer {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s, padding-top 0.4s;
-            font-size: 15px;
-            color: var(--medium-text);
+            transition: max-height 0.4s, padding 0.4s;
+            font-size: 14px;
+            color: var(--text-light);
             line-height: 1.8;
         }
 
         .faq-item.active .faq-answer {
             max-height: 300px;
-            padding-top: 20px;
+            padding-top: 16px;
         }
 
-        /* Booking Section */
-        .booking-section {
-            background: linear-gradient(180deg, var(--bg-light) 0%, #ffffff 100%);
-        }
-
-        .booking-container {
-            max-width: 700px;
-            margin: 0 auto;
-            background: white;
-            border: 1px solid var(--border-subtle);
-            border-radius: 24px;
-            padding: 60px;
-            box-shadow: var(--card-shadow);
-        }
-
-        .booking-form {
-            display: flex;
-            flex-direction: column;
-            gap: 28px;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .form-group.full {
-            grid-column: 1 / -1;
-        }
-
-        .form-group label {
-            font-size: 15px;
-            color: var(--primary-dark);
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            padding: 14px 18px;
-            border: 1px solid var(--border-subtle);
-            border-radius: 10px;
-            font-size: 15px;
-            color: var(--primary-dark);
-            transition: border-color 0.3s ease;
-            outline: none;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            border-color: var(--accent-warm);
-        }
-
-        .form-group textarea {
-            min-height: 140px;
-            resize: vertical;
-        }
-
-        .booking-note {
+        /* CTA Banner */
+        .cta-banner {
+            padding: 80px 24px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-banner h2 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 36px;
+            font-weight: 300;
+            margin-bottom: 16px;
+        }
+
+        .cta-banner p {
+            font-size: 16px;
+            opacity: 0.85;
+            margin-bottom: 32px;
+        }
+
+        .cta-banner-btn {
+            padding: 16px 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
             font-size: 14px;
-            color: var(--light-text);
-            margin-top: 25px;
+            letter-spacing: 4px;
+            cursor: pointer;
+            transition: all 0.4s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-banner-btn:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 16px 48px rgba(0,0,0,0.2);
         }
 
         /* Footer */
         footer {
-            background: var(--bg-light);
-            padding: 80px 24px 40px;
-            border-top: 1px solid var(--border-subtle);
+            background: var(--dark);
+            color: white;
+            padding: 60px 24px 32px;
         }
 
         .footer-container {
@@ -808,27 +840,31 @@
             margin: 0 auto;
         }
 
-        .footer-tagline {
-            text-align: center;
-            font-family: 'Noto Serif SC', serif;
-            font-size: 28px;
-            color: var(--accent-warm);
-            margin-bottom: 60px;
-            font-weight: 500;
-        }
-
         .footer-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 60px;
-            margin-bottom: 50px;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 24px;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            opacity: 0.6;
+            line-height: 1.9;
         }
 
         .footer-col h4 {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 600;
-            color: var(--primary-dark);
-            margin-bottom: 24px;
+            margin-bottom: 20px;
+            color: var(--accent);
         }
 
         .footer-col ul {
@@ -836,56 +872,34 @@
         }
 
         .footer-col ul li {
-            margin-bottom: 14px;
+            margin-bottom: 12px;
         }
 
         .footer-col ul li a {
-            color: var(--medium-text);
+            color: rgba(255,255,255,0.6);
             text-decoration: none;
-            font-size: 15px;
-            transition: color 0.3s ease;
+            font-size: 14px;
+            transition: color 0.3s;
         }
 
-        .footer-col ul li a:hover {
-            color: var(--accent-warm);
-        }
-
-        .footer-contact p {
-            color: var(--medium-text);
-            font-size: 15px;
-            margin-bottom: 14px;
-            line-height: 1.8;
-        }
+        .footer-col ul li a:hover { color: var(--accent); }
 
         .footer-copyright {
             text-align: center;
-            padding-top: 40px;
-            border-top: 1px solid var(--border-subtle);
-            color: var(--light-text);
-            font-size: 14px;
-        }
-
-        /* Scroll Animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.9s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+            padding-top: 32px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.4);
+            font-size: 13px;
+            letter-spacing: 2px;
         }
 
         /* Responsive Design */
         @media (max-width: 1024px) {
-            .nav-menu {
-                display: none;
-            }
+            .nav-menu { display: none; }
 
-            .features-grid,
-            .programs-grid,
-            .testimonials-grid {
+            .philosophy-grid,
+            .testimonials-grid,
+            .pricing-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
 
@@ -897,11 +911,15 @@
                 border-right: none;
             }
 
-            .day-schedule {
+            .footer-grid {
                 grid-template-columns: 1fr;
             }
 
-            .footer-grid {
+            .accommodation-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-activities {
                 grid-template-columns: 1fr;
             }
         }
@@ -917,45 +935,29 @@
             }
 
             .hero h1 {
-                font-size: 42px;
-            }
-
-            .hero-subtitle {
-                font-size: 17px;
-            }
-
-            .hero-slogan {
-                font-size: 22px;
+                font-size: 36px;
             }
 
             .section {
-                padding: 70px 16px;
+                padding: 48px 16px;
             }
 
-            .section-header h2 {
-                font-size: 32px;
+            .section-title {
+                font-size: 28px;
             }
 
-            .features-grid,
-            .programs-grid,
-            .testimonials-grid {
+            .philosophy-grid,
+            .testimonials-grid,
+            .pricing-grid {
                 grid-template-columns: 1fr;
             }
 
-            .program-card.featured {
+            .pricing-card.featured {
                 transform: scale(1);
             }
 
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .booking-container {
-                padding: 40px 24px;
-            }
-
-            .schedule-day {
-                padding: 35px 25px;
+            .timeline {
+                padding-left: 40px;
             }
 
             .highlight-item {
@@ -968,6 +970,18 @@
                 margin-bottom: 16px;
             }
         }
+
+        /* Fade In Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
@@ -978,54 +992,57 @@
             <span>禅柔旅修</span>
         </div>
         <ul class="nav-menu">
-            <li><a href="index.html#home">首页</a></li>
+            <li><a href="index.html">首页</a></li>
             <li><a href="index.html#services">心理咨询</a></li>
             <li><a href="index.html#growth">个人成长</a></li>
-            <li><a href="#features">疗愈旅修</a></li>
+            <li><a href="retreats.html">疗愈旅修</a></li>
             <li><a href="index.html#eap">企业EAP</a></li>
             <li><a href="index.html#team">疗愈师团队</a></li>
             <li><a href="journal.html">科学期刊</a></li>
-            <li><a href="#booking">预约咨询</a></li>
+            <li><a href="index.html#booking">预约咨询</a></li>
         </ul>
-        <div class="nav-cta">
-            <a href="#booking" class="btn btn-outline">获取方案</a>
-            <a href="#booking" class="btn btn-primary">立即预约</a>
-        </div>
+        <a href="index.html#booking" class="nav-cta">立即预约</a>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="hero-content fade-in">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
             <div class="hero-badge">CHANROU BALI RETREAT · 2026</div>
-            <h1>巴厘岛隐奢旅修</h1>
-            <p class="hero-subtitle">在乌布丛林深处，以正念冥想唤醒内在觉知，用瑜伽与音疗重构身心秩序</p>
-            <p class="hero-slogan">禅于心・柔于行・旅愈身心</p>
-            <div class="hero-cta">
-                <a href="#programs" class="btn btn-primary">开启疗愈之旅</a>
-                <a href="#schedule" class="btn btn-outline">查看行程详情</a>
+            <h1>
+                巴厘岛隐奢旅修
+                <span>BALI WELLNESS RETREAT</span>
+            </h1>
+            <p class="hero-subtitle">
+                在乌布丛林深处，以正念冥想唤醒内在觉知<br>
+                用瑜伽与音疗重构身心秩序，让自然成为最好的疗愈师
+            </p>
+            <div class="hero-cta-group">
+                <a href="index.html#booking" class="hero-cta-primary">开启疗愈之旅</a>
+                <a href="#itinerary" class="hero-cta-secondary">查看行程详情</a>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="section" id="features">
+    <!-- Philosophy Section -->
+    <section class="section" id="philosophy">
         <div class="section-header fade-in">
             <div class="section-label">BRAND PHILOSOPHY</div>
-            <h2>三重疗愈维度</h2>
+            <h2 class="section-title">三重疗愈维度</h2>
         </div>
-        <div class="features-grid">
-            <div class="feature-card fade-in">
-                <div class="feature-icon">🌿</div>
+        <div class="philosophy-grid">
+            <div class="philosophy-card fade-in">
+                <div class="philosophy-icon">🌿</div>
                 <h3>自然疗愈</h3>
                 <p>深入乌布原始丛林与稻田，在巴厘岛独有的地气能量中，通过森林浴、稻田漫步、瀑布净化等自然仪式，重建人与大地的连接</p>
             </div>
-            <div class="feature-card fade-in">
-                <div class="feature-icon">🧘</div>
+            <div class="philosophy-card fade-in">
+                <div class="philosophy-icon">🧘</div>
                 <h3>身心整合</h3>
-                <p>融合哈他瑜伽、正念冥想、颂钵音疗与呼吸法，由国际认证导师带领，每日三小时深度练习，释放积压情绪，找回身体觉知</p>
+                <p>融合哈他瑜伽、正念冥想、颂钵音疗与呼吸法，由国际认证导师带领，每日深度练习，释放积压情绪，找回身体觉知</p>
             </div>
-            <div class="feature-card fade-in">
-                <div class="feature-icon">✨</div>
+            <div class="philosophy-card fade-in">
+                <div class="philosophy-icon">✨</div>
                 <h3>内在觉醒</h3>
                 <p>通过一对一生命教练对话、艺术表达工坊与星空静默夜，在安全容器中探索自我议题，完成从"疗愈"到"觉醒"的深层转化</p>
             </div>
@@ -1033,10 +1050,10 @@
     </section>
 
     <!-- Highlights Section -->
-    <section class="section programs-section" id="highlights">
+    <section class="section section-light" id="highlights">
         <div class="section-header fade-in">
             <div class="section-label">EXPERIENCE HIGHLIGHTS</div>
-            <h2>六大核心体验</h2>
+            <h2 class="section-title">六大核心体验</h2>
         </div>
         <div class="highlights-grid">
             <div class="highlight-item fade-in">
@@ -1084,372 +1101,318 @@
         </div>
     </section>
 
-    <!-- Schedule Section -->
-    <section class="section" id="schedule">
+    <!-- Itinerary Section -->
+    <section class="section" id="itinerary">
         <div class="section-header fade-in">
-            <div class="section-label">RETREAT SCHEDULE</div>
-            <h2>五天四晚 · 深度疗愈日程</h2>
+            <div class="section-label">RETREAT ITINERARY</div>
+            <h2 class="section-title">五天四夜 · 深度疗愈日程</h2>
         </div>
-        <div class="schedule-timeline">
-            <div class="schedule-day fade-in">
-                <div class="day-header">
-                    <div class="day-number">1</div>
-                    <div class="day-title">
-                        <h3>抵达与落地</h3>
-                        <p>归野 · 落地扎根</p>
+        <div class="timeline">
+            <div class="timeline-item fade-in">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">DAY 01 · 抵达与 grounding</div>
+                <div class="timeline-title">归野 · 落地扎根</div>
+                <div class="timeline-activities">
+                    <div class="activity">
+                        <div class="activity-time">14:00</div>
+                        <div class="activity-desc">登巴萨机场专车接机，入住乌布丛林别墅</div>
                     </div>
-                </div>
-                <div class="day-schedule">
-                    <div class="schedule-item">
-                        <span class="schedule-time">14:00</span>
-                        <div class="schedule-content">
-                            <h4>专车接机</h4>
-                            <p>登巴萨机场接机，入住乌布丛林别墅</p>
-                        </div>
+                    <div class="activity">
+                        <div class="activity-time">16:00</div>
+                        <div class="activity-desc">欢迎茶会 + 行程说明 + 个人意图设定</div>
                     </div>
-                    <div class="schedule-item">
-                        <span class="schedule-time">16:00</span>
-                        <div class="schedule-content">
-                            <h4>欢迎茶会</h4>
-                            <p>行程说明会与个人意图设定</p>
-                        </div>
+                    <div class="activity">
+                        <div class="activity-time">17:30</div>
+                        <div class="activity-desc">日落瑜伽（温和修复序列）+ 欢迎晚宴</div>
                     </div>
-                    <div class="schedule-item">
-                        <span class="schedule-time">17:30</span>
-                        <div class="schedule-content">
-                            <h4>日落瑜伽</h4>
-                            <p>温和修复序列与欢迎晚宴</p>
-                        </div>
-                    </div>
-                    <div class="schedule-item">
-                        <span class="schedule-time">20:00</span>
-                        <div class="schedule-content">
-                            <h4>颂钵入眠</h4>
-                            <p>颂钵音疗入眠仪式</p>
-                        </div>
+                    <div class="activity">
+                        <div class="activity-time">20:00</div>
+                        <div class="activity-desc">颂钵音疗入眠仪式</div>
                     </div>
                 </div>
             </div>
-
-            <div class="schedule-day fade-in">
-                <div class="day-header">
-                    <div class="day-number">2</div>
-                    <div class="day-title">
-                        <h3>身体觉醒</h3>
-                        <p>唤醒 · 身体觉知</p>
+            <div class="timeline-item fade-in">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">DAY 02 · 身体觉醒</div>
+                <div class="timeline-title">唤醒 · 身体觉知</div>
+                <div class="timeline-activities">
+                    <div class="activity">
+                        <div class="activity-time">06:30</div>
+                        <div class="activity-desc">丛林晨间瑜伽（拜日式 + 呼吸法）</div>
                     </div>
-                </div>
-                <div class="day-schedule">
-                    <div class="schedule-item">
-                        <span class="schedule-time">06:30</span>
-                        <div class="schedule-content">
-                            <h4>晨间瑜伽</h4>
-                            <p>丛林中完成拜日式与呼吸法</p>
-                        </div>
+                    <div class="activity">
+                        <div class="activity-time">08:30</div>
+                        <div class="activity-desc">有机素食早午餐 + 阿育吠陀体质咨询</div>
                     </div>
-                    <div class="schedule-item">
-                        <span class="schedule-time">09:00</span>
-                        <div class="schedule-content">
-                            <h4>有机早餐</h4>
-                            <p>阿育吠陀体质咨询</p>
-                        </div>
+                    <div class="activity">
+                        <div class="activity-time">10:30</div>
+                        <div class="activity-desc">稻田正念行走（两小时静默练习）</div>
                     </div>
-                    <div class="schedule-item">
-                        <span class="schedule-time">10:30</span>
-                        <div class="schedule-content">
-                            <h4>稻田行走</h4>
-                            <p>两小时静默练习</p>
-                        </div>
+                    <div class="activity">
+                        <div class="activity-time">15:00</div>
+                        <div class="activity-desc">阿育吠陀油疗SPA（90分钟）</div>
                     </div>
-                    <div class="schedule-item">
-                        <span class="schedule-time">15:00</span>
-                        <div class="schedule-content">
-                            <h4>阿育吠陀SPA</h4>
-                            <p>90分钟定制油疗</p>
-                        </div>
+                    <div class="activity">
+                        <div class="activity-time">19:00</div>
+                        <div class="activity-desc">烛光冥想 + 个人教练一对一（30分钟）</div>
                     </div>
                 </div>
             </div>
-
-            <div class="schedule-day fade-in">
-                <div class="day-header">
-                    <div class="day-number">3</div>
-                    <div class="day-title">
-                        <h3>文化沉浸</h3>
-                        <p>洗礼 · 文化净化</p>
+            <div class="timeline-item fade-in">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">DAY 03 · 文化沉浸</div>
+                <div class="timeline-title">洗礼 · 文化净化</div>
+                <div class="timeline-activities">
+                    <div class="activity">
+                        <div class="activity-time">06:00</div>
+                        <div class="activity-desc">日出冥想 + 呼吸法进阶（Pranayama）</div>
                     </div>
-                </div>
-                <div class="day-schedule">
-                    <div class="schedule-item">
-                        <span class="schedule-time">06:00</span>
-                        <div class="schedule-content">
-                            <h4>日出冥想</h4>
-                            <p>呼吸法进阶（Pranayama）</p>
-                        </div>
+                    <div class="activity">
+                        <div class="activity-time">08:30</div>
+                        <div class="activity-desc">前往圣泉寺Tirta Empul净化仪式</div>
                     </div>
-                    <div class="schedule-item">
-                        <span class="schedule-time">09:00</span>
-                        <div class="schedule-content">
-                            <h4>圣泉寺</h4>
-                            <p>Tirta Empul净化仪式</p>
-                        </div>
+                    <div class="activity">
+                        <div class="activity-time">12:00</div>
+                        <div class="activity-desc">乌布传统市场有机午餐 + 自由探索</div>
                     </div>
-                    <div class="schedule-item">
-                        <span class="schedule-time">14:00</span>
-                        <div class="schedule-content">
-                            <h4>巴厘舞蹈</h4>
-                            <p>传统舞蹈体验课程</p>
-                        </div>
+                    <div class="activity">
+                        <div class="activity-time">15:00</div>
+                        <div class="activity-desc">巴厘岛传统舞蹈体验课</div>
                     </div>
-                    <div class="schedule-item">
-                        <span class="schedule-time">19:00</span>
-                        <div class="schedule-content">
-                            <h4>铜锣浴</h4>
-                            <p>集体音疗与分享圈</p>
-                        </div>
+                    <div class="activity">
+                        <div class="activity-time">19:00</div>
+                        <div class="activity-desc">铜锣浴集体音疗 + 分享圈</div>
                     </div>
                 </div>
             </div>
-
-            <div class="schedule-day fade-in">
-                <div class="day-header">
-                    <div class="day-number">4</div>
-                    <div class="day-title">
-                        <h3>内在探索</h3>
-                        <p>深入 · 内在转化</p>
+            <div class="timeline-item fade-in">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">DAY 04 · 内在探索</div>
+                <div class="timeline-title">深入 · 内在转化</div>
+                <div class="timeline-activities">
+                    <div class="activity">
+                        <div class="activity-time">06:30</div>
+                        <div class="activity-desc">力量瑜伽 + 倒立工作坊</div>
                     </div>
-                </div>
-                <div class="day-schedule">
-                    <div class="schedule-item">
-                        <span class="schedule-time">06:30</span>
-                        <div class="schedule-content">
-                            <h4>力量瑜伽</h4>
-                            <p>倒立工作坊</p>
-                        </div>
+                    <div class="activity">
+                        <div class="activity-time">09:00</div>
+                        <div class="activity-desc">艺术表达工坊（曼陀罗绘画/自由书写）</div>
                     </div>
-                    <div class="schedule-item">
-                        <span class="schedule-time">09:00</span>
-                        <div class="schedule-content">
-                            <h4>艺术疗愈</h4>
-                            <p>曼陀罗绘画与自由书写</p>
-                        </div>
+                    <div class="activity">
+                        <div class="activity-time">11:00</div>
+                        <div class="activity-desc">瀑布净化 + 自然浸泡</div>
                     </div>
-                    <div class="schedule-item">
-                        <span class="schedule-time">14:00</span>
-                        <div class="schedule-content">
-                            <h4>教练对话</h4>
-                            <p>一对一深度生命议题探索</p>
-                        </div>
+                    <div class="activity">
+                        <div class="activity-time">14:00</div>
+                        <div class="activity-desc">深度一对一教练对话（生命议题探索）</div>
                     </div>
-                    <div class="schedule-item">
-                        <span class="schedule-time">17:00</span>
-                        <div class="schedule-content">
-                            <h4>感恩仪式</h4>
-                            <p>日落瑜伽与告别晚宴</p>
-                        </div>
+                    <div class="activity">
+                        <div class="activity-time">17:00</div>
+                        <div class="activity-desc">日落瑜伽 + 感恩仪式</div>
+                    </div>
+                    <div class="activity">
+                        <div class="activity-time">19:30</div>
+                        <div class="activity-desc">告别晚宴（巴厘岛传统料理）</div>
                     </div>
                 </div>
             </div>
-
-            <div class="schedule-day fade-in">
-                <div class="day-header">
-                    <div class="day-number">5</div>
-                    <div class="day-title">
-                        <h3>整合回归</h3>
-                        <p>归心 · 带着觉知离开</p>
+            <div class="timeline-item fade-in">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">DAY 05 · 整合与回归</div>
+                <div class="timeline-title">归心 · 带着觉知离开</div>
+                <div class="timeline-activities">
+                    <div class="activity">
+                        <div class="activity-time">06:00</div>
+                        <div class="activity-desc">星空静默冥想 + 意图回顾</div>
                     </div>
-                </div>
-                <div class="day-schedule">
-                    <div class="schedule-item">
-                        <span class="schedule-time">06:00</span>
-                        <div class="schedule-content">
-                            <h4>星空冥想</h4>
-                            <p>静默冥想与意图回顾</p>
-                        </div>
+                    <div class="activity">
+                        <div class="activity-time">07:30</div>
+                        <div class="activity-desc">告别瑜伽 + 团体祝福仪式</div>
                     </div>
-                    <div class="schedule-item">
-                        <span class="schedule-time">07:30</span>
-                        <div class="schedule-content">
-                            <h4>告别瑜伽</h4>
-                            <p>团体祝福仪式</p>
-                        </div>
+                    <div class="activity">
+                        <div class="activity-time">09:00</div>
+                        <div class="activity-desc">有机早午餐 + 21天回家练习指南发放</div>
                     </div>
-                    <div class="schedule-item">
-                        <span class="schedule-time">09:00</span>
-                        <div class="schedule-content">
-                            <h4>回家指南</h4>
-                            <p>21天练习方案发放</p>
-                        </div>
-                    </div>
-                    <div class="schedule-item">
-                        <span class="schedule-time">11:00</span>
-                        <div class="schedule-content">
-                            <h4>返程</h4>
-                            <p>专车送机，结束疗愈之旅</p>
-                        </div>
+                    <div class="activity">
+                        <div class="activity-time">11:00</div>
+                        <div class="activity-desc">专车送机，结束疗愈之旅</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Programs Section -->
-    <section class="section programs-section" id="programs">
+    <!-- Accommodation Section -->
+    <section class="section section-dark" id="accommodation">
+        <div class="section-header fade-in">
+            <div class="section-label">ACCOMMODATION</div>
+            <h2 class="section-title">隐奢住宿选择</h2>
+        </div>
+        <div class="accommodation-grid">
+            <div class="accommodation-card fade-in">
+                <h3>丛林景观套房</h3>
+                <div class="price">¥9,800<span style="font-size:16px">/人</span></div>
+                <div class="price-note">五天四夜 · 双人入住</div>
+                <ul class="accommodation-features">
+                    <li>65㎡丛林景观套房</li>
+                    <li>私人露台 + 户外浴缸</li>
+                    <li>每日有机素食三餐</li>
+                    <li>全部行程课程费用</li>
+                    <li>机场专车接送</li>
+                    <li>21天回家练习指南</li>
+                </ul>
+            </div>
+            <div class="accommodation-card fade-in">
+                <h3>私人泳池别墅</h3>
+                <div class="price">¥15,800<span style="font-size:16px">/人</span></div>
+                <div class="price-note">五天四夜 · 单人入住</div>
+                <ul class="accommodation-features">
+                    <li>120㎡独栋私人泳池别墅</li>
+                    <li>私人无边泳池 + 花园庭院</li>
+                    <li>每日有机素食三餐 + 下午茶</li>
+                    <li>全部行程课程费用</li>
+                    <li>机场专车接送 + 乌布市区接送</li>
+                    <li>额外一次私人SPA（90分钟）</li>
+                    <li>21天回家练习指南 + 线上跟进</li>
+                    <li>专属管家服务</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Process Section -->
+    <section class="section section-light" id="process">
+        <div class="section-header fade-in">
+            <div class="section-label">BOOKING PROCESS</div>
+            <h2 class="section-title">四步开启疗愈</h2>
+        </div>
+        <div class="process-steps">
+            <div class="process-step fade-in">
+                <div class="step-number">1</div>
+                <div class="step-title">在线咨询</div>
+                <div class="step-desc">添加品牌顾问微信，了解行程详情，确认出行意向与身体情况</div>
+            </div>
+            <div class="process-step fade-in">
+                <div class="step-number">2</div>
+                <div class="step-title">填写问卷</div>
+                <div class="step-desc">完成身心健康评估问卷，帮助导师团队提前了解你的需求与期待</div>
+            </div>
+            <div class="process-step fade-in">
+                <div class="step-number">3</div>
+                <div class="step-title">确认预订</div>
+                <div class="step-desc">支付50%定金锁定名额，收到行前准备指南与装备清单</div>
+            </div>
+            <div class="process-step fade-in">
+                <div class="step-number">4</div>
+                <div class="step-title">启程疗愈</div>
+                <div class="step-desc">抵达巴厘岛，专车接机入住，开启五天四夜深度疗愈之旅</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section" id="pricing">
         <div class="section-header fade-in">
             <div class="section-label">PRICING PLANS</div>
-            <h2>旅修套餐选择</h2>
+            <h2 class="section-title">旅修套餐选择</h2>
         </div>
-        <div class="programs-grid">
-            <div class="program-card fade-in">
-                <div class="program-image">🌺</div>
-                <div class="program-content">
-                    <span class="program-tag">3天2晚</span>
-                    <h3>初阶旅修</h3>
-                    <p class="program-description">周末快闪，在短时间内获得深度放松与重启</p>
-                    <ul class="program-features">
-                        <li>✅ 丛林景观房（双人入住）</li>
-                        <li>✅ 每日2节瑜伽课程</li>
-                        <li>✅ 1次颂钵音疗体验</li>
-                        <li>✅ 有机素食三餐</li>
-                        <li>✅ 机场接送服务</li>
-                        <li>✅ 7天线上跟进</li>
-                    </ul>
-                    <div class="program-price">
-                        <div>
-                            <div class="price-text">¥6,800</div>
-                            <div class="price-note">原价 ¥8,800</div>
-                        </div>
-                        <a href="#booking" class="btn btn-outline">选择套餐</a>
-                    </div>
-                </div>
+        <div class="pricing-grid">
+            <div class="pricing-card fade-in">
+                <div class="pricing-name">初阶旅修</div>
+                <div class="pricing-duration">3天2夜 · 周末快闪</div>
+                <div class="pricing-price">¥6,800<span>/人</span></div>
+                <div class="pricing-original">原价 ¥8,800</div>
+                <ul class="pricing-features">
+                    <li>丛林景观房（双人入住）</li>
+                    <li>每日2节瑜伽课程</li>
+                    <li>1次颂钵音疗体验</li>
+                    <li>有机素食三餐</li>
+                    <li>机场接送服务</li>
+                    <li>7天线上跟进</li>
+                </ul>
+                <a href="index.html#booking" class="pricing-btn">选择套餐</a>
             </div>
-
-            <div class="program-card featured fade-in">
-                <div class="program-badge">最受欢迎</div>
-                <div class="program-image">✨</div>
-                <div class="program-content">
-                    <span class="program-tag">5天4晚</span>
-                    <h3>深度旅修</h3>
-                    <p class="program-description">完整疗愈体验，实现身心深层蜕变与成长</p>
-                    <ul class="program-features">
-                        <li>✅ 丛林景观套房（双人入住）</li>
-                        <li>✅ 每日3节瑜伽/冥想课程</li>
-                        <li>✅ 2次颂钵/铜锣音疗</li>
-                        <li>✅ 圣泉寺净化仪式</li>
-                        <li>✅ 阿育吠陀SPA（60分钟）</li>
-                        <li>✅ 一对一教练对话</li>
-                        <li>✅ 有机素食三餐</li>
-                        <li>✅ 机场接送与全程交通</li>
-                        <li>✅ 21天回家练习指南</li>
-                    </ul>
-                    <div class="program-price">
-                        <div>
-                            <div class="price-text">¥9,800</div>
-                            <div class="price-note">原价 ¥12,800</div>
-                        </div>
-                        <a href="#booking" class="btn btn-outline">选择套餐</a>
-                    </div>
-                </div>
+            <div class="pricing-card featured fade-in">
+                <div class="pricing-badge">最受欢迎</div>
+                <div class="pricing-name">深度旅修</div>
+                <div class="pricing-duration">5天4夜 · 完整疗愈</div>
+                <div class="pricing-price">¥9,800<span>/人</span></div>
+                <div class="pricing-original">原价 ¥12,800</div>
+                <ul class="pricing-features">
+                    <li>丛林景观套房（双人入住）</li>
+                    <li>每日3节瑜伽/冥想课程</li>
+                    <li>2次颂钵/铜锣音疗</li>
+                    <li>圣泉寺净化仪式</li>
+                    <li>阿育吠陀SPA（60分钟）</li>
+                    <li>一对一教练对话</li>
+                    <li>有机素食三餐</li>
+                    <li>机场接送 + 全程交通</li>
+                    <li>21天回家练习指南</li>
+                </ul>
+                <a href="index.html#booking" class="pricing-btn">选择套餐</a>
             </div>
-
-            <div class="program-card fade-in">
-                <div class="program-image">🌴</div>
-                <div class="program-content">
-                    <span class="program-tag">7天6晚</span>
-                    <h3>尊享旅修</h3>
-                    <p class="program-description">蜕变之旅，定制化体验，专属管家服务</p>
-                    <ul class="program-features">
-                        <li>✅ 私人泳池别墅（单人入住）</li>
-                        <li>✅ 每日4节定制课程</li>
-                        <li>✅ 3次深度音疗体验</li>
-                        <li>✅ 圣泉寺+瀑布双重净化</li>
-                        <li>✅ 阿育吠陀SPA（90分钟×2）</li>
-                        <li>✅ 3次一对一教练对话</li>
-                        <li>✅ 有机素食+私厨定制</li>
-                        <li>✅ 全程专车+专属管家</li>
-                        <li>✅ 60天线上教练跟进</li>
-                        <li>✅ 旅修纪念影像记录</li>
-                    </ul>
-                    <div class="program-price">
-                        <div>
-                            <div class="price-text">¥15,800</div>
-                            <div class="price-note">原价 ¥19,800</div>
-                        </div>
-                        <a href="#booking" class="btn btn-outline">选择套餐</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Team Section -->
-    <section class="section team-section">
-        <div class="section-header fade-in">
-            <div class="section-label">RETREAT MENTORS</div>
-            <h2>核心导师团队</h2>
-        </div>
-        <div class="team-grid">
-            <div class="team-card fade-in">
-                <div class="team-avatar">👩‍⚕️</div>
-                <h3>林元嘉</h3>
-                <p class="role">创始人 · 首席瑜伽导师</p>
-                <p class="bio">RYT-500认证，印度瑞诗凯诗游学经历，专注正念瑜伽与阴瑜伽教学8年，擅长将东方哲学融入现代生活</p>
-            </div>
-            <div class="team-card fade-in">
-                <div class="team-avatar">🎵</div>
-                <h3>Ade Rahman</h3>
-                <p class="role">音疗师 · 巴厘岛本土</p>
-                <p class="bio">尼泊尔颂钵学院认证音疗师，10年音疗实践经验，精通铜锣、颂钵与水晶钵演奏</p>
-            </div>
-            <div class="team-card fade-in">
-                <div class="team-avatar">💫</div>
-                <h3>Dr. Sarah Chen</h3>
-                <p class="role">生命教练 · 心理学博士</p>
-                <p class="bio">美国ICF认证PCC教练，临床心理学博士，专注创伤知情教练与正念减压（MBSR）</p>
+            <div class="pricing-card fade-in">
+                <div class="pricing-name">尊享旅修</div>
+                <div class="pricing-duration">7天6夜 · 蜕变之旅</div>
+                <div class="pricing-price">¥15,800<span>/人</span></div>
+                <div class="pricing-original">原价 ¥19,800</div>
+                <ul class="pricing-features">
+                    <li>私人泳池别墅（单人入住）</li>
+                    <li>每日4节定制课程</li>
+                    <li>3次深度音疗体验</li>
+                    <li>圣泉寺 + 瀑布双重净化</li>
+                    <li>阿育吠陀SPA（90分钟×2）</li>
+                    <li>3次一对一教练对话</li>
+                    <li>有机素食 + 私厨定制</li>
+                    <li>全程专车 + 专属管家</li>
+                    <li>60天线上教练跟进</li>
+                    <li>旅修纪念影像记录</li>
+                </ul>
+                <a href="index.html#booking" class="pricing-btn">选择套餐</a>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section class="section programs-section">
+    <section class="section section-light" id="testimonials">
         <div class="section-header fade-in">
             <div class="section-label">TESTIMONIALS</div>
-            <h2>学员真实反馈</h2>
+            <h2 class="section-title">学员真实反馈</h2>
         </div>
         <div class="testimonials-grid">
             <div class="testimonial-card fade-in">
-                <p class="testimonial-quote">
-                    这是我参加过最有质感的旅修。不是那种走马观花的打卡，而是真正沉下来与自己相处。林老师的瑜伽课让我第一次感受到呼吸的力量。
-                </p>
+                <div class="testimonial-text">
+                    这是我参加过最有质感的旅修。不是那种走马观花的打卡，而是真正沉下来与自己相处。林老师的瑜伽课让我第一次感受到呼吸的力量，回国后我坚持每天练习，整个人状态完全不一样了。
+                </div>
                 <div class="testimonial-author">
                     <div class="author-avatar">L</div>
                     <div class="author-info">
                         <h5>李小姐</h5>
-                        <p>互联网产品经理</p>
+                        <p>互联网产品经理 · 深度旅修学员</p>
                     </div>
                 </div>
             </div>
             <div class="testimonial-card fade-in">
-                <p class="testimonial-quote">
-                    作为一个常年焦虑的创业者，这次旅修给了我一个暂停键。Dr. Sarah的教练对话帮我理清了很多困惑，回来后整个人状态完全不一样。
-                </p>
+                <div class="testimonial-text">
+                    作为一个常年焦虑的创业者，这次旅修给了我一个暂停键。Dr. Sarah的教练对话帮我理清了很多困惑，Ade的音疗让我第一次体验到什么叫"深度放松"。回国后复购了尊享套餐，准备带妈妈一起来。
+                </div>
                 <div class="testimonial-author">
                     <div class="author-avatar">W</div>
                     <div class="author-info">
-                        <h5>张先生</h5>
-                        <p>科技公司创始人</p>
+                        <h5>王先生</h5>
+                        <p>科技公司创始人 · 尊享旅修学员</p>
                     </div>
                 </div>
             </div>
             <div class="testimonial-card fade-in">
-                <p class="testimonial-quote">
-                    住宿环境超出预期，丛林别墅的清晨瑜伽是此行最难忘的记忆。食物也很用心，每一餐都能感受到团队对细节的把控。
-                </p>
+                <div class="testimonial-text">
+                    住宿环境超出预期，丛林别墅的清晨瑜伽是此行最难忘的记忆。食物也很用心，每一餐都能感受到团队对细节的把控。最重要的是认识了一群同频的朋友，我们到现在还在群里互相支持。
+                </div>
                 <div class="testimonial-author">
                     <div class="author-avatar">Z</div>
                     <div class="author-info">
-                        <h5>王女士</h5>
-                        <p>品牌设计师</p>
+                        <h5>张女士</h5>
+                        <p>品牌设计师 · 深度旅修学员</p>
                     </div>
                 </div>
             </div>
@@ -1460,7 +1423,7 @@
     <section class="section" id="faq">
         <div class="section-header fade-in">
             <div class="section-label">FAQ</div>
-            <h2>常见问题</h2>
+            <h2 class="section-title">常见问题</h2>
         </div>
         <div class="faq-container">
             <div class="faq-item fade-in" onclick="this.classList.toggle('active')">
@@ -1469,7 +1432,7 @@
                     <span class="faq-toggle">+</span>
                 </div>
                 <div class="faq-answer">
-                    完全可以。我们的课程设计兼顾初学者与进阶练习者，导师会根据每位学员的身体状况提供替代体式。旅修的核心是"疗愈"而非"竞技"。
+                    完全可以。我们的课程设计兼顾初学者与进阶练习者，导师会根据每位学员的身体情况提供替代体式。旅修的核心是"疗愈"而非"竞技"，零基础反而更容易打开身心。
                 </div>
             </div>
             <div class="faq-item fade-in" onclick="this.classList.toggle('active')">
@@ -1478,7 +1441,7 @@
                     <span class="faq-toggle">+</span>
                 </div>
                 <div class="faq-answer">
-                    费用不包含国际机票，但包含巴厘岛登巴萨机场的专车接送、行程期间的全部交通、住宿、餐饮、课程及活动费用。
+                    费用不包含国际机票，但包含巴厘岛登巴萨机场的专车接送、行程期间的全部交通、住宿、餐饮、课程及活动费用。我们可以协助您预订机票，并提供最佳航班建议。
                 </div>
             </div>
             <div class="faq-item fade-in" onclick="this.classList.toggle('active')">
@@ -1487,7 +1450,7 @@
                     <span class="faq-toggle">+</span>
                 </div>
                 <div class="faq-answer">
-                    每天下午15:00-17:00为自由探索时间，您可以选择在别墅休息、前往乌布市区探索，或预约额外SPA（尊享套餐已包含）。
+                    每天下午15:00-17:00为自由探索时间，您可以选择在别墅休息、前往乌布市区探索，或预约额外SPA（尊享套餐已包含）。我们提供乌布地图与推荐清单。
                 </div>
             </div>
             <div class="faq-item fade-in" onclick="this.classList.toggle('active')">
@@ -1496,7 +1459,7 @@
                     <span class="faq-toggle">+</span>
                 </div>
                 <div class="faq-answer">
-                    出发前30天取消可全额退款；15-30天取消退还70%定金；7-15天取消退还50%定金；7天内取消不可退款但可转让名额。
+                    出发前30天取消可全额退款；15-30天取消退还70%定金；7-15天取消退还50%定金；7天内取消不可退款但可转让名额或改期至下一期（一年内有效）。
                 </div>
             </div>
             <div class="faq-item fade-in" onclick="this.classList.toggle('active')">
@@ -1505,101 +1468,60 @@
                     <span class="faq-toggle">+</span>
                 </div>
                 <div class="faq-answer">
-                    当然可以。我们在预订问卷中会收集您的饮食偏好与过敏信息，厨房团队会据此调整菜单。支持素食、纯素、无麸质等多种饮食需求。
+                    当然可以。我们在预订问卷中会收集您的饮食偏好与过敏信息，厨房团队会据此调整菜单。支持素食、纯素、无麸质、清真等多种饮食需求。
+                </div>
+            </div>
+            <div class="faq-item fade-in" onclick="this.classList.toggle('active')">
+                <div class="faq-question">
+                    行程期间的安全保障如何？
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    我们为每位学员购买境外旅行意外险；驻地配备急救箱与AED设备；最近的国际医院距别墅15分钟车程；导师团队均持有急救证书。行程中避免高风险活动，以安全疗愈为首要原则。
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Booking Section -->
-    <section class="section booking-section" id="booking">
-        <div class="section-header fade-in">
-            <h2>开启你的疗愈之旅</h2>
-            <p class="section-description">填写信息，我们将在12小时内与您联系，定制专属方案</p>
-        </div>
-        <div class="booking-container fade-in">
-            <form class="booking-form" onsubmit="handleSubmit(event)">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="name">姓名</label>
-                        <input type="text" id="name" name="name" placeholder="请输入您的姓名" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="contact">联系方式</label>
-                        <input type="text" id="contact" name="contact" placeholder="微信/电话" required>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="service">服务类型</label>
-                        <select id="service" name="service" required>
-                            <option value="">请选择服务类型</option>
-                            <option value="counseling">心理咨询</option>
-                            <option value="growth">个人成长</option>
-                            <option value="retreat">疗愈旅修</option>
-                            <option value="eap">企业EAP</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="duration">行程时长</label>
-                        <select id="duration" name="duration" required>
-                            <option value="">请选择时长</option>
-                            <option value="7">3天2晚</option>
-                            <option value="10">5天4晚</option>
-                            <option value="14">7天6晚</option>
-                            <option value="custom">定制时长</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group full">
-                    <label for="needs">需求简述</label>
-                    <textarea id="needs" name="needs" placeholder="请告诉我们您的期望与需求..." required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 16px; padding: 16px;">
-                    提交预约 → 一对一对接
-                </button>
-            </form>
-            <p class="booking-note">所有信息严格保密，仅用于服务对接</p>
-        </div>
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+        <h2>准备好开启你的疗愈之旅了吗？</h2>
+        <p>每期仅限12人，确保每位学员获得充分的关注与空间</p>
+        <a href="index.html#booking" class="cta-banner-btn">立即咨询预订</a>
     </section>
 
     <!-- Footer -->
-    <footer id="contact">
+    <footer>
         <div class="footer-container">
-            <div class="footer-tagline">禅柔旅修 · 身心归位 · 向内自愈</div>
             <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>禅柔旅修</h3>
+                    <p>CHANROU · 隐奢疗愈旅修品牌<br><br>
+                    以自然为道场，以身心为功课<br>
+                    在世界的角落，遇见更好的自己<br><br>
+                    我们相信：真正的奢华，是内心的平静与自由。</p>
+                </div>
                 <div class="footer-col">
-                    <h4>导航快捷入口</h4>
+                    <h4>探索</h4>
                     <ul>
-                        <li><a href="index.html#home">返回首页</a></li>
-                        <li><a href="index.html#services">心理咨询</a></li>
-                        <li><a href="index.html#growth">个人成长</a></li>
-                        <li><a href="#programs">疗愈旅修</a></li>
-                        <li><a href="index.html#eap">企业EAP</a></li>
-                        <li><a href="journal.html">科学期刊</a></li>
-                        <li><a href="partners.html">合作伙伴</a></li>
-                        <li><a href="admin.html">管理后台</a></li>
+                        <li><a href="bali-retreat.html">巴厘岛旅修</a></li>
+                        <li><a href="retreats.html">大理静修</a></li>
+                        <li><a href="retreats.html">清迈禅修</a></li>
+                        <li><a href="partners.html">合作酒店</a></li>
                     </ul>
                 </div>
-                <div class="footer-col footer-contact">
-                    <h4>联系方式</h4>
-                    <p>咨询微信：anyu_healing</p>
-                    <p>咨询电话：138-0000-0000</p>
-                    <p>商务邮箱：hello@anyuhealing.com</p>
-                    <p>线下工作室地址：上海市静安区某某路某某号</p>
-                    <p>服务时间：每日 09:00–22:00</p>
-                </div>
                 <div class="footer-col">
-                    <h4>合规相关</h4>
+                    <h4>联系</h4>
                     <ul>
-                        <li><a href="#">合规声明</a></li>
-                        <li><a href="#">隐私政策</a></li>
-                        <li><a href="#">免责声明</a></li>
+                        <li><a href="#">微信：chanrou_2026</a></li>
+                        <li><a href="#">邮箱：hello@chanrou.com</a></li>
+                        <li><a href="journal.html">科学期刊</a></li>
+                        <li><a href="index.html#booking">预约咨询</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-copyright">
-                ©2026 禅柔旅修 保留所有权利 | <a href="admin.html" style="color: rgba(154,160,170,0.3); text-decoration: none; font-size: 12px;">后台</a> | ICP备案号：__________
+                © 2026 禅柔旅修 CHANROU. All Rights Reserved.
             </div>
         </div>
     </footer>
@@ -1623,30 +1545,16 @@
             observer.observe(el);
         });
 
-        // Form submission
-        function handleSubmit(event) {
-            event.preventDefault();
-            const formData = new FormData(event.target);
-            const data = Object.fromEntries(formData);
-            data.createdAt = new Date().toISOString();
-            data.contacted = false;
-            
-            // Save to localStorage
-            let bookings = JSON.parse(localStorage.getItem('chanrouBookings') || '[]');
-            bookings.push(data);
-            localStorage.setItem('chanrouBookings', JSON.stringify(bookings));
-            
-            alert('感谢您的预约！我们将在12小时内与您联系，为您定制专属的巴厘岛疗愈之旅。');
-            event.target.reset();
-        }
-
-        // Smooth scroll
+        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             });
         });
