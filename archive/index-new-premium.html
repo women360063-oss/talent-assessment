@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>真我天赋探索测评 - 探索内在 · 构建自己 · 创造财富 · 收获幸福</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.35);
+            overflow: hidden;
+        }
+        
+        .header-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 25px;
+            text-align: center;
+            font-size: 0.95em;
+            opacity: 0.95;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        .start-page {
+            text-align: center;
+        }
+        
+        .start-title {
+            font-size: 2em;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 25px;
+            line-height: 1.3;
+        }
+        
+        .start-description {
+            font-size: 1.05em;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        
+        .start-description p {
+            margin-bottom: 12px;
+        }
+        
+        .dimensions-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 35px 0;
+        }
+        
+        .dimension-card {
+            background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+            padding: 20px 15px;
+            border-radius: 16px;
+            border: 1px solid #e8ecf4;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .dimension-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102,126,234,0.15);
+            border-color: #667eea;
+        }
+        
+        .dimension-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .dimension-name {
+            font-size: 0.9em;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .authority-section {
+            background: linear-gradient(135deg, #e0f2fe 0%, #dbeafe 100%);
+            padding: 25px;
+            border-radius: 16px;
+            margin: 35px 0;
+            border: 2px solid #0ea5e9;
+            text-align: left;
+        }
+        
+        .authority-title {
+            color: #0369a1;
+            font-size: 1.15em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .authority-intro {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 15px;
+            font-size: 0.98em;
+        }
+        
+        .authority-list {
+            color: #555;
+            line-height: 1.9;
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .authority-list li {
+            margin-bottom: 8px;
+            font-size: 0.98em;
+        }
+        
+        .authority-note {
+            background: #f0f9ff;
+            padding: 15px;
+            border-radius: 12px;
+            border-left: 3px solid #0ea5e9;
+        }
+        
+        .authority-note p {
+            color: #555;
+            line-height: 1.7;
+            font-size: 0.95em;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 16px 50px;
+            font-size: 1.1em;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(102,126,234,0.4);
+        }
+        
+        .btn-small {
+            padding: 12px 30px;
+            font-size: 1em;
+        }
+        
+        .quiz-header {
+            margin-bottom: 30px;
+        }
+        
+        .quiz-title {
+            font-size: 1.6em;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .progress-container {
+            margin-bottom: 25px;
+        }
+        
+        .progress-bar {
+            background: #f0f0f0;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+        
+        .progress-text {
+            text-align: center;
+            color: #888;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+        
+        .question-card {
+            background: linear-gradient(135deg, #fafbff 0%, #ffffff 100%);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid #e8ecf4;
+            margin-bottom: 25px;
+        }
+        
+        .question-number {
+            color: #667eea;
+            font-weight: 700;
+            font-size: 0.95em;
+            margin-bottom: 15px;
+        }
+        
+        .question-text {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .option-btn {
+            padding: 18px 22px;
+            border: 2px solid #e0e0e0;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1em;
+            background: white;
+            text-align: left;
+            line-height: 1.6;
+        }
+        
+        .option-btn:hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+            transform: translateX(5px);
+        }
+        
+        .option-btn.selected {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .results-page {
+            text-align: center;
+        }
+        
+        .results-title {
+            font-size: 2em;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        .scores-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .score-card {
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            border: 2px solid #f0f0f0;
+        }
+        
+        .score-card.primary {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #f8f9ff 0%, #fff0f5 100%);
+        }
+        
+        .score-type {
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 12px;
+            font-size: 1em;
+        }
+        
+        .score-value {
+            font-size: 2.5em;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .score-label {
+            font-size: 0.85em;
+            color: #888;
+            margin-top: 8px;
+        }
+        
+        .result-detail {
+            background: linear-gradient(135deg, #f8f9ff 0%, #fff0f5 100%);
+            border-left: 6px solid #667eea;
+            padding: 35px;
+            margin-bottom: 30px;
+            border-radius: 20px;
+            text-align: left;
+        }
+        
+        .result-type-title {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.6em;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .type-icon-large {
+            font-size: 1.8em;
+        }
+        
+        .result-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        
+        .result-tag {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+        
+        .result-section {
+            margin: 25px 0;
+        }
+        
+        .result-section h4 {
+            color: #333;
+            margin-bottom: 12px;
+            font-size: 1.15em;
+        }
+        
+        .result-section p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+        
+        .result-section ul {
+            color: #555;
+            line-height: 1.9;
+            padding-left: 22px;
+        }
+        
+        .result-section li {
+            margin-bottom: 10px;
+        }
+        
+        .affirmation-box {
+            background: #fff0f5;
+            padding: 22px;
+            border-radius: 16px;
+            margin: 25px 0;
+            border-left: 5px solid #f093fb;
+        }
+        
+        .affirmation-box h4 {
+            color: #764ba2;
+            margin-bottom: 15px;
+        }
+        
+        .affirmation-box p {
+            color: #555;
+            font-style: italic;
+            line-height: 1.9;
+            margin-bottom: 10px;
+        }
+        
+        .mixed-type-box {
+            background: #fff9e6;
+            padding: 22px;
+            border-radius: 16px;
+            margin: 25px 0;
+            border: 2px dashed #fbbf24;
+        }
+        
+        .mixed-type-box h4 {
+            color: #d97706;
+            margin-bottom: 12px;
+        }
+        
+        .mixed-type-box p {
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        .career-section {
+            background: #f0fdf4;
+            padding: 22px;
+            border-radius: 16px;
+            margin: 25px 0;
+            border-left: 5px solid #10b981;
+        }
+        
+        .career-section h4 {
+            color: #059669;
+            margin-bottom: 15px;
+        }
+        
+        .career-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .career-item {
+            background: white;
+            padding: 10px 18px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            color: #555;
+            border: 1px solid #d1fae5;
+        }
+        
+        .qr-section {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e0e7ff 100%);
+            padding: 35px;
+            border-radius: 20px;
+            margin: 35px 0;
+            text-align: center;
+            border: 3px solid #667eea;
+        }
+        
+        .qr-title {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+            font-weight: 700;
+        }
+        
+        .qr-desc {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            font-size: 1.05em;
+        }
+        
+        .qr-placeholder {
+            width: 220px;
+            height: 220px;
+            background: white;
+            border: 4px dashed #667eea;
+            border-radius: 20px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #667eea;
+            font-weight: 600;
+            font-size: 1em;
+            line-height: 1.8;
+        }
+        
+        .final-message {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 35px;
+            border-radius: 20px;
+            margin: 35px 0;
+            text-align: center;
+        }
+        
+        .final-message p {
+            line-height: 2;
+            font-size: 1.1em;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .start-title {
+                font-size: 1.6em;
+            }
+            
+            .dimensions-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            
+            .dimension-card {
+                padding: 18px 12px;
+            }
+            
+            .scores-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .question-card {
+                padding: 22px;
+            }
+            
+            .result-detail {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-banner">
+            探索内在 · 构建自己 · 创造财富 · 收获幸福
+        </div>
+        
+        <div class="content">
+            <!-- 开始页面 -->
+            <div id="startPage" class="page active start-page">
+                <h1 class="start-title">
+                    🌟 欢迎来到真我蜕变之旅
+                </h1>
+                
+                <div class="start-description">
+                    <p>这不仅是一个测评，更是一次深入的自我探索。</p>
+                    <p>通过发现你的天赋优势，构建属于你的财富力、幸福力和事业力。</p>
+                    <p>共<span style="font-weight: 700; color: #667eea;">36</span>道题目，预计用时<span style="font-weight: 700; color: #667eea;">5-8分钟</span>，请跟随直觉做出选择。</p>
+                </div>
+                
+                <div class="dimensions-grid">
+                    <div class="dimension-card">
+                        <div class="dimension-icon">🧠</div>
+                        <div class="dimension-name">思维认知</div>
+                    </div>
+                    <div class="dimension-card">
+                        <div class="dimension-icon">🎨</div>
+                        <div class="dimension-name">创意表达</div>
+                    </div>
+                    <div class="dimension-card">
+                        <div class="dimension-icon">🤝</div>
+                        <div class="dimension-name">人际互动</div>
+                    </div>
+                    <div class="dimension-card">
+                        <div class="dimension-icon">📊</div>
+                        <div class="dimension-name">执行规划</div>
+                    </div>
+                    <div class="dimension-card">
+                        <div class="dimension-icon">🌟</div>
+                        <div class="dimension-name">领导力</div>
+                    </div>
+                    <div class="dimension-card">
+                        <div class="dimension-icon">💪</div>
+                        <div class="dimension-name">韧性</div>
+                    </div>
+                    <div class="dimension-card">
+                        <div class="dimension-icon">💡</div>
+                        <div class="dimension-name">洞察力</div>
+                    </div>
+                    <div class="dimension-card">
+                        <div class="dimension-icon">❤️</div>
+                        <div class="dimension-name">共情力</div>
+                    </div>
+                </div>
+                
+                <div class="authority-section">
+                    <div class="authority-title">
+                        🏛️ 测评权威参考
+                    </div>
+                    <p class="authority-intro">
+                        本《内在天赋测评》由心理学与成长领域专业整合编制，参考以下国际权威体系：
+                    </p>
+                    <ul class="authority-list">
+                        <li><strong>霍华德・加德纳</strong>「多元智能理论」</li>
+                        <li><strong>盖洛普</strong>「克利夫顿优势识别器」</li>
+                        <li><strong>丹尼尔・戈尔曼</strong>「情绪智力（EQ）理论」</li>
+                        <li><strong>积极心理学</strong>「天赋与优势发展」理念</li>
+                        <li><strong>荣格心理学</strong>「内在觉察与能量类型」</li>
+                    </ul>
+                    <div class="authority-note">
+                        <p>测评聚焦 8 大核心天赋维度，科学、中立、成长导向，可用于自我探索、疗愈方向定位、天赋发展与生命规划参考。</p>
+                    </div>
+                </div>
+                
+                <button class="btn-primary" onclick="startAssessment()">
+                    开始测评
+                </button>
+            </div>
+            
+            <!-- 测评页面 -->
+            <div id="quizPage" class="page">
+                <div class="quiz-header">
+                    <h2 class="quiz-title">✨ 真我天赋探索测评</h2>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                    </div>
+                    <div class="progress-text" id="progressText">第 1 题 / 共 36 题</div>
+                </div>
+                
+                <div id="questionsContainer"></div>
+                
+                <div class="button-group">
+                    <button class="btn-primary btn-small" id="prevBtn" onclick="prevPage()" style="display: none;">⬅️ 上一题</button>
+                    <button class="btn-primary btn-small" id="nextBtn" onclick="nextPage()">下一题 ➡️</button>
+                    <button class="btn-primary btn-small" id="submitBtn" onclick="submitAssessment()" style="display: none;">✨ 查看结果</button>
+                </div>
+            </div>
+            
+            <!-- 结果页面 -->
+            <div id="resultsPage" class="page results-page">
+                <h2 class="results-title">🎉 你的天赋测评结果</h2>
+                
+                <div id="scoresDisplay"></div>
+                
+                <div id="detailedResults"></div>
+                
+                <div class="qr-section">
+                    <h3 class="qr-title">💬 专属天赋解读顾问</h3>
+                    <p class="qr-desc">扫码添加我的微信，<strong>免费梳理你的天赋</strong>，再定制专属方案！</p>
+                    <div class="qr-placeholder">
+                        📱 这里放置<br>你的微信二维码
+                    </div>
+                </div>
+                
+                <div class="final-message">
+                    <p>
+                        <strong>这个测试，只是一个工具。</strong><br>
+                        真正的答案，在你心里。<br><br>
+                        找到那件事——<br>
+                        既能发挥你的天赋，<br>
+                        又能赚到钱，<br>
+                        还能让你自洽。<br><br>
+                        那件事，就是你的天命。<br><br>
+                        <strong>从今天起，做真实的自己！</strong><br>
+                        ✨ 你，值得！
+                    </p>
+                </div>
+                
+                <button class="btn-primary" onclick="restartAssessment()">🔄 重新测试</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 36道题目（扩展版）
+        const questions = [
+            { text: '当你需要做决定时，你更倾向于：', options: ['先分析数据和事实，再做决定', '先感受自己的内心，再做决定', '先听听别人的建议，再做决定', '先想象最好的结果，再做决定'] },
+            { text: '在一个聚会中，你更像是：', options: ['观察别人，不太主动说话', '和几个人深入聊天', '和很多人打招呼，到处走动', '成为焦点，带动气氛'] },
+            { text: '你更喜欢的工作方式是：', options: ['独立完成，有自己的空间', '和一小群人合作', '和很多人一起，热闹', '带领团队，指挥方向'] },
+            { text: '当你学习新东西时，你更倾向于：', options: ['看书、查资料，自己研究', '听别人讲解，然后理解', '动手做，在实践中学习', '想象它的样子，然后创造'] },
+            { text: '你更看重的是：', options: ['效率、结果、准确性', '和谐、感受、关系', '体验、过程、快乐', '愿景、可能性、成长'] },
+            { text: '当你遇到困难时，你更倾向于：', options: ['分析问题，找到解决方案', '找人倾诉，寻求支持', '先放一放，做点别的', '挑战它，把它看成机会'] },
+            { text: '你更喜欢的环境是：', options: ['安静、整洁、有条理', '温暖、舒适、有人情味', '热闹、有趣、有活力', '有挑战性、有可能性、有成长空间'] },
+            { text: '你更擅长的是：', options: ['分析、计算、逻辑', '倾听、共情、理解', '动手、操作、实践', '想象、创造、灵感'] },
+            { text: '当别人评价你时，你更常听到的是：', options: ['"你很理性/很有条理"', '"你很温暖/很懂我"', '"你很有趣/很有活力"', '"你很有想法/很有远见"'] },
+            { text: '你更愿意花时间在：', options: ['学习新技能、提升能力', '和朋友在一起、维护关系', '做自己喜欢的事、享受生活', '探索可能性、实现愿景'] },
+            { text: '当你要开始一个新项目时，你更倾向于：', options: ['先做计划，分解步骤', '先找伙伴，一起商量', '先动手做，边做边调整', '先想象愿景，充满激情'] },
+            { text: '你更在意的是：', options: ['有没有用、有没有价值', '会不会伤人、会不会和谐', '会不会开心、会不会有趣', '会不会成长、会不会突破'] },
+            { text: '当你感到压力时，你更倾向于：', options: ['自己处理，不给别人添麻烦', '找朋友聊聊，寻求安慰', '去玩、去放松，转移注意力', '挑战压力，把它变成动力'] },
+            { text: '你更喜欢的娱乐方式是：', options: ['看书、看纪录片、学习', '和朋友聊天、聚会', '运动、旅行、体验', '创作、想象、思考未来'] },
+            { text: '你更认同的是：', options: ['"知识就是力量"', '"爱是一切的答案"', '"活在当下，享受生活"', '"人生就是要不断成长"'] },
+            { text: '当你要向别人介绍自己时，你更倾向于：', options: ['说你的技能、能力、成就', '说你的性格、感受、关系', '说你的爱好、体验、有趣的事', '说你的愿景、梦想、未来的方向'] },
+            { text: '你更看重的金钱观是：', options: ['钱是工具，用来实现目标', '钱是安全感，用来照顾自己和家人', '钱是资源，用来体验和享受', '钱是燃料，用来实现愿景和成长'] },
+            { text: '当你选择一份工作时，你更看重：', options: ['能不能发挥能力、有没有成长空间', '人际关系好不好、环境舒不舒服', '有没有意思、能不能开心', '有没有挑战、能不能实现愿景'] },
+            { text: '你更擅长的沟通方式是：', options: ['逻辑清晰、有条理', '温暖共情、懂人心', '有趣幽默、带动气氛', '有感染力、点燃希望'] },
+            { text: '你更愿意成为的是：', options: ['专家、专业人士', '陪伴者、支持者', '体验者、生活家', '引领者、创造者'] },
+            { text: '当你要做选择时，你更倾向于：', options: ['列 pros and cons（优缺点），理性分析', '问自己的内心，感受哪个更对', '选那个更有趣的', '选那个更有挑战的'] },
+            { text: '你更在意的是：', options: ['对不对、准不准确', '好不好、和不和谐', '开不开心、有没有意思', '值不值、有没有成长'] },
+            { text: '你更喜欢的学习方式是：', options: ['上课、看书、系统化学习', '向人请教、在关系中学习', '实践、体验、做中学', '灵感、直觉、顿悟'] },
+            { text: '当你和人合作时，你更倾向于：', options: ['负责分析、计划、执行', '负责沟通、协调、维护关系', '负责创意、执行、带来乐趣', '负责愿景、方向、激励团队'] },
+            { text: '你更认同的人生态度是：', options: ['"精益求精，追求卓越"', '"和谐共处，爱是答案"', '"活在当下，享受生活"', '"不断成长，突破限制"'] },
+            { text: '当你要购买东西时，你更看重：', options: ['品质、实用性、性价比', '感觉、喜欢、和自己配不配', '有趣、独特、能不能带来体验', '可能性、成长、能不能帮助自己'] },
+            { text: '你更愿意花时间在：', options: ['提升能力、实现目标', '维护关系、和爱的人在一起', '体验生活、享受乐趣', '探索未来、实现愿景'] },
+            { text: '你更擅长的是：', options: ['解决问题、完成任务', '理解他人、维护关系', '创造乐趣、带来活力', '看到可能性、激励他人'] },
+            { text: '当你感到迷茫时，你更倾向于：', options: ['分析原因，找到方向', '找人聊聊，寻求支持', '去体验、去放松，重新连接自己', '想象未来，找到愿景'] },
+            { text: '你更想成为的是：', options: ['有能力、有成就的人', '有爱心、有温度的人', '有趣、有活力的人', '有愿景、有影响力的人'] },
+            { text: '面对突发情况，你更倾向于：', options: ['冷静分析，制定应对方案', '先安抚大家的情绪', '灵活应变，边走边看', '把它看成新的机会'] },
+            { text: '在团队中，你更常扮演的角色是：', options: ['出谋划策的军师', '凝聚人心的粘合剂', '带来活力的开心果', '指引方向的引领者'] },
+            { text: '你对"成功"的理解是：', options: ['达成目标，实现价值', '关系和谐，内心平静', '体验丰富，活得开心', '不断成长，突破自我'] },
+            { text: '当有人向你求助时，你更倾向于：', options: ['帮他分析问题，找到解决方案', '倾听和陪伴，给予情感支持', '带他去放松，转移注意力', '鼓励他，激发他的潜能'] },
+            { text: '你对未来的态度是：', options: ['做好规划，按部就班', '珍惜当下，顺其自然', '保持好奇，充满期待', '充满信心，主动创造'] },
+            { text: '在做重要决定时，你最看重的是：', options: '是否合理、是否可行', '是否走心、是否和谐', '是否有趣、是否开心', '是否成长、是否突破'] }
+        ];
+        
+        // 类型信息
+        const typeInfo = {
+            A: {
+                name: '专家/建设者',
+                icon: '🏗️',
+                keywords: ['理性', '逻辑', '目标', '能力', '专业', '效率'],
+                strengths: ['分析问题，找到解决方案', '制定计划，分解执行', '学习技能，精益求精', '完成任务，达到目标'],
+                source: '能力、成就、专业度',
+                careAbout: '对不对、准不准确、有没有价值',
+                careers: ['医生', '律师', '工程师', '科学家', '会计师', '程序员', '数据分析师', '产品经理', '项目经理', '运营总监', 'CEO', '教师', '培训师', '教练', '技术写作', '知识付费'],
+                affirmations: [
+                    '我是一个有能力的人。',
+                    '我的专业度，就是我的价值。',
+                    '我用我的能力，帮助自己和他人。',
+                    '我值得为我的专业能力收费。'
+                ],
+                advice: '发挥天赋：用你的专业能力解决问题；建立边界：给自己足够的独立空间；持续成长：不断学习，提升专业度；认可自己：为你的能力和成就感到骄傲'
+            },
+            B: {
+                name: '陪伴者/支持者',
+                icon: '🤗',
+                keywords: ['感受', '关系', '和谐', '爱', '理解', '支持'],
+                strengths: ['倾听他人，理解感受', '维护关系，创造和谐', '共情他人，给予支持', '温暖人心，带来安慰'],
+                source: '关系、爱、连接',
+                careAbout: '和不和谐、会不会伤人、有没有爱',
+                careers: ['心理咨询师', '疗愈师', '社工', '教师', '培训师', '亲子教练', '客服', '人力资源', '社区工作', '艺术疗愈', '音乐疗愈', '舞蹈疗愈', '育儿嫂', '陪护', '陪伴师'],
+                affirmations: [
+                    '我是一个有爱心的人。',
+                    '我的温暖，就是我的价值。',
+                    '我用我的陪伴，帮助自己和他人。',
+                    '我值得为我的陪伴和支持收费。'
+                ],
+                advice: '发挥天赋：用你的陪伴和支持帮助他人；建立边界：不要过度付出，照顾好自己；接受爱：允许自己接受他人的支持；认可自己

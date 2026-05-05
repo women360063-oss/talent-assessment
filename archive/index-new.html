@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>真我蜕变 · 天赋激活测评</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            color: white;
+            padding: 50px 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+        
+        .content {
+            padding: 50px;
+        }
+        
+        .module-intro {
+            background: linear-gradient(135deg, #f8f9ff 0%, #fff0f5 100%);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .module-intro h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+        
+        .module-intro p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.05em;
+        }
+        
+        .question {
+            margin-bottom: 35px;
+            padding: 25px;
+            background: #fafbff;
+            border-radius: 15px;
+            border: 1px solid #e8ecf4;
+        }
+        
+        .question-text {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .option {
+            padding: 18px 25px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.05em;
+            background: white;
+        }
+        
+        .option:hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+            transform: translateX(5px);
+        }
+        
+        .option.selected {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            color: white;
+            border: none;
+            padding: 18px 50px;
+            font-size: 1.2em;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 30px;
+            font-weight: 600;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .progress {
+            background: #f0f0f0;
+            height: 8px;
+            border-radius: 4px;
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s;
+        }
+        
+        .results {
+            display: none;
+        }
+        
+        .result-card {
+            background: linear-gradient(135deg, #f8f9ff 0%, #fff0f5 100%);
+            border-left: 6px solid #667eea;
+            padding: 35px;
+            margin-bottom: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        
+        .result-card h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.7em;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .result-card p {
+            color: #555;
+            line-height: 1.9;
+            font-size: 1.05em;
+        }
+        
+        .dimensions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .dimension {
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border: 2px solid #f0f0f0;
+            transition: transform 0.3s;
+        }
+        
+        .dimension:hover {
+            transform: translateY(-5px);
+            border-color: #667eea;
+        }
+        
+        .dimension-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        
+        .dimension-name {
+            font-weight: 700;
+            color: #333;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        
+        .dimension-score {
+            font-size: 2em;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+        }
+        
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        .start-page {
+            text-align: center;
+        }
+        
+        .start-page h2 {
+            font-size: 2.5em;
+            margin-bottom: 25px;
+            color: #333;
+            font-weight: 800;
+        }
+        
+        .start-page .intro {
+            font-size: 1.15em;
+            color: #666;
+            line-height: 2;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #fff9e6 0%, #fff0f5 100%);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 30px 0;
+            border: 2px dashed #f0c040;
+        }
+        
+        .highlight-box h4 {
+            color: #d97706;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .module-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .module-tab {
+            padding: 12px 24px;
+            background: #f0f0f0;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .module-tab.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #667eea;
+            margin: 30px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .action-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .action-list li {
+            padding: 15px 0;
+            border-bottom: 1px dashed #e0e0e0;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .action-list li:before {
+            content: "✨";
+            font-size: 1.3em;
+        }
+        
+        .quote-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin: 30px 0;
+            text-align: center;
+            font-size: 1.3em;
+            font-weight: 600;
+            line-height: 1.8;
+        }
+        
+        .three-pillars {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .pillar {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border: 3px solid;
+        }
+        
+        .pillar.love {
+            border-color: #f093fb;
+        }
+        
+        .pillar.wealth {
+            border-color: #fbbf24;
+        }
+        
+        .pillar.freedom {
+            border-color: #667eea;
+        }
+        
+        .pillar-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+        
+        .pillar-title {
+            font-weight: 700;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>✨ 真我蜕变 · 天赋激活测评</h1>
+            <p>探索内在 · 清理卡点 · 激活天赋 · 创造有爱有钱有自由的幸福人生</p>
+        </div>
+        
+        <div class="content">
+            <!-- 开始页面 -->
+            <div id="startPage" class="page active start-page">
+                <h2>🌟 欢迎来到你的天赋激活之旅</h2>
+                
+                <div class="intro">
+                    <p>这不仅仅是一个测评，这是一次深度的自我探索与疗愈之旅。</p>
+                    
+                    <div class="highlight-box">
+                        <h4>🎯 通过这个测评，你将：</h4>
+                        <div style="line-height: 2.2; color: #555;">
+                            <p>🔍 <strong>探索内在</strong> — 与你的潜意识深度链接</p>
+                            <p>💎 <strong>清理卡点</strong> — 释放限制性信念和模式</p>
+                            <p>⚡ <strong>激活天赋</strong> — 唤醒你与生俱来的创造力</p>
+                            <p>🎊 <strong>创造幸福</strong> — 构建有爱有钱有自由的人生</p>
+                        </div>
+                    </div>
+                    
+                    <div class="three-pillars">
+                        <div class="pillar love">
+                            <div class="pillar-icon">❤️</div>
+                            <div class="pillar-title">有爱</div>
+                            <p style="color: #666; font-size: 0.9em;">圆满的关系</p>
+                        </div>
+                        <div class="pillar wealth">
+                            <div class="pillar-icon">💰</div>
+                            <div class="pillar-title">有钱</div>
+                            <p style="color: #666; font-size: 0.9em;">丰盛的财富</p>
+                        </div>
+                        <div class="pillar freedom">
+                            <div class="pillar-icon">🦋</div>
+                            <div class="pillar-title">有自由</div>
+                            <p style="color: #666; font-size: 0.9em;">自主的人生</p>
+                        </div>
+                    </div>
+                    
+                    <div class="quote-box">
+                        "你的天赋从未离开，它只是在等待被唤醒。"<br>
+                        — 真我蜕变 · 主导人生
+                    </div>
+                    
+                    <p style="text-align: center; margin-top: 30px; color: #888;">
+                        📝 共72道题目，预计用时10-15分钟<br>
+                        💡 请在安静的环境中，跟随你的直觉作答
+                    </p>
+                </div>
+                
+                <button class="btn" onclick="startAssessment()">🚀 开始我的天赋激活之旅</button>
+            </div>
+            
+            <!-- 测评页面 -->
+            <div id="quizPage" class="page">
+                <div class="progress">
+                    <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+                </div>
+                
+                <div class="module-tabs" id="moduleTabs"></div>
+                
+                <div id="questionsContainer"></div>
+                
+                <div style="text-align: center;">
+                    <button class="btn" id="prevBtn" onclick="prevPage()" style="display: none;">⬅️ 上一部分</button>
+                    <button class="btn" id="nextBtn" onclick="nextPage()">下一部分 ➡️</button>
+                    <button class="btn" id="submitBtn" onclick="submitAssessment()" style="display: none;">✨ 查看我的天赋激活报告</button>
+                </div>
+            </div>
+            
+            <!-- 结果页面 -->
+            <div id="resultsPage" class="page results">
+                <h2 style="text-align: center; margin-bottom: 20px; color: #333; font-size: 2.5em;">🎉 你的天赋激活报告</h2>
+                <p style="text-align: center; color: #888; margin-bottom: 40px; font-size: 1.2em;">恭喜你完成了这次深度的自我探索！</p>
+                
+                <div class="dimensions" id="resultsDimensions"></div>
+                
+                <div id="detailedResults"></div>
+                
+                <div style="text-align: center; margin-top: 50px;">
+                    <button class="btn" onclick="restartAssessment()">🔄 再次探索</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 六大模块定义
+        const modules = [
+            {
+                id: 'self',
+                name: '🔍 自我探索',
+                description: '探索你的内在世界，与潜意识深度链接'
+            },
+            {
+                id: 'blocks',
+                name: '🧩 卡点清理',
+                description: '识别并释放你的限制性信念和模式'
+            },
+            {
+                id: 'talent',
+                name: '⚡ 天赋激活',
+                description: '唤醒你与生俱来的创造力和内在动力'
+            },
+            {
+                id: 'relationships',
+                name: '❤️ 关系圆融',
+                description: '构建清晰健康的人际关系（父母/亲密/社交）'
+            },
+            {
+                id: 'wealth',
+                name: '💰 财富丰盛',
+                description: '激活你的财富能量，创造富足人生'
+            },
+            {
+                id: 'freedom',
+                name: '🦋 人生自由',
+                description: '主宰自己的人生，拥有时间和空间的自由'
+            }
+        ];
+        
+        // 题目库 - 72道题
+        const questions = [
+            // 模块1: 自我探索 (1-12)
+            { module: 'self', text: '我经常有安静下来和自己对话的习惯', options: ['从不', '很少', '偶尔', '经常', '总是'] },
+            { module: 'self', text: '我能够清晰地描述自己的优点和特质', options: ['完全不能', '不太能', '一般', '比较能', '非常能'] },
+            { module: 'self', text: '我知道自己真正热爱的是什么', options: ['完全不知道', '不太清楚', '有点感觉', '比较清楚', '非常清楚'] },
+            { module: 'self', text: '我经常反思自己的人生方向和意义', options: ['从不', '很少', '偶尔', '经常', '总是'] },
+            { module: 'self', text: '我能够接纳自己的不完美', options: ['完全不能', '不太能', '一般', '比较能', '完全可以'] },
+            { module: 'self', text: '我对自己的未来有清晰的愿景', options: ['完全没有', '不太清晰', '有点模糊', '比较清晰', '非常清晰'] },
+            { module: 'self', text: '我经常感受到内心的平静和喜悦', options: ['从不', '很少', '偶尔', '经常', '总是'] },
+            { module: 'self', text: '我信任自己的直觉和感觉', options: ['完全不信任', '不太信任', '一般', '比较信任', '完全信任'] },
+            { module: 'self', text: '我知道自己的人生使命是什么', options: ['完全不知道', '不太清楚', '有点感觉', '比较清楚', '非常清楚'] },
+            { module: 'self', text: '我经常进行冥想、静心或类似的内在探索', options: ['从不', '很少', '偶尔', '经常', '每天'] },
+            { module: 'self', text: '我能够真实地表达自己，不害怕被评判', options: ['完全不能', '不太能', '一般', '比较能', '完全可以'] },
+            { module: 'self', text: '我对自己有很深的了解和认识', options: ['完全不了解', '不太了解', '一般', '比较了解', '非常了解'] },
+            
+            // 模块2: 卡点清理 (13-24)
+            { module: 'blocks', text: '我经常觉得"我不够好"', options: ['总是', '经常', '偶尔', '很少', '从不'] },
+            { module: 'blocks', text: '我害怕失败，不敢尝试新事物', options: ['非常同意', '同意', '一般', '不同意', '完全不同意'] },
+            { module: 'blocks', text: '我很在意别人对我的看法', options: ['非常在意', '比较在意', '一般', '不太在意', '完全不在意'] },
+            { module: 'blocks', text: '我觉得自己不配拥有美好的事物', options: ['非常同意', '同意', '一般', '不同意', '完全不同意'] },
+            { module: 'blocks', text: '童年的经历还在影响着我现在的生活', options: ['非常同意', '同意', '一般', '不同意', '完全不同意'] },
+            { module: 'blocks', text: '我经常陷入自我怀疑和自我批评', options: ['总是', '经常', '偶尔', '很少', '从不'] },
+            { module: 'blocks', text: '我害怕被拒绝，所以不敢主动争取', options: ['非常同意', '同意', '一般', '不同意', '完全不同意'] },
+            { module: 'blocks', text: '我觉得改变是困难和可怕的', options: ['非常同意', '同意', '一般', '不同意', '完全不同意'] },
+            { module: 'blocks', text: '我经常有"应该"和"必须"的执念', options: ['总是', '经常', '偶尔', '很少', '从不'] },
+            { module: 'blocks', text: '我很难原谅自己和他人', options: ['非常同意', '同意', '一般', '不同意', '完全不同意'] },
+            { module: 'blocks', text: '我觉得安全比成长更重要', options: ['非常同意', '同意', '一般', '不同意', '完全不同意'] },
+            { module: 'blocks', text: '我经常把自己和别人比较', options: ['总是', '经常', '偶尔', '很少', '从不'] },
+            
+            // 模块3: 天赋激活 (25-36)
+            { module: 'talent', text: '我经常有源源不断的创意和想法', options: ['从不', '很少', '偶尔', '经常', '总是'] },
+            { module: 'talent', text: '我对某些事情有强烈的热情和动力', options: ['完全没有', '不太有', '一般', '比较有', '非常强烈'] },
+            { module: 'talent', text: '我能够快速学习和掌握新技能', options: ['非常慢', '比较慢', '一般', '比较快', '非常快'] },
+            { module: 'talent', text: '我在做自己喜欢的事情时会忘记时间', options: ['从不', '很少', '偶尔', '经常', '总是'] },
+            { module: 'talent', text: '我能够用独特的方式看待问题', options: ['完全不能', '不太能', '一般', '比较能', '完全可以'] },
+            { module: 'talent', text: '我有很强的内在动力，不需要外界推动', options: ['非常同意', '同意', '一般', '不同意', '完全不同意'] },
+            { module: 'talent', text: '我经常处于"心流"状态', options: ['从不', '很少', '偶尔', '经常', '总是'] },
+            { module: 'talent', text: '我能够将不同的想法和资源整合在一起', options: ['完全不能', '不太能', '一般', '比较能', '完全可以'] },
+            { module: 'talent', text: '我对未来充满信心和期待', options: ['完全没有', '不太有', '一般', '比较有', '非常强烈'] },
+            { module: 'talent', text: '我能够快速从挫折中恢复并获得灵感', options: ['非常慢', '比较慢', '一般', '比较快', '非常快'] },
+            { module: 'talent', text: '我有强烈的表达和分享欲望', options: ['完全没有', '不太有', '一般', '比较有', '非常强烈'] },
+            { module: 'talent', text: '我相信自己能够创造奇迹', options: ['完全不信', '不太信', '一般', '比较相信', '完全相信'] },
+            
+            // 模块4: 关系圆融 (37-48)
+            { module: 'relationships', text: '我和父母的关系是和谐健康的', options: ['非常糟糕', '不太好', '一般', '比较好', '非常好'] },
+            { module: 'relationships', text: '我能够清晰地设定和维护个人边界', options: ['完全不能', '不太能', '一般', '比较能', '完全可以'] },
+            { module: 'relationships', text: '我的亲密关系是滋养和支持性的', options: ['非常糟糕', '不太好', '一般', '比较好', '非常好'] },
+            { module: 'relationships', text: '我能够真实地表达自己的感受和需求', options: ['完全不能', '不太能', '一般', '比较能', '完全可以'] },
+            { module: 'relationships', text: '我有能够深度交流的知心朋友', options: ['完全没有', '很少', '有一些', '比较多', '很多'] },
+            { module: 'relationships', text: '我能够从关系中获得能量而不是消耗', options: ['总是消耗', '经常消耗', '一般', '比较滋养', '总是滋养'] },
+            { module: 'relationships', text: '我能够接纳和理解他人的不同', options: ['完全不能', '不太能', '一般', '比较能', '完全可以'] },
+            { module: 'relationships', text: '我在关系中能够做真实的自己', options: ['完全不能', '不太能', '一般', '比较能', '完全可以'] },
+            { module: 'relationships', text: '我能够有效地处理关系中的冲突', options: ['完全不能', '不太能', '一般', '比较能', '完全可以'] },
+            { module: 'relationships', text: '我对父母有感恩和理解', options: ['完全没有', '不太有', '一般', '比较有', '非常强烈'] },
+            { module: 'relationships', text: '我的社交圈是积极和支持性的', options: ['非常消极', '比较消极', '一般', '比较积极', '非常积极'] },
+            { module: 'relationships', text: '我在关系中感受到被爱和被重视', options: ['完全没有', '不太有', '一般', '比较有', '非常强烈'] },
+            
+            // 模块5: 财富丰盛 (49-60)
+            { module: 'wealth', text: '我对金钱有积极的态度和信念', options: ['非常消极', '比较消极', '一般', '比较积极', '非常积极'] },
+            { module: 'wealth', text: '我相信自己值得拥有丰盛的财富', options: ['完全不信', '不太信', '一般', '比较相信', '完全相信'] },
+            { module: 'wealth', text: '我有稳定的收入来源', options: ['完全没有', '不太稳定', '一般', '比较稳定', '非常稳定'] },
+            { module: 'wealth', text: '我能够合理地管理和规划财务', options: ['完全不能', '不太能', '一般', '比较能', '完全可以'] },
+            { module: 'wealth', text: '我相信自己能够创造被动收入', options: ['完全不信', '不太信', '一般', '比较相信', '完全相信'] },
+            { module: 'wealth', text: '金钱能够给我带来自由而不是束缚', options: ['总是束缚', '经常束缚', '一般', '比较自由', '总是自由'] },
+            { module: 'wealth', text: '我能够享受金钱带来的美好', options: ['完全不能', '不太能', '一般', '比较能', '完全可以'] },
+            { module: 'wealth', text: '我相信财富是可以通过创造获得的', options: ['完全不信', '不太信', '一般', '比较相信', '完全相信'] },
+            { module: 'wealth', text: '我有清晰的财富目标和规划', options: ['完全没有', '不太清晰', '一般', '比较清晰', '非常清晰'] },
+            { module: 'wealth', text: '我能够坦然地谈论和面对金钱', options: ['完全不能', '不太能', '一般', '比较能', '完全可以'] },
+            { module: 'wealth', text: '我相信帮助别人也能带来财富', options: ['完全不信', '不太信', '一般', '比较相信', '完全相信'] },
+            { module: 'wealth', text: '我对自己的财务状况感到满意', options: ['非常不满意', '不太满意', '一般', '比较满意', '非常满意'] },
+            
+            // 模块6: 人生自由 (61-72)
+            { module: 'freedom', text: '我能够自主安排自己的时间', options: ['完全不能', '不太能', '一般', '比较能', '完全可以'] },
+            { module: 'freedom', text: '我做的事情是自己真正热爱的', options: ['完全不是', '不太是', '一般', '比较是', '完全是'] },
+            { module: 'freedom', text: '我有选择自己生活方式的自由', options: ['完全没有', '不太有', '一般', '比较有', '完全有'] },
+            { module: 'freedom', text: '我不需要为了生存而去做不喜欢的事情', options: ['完全不同意', '不同意', '一般', '同意', '完全同意'] },
+            { module: 'freedom', text: '我有足够的时间陪伴家人和做自己喜欢的事', options: ['完全没有', '不太够', '一般', '比较够', '完全足够'] },
+            { module: 'freedom', text: '我能够自由地表达自己的想法和创意', options: ['完全不能', '不太能', '一般', '比较能', '完全可以'] },
+            { module: 'freedom', text: '我对自己的人生有掌控感', options: ['完全没有', '不太有', '一般', '比较有', '完全有'] },
+            { module: 'freedom', text: '我能够自由选择工作和生活的地点', options: ['完全不能', '不太能', '一般', '比较能', '完全可以'] },
+            { module: 'freedom', text: '我不需要看别人的脸色生活', options: ['完全不同意', '不同意', '一般', '同意', '完全同意'] },
+            { module: 'freedom', text: '我有足够的空间做自己想做的事情', options: ['完全没有', '不太够', '一般', '比较够', '完全足够'] },
+            { module: 'freedom', text: '我的人生是自己主导的，而不是被别人安排', options: ['完全不同意', '不同意', '一般', '同意', '完全同意'] },
+            { module: 'freedom', text: '我对现在的生活方式感到满意', options: ['非常不满意', '不太满意', '一般', '比较满意', '非常满意'] }
+        ];
+        
+        const moduleInfo = {
+            self: { 
+                name: '自我探索', 
+                icon: '🔍', 
+                description: '你是一个深度的自我探索者，与潜意识有着深度链接。',
+                growth: '继续深化内在探索，通过冥想、日记、疗愈等方式与自己更深度地链接。',
+                affirmation: '我越了解自己，就越能活出真实的自己。'
+            },
+            blocks: { 
+                name: '卡点清理', 
+                icon: '🧩', 
+                description: '你正在释放限制性信念，打破旧有的模式和束缚。',
+                growth: '通过催眠、家庭系统排列、内在小孩疗愈等方式，深度清理童年和过往的创伤。',
+                affirmation: '我释放所有不再服务于我的模式，我值得拥有一切美好。'
+            },
+            talent: { 
+                name: '天赋激活', 
+                icon: '⚡', 
+                description: '你的天赋正在被唤醒，创造力和内在动力源源不断。',
+                growth: '通过创意实践、项目落地、成果分享，让你的天赋完全绽放。',
+                affirmation: '我的天赋是我给这个世界最好的礼物。'
+            },
+            relationships: { 
+                name: '关系圆融', 
+                icon: '❤️', 
+                description: '你拥有清晰健康的人际关系，在爱与被爱中滋养成长。',
+                growth: '通过非暴力沟通、边界建立、深度对话，让关系更加圆融。',
+                affirmation: '我在关系中做真实的自己，也允许别人做他们自己。'
+            },
+            wealth: { 
+                name: '财富丰盛', 
+                icon: '💰', 
+                description: '你的财富能量正在激活，丰盛正在从各个渠道流向你。',
+                growth: '通过财富蓝图重塑、价值创造、被动收入搭建，让财富持续增长。',
+                affirmation: '我轻松地创造财富，财富也轻松地流向我。'
+            },
+            freedom: { 
+                name: '人生自由', 
+                icon: '🦋', 
+                description: '你正在主宰自己的人生，拥有时间和空间的双重自由。',
+                growth: '通过被动收入系统、自动化运营、团队搭建，让自由更加彻底。',
+                affirmation: '我完全主宰自己的人生，我是自由的。'
+            }
+        };
+        
+        const answers = {};
+        let currentPage = 0;
+        const questionsPerPage = 12; // 每个模块12题
+        const totalPages = modules.length;
+        let currentModule = 0;
+        
+        function startAssessment() {
+            document.getElementById('startPage').classList.remove('active');
+            document.getElementById('quizPage').classList.add('active');
+            renderModuleTabs();
+            renderQuestions();
+        }
+        
+        function renderModuleTabs() {
+            const tabsContainer = document.getElementById('moduleTabs');
+            let html = '';
+            modules.forEach((m, i) => {
+                html += `<div class="module-tab ${i === currentPage ? 'active' : ''}" onclick="goToPage(${i})">${m.name}</div>`;
+            });
+            tabsContainer.innerHTML = html;
+        }
+        
+        function goToPage(page) {
+            currentPage = page;
+            renderQuestions();
+            renderModuleTabs();
+        }
+        
+        function renderQuestions() {
+            const container = document.getElementById('questionsContainer');
+            const startIndex = currentPage * questionsPerPage;
+            const endIndex = Math.min(startIndex + questionsPerPage, questions.length);
+            
+            let html = '';
+            const currentModuleInfo = modules[currentPage];
+            html += `
+                <div class="module-intro">
+                    <h2>${currentModuleInfo.name}</h2>
+                    <p>${currentModuleInfo.description}</p>
+                </div>
+            `;
+            
+            for (let i = startIndex; i < endIndex; i++) {
+                const q = questions[i];
+                html += `
+                    <div class="question">
+                        <div class="question-text">${i + 1}. ${q.text}</div>
+                        <div class="options">
+                            ${q.options.map((opt, j) => `
+                                <div class="option ${answers[i] === j ? 'selected' : ''}" 
+                                     onclick="selectOption(${i}, ${j})">${opt}</div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            container.innerHTML = html;
+            updateProgress();
+            updateButtons();
+        }
+        
+        function selectOption(questionIndex, optionIndex) {
+            answers[questionIndex] = optionIndex;
+            renderQuestions();
+        }
+        
+        function updateProgress() {
+            const progress = (Object.keys(answers).length / questions.length) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+        
+        function updateButtons() {
+            document.getElementById('prevBtn').style.display = currentPage > 0 ? 'inline-block' : 'none';
+            document.getElementById('nextBtn').style.display = currentPage < totalPages - 1 ? 'inline-block' : 'none';
+            document.getElementById('submitBtn').style.display = currentPage === totalPages - 1 ? 'inline-block' : 'none';
+        }
+        
+        function nextPage() {
+            if (currentPage < totalPages - 1) {
+                currentPage++;
+                renderQuestions();
+                renderModuleTabs();
+            }
+        }
+        
+        function prevPage() {
+            if (currentPage > 0) {
+                currentPage--;
+                renderQuestions();
+                renderModuleTabs();
+            }
+        }
+        
+        function submitAssessment() {
+            if (Object.keys(answers).length < questions.length) {
+                alert('请回答所有问题后再提交！');
+                return;
+            }
+            calculateResults();
+        }
+        
+        function calculateResults() {
+            const scores = {
+                self: 0,
+                blocks: 0,
+                talent: 0,
+                relationships: 0,
+                wealth: 0,
+                freedom: 0
+            };
+            
+            questions.forEach((q, i) => {
+                // 反向计分的题目（卡点清理模块）
+                if (q.module === 'blocks') {
+                    scores[q.module] += (5 - answers[i]); // 反向计分
+                } else {
+                    scores[q.module] += (answers[i] + 1);
+                }
+            });
+            
+            // 显示结果
+            document.getElementById('quizPage').classList.remove('active');
+            document.getElementById('resultsPage').classList.add('active');
+            
+            // 显示维度分数
+            let dimHtml = '';
+            for (const [key, info] of Object.entries(moduleInfo)) {
+                const maxScore = 60; // 12题 × 5分
+                const percentage = Math.round((scores[key] / maxScore) * 100);
+                dimHtml += `
+                    <div class="dimension">
+                        <div class="dimension-icon">${info.icon}</div>
+                        <div class="dimension-name">${info.name}</div>
+                        <div class="dimension-score">${percentage}%</div>
+                    </div>
+                `;
+            }
+            document.getElementById('resultsDimensions').innerHTML = dimHtml;
+            
+            // 找出最高维度
+            let maxScore = 0;
+            let maxDimension = '';
+            for (const [key, score] of Object.entries(scores)) {
+                if (score > maxScore) {
+                    maxScore = score;
+                    maxDimension = key;
+                }
+            }
+            
+            // 详细结果
+            let detailHtml = `
+                <div class="result-card">
+                    <h3>🏆 你的核心天赋：${moduleInfo[maxDimension].icon} ${moduleInfo[maxDimension].name}</h3>
+                    <p>${moduleInfo[maxDimension].description}</p>
+                </div>
+                
+                <div class="result-card">
+                    <h3>📊 六大维度详细解析</h3>
+            `;
+            
+            for (const [key, info] of Object.entries(moduleInfo)) {
+                const maxScore = 60;
+                const percentage = Math.round((scores[key] / maxScore) * 100);
+                let level = '';
+                let levelColor = '';
+                if (percentage >= 80) { level = '🌟 卓越'; levelColor = '#10b981'; }
+                else if (percentage >= 60) { level = '👍 优秀'; levelColor = '#3b82f6'; }
+                else if (percentage >= 40) { level = '📈 发展中'; levelColor = '#f59e0b'; }
+                else { level = '💡 待探索'; levelColor = '#ef4444'; }
+                
+                detailHtml += `
+                    <div style="margin: 20px 0; padding: 25px; background: white; border-radius: 15px; border-left: 5px solid ${levelColor};">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 15px; align-items: center;">
+                            <strong style="font-size: 1.2em; display: flex; align-items: center; gap: 10px;">
+                                ${info.icon} ${info.name}
+                            </strong>
+                            <span style="color: ${levelColor}; font-weight: 600; font-size: 1.1em;">${level}</span>
+                        </div>
+                        <div style="background: #f0f0f0; height: 12px; border-radius: 6px; margin-bottom: 15px;">
+                            <div style="background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%); width: ${percentage}%; height: 100%; border-radius: 6px;"></div>
+                        </div>
+                        <p style="color: #666; margin-bottom: 10px; line-height: 1.7;">${info.description}</p>
+                        <div style="background: #f8f9ff; padding: 15px; border-radius: 10px; margin-top: 15px;">
+                            <p style="color: #667eea; font-weight: 600; margin-bottom: 8px;">📝 成长建议：</p>
+                            <p style="color: #666; margin: 0; line-height: 1.7;">${info.growth}</p>
+                        </div>
+                        <div style="background: #fff0f5; padding: 15px; border-radius: 10px; margin-top: 15px;">
+                            <p style="color: #764ba2; font-weight: 600; margin-bottom: 8px;">✨ 每日肯定语：</p>
+                            <p style="color: #666; margin: 0; line-height: 1.7; font-style: italic;">"${info.affirmation}"</p>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            detailHtml += '</div>';
+            
+            // 有爱有钱有自由总结
+            detailHtml += `
+                <div class="result-card">
+                    <h3>🎊 有爱有钱有自由的人生规划</h3>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 25px 0;">
+                        <div style="text-align: center; padding: 25px; background: linear-gradient(135deg, #fff0f5 0%, #fce7f3 100%); border-radius: 15px; border: 3px solid #f093fb;">
+                            <div style="font-size: 3em; margin-bottom: 15px;">❤️</div>
+                            <div style="font-weight: 700; font-size: 1.3em; margin-bottom: 10px; color: #764ba2;">有爱</div>
+                            <p style="color: #666; font-size: 0.95em; line-height: 1.6;">圆满的父母关系、亲密关系、人际关系，在爱与被爱中滋养成长</p>
+                        </div>
+                        <div style="text-align: center; padding: 25px; background: linear-gradient(135deg, #fff9e6 0%, #fef3c7 100%); border-radius: 15px; border: 3px solid #fbbf24;">
+                            <div style="font-size: 3em; margin-bottom: 15px;">💰</div>
+                            <div style="font-weight: 700; font-size: 1.3em; margin-bottom: 10px; color: #d97706;">有钱</div>
+                            <p style="color: #666; font-size: 0.95em; line-height: 1.6;">激活财富能量，创造被动收入，实现财富自由，丰盛从各个渠道流向你</p>
+                        </div>
+                        <div style="text-align: center; padding: 25px; background: linear-gradient(135deg, #f8f9ff 0%, #e0e7ff 100%); border-radius: 15px; border: 3px solid #667eea;">
+                            <div style="font-size: 3em; margin-bottom: 15px;">🦋</div>
+                            <div style="font-weight: 700; font-size: 1.3em; margin-bottom: 10px; color: #4f46e5;">有自由</div>
+                            <p style="color: #666; font-size: 0.95em; line-height: 1.6;">时间自由、空间自由、人生自主权，完全主宰自己的人生，想做什么就做什么</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // 行动建议
+            detailHtml += `
+                <div class="result-card">
+                    <h3>🚀 下一步行动建议</h3>
+                    <ul class="action-list">
+                        <li>保存这份报告，每周重新阅读一次，感受自己的变化</li>
+                        <li>选择1-2个你最想发展的维度，制定具体的行动计划</li>
+                        <li>每天早上朗读对应维度的肯定语，植入潜意识</li>
+                        <li>加入我们的社群，和志同道合的伙伴一起成长</li>
+                        <li>考虑报名参加我们的工作坊，获得更深度的疗愈和指导</li>
+                        <li>把这个测评分享给你爱的人，帮助他们也发现自己的天赋</li>
+                    </ul>
+                </div>
+            `;
+            
+            document.getElementById('detailedResults').innerHTML = detailHtml;
+        }
+        
+        function restartAssessment() {
+            Object.keys(answers).forEach(key => delete answers[key]);
+            currentPage = 0;
+            document.getElementById('resultsPage').classList.remove('active');
+            document.getElementById('startPage').classList.add('active');
+        }
+    </script>
+</body>
+</html>

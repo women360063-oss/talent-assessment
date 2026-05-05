@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="探索潜意识底层的情绪创伤，找回内在的动力与自信，活出自己">
+    <title>探索潜意识 · 找回自信 · 活出自己 | 真我蜕变 主导人生</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            /* 莫兰迪绿色系 */
+            --primary-green: #8fa98f;
+            --secondary-green: #a8c4a8;
+            --light-green: #d4e4d4;
+            --cream-green: #f0f5f0;
+            /* 莫兰迪蓝色系 */
+            --primary-blue: #9fb7c7;
+            --secondary-blue: #bfd4e3;
+            --light-blue: #e3eff6;
+            /* 莫兰迪橙色系 */
+            --accent-orange: #e6a23c;
+            --light-orange: #f5d8a6;
+            /* 白色系 */
+            --pure-white: #ffffff;
+            --warm-white: #faf8f5;
+            /* 文字颜色 */
+            --dark-text: #4a5568;
+            --light-text: #718096;
+        }
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: 
+                radial-gradient(ellipse at 25% 25%, rgba(255, 182, 193, 0.35) 0%, transparent 55%),
+                radial-gradient(ellipse at 75% 75%, rgba(147, 197, 253, 0.25) 0%, transparent 55%),
+                radial-gradient(ellipse at 40% 80%, rgba(252, 165, 165, 0.25) 0%, transparent 50%),
+                radial-gradient(ellipse at 60% 20%, rgba(167, 139, 250, 0.2) 0%, transparent 50%),
+                linear-gradient(135deg, #e8f5e8 0%, #d4edd4 25%, #c5e6c5 50%, #d0f0d0 75%, #e8f5e8 100%);
+            background-size: 400% 400%;
+            animation: monetGgradientShift 28s ease infinite;
+            min-height: 100vh;
+            color: var(--dark-text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+        
+        @keyframes monetGgradientShift {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 50% 100%; }
+            50% { background-position: 100% 50%; }
+            75% { background-position: 50% 0%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: 
+                radial-gradient(ellipse at 20% 30%, rgba(255, 223, 230, 0.4) 0%, transparent 55%),
+                radial-gradient(ellipse at 80% 70%, rgba(209, 213, 219, 0.3) 0%, transparent 55%),
+                radial-gradient(ellipse at 50% 20%, rgba(251, 191, 36, 0.2) 0%, transparent 60%),
+                rgba(255, 255, 255, 0.88);
+            border-radius: 60px;
+            margin-bottom: 50px;
+            box-shadow: 
+                0 35px 90px rgba(143, 169, 143, 0.22),
+                inset 0 0 120px rgba(255, 250, 240, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-orange), var(--primary-green), var(--primary-blue));
+            border-radius: 50px 50px 0 0;
+        }
+        
+        .hero-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .hero h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 3.2em;
+            color: var(--primary-green);
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.6em;
+            color: var(--light-text);
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+        
+        .hero-tagline {
+            font-size: 1.3em;
+            color: var(--accent-orange);
+            margin: 25px 0;
+            font-weight: 500;
+        }
+        
+        .hero-keywords {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+        
+        .keyword {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: var(--primary-green);
+            padding: 14px 35px;
+            background: 
+                radial-gradient(ellipse at 25% 25%, rgba(251,191,36,0.3) 0%, transparent 55%),
+                linear-gradient(135deg, rgba(168,196,168,0.25), rgba(167,139,250,0.2));
+            border-radius: 50px;
+            border: 2px solid var(--accent-orange);
+            box-shadow: 0 10px 30px rgba(143,169,143,0.18);
+        }
+        
+        /* Parallel Universe Letter Section */
+        .letter-section {
+            background: 
+                radial-gradient(ellipse at 20% 30%, rgba(159,183,199,0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(245,216,166,0.2) 0%, transparent 50%),
+                linear-gradient(135deg, rgba(240,245,240,0.96), rgba(212,228,212,0.96));
+            border: 3px solid var(--accent-orange);
+            border-radius: 40px;
+            position: relative;
+        }
+        
+        .letter-section::before {
+            content: '💌';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 60px;
+            background: white;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .letter-content {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.15em;
+            line-height: 2.2;
+            color: var(--dark-text);
+            text-align: left;
+            padding: 20px;
+            background: rgba(255,255,255,0.8);
+            border-radius: 20px;
+            margin-top: 30px;
+        }
+        
+        .letter-greeting {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: var(--primary-green);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .letter-closing {
+            text-align: right;
+            font-style: italic;
+            margin-top: 30px;
+            color: var(--accent-orange);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 24px 60px;
+            background: 
+                radial-gradient(ellipse at 30% 30%, rgba(255,255,255,0.3) 0%, transparent 50%),
+                linear-gradient(45deg, var(--accent-orange), var(--primary-green), var(--primary-blue));
+            color: white;
+            text-decoration: none;
+            border-radius: 80px;
+            font-size: 1.3em;
+            font-weight: 600;
+            box-shadow: 
+                0 20px 50px rgba(230,162,60,0.35),
+                0 8px 25px rgba(143,169,143,0.25);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+            cursor: pointer;
+            letter-spacing: 1px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-6px) scale(1.06);
+            box-shadow: 
+                0 28px 60px rgba(230,162,60,0.45),
+                0 12px 35px rgba(143,169,143,0.35);
+        }
+        
+        /* Section Styles */
+        .section {
+            background: 
+                radial-gradient(ellipse at 15% 25%, rgba(255, 182, 193, 0.25) 0%, transparent 50%),
+                radial-gradient(ellipse at 85% 75%, rgba(167, 139, 250, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 10%, rgba(251, 191, 36, 0.15) 0%, transparent 55%),
+                rgba(255, 255, 255, 0.92);
+            border-radius: 50px;
+            padding: 60px;
+            margin-bottom: 50px;
+            box-shadow: 
+                0 30px 70px rgba(143,169,143,0.2),
+                inset 0 0 100px rgba(255,250,245,0.55);
+            position: relative;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+        
+        .section h2 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2.5em;
+            color: var(--primary-green);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .section-description {
+            font-size: 1.2em;
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Journey Grid */
+        .journey-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .journey-card {
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(255, 182, 193, 0.25) 0%, transparent 55%),
+                radial-gradient(ellipse at 80% 80%, rgba(167, 139, 250, 0.2) 0%, transparent 55%),
+                radial-gradient(ellipse at 50% 50%, rgba(251, 191, 36, 0.15) 0%, transparent 60%),
+                linear-gradient(135deg, rgba(255,255,255,0.95), rgba(232,245,232,0.95));
+            padding: 42px;
+            border-radius: 45px;
+            border-left: 7px solid var(--accent-orange);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        
+        .journey-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 120px;
+            height: 120px;
+            background: 
+                radial-gradient(circle, rgba(255,223,230,0.35) 0%, transparent 70%),
+                radial-gradient(circle at 30% 30%, rgba(251,191,36,0.25) 0%, transparent 70%);
+            border-radius: 0 45px 0 45px;
+        }
+        
+        .journey-card:hover {
+            transform: translateY(-14px);
+            box-shadow: 
+                0 30px 65px rgba(143,169,143,0.3),
+                0 15px 35px rgba(167,139,250,0.25);
+        }
+        
+        .journey-number {
+            display: inline-block;
+            width: 55px;
+            height: 55px;
+            background: 
+                radial-gradient(ellipse at 30% 30%, rgba(255,255,255,0.4) 0%, transparent 50%),
+                linear-gradient(135deg, var(--accent-orange), var(--primary-green), var(--primary-blue));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(143,169,143,0.3);
+        }
+        
+        .journey-card h3 {
+            color: var(--primary-pink);
+            margin-bottom: 20px;
+            font-size: 1.4em;
+            font-weight: 600;
+        }
+        
+        .journey-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .journey-card li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: var(--dark-text);
+        }
+        
+        .journey-card li:before {
+            content: "✨";
+            position: absolute;
+            left: 0;
+            font-size: 1.1em;
+        }
+        
+        /* Comparison Section */
+        .comparison-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .comparison-box {
+            padding: 40px;
+            border-radius: 25px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .comparison-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { transform: translate(-30%, -30%); }
+            50% { transform: translate(30%, 30%); }
+        }
+        
+        .comparison-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .comparison-box.before {
+            background: 
+                radial-gradient(ellipse at 30% 30%, rgba(230,162,60,0.25) 0%, transparent 50%),
+                linear-gradient(135deg, #fff0f0, #ffe8e8);
+            border: 4px solid var(--accent-orange);
+            border-radius: 35px;
+        }
+        
+        .comparison-box.after {
+            background: 
+                radial-gradient(ellipse at 30% 30%, rgba(143,169,143,0.25) 0%, transparent 50%),
+                linear-gradient(135deg, #e8f8e8, #e0ffe0);
+            border: 4px solid var(--primary-green);
+            border-radius: 35px;
+        }
+        
+        .comparison-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .comparison-box h3 {
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        
+        .comparison-box p {
+            font-size: 1.2em;
+            margin: 15px 0;
+            padding: 10px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 10px;
+        }
+        
+        /* Meditation Grid */
+        .meditation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .meditation-card {
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(159,183,199,0.18) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(168,196,168,0.18) 0%, transparent 50%),
+                linear-gradient(135deg, var(--warm-white), var(--light-green));
+            padding: 32px;
+            border-radius: 30px;
+            text-align: center;
+            border: 3px solid var(--secondary-green);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        
+        .meditation-card::before {
+            content: '🌿';
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            font-size: 30px;
+            background: var(--warm-white);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(143,169,143,0.2);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .meditation-card:hover {
+            border-color: var(--secondary-pink);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(255,107,157,0.2);
+        }
+        
+        .meditation-card:hover::before {
+            opacity: 1;
+        }
+        
+        .meditation-card h4 {
+            color: var(--primary-pink);
+            margin-bottom: 12px;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+        
+        .meditation-card p {
+            color: var(--light-text);
+            font-size: 1em;
+            line-height: 1.6;
+        }
+        
+        .meditation-category {
+            display: inline-block;
+            padding: 5px 15px;
+            background: linear-gradient(135deg, var(--cream), var(--warm-peach));
+            border-radius: 20px;
+            font-size: 0.85em;
+            color: var(--primary-pink);
+            margin-top: 15px;
+            font-weight: 500;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+        
+        footer h2 {
+            border: none;
+            padding: 0;
+            margin-bottom: 25px;
+            font-family: 'Noto Serif SC', serif;
+        }
+        
+        .footer-message {
+            font-size: 1.4em;
+            color: var(--primary-pink);
+            margin: 25px 0;
+            font-weight: 500;
+        }
+        
+        .footer-tagline {
+            font-size: 1.2em;
+            color: var(--light-text);
+            margin-top: 20px;
+        }
+        
+        /* Floating Stars */
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .floating-star {
+            position: absolute;
+            font-size: 25px;
+            animation: twinkle 4s ease-in-out infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { 
+                opacity: 0.3; 
+                transform: scale(1) rotate(0deg);
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.3) rotate(180deg);
+            }
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Scroll Animation */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 50px 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2em;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2em;
+            }
+            
+            .hero-icon {
+                font-size: 50px;
+            }
+            
+            .section {
+                padding: 30px 20px;
+            }
+            
+            .section h2 {
+                font-size: 1.8em;
+            }
+            
+            .journey-grid,
+            .meditation-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .comparison-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-button {
+                padding: 18px 40px;
+                font-size: 1.1em;
+            }
+        }
+        
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <div class="stars-container" id="stars"></div>
+    <div class="content-wrapper">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-icon">🌿</div>
+                <h1>探索潜意识底层的情绪创伤</h1>
+                <p class="hero-subtitle">找回内在的动力与自信 · 做自己 · 温柔且有力量</p>
+                <div class="hero-keywords">
+                    <span class="keyword">情绪疗愈</span>
+                    <span class="keyword">潜意识探索</span>
+                    <span class="keyword">重建自信</span>
+                    <span class="keyword">内在力量</span>
+                </div>
+                <p class="hero-tagline">看见创伤，疗愈自己，重获生命的动力与自信</p>
+                <a href="#pricing" class="cta-button">开启蜕变之旅</a>
+            </section>
+
+            <!-- Value Proposition Section -->
+            <section class="section animate-on-scroll">
+                <div class="section-header">
+                    <div class="section-icon">✨</div>
+                    <h2>核心价值主张</h2>
+                    <p class="section-description">
+                        帮助你从被限制性信念困住、情绪冻结僵住、找不到自己主体性的状态，
+                        转变为情绪自由流动、建立能量边界、活出高能量状态的全新版本。
+                    </p>
+                </div>
+            </section>
+
+            <!-- Parallel Universe Letter Section -->
+            <section class="section letter-section animate-on-scroll">
+                <div class="section-header">
+                    <div class="section-icon">🌿</div>
+                    <h2>来自平行世界的一封疗愈来信</h2>
+                </div>
+                <div class="letter-content">
+                    <p class="letter-greeting">亲爱的你，好久不见 ✨</p>
+                    <p>我是来自那个已经疗愈创伤、做自己的平行世界的你。</p>
+                    <p>我知道，在你的内心深处，有一些未曾被看见的情绪创伤，它们在影响着你的生活。</p>
+                    <p>但你知道吗？那些让你痛苦的经历，也蕴含着你成长的密码。</p>
+                    <p><strong>看见是疗愈的开始。</strong></p>
+                    <p>当你愿意去探索潜意识深处的情绪创伤，你就已经迈出了最勇敢的一步。</p>
+                    <p>在那里，你会找到被遗忘的内在力量，找回属于你的动力与自信。</p>
+                    <p>你不需要一直活在创伤的阴影中，你值得拥有充满活力和自信的人生。</p>
+                    <p>你的情绪不是你的敌人，它们是你的信使，告诉你哪里需要被看见、被爱。</p>
+                    <p><strong>疗愈不是抹去过去，而是让过去不再定义你的现在和未来。</strong></p>
+                    <p style="text-align: center; font-size: 1.3em; font-weight: 700; color: var(--primary-green); margin: 30px 0;">当你准备好看见自己、疗愈自己，新的人生就已开启</p>
+                    <p style="text-align: center; font-size: 1.2em; font-weight: 600; color: var(--accent-orange); margin-top: 20px;">✨ 你值得活出闪闪发光的自己！</p>
+                    <p class="letter-closing">✨ 来自平行世界已做自己的你</p>
+                </div>
+            </section>
+
+            <!-- Pricing Section -->
+            <section class="section animate-on-scroll" id="pricing">
+                <div class="section-header">
+                    <div class="section-icon">✨</div>
+                    <h2>选择你的蜕变路径</h2>
+                    <p class="section-description">
+                        从基础陪伴到深度私教，总有一款适合你的蜕变方案
+                    </p>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin-top: 50px;">
+                    <!-- 基础版 -->
+                    <div style="background: linear-gradient(145deg, #fff0f5, #ffeef8); border-radius: 30px; padding: 40px 30px; border: 3px solid var(--secondary-pink); position: relative; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);">
+                        <div style="text-align: center; margin-bottom: 30px;">
+                            <div style="font-family: 'Noto Serif SC', serif; font-size: 2em; color: var(--primary-pink); font-weight: 700; margin-bottom: 15px;">✨ 基础版</div>
+                            <div style="font-size: 3em; color: var(--dark-text); font-weight: 700; margin-bottom: 10px;">2980元<span style="font-size: 0.4em; color: var(--light-text); font-weight: 400;">/12周</span></div>
+                            <div style="font-size: 1.2em; color: var(--light-text); margin-bottom: 30px;">
+                                总价值 <strong style="color: var(--primary-pink); font-size: 1.3em;">8038元</strong>
+                            </div>
+                        </div>
+                        <ul style="list-style: none; margin-bottom: 30px;">
+                            <li style="padding: 12px 0; padding-left: 35px; position: relative; border-bottom: 1px solid rgba(255,107,157,0.1);">✨ 12次直播课（每周1次，90分钟/次）</li>
+                            <li style="padding: 12px 0; padding-left: 35px; position: relative; border-bottom: 1px solid rgba(255,107,157,0.1);">✨ 12周社群陪伴</li>
+                            <li style="padding: 12px 0; padding-left: 35px; position: relative; border-bottom: 1px solid rgba(255,107,157,0.1);">✨ 2次1对1咨询（30分钟/次）</li>
+                            <li style="padding: 12px 0; padding-left: 35px; position: relative; border-bottom: 1px solid rgba(255,107,157,0.1);">✨ 超值礼包（冥想音频+工具包）</li>
+                            <li style="padding: 12px 0; padding-left: 35px; position: relative; border-bottom: 1px solid rgba(255,107,157,0.1);">✨ 每日打卡 + 每周复盘</li>
+                            <li style="padding: 12px 0; padding-left: 35px; position: relative;">✨ 死党制（3人小组）</li>
+                        </ul>
+                        <button style="display: block; width: 100%; text-align: center; padding: 18px 30px; background: linear-gradient(45deg, var(--secondary-pink), var(--primary-pink)); color: white; text-decoration: none; border-radius: 30px; font-size: 1.2em; font-weight: 700; transition: all 0.3s ease; border: none; cursor: pointer;">立即报名</button>
+                        <p style="text-align: center; margin-top: 15px; color: var(--primary-pink); font-weight: 600; font-size: 0.95em;">🔥 只相当于8小时1v1咨询的钱！</p>
+                    </div>
+                    
+                    <!-- 尊享版（推荐） -->
+                    <div style="background: linear-gradient(145deg, #fff0f5, #ffeef8); border-radius: 30px; padding: 40px 30px; border: 4px solid var(--gold); position: relative; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); transform: scale(1.05);">
+                        <div style="position: absolute; top: -20px; right: 20px; background: linear-gradient(45deg, var(--gold), var(--primary-pink)); color: white; padding: 8px 20px; border-radius: 20px; font-weight: 700; font-size: 0.9em; box-shadow: 0 10px 30px rgba(255,215,0,0.3);">🔥 推荐</div>
+                        <div style="text-align: center; margin-bottom: 30px;">
+                            <div style="font-family: 'Noto Serif SC', serif; font-size: 2em; color: var(--primary-pink); font-weight: 700; margin-bottom: 15px;">🌟 尊享版</div>
+                            <div style="font-size: 3em; color: var(--dark-text); font-weight: 700; margin-bottom: 10px;">9800元<span style="font-size: 0.4em; color: var(--light-text); font-weight: 400;">/12周</span></div>
+                            <div style="font-size: 1.2em; color: var(--light-text); margin-bottom: 30px;">
+                                总价值 <strong style="color: var(--primary-pink); font-size: 1.3em;">36812元</strong>
+                            </div>
+                        </div>
+                        <ul style="list-style: none; margin-bottom: 30px;">
+                            <li style="padding: 12px 0; padding-left: 35px; position: relative; border-bottom: 1px solid rgba(255,107,157,0.1);">✨ 基础版全部内容</li>
+                            <li style="padding: 12px 0; padding-left: 35px; position: relative; border-bottom: 1px solid rgba(255,107,157,0.1);">✨ 4次1对1深度咨询（60分钟/次）</li>
+                            <li style="padding: 12px 0; padding-left: 35px; position: relative; border-bottom: 1px solid rgba(255,107,157,0.1);">✨ 2次线下旅修（2天1夜/次）</li>
+                            <li style="padding: 12px 0; padding-left: 35px; position: relative; border-bottom: 1px solid rgba(255,107,157,0.1);">✨ 专属复盘1对1（每周1次）</li>
+                            <li style="padding: 12px 0; padding-left: 35px; position: relative; border-bottom: 1px solid rgba(255,107,157,0.1);">✨ 优先复训资格</li>
+                            <li style="padding: 12px 0; padding-left: 35px; position: relative;">✨ 3-5年规划1对1（2小时）</li>
+                        </ul>
+                        <button style="display: block; width: 100%; text-align: center; padding: 18px 30px; background: linear-gradient(45deg, var(--secondary-pink), var(--primary-pink)); color: white; text-decoration: none; border-radius: 30px; font-size: 1.2em; font-weight: 700; transition: all 0.3s ease; border: none; cursor: pointer;">选择尊享版</button>
+                        <p style="text-align: center; margin-top: 15px; color: var(--primary-pink); font-weight: 600; font-size: 0.95em;">💡 单是2次线下旅修就值19800元！</p>
+                    </div>
+                    
+                    <!-- 私教版 -->
+                    <div style="background: linear-gradient(145deg, #fff0f5, #ffeef8); border-radius: 30px; padding: 40px 30px; border: 3px solid var(--secondary-pink); position: relative; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);">
+                        <div style="text-align: center; margin-bottom: 30px;">
+                            <div style="font-family: 'Noto Serif SC', serif; font-size: 2em; color: var(--primary-pink); font-weight: 700; margin-bottom: 15px;">👑 私教版</div>
+                            <div style="font-size: 3em; color: var(--dark-text); font-weight: 700; margin-bottom: 10px;">29800元<span style="font-size: 0.4em; color: var(--light-text); font-weight: 400;">/3个月</span></div>
+                            <div style="font-size: 1.2em; color: var(--light-text); margin-bottom: 30px;">
+                                总价值 <strong style="color: var(--primary-pink); font-size: 1.3em;">92452元</strong>
+                            </div>
+                        </div>
+                        <ul style="list-style: none; margin-bottom: 30px;">
+                            <li style="padding: 12px 0; padding-left: 35px; position: relative; border-bottom: 1px solid rgba(255,107,157,0.1);">✨ 尊享版全部内容</li>
+                            <li style="padding: 12px 0; padding-left: 35px; position: relative; border-bottom: 1px solid rgba(255,107,157,0.1);">✨ 每周2次1对1咨询（60分钟/次）</li>
+                            <li style="padding: 12px 0; padding-left: 35px; position: relative; border-bottom: 1px solid rgba(255,107,157,0.1);">✨ 定制化练习方案</li>
+                            <li style="padding: 12px 0; padding-left: 35px; position: relative; border-bottom: 1px solid rgba(255,107,157,0.1);">✨ 3次线下深度疗愈（1天/次）</li>
+                            <li style="padding: 12px 0; padding-left: 35px; position: relative; border-bottom: 1px solid rgba(255,107,157,0.1);">✨ 1年复训资格</li>
+                            <li style="padding: 12px 0; padding-left: 35px; position: relative;">✨ 个人品牌/影响力建立指导</li>
+                        </ul>
+                        <button style="display: block; width: 100%; text-align: center; padding: 18px 30px; background: linear-gradient(45deg, var(--secondary-pink), var(--primary-pink)); color: white; text-decoration: none; border-radius: 30px; font-size: 1.2em; font-weight: 700; transition: all 0.3s ease; border: none; cursor: pointer;">申请私教</button>
+                        <p style="text-align: center; margin-top: 15px; color: var(--primary-pink); font-weight: 600; font-size: 0.95em;">⚠️ 一年只收10个私教学员！</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Journey Section -->
+            <section class="section animate-on-scroll" id="journey">
+                <div class="section-header">
+                    <div class="section-icon">🚀</div>
+                    <h2>四阶段蜕变路径</h2>
+                    <p class="section-description">
+                        系统性的成长路径，带你一步步完成从旧版本到新版本的完整蜕变
+                    </p>
+                </div>
+                <div class="journey-grid">
+                    <div class="journey-card">
+                        <div class="journey-number">1</div>
+                        <h3>假我旧版本清洗</h3>
+                        <ul>
+                            <li>卡点疏通 · 清理限制性信念</li>
+                            <li>情绪溯源旧信念行为系统情绪解冻</li>
+                            <li>学会自我接纳和自爱</li>
+                            <li>通过内在小孩的回溯潜意识练习</li>
+                            <li>让冻结僵住的情绪能量流动起来</li>
+                            <li>用更高的心智状态与过去和解</li>
+                            <li>学会自我接纳、学会自爱、学会慈悲</li>
+                        </ul>
+                    </div>
+                    <div class="journey-card">
+                        <div class="journey-number">2</div>
+                        <h3>重塑稳定&强大内核</h3>
+                        <ul>
+                            <li>主体性建立 + 课题分离</li>
+                            <li>高能量状态 + 正念冥想</li>
+                            <li>如何建立主体性做自己？</li>
+                            <li>如何建立自信？</li>
+                            <li>如何课题分离建立自己的能量边界？</li>
+                            <li>情绪管理能力培养</li>
+                            <li>刻意练习情绪触发</li>
+                        </ul>
+                    </div>
+                    <div class="journey-card">
+                        <div class="journey-number">3</div>
+                        <h3>真我新版本认同</h3>
+                        <ul>
+                            <li>内在预演 · 通过视觉化冥想练习</li>
+                            <li>锚定愿景画面</li>
+                            <li>让未来的你接管现在的你</li>
+                            <li>新版本行动对齐迭代</li>
+                            <li>将新版本的原子习惯插入日常生活</li>
+                            <li>让新循环能量打破旧有循环</li>
+                        </ul>
+                    </div>
+                    <div class="journey-card">
+                        <div class="journey-number">4</div>
+                        <h3>新版本行动对齐迭代</h3>
+                        <ul>
+                            <li>刻意练习-反馈-优化复盘</li>
+                            <li>行动迭代</li>
+                            <li>新信念系统重塑</li>
+                            <li>朝向新版本的自己前进</li>
+                            <li>让新循环能量打破旧有循环</li>
+                            <li>持续优化和迭代</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Comparison Section -->
+            <section class="section animate-on-scroll">
+                <div class="section-header">
+                    <div class="section-icon">🌿</div>
+                    <h2>从痛到绽放的转变</h2>
+                    <p class="section-description">
+                        看见改变，相信改变，成为改变
+                    </p>
+                </div>
+                <div class="comparison-container">
+                    <div class="comparison-box before">
+                        <div class="comparison-content">
+                            <div class="comparison-icon">😢</div>
+                            <h3>曾经的你</h3>
+                            <p>被限制性信念困住</p>
+                            <p>情绪冻结、僵住</p>
+                            <p>找不到自己的主体性</p>
+                        </div>
+                    </div>
+                    <div class="comparison-box after">
+                        <div class="comparison-content">
+                            <div class="comparison-icon">🌸</div>
+                            <h3>现在的你</h3>
+                            <p>情绪自由流动</p>
+                            <p>建立能量边界</p>
+                            <p>活出高能量状态</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Meditation Section -->
+            <section class="section animate-on-scroll">
+                <div class="section-header">
+                    <div class="section-icon">✨</div>
+                    <h2>冥想工具包（12个专项冥想）</h2>
+                    <p class="section-description">
+                        每个冥想都精心设计，助力你的蜕变之旅
+                    </p>
+                </div>
+                <div class="meditation-grid">
+                    <div class="meditation-card">
+                        <h4>卡点清理冥想</h4>
+                        <p>让冻结、僵住的情绪流动起来</p>
+                        <span class="meditation-category">情绪清理类</span>
+                    </div>
+                    <div class="meditation-card">
+                        <h4>情绪觉察冥想</h4>
+                        <p>觉察每个感受出发的情绪</p>
+                        <span class="meditation-category">情绪清理类</span>
+                    </div>
+                    <div class="meditation-card">
+                        <h4>边界建立冥想</h4>
+                        <p>建立透明而坚固的能量边界</p>
+                        <span class="meditation-category">边界建立类</span>
+                    </div>
+                    <div class="meditation-card">
+                        <h4>内在预演冥想</h4>
+                        <p>让未来的你接管现在的你</p>
+                        <span class="meditation-category">愿景锚定类</span>
+                    </div>
+                    <div class="meditation-card">
+                        <h4>视觉化冥想</h4>
+                        <p>通过视觉化冥想练习，锚定愿景画面</p>
+                        <span class="meditation-category">愿景锚定类</span>
+                    </div>
+                    <div class="meditation-card">
+                        <h4>内核稳定冥想</h4>
+                        <p>建立主体性，做自己的主人</p>
+                        <span class="meditation-category">边界建立类</span>
+                    </div>
+                    <div class="meditation-card">
+                        <h4>信念升级冥想</h4>
+                        <p>替换限制性信念为支持性信念</p>
+                        <span class="meditation-category">信念升级类</span>
+                    </div>
+                    <div class="meditation-card">
+                        <h4>习惯植入冥想</h4>
+                        <p>把新习惯植入潜意识</p>
+                        <span class="meditation-category">信念升级类</span>
+                    </div>
+                    <div class="meditation-card">
+                        <h4>小步验证冥想</h4>
+                        <p>通过小步验证强化新身份</p>
+                        <span class="meditation-category">身份强化类</span>
+                    </div>
+                    <div class="meditation-card">
+                        <h4>挑战突破冥想</h4>
+                        <p>突破你的限制</p>
+                        <span class="meditation-category">身份强化类</span>
+                    </div>
+                    <div class="meditation-card">
+                        <h4>持续迭代冥想</h4>
+                        <p>建立持续迭代的意识</p>
+                        <span class="meditation-category">持续成长类</span>
+                    </div>
+                    <div class="meditation-card">
+                        <h4>真我显化冥想</h4>
+                        <p>让真我完全显化</p>
+                        <span class="meditation-category">持续成长类</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials Section -->
+            <section class="section animate-on-scroll" id="testimonials">
+                <div class="section-header">
+                    <div class="section-icon">🌿</div>
+                    <h2>真实蜕变故事</h2>
+                    <p class="section-description">
+                        来自真实用户的分享，见证生命的绽放
+                    </p>
+                </div>
+                
+                <div class="meditation-grid">
+                    <div class="meditation-card">
+                        <h4>从焦虑到平静</h4>
+                        <p style="color: var(--dark-text); margin-bottom: 15px;">32岁职场女性，长期焦虑失眠，通过12周疗愈，学会与情绪共处，睡眠质量大幅改善。</p>
+                        <span class="meditation-category">情绪疗愈</span>
+                    </div>
+                    <div class="meditation-card">
+                        <h4>找回自信</h4>
+                        <p style="color: var(--dark-text); margin-bottom: 15px;">28岁女生，自我价值感低，通过潜意识探索，看见童年创伤，重建自信，开启新事业。</p>
+                        <span class="meditation-category">潜意识探索</span>
+                    </div>
+                    <div class="meditation-card">
+                        <h4>关系重建</h4>
+                        <p style="color: var(--dark-text); margin-bottom: 15px;">35岁离婚女性，疗愈情感创伤，建立健康边界，重新找到爱与被爱的能力。</p>
+                        <span class="meditation-category">关系疗愈</span>
+                    </div>
+                    <div class="meditation-card">
+                        <h4>职业突破</h4>
+                        <p style="color: var(--dark-text); margin-bottom: 15px;">40岁职场瓶颈期，清理限制性信念，找回内在动力，成功转型找到热爱事业。</p>
+                        <span class="meditation-category">职业突破</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="animate-on-scroll">
+                <div class="section-icon">✨</div>
+                <h2>一起构建内在秩序</h2>
+                <p class="footer-message">让自爱成为你最强大的显化力量</p>
+                <p class="footer-tagline">今天可以是你命运齿轮的转动点，而不是普通的又一天</p>
+                <a href="#top" class="cta-button" style="margin-top: 30px;">重新开始蜕变之旅</a>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // Create floating stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starSymbols = ['✨', '🌿'];
+            
+            for (let i = 0; i < 25; i++) {
+                const star = document.createElement('div');
+                star.className = 'floating-star';
+                star.textContent = starSymbols[Math.floor(Math.random() * starSymbols.length)];
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 4 + 's';
+                star.style.animationDuration = (3 + Math.random() * 3) + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        // Intersection Observer for scroll animations
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+        }
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#top') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    return;
+                }
+                const target = document.querySelector(targetId);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            createStars();
+            initScrollAnimations();
+        });
+    </script>
+</body>
+</html>
