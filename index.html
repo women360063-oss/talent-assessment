@@ -902,9 +902,14 @@
    - 真实世界关联：梯度重构预测实验室调节成功和日常生活中更低负面情绪
    - 系统级视角：情绪调节是全脑动态计算，不是局部区域激活
    - 应用：可以通过训练促进梯度重构，提升调节能力
+9. 成长型思维的神经可塑性（npj Science of Learning 2022, Chen et al.）：
+   - 核心发现：认知训练（不是直接教授思维）可以提升儿童成长型思维
+   - 关键机制：皮层-纹状体回路的可塑性（dACC + 纹状体 + 海马体）
+   - 双向关系：训练前成长型思维→训练后数学能力，训练前数学能力→训练后成长型思维
+   - 应用：通过实际学习体验（而非说教）培养成长型思维，神经可塑性是生物学基础
 
 【核心疗愈技术】
-- 正念引导、情绪日记、认知校准、潜意识解绑、意识聚焦、心智调频、量子坍缩、梯度重构
+- 正念引导、情绪日记、认知校准、潜意识解绑、意识聚焦、心智调频、量子坍缩、梯度重构、成长型思维训练
 `;
 
         const SOULIGHT_RESPONSES = {
@@ -923,6 +928,10 @@
             "梯度": [
                 "从2026年最新的PLOS Biology研究来看，成功的情绪调节涉及沿着大脑梯度1的系统性重构——这个梯度是从单模态（感觉运动）到异模态（联合皮层）的主轴。一个练习：尝试让你的注意力在身体感受（感觉运动）和认知反思（高阶认知）之间移动，这可以促进梯度重构。你现在更偏向于哪一端？",
                 "根据Wang等人2026年的研究，情绪调节能力不是某个脑区的功能，而是全脑动态配置的结果。梯度重构可以提升调节能力。一个简单方法：练习正念注意，同时保持对情绪的觉察和认知的反思，这可以训练大脑在梯度1上灵活移动。你愿意每天练习5分钟吗？"
+            ],
+            "成长": [
+                "从2022年斯坦福的研究来看，成长型思维（growth mindset）可以通过实际的认知训练提升，而不只是说教。这背后的神经机制是皮层-纹状体回路的可塑性（dACC + 纹状体 + 海马体）。一个练习：尝试每天完成一个小的挑战，然后专注于自己的进步，而不是结果。这可以激活那些神经回路。你今天想尝试什么小挑战？",
+                "根据Chen等人2022年的研究，成长型思维和学习能力是双向促进的：思维模式提升学习，学习体验也提升思维模式。这背后是大脑的可塑性。一个建议：选一个你想提升的技能，每天练习15分钟，记录每次的小进步。这比只想着『我要更聪明』更有效。你想试试吗？"
             ],
             "压力": [
                 "压力大时，我们的身体会进入战斗或逃跑模式。根据PLOS Biology 2026的研究，正念可以有效调节这一模式。我们先做一个简短的落地练习：感受你的双脚踩在地上，你的手放的位置，慢慢深呼吸3次。现在感觉如何？",
@@ -1011,7 +1020,8 @@
             const input = userInput.toLowerCase();
             let candidates = SOULIGHT_RESPONSES.default;
 
-            if (input.includes('梯度') || input.includes('重构') || input.includes('大脑') || input.includes('神经')) candidates = SOULIGHT_RESPONSES['梯度'];
+            if (input.includes('成长') || input.includes('思维') || input.includes('能力') || input.includes('进步')) candidates = SOULIGHT_RESPONSES['成长'];
+            else if (input.includes('梯度') || input.includes('重构') || input.includes('大脑') || input.includes('神经')) candidates = SOULIGHT_RESPONSES['梯度'];
             else if (input.includes('量子') || input.includes('意识') || input.includes('可能性') || input.includes('叠加')) candidates = SOULIGHT_RESPONSES['量子'];
             else if (input.includes('社交') || input.includes('聚会') || input.includes('演讲') || input.includes('当众')) candidates = SOULIGHT_RESPONSES['社交'];
             else if (input.includes('焦虑')) candidates = SOULIGHT_RESPONSES['焦虑'];
