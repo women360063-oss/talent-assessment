@@ -1487,7 +1487,49 @@
     <section class="cta-banner">
         <h2>准备好开启你的疗愈之旅了吗？</h2>
         <p>每期仅限12人，确保每位学员获得充分的关注与空间</p>
-        <a href="index.html#booking" class="cta-banner-btn">立即咨询预订</a>
+        <a href="#booking" class="cta-banner-btn">立即咨询预订</a>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="section" id="booking">
+        <div class="section-header fade-in">
+            <div class="section-label">BOOKING</div>
+            <h2 class="section-title">预约咨询</h2>
+            <p class="section-description">填写以下表单，我们的疗愈顾问将在24小时内与您联系</p>
+        </div>
+        <div class="booking-container" style="max-width: 800px; margin: 0 auto; background: white; border: 1px solid #e5e7eb; border-radius: 20px; padding: 48px; box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
+            <form class="booking-form" id="retreatBookingForm" style="display: flex; flex-direction: column; gap: 24px;">
+                <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="form-group" style="display: flex; flex-direction: column; gap: 8px;">
+                        <label style="font-size: 18px; font-weight: 500; color: #3d4047;">姓名</label>
+                        <input type="text" placeholder="请输入您的姓名" style="padding: 16px 20px; border: 1px solid #e5e7eb; border-radius: 12px; font-size: 16px; background: #fafbfc; transition: all 0.3s; outline: none;" required />
+                    </div>
+                    <div class="form-group" style="display: flex; flex-direction: column; gap: 8px;">
+                        <label style="font-size: 18px; font-weight: 500; color: #3d4047;">联系方式</label>
+                        <input type="text" placeholder="微信/电话" style="padding: 16px 20px; border: 1px solid #e5e7eb; border-radius: 12px; font-size: 16px; background: #fafbfc; transition: all 0.3s; outline: none;" required />
+                    </div>
+                </div>
+                <div class="form-group" style="display: flex; flex-direction: column; gap: 8px;">
+                    <label style="font-size: 18px; font-weight: 500; color: #3d4047;">服务类型</label>
+                    <select style="padding: 16px 20px; border: 1px solid #e5e7eb; border-radius: 12px; font-size: 16px; background: #fafbfc; transition: all 0.3s; outline: none; cursor: pointer;">
+                        <option>请选择服务类型</option>
+                        <option>巴厘岛疗愈旅修 - 深度套餐</option>
+                        <option>巴厘岛疗愈旅修 - 尊享套餐</option>
+                        <option>心理咨询服务</option>
+                        <option>个人成长陪伴</option>
+                        <option>企业EAP服务</option>
+                    </select>
+                </div>
+                <div class="form-group" style="display: flex; flex-direction: column; gap: 8px;">
+                    <label style="font-size: 18px; font-weight: 500; color: #3d4047;">需求简述</label>
+                    <textarea placeholder="请简要描述您的需求或困扰" rows="4" style="padding: 16px 20px; border: 1px solid #e5e7eb; border-radius: 12px; font-size: 16px; background: #fafbfc; transition: all 0.3s; outline: none; resize: vertical;"></textarea>
+                </div>
+                <button type="submit" style="padding: 20px 40px; background: linear-gradient(135deg, #c9a97e, #e8d5c0); color: white; border: none; border-radius: 12px; font-size: 20px; font-weight: 500; cursor: pointer; transition: all 0.3s; margin-top: 16px;">
+                    提交预约 → 一对一对接
+                </button>
+                <p style="text-align: center; font-size: 16px; color: #9aa0aa; margin-top: 8px;">所有信息严格保密，仅用于服务对接</p>
+            </form>
+        </div>
     </section>
 
     <!-- Footer -->
