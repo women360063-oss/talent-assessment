@@ -896,9 +896,15 @@
    - 冯·诺伊曼链：叠加态最终停止在意识体验
    - 量子认知：用量子原理建模人类决策、判断、冲突
    - 应用：可以通过有意识聚焦，主动选择进入哪一个可能性
+8. 情绪调节成功的梯度理论（PLOS Biology 2026, Wang et al.）：
+   - 核心机制：成功的情绪调节涉及沿着梯度1的系统性重构
+   - 梯度1：大脑主轴，区分单模态（感觉运动）→异模态（联合皮层）脑区
+   - 真实世界关联：梯度重构预测实验室调节成功和日常生活中更低负面情绪
+   - 系统级视角：情绪调节是全脑动态计算，不是局部区域激活
+   - 应用：可以通过训练促进梯度重构，提升调节能力
 
 【核心疗愈技术】
-- 正念引导、情绪日记、认知校准、潜意识解绑、意识聚焦、心智调频、量子坍缩
+- 正念引导、情绪日记、认知校准、潜意识解绑、意识聚焦、心智调频、量子坍缩、梯度重构
 `;
 
         const SOULIGHT_RESPONSES = {
@@ -913,6 +919,10 @@
             "量子": [
                 "从量子意识的角度（Busemeyer & Lu, 2025），意识就像一个量子测量装置。当你有意识地聚焦，就会坍缩多种可能性的概率分布，进入一个确定的状态。此刻，你面前有无数个可能性，但你的聚焦会让其中一个成为现实。你想聚焦在哪个状态上？",
                 "根据2025年《意识研究杂志》的研究，我们可以通过有意识的注意来主动选择可能性。一个练习：现在闭上眼睛，想象你想要成为的状态（平静、自信、专注），然后把意识聚焦在上面，就像测量一个量子系统。这样可以让你的大脑进入那个对应的神经网络状态。你想试试吗？"
+            ],
+            "梯度": [
+                "从2026年最新的PLOS Biology研究来看，成功的情绪调节涉及沿着大脑梯度1的系统性重构——这个梯度是从单模态（感觉运动）到异模态（联合皮层）的主轴。一个练习：尝试让你的注意力在身体感受（感觉运动）和认知反思（高阶认知）之间移动，这可以促进梯度重构。你现在更偏向于哪一端？",
+                "根据Wang等人2026年的研究，情绪调节能力不是某个脑区的功能，而是全脑动态配置的结果。梯度重构可以提升调节能力。一个简单方法：练习正念注意，同时保持对情绪的觉察和认知的反思，这可以训练大脑在梯度1上灵活移动。你愿意每天练习5分钟吗？"
             ],
             "压力": [
                 "压力大时，我们的身体会进入战斗或逃跑模式。根据PLOS Biology 2026的研究，正念可以有效调节这一模式。我们先做一个简短的落地练习：感受你的双脚踩在地上，你的手放的位置，慢慢深呼吸3次。现在感觉如何？",
@@ -1001,7 +1011,8 @@
             const input = userInput.toLowerCase();
             let candidates = SOULIGHT_RESPONSES.default;
 
-            if (input.includes('量子') || input.includes('意识') || input.includes('可能性') || input.includes('叠加')) candidates = SOULIGHT_RESPONSES['量子'];
+            if (input.includes('梯度') || input.includes('重构') || input.includes('大脑') || input.includes('神经')) candidates = SOULIGHT_RESPONSES['梯度'];
+            else if (input.includes('量子') || input.includes('意识') || input.includes('可能性') || input.includes('叠加')) candidates = SOULIGHT_RESPONSES['量子'];
             else if (input.includes('社交') || input.includes('聚会') || input.includes('演讲') || input.includes('当众')) candidates = SOULIGHT_RESPONSES['社交'];
             else if (input.includes('焦虑')) candidates = SOULIGHT_RESPONSES['焦虑'];
             else if (input.includes('压力')) candidates = SOULIGHT_RESPONSES['压力'];
