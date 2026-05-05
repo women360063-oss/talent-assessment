@@ -887,6 +887,10 @@
 3. 认知行为疗法（CBT）73%患者5年后仍保持临床显著改善
 4. 颂钵音疗可提升副交感神经活性，降低主观压力42%
 5. 森林浴可降低皮质醇16%，提升积极情绪23%
+6. 社交焦虑障碍神经机制（The British Journal of Psychiatry 2026）：
+   - 核心问题：前额叶内部回路异常，而非杏仁核-前额叶连接
+   - 关键发现：preSMA（前辅助运动区）在观察时对dlPFC抑制性连接，调节时与vmPFC双向兴奋性连接
+   - 治疗启示：需要针对前额叶内部调控进行认知训练
 
 【核心疗愈技术】
 - 正念引导、情绪日记、认知校准、潜意识解绑、意识聚焦、心智调频
@@ -896,6 +900,10 @@
             "焦虑": [
                 "我理解你的感受。根据剑桥大学的研究，正念练习可以有效缓解焦虑。我们可以试试4-7-8呼吸法：吸气4秒，屏住7秒，呼气8秒，重复3次。现在感受一下，你的身体有什么感觉？",
                 "谢谢你和我分享。从神经科学的角度，焦虑时我们的杏仁核会过度激活。尝试慢慢把注意力带到呼吸上，这会激活前额叶皮层，帮助你平静下来。此刻，是什么想法让你感到焦虑？"
+            ],
+            "社交": [
+                "谢谢你告诉我。根据2026年最新的《英国精神病学杂志》研究，社交焦虑的核心问题可能在于前额叶内部回路的异常，特别是preSMA（前辅助运动区）和vmPFC/dlPFC的连接。我们可以试试一些认知练习：当你感到社交焦虑时，先尝试觉察你的身体感受，然后做3个深呼吸，把注意力锚定在当下的感官上（比如脚踩在地上的感觉）。你最近遇到的社交情境是什么？",
+                "我听到了。社交焦虑时，我们的前额叶内部调控网络需要被激活。一个简单的练习：下次社交时，试着把注意力从自己的感受（别人怎么看我）转移到外界（对方在说什么，环境是什么样）。这有助于激活dlPFC的执行控制功能。你愿意试试吗？"
             ],
             "压力": [
                 "压力大时，我们的身体会进入战斗或逃跑模式。根据PLOS Biology 2026的研究，正念可以有效调节这一模式。我们先做一个简短的落地练习：感受你的双脚踩在地上，你的手放的位置，慢慢深呼吸3次。现在感觉如何？",
@@ -984,7 +992,8 @@
             const input = userInput.toLowerCase();
             let candidates = SOULIGHT_RESPONSES.default;
 
-            if (input.includes('焦虑')) candidates = SOULIGHT_RESPONSES['焦虑'];
+            if (input.includes('社交') || input.includes('聚会') || input.includes('演讲') || input.includes('当众')) candidates = SOULIGHT_RESPONSES['社交'];
+            else if (input.includes('焦虑')) candidates = SOULIGHT_RESPONSES['焦虑'];
             else if (input.includes('压力')) candidates = SOULIGHT_RESPONSES['压力'];
             else if (input.includes('正念')) candidates = SOULIGHT_RESPONSES['正念'];
             else if (input.includes('睡')) candidates = SOULIGHT_RESPONSES['睡眠'];
