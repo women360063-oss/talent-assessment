@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="禅柔旅修 - 身心归位 · 向内自愈 | 心理咨询｜个人成长｜疗愈旅修定制｜企业EAP员工关爱">
-    <title>禅柔旅修 - 身心归位 · 向内自愈</title>
+    <title>禅柔旅修 · 身心归位 向内自愈 | CHANROU Wellness</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -13,8 +12,8 @@
             --sand-dark: #8B7355;
             --stone: #5C5C5C;
             --stone-light: #8A8A8A;
-            --deep-green: #3D6B5A;
-            --deep-green-light: #5a8a72;
+            --deep-green: #2D4A3E;
+            --deep-green-light: #3D6B5A;
             --cream: #FAF8F5;
             --warm-white: #F5F0EB;
             --charcoal: #1A1A1A;
@@ -34,12 +33,12 @@
             overflow-x: hidden;
         }
 
-        /* ===== Navigation - Six Senses Style ===== */
+        /* ===== 导航栏 - Six Senses 风格极简 ===== */
         .navbar {
             position: fixed;
             top: 0; left: 0; right: 0;
             z-index: 1000;
-            padding: 30px 40px;
+            padding: 30px 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -49,14 +48,11 @@
         .navbar.scrolled {
             background: rgba(250,248,245,0.95);
             backdrop-filter: blur(20px);
-            padding: 20px 40px;
+            padding: 20px 60px;
             box-shadow: 0 1px 20px rgba(0,0,0,0.03);
         }
 
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .logo {
             font-family: 'Noto Serif SC', serif;
             font-size: 22px;
             font-weight: 600;
@@ -65,11 +61,11 @@
             text-decoration: none;
         }
 
-        .navbar.scrolled .nav-logo { color: var(--charcoal); }
+        .navbar.scrolled .logo { color: var(--charcoal); }
 
         .nav-links {
             display: flex;
-            gap: 30px;
+            gap: 45px;
             list-style: none;
         }
 
@@ -79,7 +75,7 @@
             font-size: 13px;
             font-weight: 400;
             letter-spacing: 2px;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
             position: relative;
             opacity: 0.9;
         }
@@ -89,8 +85,18 @@
             font-weight: 600;
         }
 
-        .navbar.scrolled .nav-links a { color: var(--text); }
+        .navbar.scrolled .nav-links a { color: var(--charcoal); }
 
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px; left: 0;
+            width: 0; height: 1px;
+            background: var(--sand);
+            transition: width 0.4s ease;
+        }
+
+        .nav-links a:hover::after { width: 100%; }
         .nav-links a:hover { opacity: 1; }
 
         .nav-cta {
@@ -101,9 +107,8 @@
             font-size: 12px;
             letter-spacing: 3px;
             cursor: pointer;
-            transition: all 0.4s;
+            transition: all 0.4s ease;
             font-family: 'Noto Sans SC', sans-serif;
-            text-decoration: none;
         }
 
         .navbar.scrolled .nav-cta {
@@ -117,7 +122,7 @@
             color: white;
         }
 
-        /* ===== Hero - Full Screen ===== */
+        /* ===== Hero - 全屏沉浸 ===== */
         .hero {
             height: 100vh;
             position: relative;
@@ -134,13 +139,35 @@
             background: linear-gradient(160deg, #3D6B5A 0%, #5a8a72 100%);
         }
 
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="15" cy="25" r="0.8" fill="rgba(255,255,255,0.08)"/><circle cx="85" cy="15" r="1.2" fill="rgba(255,255,255,0.06)"/><circle cx="45" cy="75" r="0.6" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="65" r="0.9" fill="rgba(255,255,255,0.07)"/><circle cx="25" cy="55" r="1" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: 300px 300px;
+            animation: drift 25s linear infinite;
+        }
+
+        @keyframes drift {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(20px, -30px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 60%;
+            background: linear-gradient(to top, rgba(26,46,38,0.7) 0%, transparent 100%);
+        }
+
         .hero-content {
             position: relative;
             z-index: 2;
             text-align: center;
             color: white;
             max-width: 900px;
-            padding: 0 24px 120px;
+            padding: 0 30px 120px;
         }
 
         .hero-label {
@@ -156,7 +183,7 @@
             font-size: 56px;
             font-weight: 300;
             line-height: 1.3;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             letter-spacing: 6px;
         }
 
@@ -165,27 +192,11 @@
             font-weight: 300;
             opacity: 0.75;
             max-width: 550px;
-            margin: 0 auto 20px;
+            margin: 0 auto 50px;
             line-height: 1.9;
         }
 
-        .hero-slogan {
-            font-family: 'Noto Serif SC', serif;
-            font-size: 24px;
-            color: var(--sand);
-            margin-bottom: 40px;
-            font-weight: 500;
-            letter-spacing: 2px;
-        }
-
         .hero-cta {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .hero-cta-btn {
             display: inline-block;
             padding: 16px 48px;
             background: var(--sand);
@@ -194,34 +205,14 @@
             font-size: 13px;
             letter-spacing: 4px;
             cursor: pointer;
-            transition: all 0.4s;
+            transition: all 0.4s ease;
             text-decoration: none;
         }
 
-        .hero-cta-btn.soulight {
-            background: linear-gradient(135deg, #f5f5f5, #e0e0e0, #d0d0d0);
-            color: #1a1a1a;
-        }
-
-        .hero-cta-btn:hover {
+        .hero-cta:hover {
             background: var(--sand-dark);
             transform: translateY(-2px);
             box-shadow: 0 15px 40px rgba(196,168,130,0.3);
-        }
-
-        .hero-cta-btn.soulight:hover {
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-            background: linear-gradient(135deg, #ffffff, #f0f0f0, #e8e8e8);
-        }
-
-        .hero-cta-btn-outline {
-            background: transparent;
-            border: 1px solid rgba(255,255,255,0.6);
-        }
-
-        .hero-cta-btn-outline:hover {
-            background: white;
-            color: var(--charcoal);
         }
 
         .scroll-hint {
@@ -241,9 +232,9 @@
             50% { opacity: 0.8; transform: translateX(-50%) translateY(8px); }
         }
 
-        /* ===== Brand Declaration ===== */
+        /* ===== 品牌宣言 ===== */
         .manifesto {
-            padding: 160px 24px;
+            padding: 160px 60px;
             background: var(--cream);
             text-align: center;
         }
@@ -276,12 +267,12 @@
             color: var(--text-light);
             line-height: 2;
             max-width: 650px;
-            margin: 0 auto 24px;
+            margin: 0 auto;
         }
 
-        /* ===== Core Services ===== */
+        /* ===== 核心服务 ===== */
         .services {
-            padding: 0 24px 120px;
+            padding: 0 60px 120px;
             background: var(--cream);
         }
 
@@ -304,13 +295,6 @@
             font-weight: 300;
             color: var(--charcoal);
             letter-spacing: 3px;
-        }
-
-        .services-description {
-            font-size: 16px;
-            color: var(--text-light);
-            max-width: 600px;
-            margin: 16px auto 0;
         }
 
         .services-grid {
@@ -347,6 +331,13 @@
             overflow: hidden;
         }
 
+        .service-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.3) 100%);
+        }
+
         .service-image-icon {
             position: absolute;
             bottom: 30px;
@@ -358,17 +349,15 @@
         }
 
         .service-content {
-            padding: 35px 24px 40px;
-            text-align: left;
+            padding: 35px 30px 40px;
         }
 
         .service-content h3 {
             font-family: 'Noto Serif SC', serif;
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 12px;
+            font-size: 22px;
+            font-weight: 400;
+            margin-bottom: 15px;
             color: var(--charcoal);
-            line-height: 1.4;
         }
 
         .service-card.soulight .service-content h3 {
@@ -379,43 +368,29 @@
             font-size: 14px;
             color: var(--text-light);
             line-height: 1.8;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .service-link {
+            font-size: 12px;
+            letter-spacing: 3px;
+            color: var(--sand);
+            text-decoration: none;
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            width: 100%;
-            padding: 10px 24px;
-            background: transparent;
-            border: 1px solid var(--sand);
-            color: var(--sand);
-            font-size: 13px;
-            letter-spacing: 2px;
-            cursor: pointer;
-            transition: all 0.4s;
-            text-decoration: none;
+            gap: 8px;
+            transition: gap 0.3s ease;
         }
 
         .service-card.soulight .service-link {
-            border-color: #00d4ff;
             color: #00d4ff;
         }
 
-        .service-link:hover {
-            background: var(--sand);
-            color: white;
-        }
+        .service-link:hover { gap: 15px; }
 
-        .service-card.soulight .service-link:hover {
-            background: #00d4ff;
-            color: white;
-        }
-
-        /* ===== Scientific Healing Philosophy ===== */
+        /* ===== 科学疗愈 ===== */
         .philosophy {
-            padding: 140px 24px;
+            padding: 140px 60px;
             background: var(--warm-white);
         }
 
@@ -457,15 +432,15 @@
         .philosophy-item:hover { transform: translateY(-5px); }
 
         .philosophy-icon {
-            width: 64px;
-            height: 64px;
+            width: 80px;
+            height: 80px;
             border: 1px solid var(--sand-light);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 28px;
+            margin: 0 auto 30px;
+            font-size: 32px;
             color: var(--sand-dark);
             transition: all 0.4s ease;
         }
@@ -479,8 +454,8 @@
         .philosophy-item h4 {
             font-family: 'Noto Serif SC', serif;
             font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 12px;
+            font-weight: 400;
+            margin-bottom: 15px;
             color: var(--charcoal);
         }
 
@@ -490,9 +465,9 @@
             line-height: 1.8;
         }
 
-        /* ===== Service Process ===== */
+        /* ===== 服务流程 ===== */
         .process {
-            padding: 140px 24px;
+            padding: 140px 60px;
             background: var(--cream);
         }
 
@@ -517,13 +492,6 @@
             letter-spacing: 3px;
         }
 
-        .process-description {
-            font-size: 16px;
-            color: var(--text-light);
-            max-width: 600px;
-            margin: 16px auto 0;
-        }
-
         .process-steps {
             display: flex;
             justify-content: center;
@@ -533,10 +501,20 @@
             position: relative;
         }
 
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 100px;
+            right: 100px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--sand-light), transparent);
+        }
+
         .process-step {
             flex: 1;
             text-align: center;
-            padding: 0 24px;
+            padding: 0 30px;
             position: relative;
         }
 
@@ -571,21 +549,21 @@
 
         .step-title {
             font-family: 'Noto Serif SC', serif;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 8px;
+            font-size: 18px;
+            font-weight: 400;
+            margin-bottom: 15px;
             color: var(--charcoal);
         }
 
         .step-desc {
-            font-size: 12px;
+            font-size: 13px;
             color: var(--text-light);
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
-        /* ===== Testimonials ===== */
+        /* ===== 案例见证 ===== */
         .stories {
-            padding: 140px 24px;
+            padding: 140px 60px;
             background: var(--deep-green);
             color: white;
         }
@@ -632,9 +610,9 @@
 
         .story-quote {
             font-family: 'Noto Serif SC', serif;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 300;
-            line-height: 1.9;
+            line-height: 1.8;
             margin-bottom: 30px;
             opacity: 0.95;
         }
@@ -649,18 +627,18 @@
 
         .story-author span {
             font-size: 14px;
-            opacity: 0.7;
+            opacity: 0.6;
         }
 
-        .story-tag {
+        .story-service {
             font-size: 12px;
             letter-spacing: 2px;
             color: var(--sand-light);
         }
 
-        /* ===== Team Section ===== */
+        /* ===== 疗愈师团队 ===== */
         .team {
-            padding: 140px 24px;
+            padding: 140px 60px;
             background: var(--cream);
         }
 
@@ -685,13 +663,6 @@
             letter-spacing: 3px;
         }
 
-        .team-description {
-            font-size: 16px;
-            color: var(--text-light);
-            max-width: 600px;
-            margin: 16px auto 0;
-        }
-
         .team-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -702,41 +673,40 @@
 
         .team-card {
             text-align: center;
-            background: white;
-            border: 1px solid rgba(0,0,0,0.04);
-            border-radius: 16px;
-            padding: 40px 30px;
-            transition: all 0.4s ease;
         }
 
-        .team-card:hover {
-            border-color: var(--sand-light);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.08);
-        }
-
-        .team-avatar {
-            width: 96px;
-            height: 96px;
+        .member-photo {
+            width: 220px;
+            height: 220px;
             border-radius: 50%;
-            margin: 0 auto 28px;
+            margin: 0 auto 35px;
             background: linear-gradient(135deg, var(--sand-light), var(--sand));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 40px;
+            font-size: 70px;
             position: relative;
             overflow: hidden;
         }
 
-        .team-card h3 {
+        .member-photo::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border: 2px solid var(--sand);
+            border-radius: 50%;
+            opacity: 0.4;
+        }
+
+        .member-name {
             font-family: 'Noto Serif SC', serif;
             font-size: 24px;
-            font-weight: 600;
+            font-weight: 400;
             margin-bottom: 8px;
             color: var(--charcoal);
         }
 
-        .team-role {
+        .member-role {
             font-size: 13px;
             color: var(--sand);
             letter-spacing: 2px;
@@ -744,17 +714,16 @@
             font-weight: 500;
         }
 
-        .team-credentials {
-            font-size: 13px;
+        .member-bio {
+            font-size: 14px;
             color: var(--text-light);
             line-height: 1.8;
-            margin-bottom: 24px;
+            max-width: 300px;
+            margin: 0 auto;
         }
 
-        .team-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+        .member-cta {
+            margin-top: 25px;
             padding: 10px 30px;
             background: transparent;
             border: 1px solid var(--sand-light);
@@ -764,22 +733,24 @@
             cursor: pointer;
             transition: all 0.4s ease;
             text-decoration: none;
+            display: inline-flex;
+            align-items: center;
         }
 
-        .team-btn:hover {
+        .member-cta:hover {
             background: var(--sand);
             border-color: var(--sand);
             color: white;
         }
 
-        /* ===== Service Guarantees ===== */
-        .guarantees {
-            padding: 100px 24px;
+        /* ===== 服务保障 ===== */
+        .guarantee {
+            padding: 100px 60px;
             background: var(--warm-white);
             text-align: center;
         }
 
-        .guarantees-label {
+        .guarantee-label {
             font-size: 11px;
             letter-spacing: 6px;
             color: var(--sand);
@@ -787,13 +758,12 @@
             text-transform: uppercase;
         }
 
-        .guarantees-grid {
+        .guarantee-grid {
             display: flex;
             justify-content: center;
-            gap: 40px;
+            gap: 80px;
             max-width: 1000px;
             margin: 0 auto;
-            flex-wrap: wrap;
         }
 
         .guarantee-item {
@@ -801,22 +771,27 @@
         }
 
         .guarantee-icon {
-            font-size: 28px;
-            margin-bottom: 12px;
+            font-size: 36px;
+            margin-bottom: 20px;
             color: var(--sand);
         }
 
         .guarantee-item h4 {
             font-family: 'Noto Serif SC', serif;
-            font-size: 15px;
-            font-weight: 600;
-            margin-bottom: 8px;
+            font-size: 18px;
+            font-weight: 400;
+            margin-bottom: 10px;
             color: var(--charcoal);
         }
 
-        /* ===== Booking Section ===== */
-        .booking {
-            padding: 140px 24px;
+        .guarantee-item p {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        /* ===== CTA 区域 ===== */
+        .cta-section {
+            padding: 140px 60px;
             background: var(--charcoal);
             text-align: center;
             color: white;
@@ -824,7 +799,16 @@
             overflow: hidden;
         }
 
-        .booking-label {
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(196,168,130,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        .cta-label {
             font-size: 11px;
             letter-spacing: 6px;
             color: var(--sand);
@@ -833,16 +817,16 @@
             position: relative;
         }
 
-        .booking h2 {
+        .cta-section h2 {
             font-family: 'Noto Serif SC', serif;
             font-size: 44px;
             font-weight: 300;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             letter-spacing: 4px;
             position: relative;
         }
 
-        .booking p {
+        .cta-section p {
             font-size: 17px;
             opacity: 0.7;
             max-width: 500px;
@@ -948,12 +932,12 @@
             opacity: 0.4;
             letter-spacing: 1px;
             position: relative;
-            margin-top: 16px;
+            margin-top: 24px;
         }
 
-        /* ===== Footer ===== */
-        footer {
-            padding: 80px 24px 32px;
+        /* ===== 页脚 ===== */
+        .footer {
+            padding: 80px 60px 40px;
             background: #0F0F0F;
             color: white;
         }
@@ -976,14 +960,14 @@
         .footer-grid {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 48px;
+            gap: 60px;
             max-width: 1200px;
             margin: 0 auto 48px;
         }
 
         .footer-brand h4 {
             font-family: 'Noto Serif SC', serif;
-            font-size: 22px;
+            font-size: 26px;
             margin-bottom: 20px;
             letter-spacing: 4px;
             font-weight: 600;
@@ -999,26 +983,25 @@
         .footer-col h5 {
             font-size: 12px;
             letter-spacing: 3px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             color: var(--sand);
             text-transform: uppercase;
             font-weight: 500;
         }
 
         .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 12px; }
 
-        .footer-col ul li { margin-bottom: 12px; }
-
-        .footer-col ul li a {
+        .footer-col a {
             color: rgba(255,255,255,0.5);
             text-decoration: none;
             font-size: 13px;
             transition: color 0.3s ease;
         }
 
-        .footer-col ul li a:hover { color: var(--sand); }
+        .footer-col a:hover { color: var(--sand); }
 
-        .footer-copyright {
+        .footer-bottom {
             border-top: 1px solid rgba(255,255,255,0.08);
             padding-top: 30px;
             text-align: center;
@@ -1027,13 +1010,13 @@
             letter-spacing: 2px;
         }
 
-        .footer-copyright a {
-            color: rgba(255,255,255,0.2);
+        .footer-bottom a {
+            color: rgba(255,255,255,0.3);
             text-decoration: none;
             margin-left: 20px;
         }
 
-        /* ===== Scroll Animation ===== */
+        /* ===== 动画类 ===== */
         .fade-in {
             opacity: 0;
             transform: translateY(40px);
@@ -1045,40 +1028,16 @@
             transform: translateY(0);
         }
 
-        /* ===== Responsive Design ===== */
-        @media (max-width: 1024px) {
-            .navbar { padding: 20px 24px; }
-            .nav-links { display: none; }
-            .services-grid { grid-template-columns: repeat(2, 1fr); }
-            .philosophy-grid { grid-template-columns: repeat(3, 1fr); }
-            .stories-grid { grid-template-columns: 1fr; }
-            .team-grid { grid-template-columns: repeat(2, 1fr); }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
-            .process-steps { flex-wrap: wrap; }
-            .process-step { flex: 0 0 50%; margin-bottom: 40px; }
-        }
-
-        @media (max-width: 768px) {
-            .navbar { padding: 16px 20px; }
-            .hero h1 { font-size: 36px; }
-            .hero-content { padding-bottom: 80px; }
-            .services-grid { grid-template-columns: 1fr; }
-            .philosophy-grid { grid-template-columns: repeat(2, 1fr); }
-            .team-grid { grid-template-columns: 1fr; }
-            .process-step { flex: 0 0 100%; }
-            .form-row { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr; }
-        }
     </style>
 </head>
 <body>
 
-    <!-- Navigation -->
+    <!-- 导航栏 -->
     <nav class="navbar" id="navbar">
-        <a href="#home" class="nav-logo">禅柔旅修</a>
+        <a href="#home" class="logo">禅柔旅修</a>
         <ul class="nav-links">
             <li><a href="#services">心理咨询</a></li>
-            <li><a href="soulight.html" class="soulight">✨ 溯光AI</a></li>
+            <li><a href="soulight.html" class="soulight">溯光AI</a></li>
             <li><a href="#growth">个人成长</a></li>
             <li><a href="#retreat">疗愈旅修</a></li>
             <li><a href="#eap">企业EAP</a></li>
@@ -1088,39 +1047,33 @@
         <a href="#booking" class="nav-cta">预约咨询</a>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero" id="home">
         <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="hero-label">CHANROU WELLNESS</div>
             <h1>身心归位 · 向内自愈</h1>
             <p class="hero-subtitle">心理咨询 · 个人成长 · 疗愈旅修定制 · 企业EAP员工关爱</p>
-            <p class="hero-slogan">禅于心 · 柔于行 · 旅愈身心</p>
-            <div class="hero-cta">
-                <a href="#booking" class="hero-cta-btn">开启疗愈之旅</a>
-            </div>
+            <a href="#booking" class="hero-cta">开启疗愈之旅</a>
         </div>
         <div class="scroll-hint">SCROLL</div>
     </section>
 
-    <!-- Brand Declaration -->
+    <!-- 品牌宣言 -->
     <section class="manifesto">
         <div class="manifesto-inner fade-in">
             <div class="manifesto-label">OUR PHILOSOPHY</div>
             <h2>在喧嚣世界中<br>为你保留一方归心的净土</h2>
-            <p>禅柔旅修是一个以科学实证为基础的轻奢身心疗愈平台，</p>
-            <p>融合心理学、神经科学、认知行为科学、意识科学与东方哲学，</p>
-            <p>通过内在资源秩序重塑，帮助人们从无序熵增回归有序熵减，</p>
-            <p>切断自动驾驶模式，重建稳定内核，拿回人生主控权。</p>
+            <p>禅柔旅修是一个以科学实证为基础的轻奢身心疗愈平台，融合心理学、神经科学、认知行为科学、意识科学与东方哲学，通过内在资源秩序重塑，帮助人们从无序熵增回归有序熵减，切断自动驾驶模式，重建稳定内核，拿回人生主控权。</p>
         </div>
     </section>
 
-    <!-- Core Services Section -->
+    <!-- 核心服务 -->
     <section class="services" id="services">
         <div class="services-header fade-in">
             <div class="services-label">CORE SERVICES</div>
             <h2 class="services-title">四大核心服务</h2>
-            <p class="services-description">专业、温暖、有效的身心疗愈服务，陪伴你找回内在力量</p>
         </div>
         <div class="services-grid">
             <div class="service-card soulight fade-in">
@@ -1129,7 +1082,7 @@
                 </div>
                 <div class="service-content">
                     <h3>溯光AI · 专属疗愈分身</h3>
-                    <p>你的专属AI疗愈分身，以慢静定柔的风格，提供客户信息收集、天赋测评、陪跑计划、目标里程碑等完整服务流程，随时随地获得专业支持</p>
+                    <p>你的专属AI疗愈分身，以慢静定柔的风格，提供客户信息收集、天赋测评、陪跑计划、目标里程碑等完整服务流程，随时随地获得专业支持。</p>
                     <a href="soulight.html" class="service-link">立即体验 →</a>
                 </div>
             </div>
@@ -1138,45 +1091,35 @@
                     <div class="service-image-icon">💬</div>
                 </div>
                 <div class="service-content">
-                    <h3>一对一心理咨询 · 情绪疏导与疗愈</h3>
-                    <p>针对焦虑、压力、亲密关系、原生家庭、职场内耗等情绪困扰，提供专业疏导，线上线下灵活可选，全程严格保密</p>
-                    <a href="#booking" class="service-link">了解详情 → 预约</a>
+                    <h3>一对一心理咨询</h3>
+                    <p>针对焦虑、压力、亲密关系、原生家庭、职场内耗等情绪困扰，提供专业疏导，线上线下灵活可选，全程严格保密。</p>
+                    <a href="#booking" class="service-link">了解详情 →</a>
                 </div>
             </div>
-            <div class="service-card fade-in">
+            <div class="service-card fade-in" id="growth">
                 <div class="service-image" style="background: linear-gradient(135deg, #3D6B5A 0%, #5a8a72 100%);">
                     <div class="service-image-icon">🌱</div>
                 </div>
                 <div class="service-content">
-                    <h3>个人成长服务 · 自我突破与内在重建</h3>
-                    <p>自我认知探索、情绪管理、心理韧性提升、成长目标规划，助力自我突破，实现全方面个人成长</p>
-                    <a href="#booking" class="service-link">了解详情 → 预约</a>
+                    <h3>个人成长服务</h3>
+                    <p>自我认知探索、情绪管理、心理韧性提升、成长目标规划，助力自我突破，实现全方位个人成长。</p>
+                    <a href="#booking" class="service-link">了解详情 →</a>
                 </div>
             </div>
-            <div class="service-card fade-in">
+            <div class="service-card fade-in" id="retreat">
                 <div class="service-image" style="background: linear-gradient(135deg, #5a8a72 0%, #7aaa92 100%);">
                     <div class="service-image-icon">🏔️</div>
                 </div>
                 <div class="service-content">
-                    <h3>疗愈旅修 · 自然静心深度疗愈</h3>
-                    <p>单人/闺蜜/小众团体定制，融合正念、静修、自然体验，一站式行程规划，实现身心双重疗愈</p>
-                    <a href="partners.html" class="service-link">查看合作伙伴 →</a>
-                </div>
-            </div>
-            <div class="service-card fade-in">
-                <div class="service-image" style="background: linear-gradient(135deg, #8B7355 0%, #C4A882 100%);">
-                    <div class="service-image-icon">🏢</div>
-                </div>
-                <div class="service-content">
-                    <h3>企业EAP · 员工心理健康整体方案</h3>
-                    <p>职场减压讲座、团体疗愈、一对一保密咨询、年度员工心理关怀，提升团队凝聚力，缓解职业倦怠</p>
-                    <a href="partners.html" class="service-link">查看合作企业 →</a>
+                    <h3>疗愈旅修定制</h3>
+                    <p>单人/闺蜜/小众团体定制，融合正念、静修、自然体验，一站式行程规划，实现身心双重疗愈。</p>
+                    <a href="#booking" class="service-link">立即定制 →</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Scientific Healing Philosophy -->
+    <!-- 科学疗愈 -->
     <section class="philosophy" id="philosophy">
         <div class="philosophy-header fade-in">
             <div class="philosophy-label">SCIENTIFIC HEALING</div>
@@ -1191,7 +1134,7 @@
             <div class="philosophy-item fade-in">
                 <div class="philosophy-icon">⚡</div>
                 <h4>神经科学</h4>
-                <p>重构大脑情绪处理模式，确保服务科学性与有效性</p>
+                <p>参考PLOS Biology 2026年情绪调节脑科学研究，重构大脑情绪处理模式，确保服务科学性与有效性</p>
             </div>
             <div class="philosophy-item fade-in">
                 <div class="philosophy-icon">☯️</div>
@@ -1201,173 +1144,169 @@
             <div class="philosophy-item fade-in">
                 <div class="philosophy-icon">🔄</div>
                 <h4>认知行为科学</h4>
-                <p>通过行为锚定与刻意练习，重塑自动化反应模式</p>
+                <p>参考斯坦福大学行为心理学研究，通过行为锚定与刻意练习，重塑自动化反应模式</p>
             </div>
             <div class="philosophy-item fade-in">
                 <div class="philosophy-icon">🔮</div>
                 <h4>量子心智科学</h4>
-                <p>结合意识聚焦与潜意识解绑技术，实现心智调频与内在赋能</p>
+                <p>结合意识聚焦与潜意识解绑技术，提升自主意识掌控力，实现心智调频与内在赋能</p>
             </div>
         </div>
     </section>
 
-    <!-- Partners Section -->
-    <section class="services">
-        <div class="services-header fade-in">
-            <div class="services-label">OUR PARTNERS</div>
-            <h2 class="services-title">合作酒店 & 企业EAP合作伙伴</h2>
-            <p class="services-description">与我们一起，为更多人提供高质量的身心疗愈服务</p>
-        </div>
-        <div class="fade-in" style="text-align: center;">
-            <a href="partners.html" class="service-link" style="width: auto; padding: 12px 40px; display: inline-flex;">查看所有合作伙伴 →</a>
-        </div>
-    </section>
-
-    <!-- Service Process -->
+    <!-- 服务流程 -->
     <section class="process" id="process">
         <div class="process-header fade-in">
             <div class="process-label">OUR PROCESS</div>
             <h2 class="process-title">服务流程</h2>
-            <p class="process-description">专业、清晰的6步疗愈流程，陪伴你一步步找回内在力量</p>
         </div>
         <div class="process-steps">
             <div class="process-step fade-in">
                 <div class="step-circle"><span>1</span></div>
                 <div class="step-title">免费沟通评估</div>
-                <div class="step-desc">初步了解需求，无任何隐形消费，专业顾问一对一沟通</div>
+                <div class="step-desc">初步了解需求，无隐形消费，专业顾问一对一沟通</div>
             </div>
             <div class="process-step fade-in">
                 <div class="step-circle"><span>2</span></div>
-                <div class="step-title">需求分析与方案定制</div>
-                <div class="step-desc">结合客户需求、性格特质，打造1V1专属疗愈方案</div>
+                <div class="step-title">方案定制</div>
+                <div class="step-desc">结合客户需求与性格特质，打造1V1专属疗愈方案</div>
             </div>
             <div class="process-step fade-in">
                 <div class="step-circle"><span>3</span></div>
-                <div class="step-title">匹配专业疗愈师</div>
-                <div class="step-desc">根据需求，精准匹配适配的持证疗愈师，提供师资介绍</div>
+                <div class="step-title">匹配疗愈师</div>
+                <div class="step-desc">根据需求精准匹配持证疗愈师，提供师资介绍</div>
             </div>
             <div class="process-step fade-in">
                 <div class="step-circle"><span>4</span></div>
-                <div class="step-title">开启疗愈服务</div>
-                <div class="step-desc">线上/线下灵活开展，全程专业陪伴，及时解答疑问</div>
+                <div class="step-title">开启服务</div>
+                <div class="step-desc">线上线下灵活开展，全程专业陪伴，及时解答疑问</div>
             </div>
             <div class="process-step fade-in">
                 <div class="step-circle"><span>5</span></div>
-                <div class="step-title">定期回访跟进</div>
+                <div class="step-title">回访跟进</div>
                 <div class="step-desc">跟踪疗愈效果，根据反馈及时调整方案，确保效果</div>
             </div>
             <div class="process-step fade-in">
                 <div class="step-circle"><span>6</span></div>
-                <div class="step-title">长期成长陪伴</div>
+                <div class="step-title">长期陪伴</div>
                 <div class="step-desc">提供后续支持，助力身心持续成长，实现长期稳定</div>
             </div>
         </div>
+        </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!-- 案例见证 -->
     <section class="stories" id="stories">
         <div class="stories-header fade-in">
             <div class="stories-label">REAL STORIES</div>
-            <h2 class="stories-title">真实疗愈案例 · 见证改变</h2>
+            <h2 class="stories-title">真实疗愈见证</h2>
         </div>
         <div class="stories-grid">
             <div class="story-card fade-in">
-                <p class="story-quote">长期被焦虑、内耗裹挟，自我否定严重，职场迷茫、亲密关系紧张，甚至出现失眠、情绪崩溃的情况。通过12次一对一心理咨询，在咨询师的引导下，梳理情绪卡点，结合神经科学情绪调节方法与东方正念理念，学会接纳自我、调节情绪，不仅摆脱了焦虑困扰，还实现了职场晋升，亲密关系也得到显著改善。</p>
-                <div class="story-author">
-                    <span>匿名来访者 · 32岁职场女性</span>
-                    <span class="story-tag">心理咨询</span>
-                </div>
+            <div class="story-quote">
+                "长期被焦虑、内耗裹挟，自我否定严重，职场迷茫、亲密关系紧张，甚至出现失眠、情绪崩溃的情况。通过12次一对一心理咨询，在咨询师的引导下，梳理情绪卡点，结合神经科学情绪调节方法与东方正念理念，学会接纳自我、调节情绪，不仅摆脱了焦虑困扰，还实现了职场晋升，亲密关系也得到显著改善。"
             </div>
+            <div class="story-author">
+                <span>匿名来访者 · 32岁职场女性</span>
+                <span class="story-service">心理咨询</span>
+            </div>
+        </div>
             <div class="story-card fade-in">
-                <p class="story-quote">创业失败后陷入自我怀疑，缺乏自信，成长目标迷茫，长期情绪低落。通过8次个人成长陪伴服务，探索自我优势与不足，建立清晰的自我认知，制定可落地的成长计划，逐步摆脱自我否定，重建内在力量，重新启动创业项目，实现了自我突破。</p>
-                <div class="story-author">
-                    <span>匿名来访者 · 29岁创业者</span>
-                    <span class="story-tag">个人成长</span>
-                </div>
+            <div class="story-quote">
+                "创业失败后陷入自我怀疑，缺乏自信，成长目标迷茫，长期情绪低落。通过8次个人成长陪伴服务，探索自我优势与不足，建立清晰的自我认知，制定可落地的成长计划，逐步摆脱自我否定，重建内在力量，重新启动创业项目，实现了自我突破。"
             </div>
+            <div class="story-author">
+                <span>匿名来访者 · 29岁创业者</span>
+                <span class="story-service">个人成长</span>
+            </div>
+        </div>
             <div class="story-card fade-in">
-                <p class="story-quote">高压工作导致身心透支，对生活失去热情，陷入成长瓶颈。参与3天单人静心疗愈旅修，在自然环境中进行正念练习、情绪梳理，结合东方哲学"道法自然"的疗愈智慧，放下内心执念，重新认识自我，旅修结束后，不仅身心得到放松，还明确了个人成长方向，调整了工作与生活的平衡。</p>
-                <div class="story-author">
-                    <span>匿名来访者 · 28岁互联网从业者</span>
-                    <span class="story-tag">疗愈旅修</span>
-                </div>
+            <div class="story-quote">
+                "高压工作导致身心透支，对生活失去热情，陷入成长瓶颈。参与3天单人静心疗愈旅修，在自然环境中进行正念练习、情绪梳理，结合东方哲学道法自然的疗愈智慧，放下内心执念，重新认识自我，明确了个人成长方向，调整了工作与生活的平衡。"
             </div>
+            <div class="story-author">
+                <span>匿名来访者 · 28岁互联网从业者</span>
+                <span class="story-service">疗愈旅修</span>
+            </div>
+        </div>
             <div class="story-card fade-in">
-                <p class="story-quote">团队长期面临高压工作，员工职业倦怠严重，情绪内耗明显，工作效率下降。为其定制EAP员工关爱计划，开展职场压力疏导讲座、团体疗愈活动，为员工提供一对一心理咨询与个人成长指导，结合心理学认知调整与神经科学减压方法，帮助员工缓解职业倦怠，提升情绪管理能力，员工个人成长显著，团队凝聚力与工作效率大幅提升，离职率下降30%。</p>
-                <div class="story-author">
-                    <span>某互联网公司 · 50人团队</span>
-                    <span class="story-tag">企业EAP</span>
-                </div>
+            <div class="story-quote">
+                "团队长期面临高压工作，员工职业倦怠严重，情绪内耗明显，工作效率下降。定制企业EAP员工关爱计划后，开展职场压力疏导与团体疗愈，员工个人成长显著，团队凝聚力与工作效率大幅提升，离职率下降30%。"
             </div>
+            <div class="story-author">
+                <span>某互联网公司 · 50人团队</span>
+                <span class="story-service">企业EAP</span>
+            </div>
+        </div>
         </div>
     </section>
 
-    <!-- Team Section -->
+    <!-- 疗愈师团队 -->
     <section class="team" id="team">
         <div class="team-header fade-in">
             <div class="team-label">OUR TEAM</div>
-            <h2 class="team-title">专业疗愈师团队 · 精准匹配</h2>
-            <p class="team-description">所有疗愈师均具备正规资质与实战经验，为你提供专业、温暖的陪伴</p>
+            <h2 class="team-title">专业疗愈师团队</h2>
         </div>
         <div class="team-grid">
             <div class="team-card fade-in">
-                <div class="team-avatar">👩‍⚕️</div>
-                <h3>陈安然</h3>
-                <p class="team-role">持证心理咨询师</p>
-                <p class="team-credentials">中国科学院心理研究所认证<br>10年心理咨询经验<br>剑桥大学情绪研究访问学者</p>
-                <a href="#booking" class="team-btn">预约这位疗愈师</a>
+                <div class="member-photo">👩‍⚕️</div>
+                <div class="member-name">陈安然</div>
+                <div class="member-role">持证心理咨询师</div>
+                <div class="member-bio">中国科学院心理研究所认证，10年心理咨询经验，剑桥大学情绪研究访问学者</div>
+                <a href="#booking" class="member-cta">预约这位疗愈师</a>
             </div>
             <div class="team-card fade-in">
-                <div class="team-avatar">🧘‍♀️</div>
-                <h3>林静怡</h3>
-                <p class="team-role">正念疗愈师</p>
-                <p class="team-credentials">正念冥想认证导师<br>8年疗愈旅修带领经验<br>东方哲学与心理学融合实践者</p>
-                <a href="#booking" class="team-btn">预约这位疗愈师</a>
+                <div class="member-photo">🧘‍♀️</div>
+                <div class="member-name">林静怡</div>
+                <div class="member-role">正念疗愈师</div>
+                <div class="member-bio">正念冥想认证导师，8年疗愈旅修带领经验，东方哲学与心理学融合实践者</div>
+                <a href="#booking" class="member-cta">预约这位疗愈师</a>
             </div>
             <div class="team-card fade-in">
-                <div class="team-avatar">👨‍⚕️</div>
-                <h3>王明德</h3>
-                <p class="team-role">企业EAP专家</p>
-                <p class="team-credentials">组织心理学硕士<br>15年企业培训与EAP服务经验<br>服务过50+知名企业团队</p>
-                <a href="#booking" class="team-btn">预约这位疗愈师</a>
+                <div class="member-photo">👨‍⚕️</div>
+                <div class="member-name">王明德</div>
+                <div class="member-role">企业EAP专家</div>
+                <div class="member-bio">组织心理学硕士，15年企业培训与EAP服务经验，服务过50+知名企业团队</div>
+                <a href="#booking" class="member-cta">预约这位疗愈师</a>
             </div>
         </div>
     </section>
 
-    <!-- Service Guarantees -->
-    <section class="guarantees" id="guarantees">
-        <div class="guarantees-label fade-in">OUR GUARANTEES</div>
-        <div class="guarantees-grid fade-in">
-            <div class="guarantee-item">
-                <div class="guarantee-icon">👩‍⚕️</div>
-                <h4>持证专业师资</h4>
-            </div>
+    <!-- 服务保障 -->
+    <section class="guarantee">
+        <div class="guarantee-label fade-in">OUR PROMISE</div>
+        <div class="guarantee-grid fade-in">
             <div class="guarantee-item">
                 <div class="guarantee-icon">🔒</div>
-                <h4>严格隐私保密</h4>
+                <h4>严格保密</h4>
+                <p>所有咨询内容严格保密<br>签署专业保密协议</p>
+            </div>
+            <div class="guarantee-item">
+                <div class="guarantee-icon">📜</div>
+                <h4>正规资质</h4>
+                <p>所有疗愈师均持有<br>国家认证专业资质</p>
             </div>
             <div class="guarantee-item">
                 <div class="guarantee-icon">🎯</div>
-                <h4>1V1定制方案</h4>
+                <h4>精准匹配</h4>
+                <p>根据您的需求特质<br>匹配最适合的疗愈师</p>
             </div>
             <div class="guarantee-item">
-                <div class="guarantee-icon">💫</div>
-                <h4>全程陪伴支持</h4>
+                <div class="guarantee-icon">💎</div>
+                <h4>效果保障</h4>
+                <p>定期回访跟踪效果<br>及时调整疗愈方案</p>
             </div>
             <div class="guarantee-item">
                 <div class="guarantee-icon">💰</div>
                 <h4>无隐形消费</h4>
-            </div>
-            <div class="guarantee-item">
-                <div class="guarantee-icon">⚡</div>
-                <h4>快速响应咨询</h4>
+                <p>价格透明<br>无任何额外费用</p>
             </div>
         </div>
     </section>
 
-    <!-- Booking Section -->
-    <section class="booking" id="booking">
-        <div class="booking-label">BEGIN YOUR JOURNEY</div>
+    <!-- CTA 区域 -->
+    <section class="cta-section" id="booking">
+        <div class="cta-label">BEGIN YOUR JOURNEY</div>
         <h2>开启你的疗愈之旅</h2>
         <p>填写预约信息，我们将在12小时内与你联系</p>
         <div class="booking-form-container">
@@ -1379,7 +1318,7 @@
                     </div>
                     <div class="form-group">
                         <label for="contact">联系方式</label>
-                        <input type="text" id="contact" name="contact" placeholder="微信/电话" required>
+                        <input type="text" id="contact" name="contact" placeholder="请输入你的联系方式" required>
                     </div>
                 </div>
                 <div class="form-row">
@@ -1404,30 +1343,33 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer id="contact">
+    <!-- 页脚 -->
+    <footer class="footer">
         <div class="footer-container">
-            <div class="footer-tagline">禅柔旅修 · 身心归位 · 向内自愈</div>
             <div class="footer-grid">
                 <div class="footer-brand">
                     <h4>禅柔旅修</h4>
-                    <p>禅于心 · 柔于行 · 旅愈身心<br><br>以科学实证为基础的轻奢身心疗愈平台</p>
+                    <p>CHANROU WELLNESS<br><br>禅于心 · 柔于行 · 旅愈身心<br><br>以科学实证为基础的轻奢身心疗愈平台</p>
                 </div>
                 <div class="footer-col">
-                    <h5>导航快捷入口</h5>
+                    <h5>服务</h5>
                     <ul>
-                        <li><a href="#home">首页</a></li>
-                        <li><a href="#services">核心服务</a></li>
-                        <li><a href="#philosophy">科学疗愈</a></li>
-                        <li><a href="#process">服务流程</a></li>
-                        <li><a href="soulight.html">溯光AI</a></li>
-                        <li><a href="partners.html">合作伙伴</a></li>
-                        <li><a href="journal.html">科学期刊</a></li>
-                        <li><a href="#contact">联系我们</a></li>
+                        <li><a href="#services">心理咨询</a></li>
+                        <li><a href="#growth">个人成长</a></li>
+                        <li><a href="#retreat">疗愈旅修</a></li>
+                        <li><a href="#eap">企业EAP</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h5>联系方式</h5>
+                    <h5>关于</h5>
+                    <ul>
+                        <li><a href="#team">疗愈师团队</a></li>
+                        <li><a href="journal.html">科学期刊</a></li>
+                        <li><a href="partners.html">合作伙伴</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>联系</h5>
                     <ul>
                         <li><a href="#">咨询微信：anyu_healing</a></li>
                         <li><a href="#">咨询电话：138-0000-0000</a></li>
@@ -1435,24 +1377,14 @@
                         <li><a href="#">服务时间：每日 09:00–22:00</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h5>合规相关</h5>
-                    <ul>
-                        <li><a href="#">合规声明</a></li>
-                        <li><a href="#">隐私政策</a></li>
-                        <li><a href="#">免责声明</a></li>
-                    </ul>
-                </div>
             </div>
-            <div class="footer-copyright">
-                ©2026 禅柔旅修 CHANROU WELLNESS. All Rights Reserved.
-                <a href="admin.html" style="color: rgba(255,255,255,0.2); margin-left: 20px;">后台</a>
+            <div class="footer-bottom">
+                © 2026 禅柔旅修 CHANROU WELLNESS. All Rights Reserved.
             </div>
         </div>
     </footer>
 
     <script>
-        // Navigation Scroll Effect
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 80) {
@@ -1462,13 +1394,12 @@
             }
         });
 
-        // Scroll Animation
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            rootMargin: '0px 0px -60px 0px'
         };
 
-        const observer = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver(function(entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
@@ -1476,37 +1407,11 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-        // Form Submission - Save to localStorage
         function handleSubmit(event) {
             event.preventDefault();
-            const formData = new FormData(event.target);
-            const data = Object.fromEntries(formData);
-            data.createdAt = new Date().toISOString();
-            data.contacted = false;
-
-            let bookings = JSON.parse(localStorage.getItem('chanrouBookings') || '[]');
-            bookings.push(data);
-            localStorage.setItem('chanrouBookings', JSON.stringify(bookings));
-
-            alert('预约信息已提交！我们将在12小时内与你联系。');
-            event.target.reset();
+            alert('预约信息已提交！我们将在12小时内与您联系。');
         }
-
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
     </script>
-</body>
-</html>
-
+</body></html>
