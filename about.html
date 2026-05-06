@@ -3,1195 +3,404 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="探索潜意识底层的情绪创伤，找回内在的动力与自信，活出自己">
-    <title>探索潜意识 · 找回自信 · 活出自己 | 真我蜕变 主导人生</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>个人成长 | 禅柔旅修</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         :root {
-            --primary-dark: #1e293b;
-            --primary-blue: #3b82f6;
-            --accent-gold: #f59e0b;
-            --success-green: #10b981;
-            --light-gray: #f8fafc;
-            --border-gray: #e2e8f0;
-            --dark-text: #1e293b;
-            --medium-text: #64748b;
-            --light-text: #94a3b8;
-            --gradient-start: #1e40af;
-            --gradient-end: #7c3aed;
+            --primary: #2C5F4A;
+            --primary-light: #4A8B6F;
+            --accent: #c9a97e;
+            --accent-soft: #e8d5c0;
+            --dark: #3d4047;
+            --light: #fafbfc;
+            --cream: #fdfcf9;
+            --text: #3d4047;
+            --text-light: #6b6f78;
+            --border: #e5e7eb;
         }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(180deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%);
-            min-height: 100vh;
-            color: var(--dark-text);
-            line-height: 1.6;
-            overflow-x: hidden;
+            font-family: 'Noto Sans SC', sans-serif;
+            color: var(--text);
+            background: var(--cream);
+            line-height: 1.8;
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 24px;
-        }
-        
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 100px 40px;
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-            border-radius: 24px;
-            margin-bottom: 60px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 10px 40px rgba(0,0,0,0.08);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--border-gray);
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--gradient-start), var(--primary-blue), var(--gradient-end));
-        }
-        
-        .hero-icon {
-            font-size: 48px;
-            margin-bottom: 24px;
-            display: inline-flex;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            width: 88px;
-            height: 88px;
-            border-radius: 20px;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 8px 24px rgba(59,130,246,0.25);
-        }
-        
-        .hero h1 {
-            font-size: 2.6em;
-            color: var(--primary-dark);
-            margin-bottom: 16px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            line-height: 1.25;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.25em;
-            color: var(--medium-text);
-            margin-bottom: 32px;
-            font-weight: 400;
-        }
-        
-        .hero-tagline {
-            font-size: 1.1em;
-            color: var(--primary-blue);
-            margin: 24px 0;
-            font-weight: 600;
-        }
-        
-        .hero-keywords {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-            margin: 32px 0;
-        }
-        
-        .keyword {
-            font-size: 0.9em;
-            font-weight: 600;
-            color: var(--primary-dark);
-            padding: 10px 20px;
-            background: var(--light-gray);
-            border-radius: 8px;
-            border: 1px solid var(--border-gray);
-            letter-spacing: 0.2px;
-        }
-        
-        /* Parallel Universe Letter Section */
-        .letter-section {
-            background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
-            border: 2px solid var(--border-gray);
-            position: relative;
-        }
-        
-        .letter-content {
-            font-size: 1.05em;
-            line-height: 1.9;
-            color: var(--medium-text);
-            text-align: left;
-            padding: 32px;
-            background: #ffffff;
-            border-radius: 12px;
-            margin-top: 30px;
-            border: 1px solid var(--border-gray);
-        }
-        
-        .letter-greeting {
-            font-size: 1.15em;
-            font-weight: 700;
-            color: var(--primary-dark);
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        
-        .letter-closing {
-            text-align: right;
-            margin-top: 28px;
-            color: var(--primary-blue);
-            font-weight: 600;
-        }
-        
-        .cta-button {
-            display: inline-block;
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
             padding: 16px 40px;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            color: white;
-            text-decoration: none;
-            border-radius: 12px;
-            font-size: 1.05em;
-            font-weight: 600;
-            box-shadow: 0 4px 12px rgba(59,130,246,0.3);
-            transition: all 0.2s ease;
-            border: none;
-            cursor: pointer;
-            letter-spacing: 0.3px;
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(59,130,246,0.4);
-        }
-        
-        /* Section Styles */
-        .section {
-            background: #ffffff;
-            border-radius: 24px;
-            padding: 64px 48px;
-            margin-bottom: 48px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 4px 12px rgba(0,0,0,0.06);
-            position: relative;
-            border: 1px solid var(--border-gray);
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-        
-        .section-icon {
-            font-size: 40px;
-            margin-bottom: 16px;
-            display: inline-flex;
-            background: var(--light-gray);
-            width: 72px;
-            height: 72px;
-            border-radius: 16px;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            border: 1px solid var(--border-gray);
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
         }
-        
-        .section h2 {
-            font-size: 2em;
-            color: var(--primary-dark);
-            margin-bottom: 12px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
+        .nav-logo {
+            display: flex; align-items: center; gap: 10px;
+            font-family: 'Noto Serif SC', serif;
+            font-size: 20px; font-weight: 600; color: var(--dark);
         }
-        
-        .section-description {
-            font-size: 1.05em;
-            color: var(--medium-text);
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.7;
+        .nav-logo-icon {
+            width: 40px; height: 40px; border-radius: 8px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px; color: white;
         }
-        
-        /* Journey Grid */
-        .journey-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-            margin-top: 50px;
+        .nav-menu {
+            display: flex; gap: 32px; list-style: none; align-items: center;
         }
-        
-        .journey-card {
-            background: #ffffff;
-            padding: 32px;
-            border-radius: 16px;
-            border: 2px solid var(--border-gray);
-            transition: all 0.2s ease;
-            position: relative;
+        .nav-menu a {
+            color: var(--text-light); text-decoration: none; font-size: 15px;
+            transition: color 0.3s ease; font-weight: 400;
         }
-        
-        .journey-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-blue), var(--gradient-end));
-            border-radius: 16px 16px 0 0;
+        .nav-menu a:hover { color: var(--dark); }
+        .nav-menu a.soulight { color: #00d4ff; font-weight: 600; }
+        .nav-cta {
+            padding: 10px 24px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+            color: white; border: none; border-radius: 8px;
+            font-size: 14px; font-weight: 500; cursor: pointer;
+            text-decoration: none; transition: all 0.3s ease;
         }
-        
-        .journey-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-            border-color: var(--primary-blue);
+        .nav-cta:hover {
+            transform: translateY(-2px); box-shadow: 0 8px 20px rgba(201,169,126,0.3);
         }
-        
-        .journey-number {
-            display: inline-flex;
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            color: white;
-            border-radius: 12px;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5em;
-            font-weight: 700;
-            margin-bottom: 20px;
+        /* Main Content */
+        .main-content {
+            margin-top: 72px; padding: 80px 40px;
+            max-width: 1100px; margin-left: auto; margin-right: auto;
         }
-        
-        .journey-card h3 {
-            color: var(--primary-dark);
-            margin-bottom: 20px;
-            font-size: 1.3em;
-            font-weight: 700;
+        .page-header { text-align: center; margin-bottom: 60px; }
+        .page-label {
+            font-size: 12px; letter-spacing: 6px; color: var(--accent);
+            margin-bottom: 16px; text-transform: uppercase;
         }
-        
-        .journey-card ul {
-            list-style: none;
-            padding-left: 0;
+        .page-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 42px; font-weight: 300; color: var(--dark);
+            margin-bottom: 16px; line-height: 1.4;
         }
-        
-        .journey-card li {
-            padding: 10px 0;
-            padding-left: 30px;
-            position: relative;
-            color: var(--dark-text);
+        .page-description {
+            font-size: 16px; color: var(--text-light);
+            max-width: 600px; margin: 0 auto;
         }
-        
-        .journey-card li:before {
-            content: "✨";
-            position: absolute;
-            left: 0;
-            font-size: 1.1em;
+        /* Service Cards */
+        .service-grid {
+            display: flex; flex-direction: column; gap: 32px;
         }
-        
-        /* Comparison Section */
-        .comparison-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 32px;
-            margin-top: 40px;
+        .service-card {
+            background: white; border: 1px solid var(--border);
+            border-radius: 16px; padding: 40px;
+            transition: all 0.4s ease;
         }
-        
-        .comparison-box {
-            padding: 36px;
-            border-radius: 16px;
-            text-align: center;
-            position: relative;
-            background: #ffffff;
-            border: 2px solid var(--border-gray);
+        .service-card:hover {
+            transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.08);
         }
-        
-        .comparison-box.before {
-            border-color: #ef4444;
-            background: linear-gradient(180deg, #fef2f2 0%, #ffffff 100%);
+        .service-header {
+            display: flex; justify-content: space-between; align-items: flex-start;
+            margin-bottom: 24px; flex-wrap: wrap; gap: 16px;
         }
-        
-        .comparison-box.after {
-            border-color: var(--success-green);
-            background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%);
+        .service-category {
+            display: inline-block; padding: 6px 16px;
+            background: var(--light); color: var(--accent);
+            font-size: 12px; letter-spacing: 2px;
+            border-radius: 20px; font-weight: 500;
         }
-        
-        .comparison-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
+        .service-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 24px; font-weight: 600; color: var(--dark);
+            margin-bottom: 16px; line-height: 1.5;
         }
-        
-        .comparison-box h3 {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-            font-weight: 700;
-            color: var(--primary-dark);
+        .service-content {
+            font-size: 15px; color: var(--text);
+            line-height: 1.9; margin-bottom: 24px;
         }
-        
-        .comparison-box p {
-            font-size: 1.05em;
-            margin: 12px 0;
-            padding: 12px;
-            background: var(--light-gray);
-            border-radius: 8px;
-            color: var(--medium-text);
+        .service-link {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 12px 28px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+            color: white; text-decoration: none; border-radius: 8px;
+            font-size: 14px; transition: all 0.3s ease;
         }
-        
-        /* Meditation Grid */
-        .meditation-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
+        .service-link:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(201,169,126,0.3); }
+        /* Benefits */
+        .benefits {
+            background: var(--light); padding: 100px 40px;
         }
-        
-        .meditation-card {
-            background: #ffffff;
-            padding: 28px 24px;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px solid var(--border-gray);
-            transition: all 0.2s ease;
-            position: relative;
+        .benefits-inner { max-width: 1100px; margin: 0 auto; }
+        .benefits-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;
         }
-        
-        .meditation-card:hover {
-            border-color: var(--primary-blue);
-            transform: translateY(-4px);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        .benefit-card {
+            text-align: center; padding: 32px 24px;
         }
-        
-        .meditation-card h4 {
-            color: var(--primary-dark);
-            margin-bottom: 12px;
-            font-size: 1.15em;
-            font-weight: 700;
+        .benefit-icon {
+            width: 72px; height: 72px;
+            border: 1px solid var(--accent-soft); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 20px;
         }
-        
-        .meditation-card p {
-            color: var(--medium-text);
-            font-size: 1em;
-            line-height: 1.6;
+        .benefit-icon svg {
+            width: 36px; height: 36px; stroke: var(--accent); stroke-width: 1.5; fill: none;
         }
-        
-        .meditation-category {
+        .benefit-card h4 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 18px; font-weight: 500; margin-bottom: 12px; color: var(--dark);
+        }
+        .benefit-card p {
+            font-size: 14px; color: var(--text-light); line-height: 1.7;
+        }
+        /* Process */
+        .section { padding: 100px 40px; max-width: 1200px; margin: 0 auto; }
+        .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+        .process-step {
+            text-align: center; padding: 28px 16px;
+            background: white; border-radius: 16px; border: 1px solid var(--border);
+        }
+        .process-num {
+            width: 48px; height: 48px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 16px; color: white; font-weight: 600;
+        }
+        .process-step h4 {
+            font-size: 15px; font-weight: 600; color: var(--dark); margin-bottom: 8px;
+        }
+        .process-step p {
+            font-size: 13px; color: var(--text-light); line-height: 1.6;
+        }
+        /* CTA */
+        .cta-section {
+            background: var(--dark); color: white; padding: 100px 40px; text-align: center;
+        }
+        .cta-inner { max-width: 600px; margin: 0 auto; }
+        .cta-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 38px; font-weight: 300; margin-bottom: 16px;
+        }
+        .cta-desc { font-size: 16px; opacity: 0.7; margin-bottom: 48px; }
+        .cta-button {
+            padding: 14px 48px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+            color: white; border: none; border-radius: 8px;
+            font-size: 16px; letter-spacing: 3px; cursor: pointer;
+            text-decoration: none; transition: all 0.3s ease;
             display: inline-block;
-            padding: 6px 16px;
-            background: var(--light-gray);
-            border-radius: 20px;
-            font-size: 0.85em;
-            color: var(--primary-blue);
-            margin-top: 16px;
-            font-weight: 600;
-            border: 1px solid var(--border-gray);
-            color: var(--primary-pink);
-            margin-top: 15px;
-            font-weight: 500;
         }
-        
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(201,169,126,0.35); }
         /* Footer */
         footer {
-            text-align: center;
-            padding: 60px 40px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 30px;
-            margin-top: 50px;
-            margin-bottom: 30px;
+            background: var(--dark); color: white; padding: 80px 40px 40px;
         }
-        
-        footer h2 {
-            border: none;
-            padding: 0;
-            margin-bottom: 25px;
-            font-family: 'Noto Serif SC', serif;
+        .footer-inner {
+            max-width: 1100px; margin: 0 auto;
+            display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 48px;
         }
-        
-        .footer-message {
-            font-size: 1.4em;
-            color: var(--primary-pink);
-            margin: 25px 0;
-            font-weight: 500;
+        .footer-brand h3 {
+            font-family: 'Noto Serif SC', serif; font-size: 28px; font-weight: 600;
+            margin-bottom: 16px; letter-spacing: 4px;
         }
-        
-        .footer-tagline {
-            font-size: 1.2em;
-            color: var(--light-text);
-            margin-top: 20px;
+        .footer-brand p { font-size: 14px; opacity: 0.5; line-height: 1.9; }
+        .footer-col h4 {
+            font-size: 13px; color: var(--accent); letter-spacing: 2px;
+            margin-bottom: 24px; font-weight: 500; text-transform: uppercase;
         }
-        
-        /* Floating Stars */
-        .stars-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-            z-index: 0;
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 12px; }
+        .footer-col a {
+            color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px;
+            transition: color 0.3s ease;
         }
-        
-        .floating-star {
-            position: absolute;
-            font-size: 25px;
-            animation: twinkle 4s ease-in-out infinite;
+        .footer-col a:hover { color: var(--accent); }
+        .footer-copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 32px; text-align: center;
+            font-size: 13px; opacity: 0.4; letter-spacing: 2px;
         }
-        
-        @keyframes twinkle {
-            0%, 100% { 
-                opacity: 0.3; 
-                transform: scale(1) rotate(0deg);
-            }
-            50% { 
-                opacity: 1; 
-                transform: scale(1.3) rotate(180deg);
-            }
+        /* Responsive */
+        @media (max-width: 1024px) {
+            nav { padding: 16px 24px; }
+            .nav-menu { display: none; }
+            .benefits-grid { grid-template-columns: 1fr; }
+            .process-grid { grid-template-columns: repeat(2,1fr); }
+            .footer-inner { grid-template-columns: 1fr; }
         }
-        
-        .content-wrapper {
-            position: relative;
-            z-index: 1;
-        }
-        
-        /* Scroll Animation */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Responsive Design */
         @media (max-width: 768px) {
-            .hero {
-                padding: 50px 20px;
-            }
-            
-            .hero h1 {
-                font-size: 2.2em;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2em;
-            }
-            
-            .hero-icon {
-                font-size: 50px;
-            }
-            
-            .section {
-                padding: 30px 20px;
-            }
-            
-            .section h2 {
-                font-size: 1.8em;
-            }
-            
-            .journey-grid,
-            .meditation-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .comparison-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .cta-button {
-                padding: 14px 32px;
-                font-size: 1.05em;
-            }
-        }
-        
-        /* Story Carousel */
-        .story-carousel {
-            position: relative;
-            max-width: 900px;
-            margin: 40px auto;
-            overflow: hidden;
-            border-radius: 16px;
-            border: 2px solid var(--border-gray);
-            background: #ffffff;
-        }
-        
-        .story-container {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-        
-        .story-slide {
-            min-width: 100%;
-            padding: 40px;
-        }
-        
-        .story-avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 2em;
-        }
-        
-        .story-name {
-            font-size: 1.3em;
-            font-weight: 700;
-            color: var(--primary-dark);
-            margin-bottom: 10px;
-        }
-        
-        .story-title {
-            color: var(--primary-blue);
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-        
-        .story-content {
-            color: var(--medium-text);
-            line-height: 1.8;
-            font-size: 1.05em;
-        }
-        
-        .story-before-after {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 25px;
-        }
-        
-        .story-before,
-        .story-after {
-            padding: 15px;
-            border-radius: 8px;
-            background: var(--light-gray);
-        }
-        
-        .story-before h4,
-        .story-after h4 {
-            font-size: 1em;
-            margin-bottom: 8px;
-            font-weight: 700;
-        }
-        
-        .story-before h4 { color: #ef4444; }
-        .story-after h4 { color: var(--success-green); }
-        
-        .carousel-controls {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .carousel-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: 2px solid var(--border-gray);
-            background: #ffffff;
-            font-size: 1.5em;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        
-        .carousel-btn:hover {
-            border-color: var(--primary-blue);
-            background: var(--light-gray);
-        }
-        
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        
-        .carousel-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--border-gray);
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        
-        .carousel-dot.active {
-            background: var(--primary-blue);
-            width: 30px;
-            border-radius: 6px;
-        }
-        
-        /* Smooth Scroll */
-        html {
-            scroll-behavior: smooth;
+            .main-content { padding: 60px 20px; }
+            .page-title { font-size: 32px; }
+            .process-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <div class="stars-container" id="stars"></div>
-    <div class="content-wrapper">
-        <div class="container">
-            <!-- Hero Section -->
-            <section class="hero">
-                <div class="hero-icon">🌿</div>
-                <h1>探索潜意识底层的情绪创伤</h1>
-                <p class="hero-subtitle">找回内在的动力与自信 · 做自己 · 温柔且有力量</p>
-                <div class="hero-keywords">
-                    <span class="keyword">情绪疗愈</span>
-                    <span class="keyword">潜意识探索</span>
-                    <span class="keyword">重建自信</span>
-                    <span class="keyword">内在力量</span>
-                </div>
-                <p class="hero-tagline">看见创伤，疗愈自己，重获生命的动力与自信</p>
-                <a href="#pricing" class="cta-button">开启蜕变之旅</a>
-            </section>
+    <!-- Nav -->
+    <nav>
+        <div class="nav-logo">
+            <div class="nav-logo-icon">🦋</div>
+            <span>禅柔旅修</span>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="index.html#home">首页</a></li>
+            <li><a href="index.html#services">心理咨询</a></li>
+            <li><a href="soulight.html" class="soulight">溯光AI</a></li>
+            <li><a href="about.html">个人成长</a></li>
+            <li><a href="bali-retreat.html">疗愈旅修</a></li>
+            <li><a href="index.html#eap">企业EAP</a></li>
+            <li><a href="index.html#team">疗愈师团队</a></li>
+            <li><a href="journal.html">科学期刊</a></li>
+            <li><a href="index.html#booking">预约咨询</a></li>
+        </ul>
+        <a href="index.html#booking" class="nav-cta">立即预约</a>
+    </nav>
 
-            <!-- Value Proposition Section -->
-            <section class="section animate-on-scroll">
-                <div class="section-header">
-                    <div class="section-icon">✨</div>
-                    <h2>核心价值主张</h2>
-                    <p class="section-description">
-                        帮助你从被限制性信念困住、情绪冻结僵住、找不到自己主体性的状态，
-                        转变为情绪自由流动、建立能量边界、活出高能量状态的全新版本。
-                    </p>
-                </div>
-            </section>
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="page-header">
+            <div class="page-label">PERSONAL GROWTH</div>
+            <h1 class="page-title">个人成长服务</h1>
+            <p class="page-description">自我认知探索、情绪管理、心理韧性提升，助力自我突破与内在重建</p>
+        </div>
 
-            <!-- Parallel Universe Letter Section -->
-            <section class="section letter-section animate-on-scroll">
-                <div class="section-header">
-                    <div class="section-icon">🌿</div>
-                    <h2>来自平行世界的一封疗愈来信</h2>
+        <!-- Services Grid -->
+        <div class="service-grid">
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-category">自我认知</span>
                 </div>
-                <div class="letter-content">
-                    <p class="letter-greeting">亲爱的你，好久不见 ✨</p>
-                    <p>我是来自那个已经疗愈创伤、做自己的平行世界的你。</p>
-                    <p>我知道，在你的内心深处，有一些未曾被看见的情绪创伤，它们在影响着你的生活。</p>
-                    <p>但你知道吗？那些让你痛苦的经历，也蕴含着你成长的密码。</p>
-                    <p><strong>看见是疗愈的开始。</strong></p>
-                    <p>当你愿意去探索潜意识深处的情绪创伤，你就已经迈出了最勇敢的一步。</p>
-                    <p>在那里，你会找到被遗忘的内在力量，找回属于你的动力与自信。</p>
-                    <p>你不需要一直活在创伤的阴影中，你值得拥有充满活力和自信的人生。</p>
-                    <p>你的情绪不是你的敌人，它们是你的信使，告诉你哪里需要被看见、被爱。</p>
-                    <p><strong>疗愈不是抹去过去，而是让过去不再定义你的现在和未来。</strong></p>
-                    <p style="text-align: center; font-size: 1.3em; font-weight: 700; color: var(--primary-dark); margin: 30px 0;">当你准备好看见自己、疗愈自己，新的人生就已开启</p>
-                    <p style="text-align: center; font-size: 1.2em; font-weight: 600; color: var(--primary-blue); margin-top: 20px;">✨ 你值得活出闪闪发光的自己！</p>
-                    <p class="letter-closing">✨ 来自平行世界已做自己的你</p>
-                </div>
-            </section>
+                <h2 class="service-title">自我认知探索与天赋测评</h2>
+                <p class="service-content">通过科学的测评工具与深度对话，帮助你了解自己的性格特质、优势天赋、价值观与内在驱动力。建立清晰的自我认知，找到真正适合自己的发展方向。</p>
+                <a href="soulight.html" class="service-link">体验溯光AI天赋测评 →</a>
+            </div>
 
-            <!-- Pricing Section -->
-            <section class="section animate-on-scroll" id="pricing">
-                <div class="section-header">
-                    <div class="section-icon">✨</div>
-                    <h2>选择你的蜕变路径</h2>
-                    <p class="section-description">
-                        从基础陪伴到深度私教，总有一款适合你的蜕变方案
-                    </p>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-category">情绪管理</span>
                 </div>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin-top: 50px;">
-                    <!-- 基础版 -->
-                    <div style="background: linear-gradient(145deg, #fff0f5, #ffeef8); border-radius: 30px; padding: 40px 30px; border: 3px solid var(--secondary-pink); position: relative; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);">
-                        <div style="text-align: center; margin-bottom: 30px;">
-                            <div style="font-family: 'Noto Serif SC', serif; font-size: 2em; color: var(--primary-pink); font-weight: 700; margin-bottom: 15px;">✨ 基础版</div>
-                            <div style="font-size: 3em; color: var(--dark-text); font-weight: 700; margin-bottom: 10px;">2980元<span style="font-size: 0.4em; color: var(--light-text); font-weight: 400;">/12周</span></div>
-                            <div style="font-size: 1.2em; color: var(--light-text); margin-bottom: 30px;">
-                                总价值 <strong style="color: var(--primary-pink); font-size: 1.3em;">8038元</strong>
-                            </div>
-                        </div>
-                        <ul style="list-style: none; margin-bottom: 30px;">
-                            <li style="padding: 12px 0; padding-left: 35px; position: relative; border-bottom: 1px solid rgba(255,107,157,0.1);">✨ 12次直播课（每周1次，90分钟/次）</li>
-                            <li style="padding: 12px 0; padding-left: 35px; position: relative; border-bottom: 1px solid rgba(255,107,157,0.1);">✨ 12周社群陪伴</li>
-                            <li style="padding: 12px 0; padding-left: 35px; position: relative; border-bottom: 1px solid rgba(255,107,157,0.1);">✨ 2次1对1咨询（30分钟/次）</li>
-                            <li style="padding: 12px 0; padding-left: 35px; position: relative; border-bottom: 1px solid rgba(255,107,157,0.1);">✨ 超值礼包（冥想音频+工具包）</li>
-                            <li style="padding: 12px 0; padding-left: 35px; position: relative; border-bottom: 1px solid rgba(255,107,157,0.1);">✨ 每日打卡 + 每周复盘</li>
-                            <li style="padding: 12px 0; padding-left: 35px; position: relative;">✨ 死党制（3人小组）</li>
-                        </ul>
-                        <button style="display: block; width: 100%; text-align: center; padding: 18px 30px; background: linear-gradient(45deg, var(--secondary-pink), var(--primary-pink)); color: white; text-decoration: none; border-radius: 30px; font-size: 1.2em; font-weight: 700; transition: all 0.3s ease; border: none; cursor: pointer;">立即报名</button>
-                        <p style="text-align: center; margin-top: 15px; color: var(--primary-pink); font-weight: 600; font-size: 0.95em;">🔥 只相当于8小时1v1咨询的钱！</p>
-                    </div>
-                    
-                    <!-- 尊享版（推荐） -->
-                    <div style="background: linear-gradient(145deg, #fff0f5, #ffeef8); border-radius: 30px; padding: 40px 30px; border: 4px solid var(--gold); position: relative; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); transform: scale(1.05);">
-                        <div style="position: absolute; top: -20px; right: 20px; background: linear-gradient(45deg, var(--gold), var(--primary-pink)); color: white; padding: 8px 20px; border-radius: 20px; font-weight: 700; font-size: 0.9em; box-shadow: 0 10px 30px rgba(255,215,0,0.3);">🔥 推荐</div>
-                        <div style="text-align: center; margin-bottom: 30px;">
-                            <div style="font-family: 'Noto Serif SC', serif; font-size: 2em; color: var(--primary-pink); font-weight: 700; margin-bottom: 15px;">🌟 尊享版</div>
-                            <div style="font-size: 3em; color: var(--dark-text); font-weight: 700; margin-bottom: 10px;">9800元<span style="font-size: 0.4em; color: var(--light-text); font-weight: 400;">/12周</span></div>
-                            <div style="font-size: 1.2em; color: var(--light-text); margin-bottom: 30px;">
-                                总价值 <strong style="color: var(--primary-pink); font-size: 1.3em;">36812元</strong>
-                            </div>
-                        </div>
-                        <ul style="list-style: none; margin-bottom: 30px;">
-                            <li style="padding: 12px 0; padding-left: 35px; position: relative; border-bottom: 1px solid rgba(255,107,157,0.1);">✨ 基础版全部内容</li>
-                            <li style="padding: 12px 0; padding-left: 35px; position: relative; border-bottom: 1px solid rgba(255,107,157,0.1);">✨ 4次1对1深度咨询（60分钟/次）</li>
-                            <li style="padding: 12px 0; padding-left: 35px; position: relative; border-bottom: 1px solid rgba(255,107,157,0.1);">✨ 2次线下旅修（2天1夜/次）</li>
-                            <li style="padding: 12px 0; padding-left: 35px; position: relative; border-bottom: 1px solid rgba(255,107,157,0.1);">✨ 专属复盘1对1（每周1次）</li>
-                            <li style="padding: 12px 0; padding-left: 35px; position: relative; border-bottom: 1px solid rgba(255,107,157,0.1);">✨ 优先复训资格</li>
-                            <li style="padding: 12px 0; padding-left: 35px; position: relative;">✨ 3-5年规划1对1（2小时）</li>
-                        </ul>
-                        <button style="display: block; width: 100%; text-align: center; padding: 18px 30px; background: linear-gradient(45deg, var(--secondary-pink), var(--primary-pink)); color: white; text-decoration: none; border-radius: 30px; font-size: 1.2em; font-weight: 700; transition: all 0.3s ease; border: none; cursor: pointer;">选择尊享版</button>
-                        <p style="text-align: center; margin-top: 15px; color: var(--primary-pink); font-weight: 600; font-size: 0.95em;">💡 单是2次线下旅修就值19800元！</p>
-                    </div>
-                    
-                    <!-- 私教版 -->
-                    <div style="background: linear-gradient(145deg, #fff0f5, #ffeef8); border-radius: 30px; padding: 40px 30px; border: 3px solid var(--secondary-pink); position: relative; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);">
-                        <div style="text-align: center; margin-bottom: 30px;">
-                            <div style="font-family: 'Noto Serif SC', serif; font-size: 2em; color: var(--primary-pink); font-weight: 700; margin-bottom: 15px;">👑 私教版</div>
-                            <div style="font-size: 3em; color: var(--dark-text); font-weight: 700; margin-bottom: 10px;">29800元<span style="font-size: 0.4em; color: var(--light-text); font-weight: 400;">/3个月</span></div>
-                            <div style="font-size: 1.2em; color: var(--light-text); margin-bottom: 30px;">
-                                总价值 <strong style="color: var(--primary-pink); font-size: 1.3em;">92452元</strong>
-                            </div>
-                        </div>
-                        <ul style="list-style: none; margin-bottom: 30px;">
-                            <li style="padding: 12px 0; padding-left: 35px; position: relative; border-bottom: 1px solid rgba(255,107,157,0.1);">✨ 尊享版全部内容</li>
-                            <li style="padding: 12px 0; padding-left: 35px; position: relative; border-bottom: 1px solid rgba(255,107,157,0.1);">✨ 每周2次1对1咨询（60分钟/次）</li>
-                            <li style="padding: 12px 0; padding-left: 35px; position: relative; border-bottom: 1px solid rgba(255,107,157,0.1);">✨ 定制化练习方案</li>
-                            <li style="padding: 12px 0; padding-left: 35px; position: relative; border-bottom: 1px solid rgba(255,107,157,0.1);">✨ 3次线下深度疗愈（1天/次）</li>
-                            <li style="padding: 12px 0; padding-left: 35px; position: relative; border-bottom: 1px solid rgba(255,107,157,0.1);">✨ 1年复训资格</li>
-                            <li style="padding: 12px 0; padding-left: 35px; position: relative;">✨ 个人品牌/影响力建立指导</li>
-                        </ul>
-                        <button style="display: block; width: 100%; text-align: center; padding: 18px 30px; background: linear-gradient(45deg, var(--secondary-pink), var(--primary-pink)); color: white; text-decoration: none; border-radius: 30px; font-size: 1.2em; font-weight: 700; transition: all 0.3s ease; border: none; cursor: pointer;">申请私教</button>
-                        <p style="text-align: center; margin-top: 15px; color: var(--primary-pink); font-weight: 600; font-size: 0.95em;">⚠️ 一年只收10个私教学员！</p>
-                    </div>
-                </div>
-            </section>
+                <h2 class="service-title">情绪管理与心理韧性提升</h2>
+                <p class="service-content">学习科学的情绪管理方法，提升心理韧性与抗挫能力。掌握正念练习、认知重构等实用工具，在压力与挑战中保持稳定心态。</p>
+                <a href="index.html#booking" class="service-link">预约咨询 →</a>
+            </div>
 
-            <!-- Journey Section -->
-            <section class="section animate-on-scroll" id="journey">
-                <div class="section-header">
-                    <div class="section-icon">🚀</div>
-                    <h2>四阶段蜕变路径</h2>
-                    <p class="section-description">
-                        系统性的成长路径，带你一步步完成从旧版本到新版本的完整蜕变
-                    </p>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-category">成长规划</span>
                 </div>
-                <div class="journey-grid">
-                    <div class="journey-card">
-                        <div class="journey-number">1</div>
-                        <h3>假我旧版本清洗</h3>
-                        <ul>
-                            <li>卡点疏通 · 清理限制性信念</li>
-                            <li>情绪溯源旧信念行为系统情绪解冻</li>
-                            <li>学会自我接纳和自爱</li>
-                            <li>通过内在小孩的回溯潜意识练习</li>
-                            <li>让冻结僵住的情绪能量流动起来</li>
-                            <li>用更高的心智状态与过去和解</li>
-                            <li>学会自我接纳、学会自爱、学会慈悲</li>
-                        </ul>
-                    </div>
-                    <div class="journey-card">
-                        <div class="journey-number">2</div>
-                        <h3>重塑稳定&强大内核</h3>
-                        <ul>
-                            <li>主体性建立 + 课题分离</li>
-                            <li>高能量状态 + 正念冥想</li>
-                            <li>如何建立主体性做自己？</li>
-                            <li>如何建立自信？</li>
-                            <li>如何课题分离建立自己的能量边界？</li>
-                            <li>情绪管理能力培养</li>
-                            <li>刻意练习情绪触发</li>
-                        </ul>
-                    </div>
-                    <div class="journey-card">
-                        <div class="journey-number">3</div>
-                        <h3>真我新版本认同</h3>
-                        <ul>
-                            <li>内在预演 · 通过视觉化冥想练习</li>
-                            <li>锚定愿景画面</li>
-                            <li>让未来的你接管现在的你</li>
-                            <li>新版本行动对齐迭代</li>
-                            <li>将新版本的原子习惯插入日常生活</li>
-                            <li>让新循环能量打破旧有循环</li>
-                        </ul>
-                    </div>
-                    <div class="journey-card">
-                        <div class="journey-number">4</div>
-                        <h3>新版本行动对齐迭代</h3>
-                        <ul>
-                            <li>刻意练习-反馈-优化复盘</li>
-                            <li>行动迭代</li>
-                            <li>新信念系统重塑</li>
-                            <li>朝向新版本的自己前进</li>
-                            <li>让新循环能量打破旧有循环</li>
-                            <li>持续优化和迭代</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
+                <h2 class="service-title">成长目标规划与陪跑支持</h2>
+                <p class="service-content">制定清晰的个人成长目标与行动计划，提供持续的陪跑支持。跟踪进度、调整策略，确保目标达成。</p>
+                <a href="index.html#booking" class="service-link">了解陪跑计划 →</a>
+            </div>
 
-            <!-- Comparison Section -->
-            <section class="section animate-on-scroll">
-                <div class="section-header">
-                    <div class="section-icon">🌿</div>
-                    <h2>从痛到绽放的转变</h2>
-                    <p class="section-description">
-                        看见改变，相信改变，成为改变
-                    </p>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-category">关系成长</span>
                 </div>
-                <div class="comparison-container">
-                    <div class="comparison-box before">
-                        <div class="comparison-content">
-                            <div class="comparison-icon">😢</div>
-                            <h3>曾经的你</h3>
-                            <p>被限制性信念困住</p>
-                            <p>情绪冻结、僵住</p>
-                            <p>找不到自己的主体性</p>
-                        </div>
-                    </div>
-                    <div class="comparison-box after">
-                        <div class="comparison-content">
-                            <div class="comparison-icon">🌸</div>
-                            <h3>现在的你</h3>
-                            <p>情绪自由流动</p>
-                            <p>建立能量边界</p>
-                            <p>活出高能量状态</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Transformation Stories Section -->
-            <section class="section animate-on-scroll">
-                <div class="section-header">
-                    <div class="section-icon">✨</div>
-                    <h2>真实蜕变故事</h2>
-                    <p class="section-description">
-                        她们的故事，或许也是你的故事
-                    </p>
-                </div>
-                <div class="story-carousel">
-                    <div class="story-container" id="storyContainer">
-                        <div class="story-slide">
-                            <div class="story-avatar">👩</div>
-                            <div class="story-name">小A（32岁，创业者）</div>
-                            <div class="story-title">从"我不够好"到"我本具足"</div>
-                            <div class="story-content">
-                                <p>曾经的我，总是在证明自己，害怕不够好，害怕被否定。</p>
-                                <p>通过12周的练习，我学会了看见自己的创伤，建立了能量边界。</p>
-                            </div>
-                            <div class="story-before-after">
-                                <div class="story-before">
-                                    <h4>👉 之前</h4>
-                                    <p>总是讨好别人<br>不敢拒绝<br>自我怀疑</p>
-                                </div>
-                                <div class="story-after">
-                                    <h4>💫 之后</h4>
-                                    <p>学会说“不”<br>自我认可<br>活出力量</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="story-slide">
-                            <div class="story-avatar">👩‍💼</div>
-                            <div class="story-name">小B（28岁，互联网产品经理）</div>
-                            <div class="story-title">从情绪内耗到情绪自由</div>
-                            <div class="story-content">
-                                <p>每天被焦虑淹没，失眠、脱发，工作效率越来越低。</p>
-                                <p>情绪解冻练习让我终于和自己的感受和解了。</p>
-                            </div>
-                            <div class="story-before-after">
-                                <div class="story-before">
-                                    <h4>👉 之前</h4>
-                                    <p>严重焦虑<br>经常失眠<br>自我攻击</p>
-                                </div>
-                                <div class="story-after">
-                                    <h4>💫 之后</h4>
-                                    <p>情绪稳定<br>睡眠改善<br>自我接纳</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="story-slide">
-                            <div class="story-avatar">👩‍🎨</div>
-                            <div class="story-name">小C（35岁，设计师）</div>
-                            <div class="story-title">从创伤封印到创造力绽放</div>
-                            <div class="story-content">
-                                <p>童年的经历让我一直封闭自己，不敢真正表达。</p>
-                                <p>内在小孩的疗愈，让我重新找回了创作的热情和勇气。</p>
-                            </div>
-                            <div class="story-before-after">
-                                <div class="story-before">
-                                    <h4>👉 之前</h4>
-                                    <p>封闭自己<br>不敢表达<br>创意枯竭</p>
-                                </div>
-                                <div class="story-after">
-                                    <h4>💫 之后</h4>
-                                    <p>开放自我<br>勇敢表达<br>创意涌现</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="story-slide">
-                            <div class="story-avatar">👩‍🏫</div>
-                            <div class="story-name">小D（40岁，教育工作者）</div>
-                            <div class="story-title">从牺牲型付出到有边界的爱</div>
-                            <div class="story-content">
-                                <p>总是把别人放在第一位，忽略自己，直到身心俱疲。</p>
-                                <p>课题分离练习教会我，真正的爱是先爱自己。</p>
-                            </div>
-                            <div class="story-before-after">
-                                <div class="story-before">
-                                    <h4>👉 之前</h4>
-                                    <p>过度付出<br>失去自我<br>疲惫不堪</p>
-                                </div>
-                                <div class="story-after">
-                                    <h4>💫 之后</h4>
-                                    <p>有边界的爱<br>找回自我<br>轻松自在</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-controls">
-                        <button class="carousel-btn" onclick="prevStory()">←</button>
-                        <button class="carousel-btn" onclick="nextStory()">→</button>
-                    </div>
-                    <div class="carousel-dots" id="carouselDots"></div>
-                </div>
-            </section>
-
-            <!-- Meditation Section -->
-            <section class="section animate-on-scroll">
-                <div class="section-header">
-                    <div class="section-icon">✨</div>
-                    <h2>冥想工具包（12个专项冥想）</h2>
-                    <p class="section-description">
-                        每个冥想都精心设计，助力你的蜕变之旅
-                    </p>
-                </div>
-                <div class="meditation-grid">
-                    <div class="meditation-card">
-                        <h4>卡点清理冥想</h4>
-                        <p>让冻结、僵住的情绪流动起来</p>
-                        <span class="meditation-category">情绪清理类</span>
-                    </div>
-                    <div class="meditation-card">
-                        <h4>情绪觉察冥想</h4>
-                        <p>觉察每个感受出发的情绪</p>
-                        <span class="meditation-category">情绪清理类</span>
-                    </div>
-                    <div class="meditation-card">
-                        <h4>边界建立冥想</h4>
-                        <p>建立透明而坚固的能量边界</p>
-                        <span class="meditation-category">边界建立类</span>
-                    </div>
-                    <div class="meditation-card">
-                        <h4>内在预演冥想</h4>
-                        <p>让未来的你接管现在的你</p>
-                        <span class="meditation-category">愿景锚定类</span>
-                    </div>
-                    <div class="meditation-card">
-                        <h4>视觉化冥想</h4>
-                        <p>通过视觉化冥想练习，锚定愿景画面</p>
-                        <span class="meditation-category">愿景锚定类</span>
-                    </div>
-                    <div class="meditation-card">
-                        <h4>内核稳定冥想</h4>
-                        <p>建立主体性，做自己的主人</p>
-                        <span class="meditation-category">边界建立类</span>
-                    </div>
-                    <div class="meditation-card">
-                        <h4>信念升级冥想</h4>
-                        <p>替换限制性信念为支持性信念</p>
-                        <span class="meditation-category">信念升级类</span>
-                    </div>
-                    <div class="meditation-card">
-                        <h4>习惯植入冥想</h4>
-                        <p>把新习惯植入潜意识</p>
-                        <span class="meditation-category">信念升级类</span>
-                    </div>
-                    <div class="meditation-card">
-                        <h4>小步验证冥想</h4>
-                        <p>通过小步验证强化新身份</p>
-                        <span class="meditation-category">身份强化类</span>
-                    </div>
-                    <div class="meditation-card">
-                        <h4>挑战突破冥想</h4>
-                        <p>突破你的限制</p>
-                        <span class="meditation-category">身份强化类</span>
-                    </div>
-                    <div class="meditation-card">
-                        <h4>持续迭代冥想</h4>
-                        <p>建立持续迭代的意识</p>
-                        <span class="meditation-category">持续成长类</span>
-                    </div>
-                    <div class="meditation-card">
-                        <h4>真我显化冥想</h4>
-                        <p>让真我完全显化</p>
-                        <span class="meditation-category">持续成长类</span>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Testimonials Section -->
-            <section class="section animate-on-scroll" id="testimonials">
-                <div class="section-header">
-                    <div class="section-icon">🌿</div>
-                    <h2>真实蜕变故事</h2>
-                    <p class="section-description">
-                        来自真实用户的分享，见证生命的绽放
-                    </p>
-                </div>
-                
-                <div class="meditation-grid">
-                    <div class="meditation-card">
-                        <h4>从焦虑到平静</h4>
-                        <p style="color: var(--dark-text); margin-bottom: 15px;">32岁职场女性，长期焦虑失眠，通过12周疗愈，学会与情绪共处，睡眠质量大幅改善。</p>
-                        <span class="meditation-category">情绪疗愈</span>
-                    </div>
-                    <div class="meditation-card">
-                        <h4>找回自信</h4>
-                        <p style="color: var(--dark-text); margin-bottom: 15px;">28岁女生，自我价值感低，通过潜意识探索，看见童年创伤，重建自信，开启新事业。</p>
-                        <span class="meditation-category">潜意识探索</span>
-                    </div>
-                    <div class="meditation-card">
-                        <h4>关系重建</h4>
-                        <p style="color: var(--dark-text); margin-bottom: 15px;">35岁离婚女性，疗愈情感创伤，建立健康边界，重新找到爱与被爱的能力。</p>
-                        <span class="meditation-category">关系疗愈</span>
-                    </div>
-                    <div class="meditation-card">
-                        <h4>职业突破</h4>
-                        <p style="color: var(--dark-text); margin-bottom: 15px;">40岁职场瓶颈期，清理限制性信念，找回内在动力，成功转型找到热爱事业。</p>
-                        <span class="meditation-category">职业突破</span>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Footer -->
-            <footer class="animate-on-scroll">
-                <div class="section-icon">✨</div>
-                <h2>一起构建内在秩序</h2>
-                <p class="footer-message">让自爱成为你最强大的显化力量</p>
-                <p class="footer-tagline">今天可以是你命运齿轮的转动点，而不是普通的又一天</p>
-                <a href="#top" class="cta-button" style="margin-top: 30px;">重新开始蜕变之旅</a>
-            </footer>
+                <h2 class="service-title">亲密关系与人际关系成长</h2>
+                <p class="service-content">探索关系模式，提升沟通能力与共情能力。建立健康、滋养的人际关系，在关系中获得成长与满足。</p>
+                <a href="index.html#booking" class="service-link">预约咨询 →</a>
+            </div>
         </div>
     </div>
 
-    <script>
-        // Create floating stars
-        function createStars() {
-            const starsContainer = document.getElementById('stars');
-            const starSymbols = ['✨', '🌿'];
-            
-            for (let i = 0; i < 25; i++) {
-                const star = document.createElement('div');
-                star.className = 'floating-star';
-                star.textContent = starSymbols[Math.floor(Math.random() * starSymbols.length)];
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                star.style.animationDelay = Math.random() * 4 + 's';
-                star.style.animationDuration = (3 + Math.random() * 3) + 's';
-                starsContainer.appendChild(star);
-            }
-        }
-        
-        // Intersection Observer for scroll animations
-        function initScrollAnimations() {
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -100px 0px'
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, observerOptions);
-            
-            document.querySelectorAll('.animate-on-scroll').forEach(el => {
-                observer.observe(el);
-            });
-        }
-        
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#top') {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                    return;
-                }
-                const target = document.querySelector(targetId);
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-        
-        // Story Carousel
-        let currentStory = 0;
-        const totalStories = 4;
-        let autoPlayInterval;
-        
-        function updateCarousel() {
-            const container = document.getElementById('storyContainer');
-            container.style.transform = `translateX(-${currentStory * 100}%)`;
-            updateDots();
-        }
-        
-        function nextStory() {
-            currentStory = (currentStory + 1) % totalStories;
-            updateCarousel();
-            resetAutoPlay();
-        }
-        
-        function prevStory() {
-            currentStory = (currentStory - 1 + totalStories) % totalStories;
-            updateCarousel();
-            resetAutoPlay();
-        }
-        
-        function goToStory(index) {
-            currentStory = index;
-            updateCarousel();
-            resetAutoPlay();
-        }
-        
-        function updateDots() {
-            const dotsContainer = document.getElementById('carouselDots');
-            dotsContainer.innerHTML = '';
-            for (let i = 0; i < totalStories; i++) {
-                const dot = document.createElement('div');
-                dot.className = 'carousel-dot' + (i === currentStory ? ' active' : '');
-                dot.onclick = () => goToStory(i);
-                dotsContainer.appendChild(dot);
-            }
-        }
-        
-        function startAutoPlay() {
-            autoPlayInterval = setInterval(nextStory, 5000);
-        }
-        
-        function resetAutoPlay() {
-            clearInterval(autoPlayInterval);
-            startAutoPlay();
-        }
-        
-        // Initialize everything when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            createStars();
-            initScrollAnimations();
-            updateDots();
-            startAutoPlay();
-        });
-    </script>
+    <!-- Benefits -->
+    <section class="benefits">
+        <div class="benefits-inner">
+            <div class="page-header" style="margin-bottom: 60px;">
+                <div class="page-label">WHY CHOOSE US</div>
+                <h1 class="page-title">我们的优势</h1>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 7 7 13 7 13s7-6 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2"/></svg>
+                    </div>
+                    <h4>科学为依据</h4>
+                    <p>基于心理学、神经科学最新研究成果</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+                    </div>
+                    <h4>专业团队</h4>
+                    <p>具备正规资质与实战经验的疗愈师</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    </div>
+                    <h4>严格保密</h4>
+                    <p>所有信息严格保密，安全可信赖</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="section">
+        <div class="page-header" style="margin-bottom: 60px;">
+            <div class="page-label">GROWTH PROCESS</div>
+            <h1 class="page-title">成长四步</h1>
+            <p class="page-description">系统、清晰的成长路径，陪伴你一步步实现内在突破</p>
+        </div>
+        <div class="process-grid">
+            <div class="process-step">
+                <div class="process-num">1</div>
+                <h4>自我认知</h4>
+                <p>深入探索，建立清晰认知</p>
+            </div>
+            <div class="process-step">
+                <div class="process-num">2</div>
+                <h4>目标制定</h4>
+                <p>制定清晰可执行的目标</p>
+            </div>
+            <div class="process-step">
+                <div class="process-num">3</div>
+                <h4>行动实施</h4>
+                <p>持续行动，固化新习惯</p>
+            </div>
+            <div class="process-step">
+                <div class="process-num">4</div>
+                <h4>复盘迭代</h4>
+                <p>定期复盘，持续优化</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="cta-inner">
+            <div class="page-label">BEGIN NOW</div>
+            <h1 class="cta-title">开启你的个人成长之旅</h1>
+            <p class="cta-desc">预约咨询，我们一起探索内在，实现突破</p>
+            <a href="index.html#booking" class="cta-button">立即预约</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <h3>禅柔旅修</h3>
+                <p>以科学为依据，以东方智慧为灵魂<br>陪伴每一位来访者完成从失衡到归位的旅程</p>
+            </div>
+            <div class="footer-col">
+                <h4>服务</h4>
+                <ul>
+                    <li><a href="index.html#services">心理咨询</a></li>
+                    <li><a href="bali-retreat.html">疗愈旅修</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>探索</h4>
+                <ul>
+                    <li><a href="journal.html">科学期刊</a></li>
+                    <li><a href="partners.html">合作伙伴</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-copyright">© 2026 禅柔旅修 CHANROU. All Rights Reserved.</div>
+    </footer>
 </body>
 </html>

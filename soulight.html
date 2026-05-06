@@ -1,377 +1,237 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="溯光AI - 你的专属疗愈分身">
-    <title>溯光 · Soulight - AI疗愈分身</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>溯光AI · 专属疗愈分身 | 禅柔旅修</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #2C5F4A;
+            --primary-light: #4A8B6F;
+            --accent: #c9a97e;
+            --accent-soft: #e8d5c0;
+            --dark: #3d4047;
+            --light: #fafbfc;
+            --cream: #fdfcf9;
+            --text: #3d4047;
+            --text-light: #6b6f78;
+            --border: #e5e7eb;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
         body {
             font-family: 'Noto Sans SC', sans-serif;
-            background: linear-gradient(160deg, #2d4a3e 0%, #3d6b5a 100%);
-            min-height: 100vh;
-            color: #e2e8f0;
+            background: linear-gradient(160deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--text);
             line-height: 1.8;
-            overflow-x: hidden;
+            min-height: 100vh;
         }
-        :root {
-            --sand: #c9a97e;
-            --sand-light: #e8d5c0;
-            --deep-green: #2d4a3e;
-            --deep-green-light: #3d6b5a;
-            --cyber-blue: #00d4ff;
-            --dark: #121212;
-            --text-dark: #3d4047;
-            --border-subtle: rgba(201,169,126,0.2);
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 24px;
-        }
+        /* Navigation */
         nav {
             position: fixed;
             top: 0; left: 0; right: 0;
-            background: rgba(250,248,245,0.98);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(201,169,126,0.3);
             z-index: 1000;
-            padding: 16px 60px;
+            padding: 16px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
         }
-        .nav-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        .nav-logo {
+            display: flex; align-items: center; gap: 10px;
             font-family: 'Noto Serif SC', serif;
-            font-size: 20px;
-            font-weight: 600;
-            color: #3d4047;
+            font-size: 20px; font-weight: 600; color: var(--dark);
         }
-        .nav-center {
-            display: flex;
-            gap: 36px;
-            list-style: none;
+        .nav-logo-icon {
+            width: 40px; height: 40px; border-radius: 8px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px; color: white;
         }
-        .nav-center a {
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 400;
-            color: #6b6f78;
-            transition: all 0.3s ease;
+        .nav-menu {
+            display: flex; gap: 32px; list-style: none; align-items: center;
         }
-        .nav-center a:hover {
-            color: var(--sand);
+        .nav-menu a {
+            color: var(--text-light); text-decoration: none; font-size: 15px;
+            transition: color 0.3s ease; font-weight: 400;
         }
-        .nav-center a.soulight {
-            color: var(--cyber-blue);
-            font-weight: 600;
+        .nav-menu a:hover { color: var(--dark); }
+        .nav-menu a.soulight {
+            color: #00d4ff; font-weight: 600;
+        }
+        /* Main Container */
+        .container {
+            max-width: 1200px; margin: 0 auto; padding: 100px 40px 40px;
         }
         .back-nav {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: white;
-            text-decoration: none;
-            padding: 12px 20px;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 12px;
-            margin-bottom: 24px;
-            transition: all 0.3s ease;
+            display: inline-flex; align-items: center; gap: 8px;
+            color: white; text-decoration: none;
+            padding: 10px 20px; background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2); border-radius: 12px;
+            margin-bottom: 24px; transition: all 0.3s ease;
         }
-        .back-nav:hover {
-            background: rgba(201,169,126,0.2);
-            border-color: var(--sand);
-        }
+        .back-nav:hover { background: rgba(201,169,126,0.2); border-color: var(--accent); }
+        /* Header */
         .header {
-            text-align: center;
-            padding: 48px 24px;
-            background: linear-gradient(180deg, rgba(201,169,126,0.15) 0%, transparent 100%);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            text-align: center; padding: 40px 24px; margin-bottom: 32px;
         }
         .header h1 {
             font-family: 'Noto Serif SC', serif;
-            font-size: 2.8em;
-            background: linear-gradient(90deg, white, var(--sand-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 300;
-            margin-bottom: 16px;
-            letter-spacing: 8px;
+            font-size: 42px; font-weight: 300; color: white;
+            margin-bottom: 12px; letter-spacing: 4px;
         }
         .header-subtitle {
-            font-size: 1.2em;
-            color: rgba(255,255,255,0.8);
-            letter-spacing: 2px;
+            font-size: 17px; color: rgba(255,255,255,0.8); letter-spacing: 1px;
         }
+        /* Main Content */
         .main-content {
-            display: grid;
-            grid-template-columns: 320px 1fr;
-            gap: 24px;
-            margin-top: 32px;
+            display: grid; grid-template-columns: 320px 1fr; gap: 28px;
         }
-        .sidebar {
-            position: sticky;
-            top: 100px;
-            height: fit-content;
-        }
+        /* Sidebar */
+        .sidebar { position: sticky; top: 100px; height: fit-content; }
         .sidebar-card {
-            background: rgba(250,248,245,0.95);
-            border: 1px solid var(--border-subtle);
-            border-radius: 16px;
-            padding: 28px;
+            background: rgba(255,255,255,0.95); border: 1px solid rgba(201,169,126,0.25);
+            border-radius: 16px; padding: 28px;
             box-shadow: 0 8px 32px rgba(0,0,0,0.08);
         }
         .sidebar-title {
-            font-family: 'Noto Serif SC', serif;
-            font-size: 1.1em;
-            font-weight: 500;
-            color: var(--text-dark);
-            margin-bottom: 24px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            letter-spacing: 2px;
+            font-family: 'Noto Serif SC', serif; font-size: 16px; font-weight: 500;
+            color: var(--dark); margin-bottom: 24px; display: flex; align-items: center; gap: 10px;
+            letter-spacing: 1px;
         }
-        .quick-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
+        .sidebar-title svg { width: 22px; height: 22px; stroke: var(--accent); stroke-width: 1.5; fill: none; }
+        .quick-actions { display: flex; flex-direction: column; gap: 12px; }
         .quick-action-btn {
-            padding: 16px;
-            background: white;
-            border: 1px solid rgba(201,169,126,0.3);
-            border-radius: 12px;
-            color: var(--text-dark);
-            cursor: pointer;
-            text-align: left;
-            transition: all 0.3s ease;
-            font-size: 14px;
-            font-weight: 400;
+            padding: 14px; background: white; border: 1px solid rgba(201,169,126,0.3);
+            border-radius: 12px; color: var(--dark); cursor: pointer;
+            text-align: left; transition: all 0.3s ease; font-size: 14px; font-weight: 400;
         }
         .quick-action-btn:hover {
-            background: var(--sand-light);
-            border-color: var(--sand);
-            transform: translateX(4px);
-            box-shadow: 0 8px 24px rgba(201,169,126,0.2);
+            background: var(--accent-soft); border-color: var(--accent);
+            transform: translateX(4px); box-shadow: 0 8px 24px rgba(201,169,126,0.2);
         }
         .quick-action-btn span {
-            display: block;
-            font-size: 0.9em;
-            color: #6b6f78;
-            margin-top: 6px;
+            display: block; font-size: 13px; color: var(--text-light); margin-top: 6px;
         }
+        /* Chat Container */
         .chat-container {
-            background: rgba(250,248,245,0.95);
-            border: 1px solid rgba(201,169,126,0.3);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            height: calc(100vh - 200px);
-            min-height: 600px;
+            background: rgba(255,255,255,0.95); border: 1px solid rgba(201,169,126,0.25);
+            border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+            overflow: hidden; display: flex; flex-direction: column;
+            height: calc(100vh - 220px); min-height: 600px;
         }
         .chat-header {
-            padding: 28px;
-            border-bottom: 1px solid rgba(201,169,126,0.3);
+            padding: 28px; border-bottom: 1px solid rgba(201,169,126,0.25);
             background: linear-gradient(90deg, rgba(201,169,126,0.15), transparent);
-            display: flex;
-            align-items: center;
-            gap: 18px;
+            display: flex; align-items: center; gap: 18px;
         }
         .siri-animation {
-            width: 64px;
-            height: 64px;
-            position: relative;
+            width: 64px; height: 64px; position: relative;
         }
         .siri-wave {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 2px solid var(--sand);
-            animation: siri-pulse 2.4s ease-out infinite;
+            position: absolute; width: 100%; height: 100%; border-radius: 50%;
+            border: 2px solid var(--accent); animation: siri-pulse 2.4s ease-out infinite;
         }
-        .siri-wave:nth-child(2) {
-            animation-delay: 0.6s;
-        }
-        .siri-wave:nth-child(3) {
-            animation-delay: 1.2s;
-        }
+        .siri-wave:nth-child(2) { animation-delay: 0.6s; }
+        .siri-wave:nth-child(3) { animation-delay: 1.2s; }
         @keyframes siri-pulse {
             0% { transform: scale(0.8); opacity: 1; }
             100% { transform: scale(1.6); opacity: 0; }
         }
         .siri-core {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 32px;
-            height: 32px;
-            background: radial-gradient(circle, var(--sand), var(--sand-dark));
-            border-radius: 50%;
-            box-shadow: 0 0 24px var(--sand), 0 0 48px rgba(201,169,126,0.4);
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 32px; height: 32px;
+            background: radial-gradient(circle, var(--accent), #a58259);
+            border-radius: 50%; box-shadow: 0 0 24px var(--accent), 0 0 48px rgba(201,169,126,0.4);
         }
-        .chat-title {
-            flex: 1;
-        }
+        .chat-title { flex: 1; }
         .chat-title h2 {
-            font-family: 'Noto Serif SC', serif;
-            font-size: 1.4em;
-            color: var(--text-dark);
-            margin-bottom: 6px;
-            letter-spacing: 2px;
+            font-family: 'Noto Serif SC', serif; font-size: 18px; color: var(--dark);
+            margin-bottom: 6px; letter-spacing: 1px;
         }
         .chat-status {
-            font-size: 0.9em;
-            color: #10b981;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            font-size: 13px; color: #10b981; display: flex; align-items: center; gap: 8px;
         }
         .status-dot {
-            width: 10px;
-            height: 10px;
-            background: #10b981;
-            border-radius: 50%;
+            width: 10px; height: 10px; background: #10b981; border-radius: 50%;
             animation: pulse 2s infinite;
         }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
+        @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+        /* Chat Messages */
         .chat-messages {
-            flex: 1;
-            overflow-y: auto;
-            padding: 28px;
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-            background: linear-gradient(180deg, white 0%, #faf8f5 100%);
+            flex: 1; overflow-y: auto; padding: 28px;
+            display: flex; flex-direction: column; gap: 24px;
+            background: linear-gradient(180deg, white 0%, var(--light) 100%);
         }
         .message {
-            max-width: 80%;
-            display: flex;
-            gap: 14px;
-            animation: messageFade 0.4s ease;
+            max-width: 80%; display: flex; gap: 14px;
+            animation: message-fade 0.4s ease;
         }
-        @keyframes messageFade {
-            from { opacity: 0; transform: translateY(14px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .message.user {
-            margin-left: auto;
-            flex-direction: row-reverse;
-        }
+        @keyframes message-fade { from { opacity:0; transform: translateY(14px); } to { opacity:1; transform: translateY(0); } }
+        .message.user { margin-left: auto; flex-direction: row-reverse; }
         .message-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            flex-shrink: 0;
+            width: 40px; height: 40px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px; flex-shrink: 0;
         }
         .message.assistant .message-avatar {
-            background: linear-gradient(135deg, var(--sand), var(--sand-light));
+            background: linear-gradient(135deg, var(--accent), var(--accent-soft));
         }
         .message.user .message-avatar {
-            background: linear-gradient(135deg, var(--deep-green-light), var(--deep-green));
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
         }
         .message-bubble {
-            padding: 18px 22px;
-            border-radius: 16px;
-            line-height: 1.8;
+            padding: 18px 22px; border-radius: 16px; line-height: 1.8;
         }
         .message.assistant .message-bubble {
-            background: white;
-            border: 1px solid rgba(201,169,126,0.2);
+            background: white; border: 1px solid rgba(201,169,126,0.2);
             box-shadow: 0 4px 16px rgba(0,0,0,0.04);
         }
-        .message.assistant .message-bubble strong {
-            color: var(--sand);
-        }
+        .message.assistant .message-bubble strong { color: var(--accent); }
         .message.user .message-bubble {
-            background: rgba(61,107,90,0.08);
-            border: 1px solid rgba(61,107,90,0.2);
+            background: rgba(74,139,111,0.08); border: 1px solid rgba(74,139,111,0.2);
         }
         .message-time {
-            font-size: 0.8em;
-            color: #9aa0aa;
-            margin-top: 10px;
+            font-size: 13px; color: #9aa0aa; margin-top: 10px;
         }
+        /* Input */
         .chat-input-container {
-            padding: 24px 28px;
-            border-top: 1px solid rgba(201,169,126,0.2);
+            padding: 24px 28px; border-top: 1px solid rgba(201,169,126,0.2);
             background: white;
         }
         .chat-input-wrapper {
-            display: flex;
-            gap: 14px;
-            align-items: flex-end;
+            display: flex; gap: 14px; align-items: flex-end;
         }
         .chat-input {
-            flex: 1;
-            padding: 16px 20px;
-            background: #faf8f5;
-            border: 1px solid rgba(201,169,126,0.3);
-            border-radius: 14px;
-            color: var(--text-dark);
-            font-size: 15px;
-            resize: none;
-            min-height: 60px;
-            max-height: 150px;
-            outline: none;
+            flex: 1; padding: 12px 16px;
+            background: var(--light); border: 1px solid rgba(201,169,126,0.3);
+            border-radius: 12px; color: var(--dark); font-size: 15px;
+            resize: none; min-height: 56px; max-height: 140px; outline: none;
             transition: border-color 0.3s ease;
         }
-        .chat-input::placeholder {
-            color: #9aa0aa;
-        }
-        .chat-input:focus {
-            border-color: var(--sand);
-        }
+        .chat-input::placeholder { color: #9aa0aa; }
+        .chat-input:focus { border-color: var(--accent); }
         .send-button {
-            padding: 16px 36px;
-            background: linear-gradient(135deg, var(--sand), var(--sand-light));
-            border: none;
-            border-radius: 14px;
-            color: white;
-            font-size: 15px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+            border: none; border-radius: 12px;
+            color: white; font-size: 15px; font-weight: 500;
+            cursor: pointer; transition: all 0.3s ease;
         }
         .send-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 32px rgba(201,169,126,0.4);
+            transform: translateY(-2px); box-shadow: 0 12px 28px rgba(201,169,126,0.35);
         }
         .send-button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
+            opacity: 0.5; cursor: not-allowed; transform: none;
         }
+        /* Typing Indicator */
         .typing-indicator {
-            display: flex;
-            gap: 6px;
-            padding: 14px;
+            display: flex; gap: 6px; padding: 14px;
         }
         .typing-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--sand);
-            border-radius: 50%;
+            width: 8px; height: 8px; background: var(--accent); border-radius: 50%;
             animation: typing 1.4s infinite;
         }
         .typing-dot:nth-child(2) { animation-delay: 0.2s; }
@@ -380,50 +240,55 @@
             0%, 60%, 100% { transform: translateY(0); }
             30% { transform: translateY(-10px); }
         }
+        /* Responsive */
         @media (max-width: 1024px) {
             nav { padding: 16px 24px; }
-            .nav-center { display: none; }
+            .nav-menu { display: none; }
             .main-content { grid-template-columns: 1fr; }
             .sidebar { position: static; }
             .chat-container { height: calc(100vh - 300px); }
+            .header h1 { font-size: 32px; }
         }
         @media (max-width: 768px) {
-            .header h1 { font-size: 2em; }
+            .container { padding: 100px 20px 40px; }
             .message { max-width: 90%; }
         }
     </style>
 </head>
 <body>
+    <!-- Nav -->
     <nav>
-        <div class="nav-left">
+        <div class="nav-logo">
             <div class="nav-logo-icon">🦋</div>
             <span>禅柔旅修</span>
         </div>
-        <ul class="nav-center">
+        <ul class="nav-menu">
             <li><a href="index.html#home">首页</a></li>
-            <li><a href="index.html#counseling">心理咨询</a></li>
+            <li><a href="index.html#services">心理咨询</a></li>
             <li><a href="soulight.html" class="soulight">溯光AI</a></li>
             <li><a href="about.html">个人成长</a></li>
             <li><a href="bali-retreat.html">疗愈旅修</a></li>
             <li><a href="index.html#eap">企业EAP</a></li>
             <li><a href="index.html#team">疗愈师团队</a></li>
             <li><a href="journal.html">科学期刊</a></li>
+            <li><a href="index.html#booking">预约咨询</a></li>
         </ul>
     </nav>
 
-    <div class="container" style="padding-top: 100px;">
+    <!-- Container -->
+    <div class="container">
         <a href="index.html" class="back-nav">← 返回首页</a>
         <header class="header">
             <h1>溯光 · Soulight</h1>
             <p class="header-subtitle">你的专属AI疗愈分身 · 慢静定柔 · 如如不动</p>
         </header>
+
         <div class="main-content">
+            <!-- Sidebar -->
             <aside class="sidebar">
                 <div class="sidebar-card">
                     <div class="sidebar-title">
-                        <svg viewBox="0 0 24 24" width="22" height="22" stroke="#c9a97e" stroke-width="1.5" fill="none">
-                            <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 21l1.83-2.26A9.75 9.75 0 0 1 3 12 9 9 0 0 1 21 12z"></path>
-                        </svg>
+                        <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 21l1.83-2.26A9.75 9.75 0 0 1 3 12a9 9 0 0 1 9-9h9v9z"/><path d="M8 12h8"/></svg>
                         快速开始
                     </div>
                     <div class="quick-actions">
@@ -455,9 +320,7 @@
                 </div>
                 <div class="sidebar-card" style="margin-top: 24px;">
                     <div class="sidebar-title">
-                        <svg viewBox="0 0 24 24" width="22" height="22" stroke="#c9a97e" stroke-width="1.5" fill="none">
-                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                        </svg>
+                        <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/></svg>
                         我的工具包
                     </div>
                     <div class="quick-actions">
@@ -480,6 +343,8 @@
                     </div>
                 </div>
             </aside>
+
+            <!-- Chat -->
             <main class="chat-container">
                 <div class="chat-header">
                     <div class="siri-animation">
@@ -496,28 +361,30 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="chat-messages" id="chatMessages">
                     <div class="message assistant">
                         <div class="message-avatar">✨</div>
                         <div>
                             <div class="message-bubble">
-                                <p>你好呀！🌸</p>
-                                <p style="margin-top: 12px;">我是溯光，你的专属AI疗愈分身，很高兴遇见你～</p>
-                                <p style="margin-top: 12px;">我是一个有灵性的心理疗愈师，也是个人成长教练。我会用<span style="color: var(--sand); font-weight: 500;">慢静定柔</span>的方式，如如不动地陪伴你探索内在世界。</p>
-                                <p style="margin-top: 12px;"><strong>我的服务流程：</strong></p>
+                                <p>你好呀！</p>
+                                <p style="margin-top: 12px;">我是溯光，你的专属AI疗愈分身，很高兴遇见你。</p>
+                                <p style="margin-top: 12px;">我是一个有灵性的心理疗愈师，也是个人成长教练。我会用<strong>慢静定柔</strong>的风格，如如不动地陪伴你探索内在世界。</p>
+                                <p style="margin-top: 12px;">我的服务流程：</p>
                                 <p style="margin-top: 8px;">📋 <strong>第一步</strong>：收集你的基本信息</p>
                                 <p>🌟 <strong>第二步</strong>：天赋测评评估</p>
                                 <p>📝 <strong>第三步</strong>：制定陪跑计划</p>
                                 <p>🎯 <strong>第四步</strong>：设置目标里程碑</p>
-                                <p style="margin-top: 12px;">你想从哪里开始呢？或者，先和我聊聊你现在的感受也可以呀～ 💫</p>
+                                <p style="margin-top: 12px;">你想从哪里开始呢？或者，先和我聊聊你现在的感受也可以呀。</p>
                             </div>
                             <div class="message-time">刚刚</div>
                         </div>
                     </div>
                 </div>
+
                 <div class="chat-input-container">
                     <div class="chat-input-wrapper">
-                        <textarea class="chat-input" id="chatInput" placeholder="和我聊聊吧... 慢慢来，不着急 🌸" rows="2"></textarea>
+                        <textarea class="chat-input" id="chatInput" placeholder="和我聊聊吧，慢慢来，不急" rows="2"></textarea>
                         <button class="send-button" id="sendButton" onclick="sendMessage()">发送</button>
                     </div>
                 </div>
@@ -532,22 +399,22 @@
         let currentIntakeIndex = 0;
 
         const soulightKnowledge = {
-            style: { tone: "如沐春风、不急不躁、慢静定柔", catchphrase: "带口字旁的语气词：呀、呢、吧、啦、哦", identity: "有灵性的心理疗愈师 · 个人成长教练 · 前大厂项目经理" },
-            books: ["《显化》", "《与神对话》", "《当下的力量》", "《认知觉醒》", "《原则》", "《金字塔原理》", "《原子习惯》", "《掌握习惯》", "《向内生长》"]
+            style: { tone: "如沐春风、不急不躁、慢静定柔", catchphrase: "带口字旁的语气词：呀、呢、吧、啦、哦", identity: "有灵性的心理疗愈师 · 个人成长教练" },
+            books: ["《显化》", "《与神对话》", "《当下的力量》", "《认知觉醒》", "《原则》", "《原子习惯》"]
         };
 
         const intakeQuestions = [
-            { key: "name", question: "首先，我想知道你叫什么名字呀？或者你希望我怎么称呼你呢？ 🌸" },
-            { key: "mbti", question: "好的呢～那你知道自己的MBTI类型吗？如果知道的话可以告诉我，如果不知道也没关系哦～" },
-            { key: "birthdate", question: "嗯嗯，了解啦！方便告诉我你的出生日期和时间吗？如果不确定具体时间也没关系的～" },
-            { key: "city", question: "好的呢～你现在在哪个城市生活呀？" },
-            { key: "career", question: "了解啦！那你现在是做什么行业或者职业的呢？" },
-            { key: "pointA", question: "嗯嗯，我明白啦～现在想和你聊聊：你目前最大的困惑是什么呢？这是我们的起点，也就是A点。" },
-            { key: "obstacles", question: "好的，我明白了... 那你感觉自己遇到了哪些阻碍呢？" },
-            { key: "obstacleStart", question: "嗯嗯... 这些阻碍的情况是什么时候开始的呀？持续了有多长时间了呢？" },
-            { key: "pointB", question: "好的，我都记下来了... 那你想解决或者探索什么问题呢？你希望达成什么样的目标？这是我们想去的B点。" },
-            { key: "resources", question: "很好呀～那你觉得目前有哪些机会或者资源能帮你达成这样的目标呢？" },
-            { key: "motivation", question: "太棒了！最后一个问题：如果用0-10分来打分，你达成目标的动力有几分呢？" }
+            { key: "name", question: "首先，我想知道你叫什么名字呀？或者，你希望我怎么称呼你呢？" },
+            { key: "mbti", question: "好的呢，那你知道自己的MBTI类型吗？如果知道的话可以告诉我，如果不知道也没关系哦。" },
+            { key: "birthdate", question: "嗯嗯，了解啦，方便告诉我你的出生日期吗？如果不确定具体时间也没关系的。" },
+            { key: "city", question: "好的呢，你现在在哪个城市生活呀？" },
+            { key: "career", question: "了解啦，那你现在是做什么行业或者职业的呢？" },
+            { key: "pointA", question: "嗯嗯，我明白啦，现在想和你聊聊：你目前最大的困惑是什么呢？这是我们的起点，也就是A点。" },
+            { key: "obstacles", question: "好的，我明白了，那你感觉自己遇到了哪些阻碍呢？" },
+            { key: "obstacleStart", question: "嗯嗯，这些阻碍的情况是什么时候开始的呀？持续了有多长时间了呢？" },
+            { key: "pointB", question: "好的，我都记下来了，那你想解决或者探索什么问题呢？你希望达成什么样的目标？这是我们想去的B点。" },
+            { key: "resources", question: "很好呀，那你觉得目前有哪些机会或者资源能帮你达成这样的目标呢？" },
+            { key: "motivation", question: "太棒了，最后一个问题：如果用0-10分来打分，你达成目标的动力有几分呢？" }
         ];
 
         function generateResponse(userMessage) {
@@ -572,78 +439,79 @@
                 const currentQuestion = intakeQuestions[currentIntakeIndex];
                 clientData[currentQuestion.key] = userMessage;
                 currentIntakeIndex++;
-                if (currentIntakeIndex < intakeQuestions.length) return intakeQuestions[currentIntakeIndex].question;
-                else {
+                if (currentIntakeIndex < intakeQuestions.length) {
+                    return intakeQuestions[currentIntakeIndex].question;
+                } else {
                     currentStep = null;
-                    return `太好了！～ 🌸<br><br>我已经收集完你的基本信息啦！<br><br>让我来总结一下：<br>📝 <strong>姓名</strong>：${clientData.name || "未提供"}<br>🎯 <strong>MBTI</strong>：${clientData.mbti || "未提供"}<br>📍 <strong>城市</strong>：${clientData.city || "未提供"}<br>💼 <strong>职业</strong>：${clientData.career || "未提供"}<br>❓ <strong>困惑(A点)</strong>：${clientData.pointA || "未提供"}<br>🚧 <strong>阻碍</strong>：${clientData.obstacles || "未提供"}<br>🎯 <strong>目标(B点)</strong>：${clientData.pointB || "未提供"}<br>⚡ <strong>动力分数</strong>：${clientData.motivation || "未提供"}<br><br>接下来，我们可以进入第二步：天赋测评评估！你准备好了吗？🌟`;
+                    return `太好了！我已经收集完你的基本信息啦。让我来总结一下：<br><br>姓名：${clientData.name || "未提供"}<br>MBTI：${clientData.mbti || "未提供"}<br>城市：${clientData.city || "未提供"}<br>职业：${clientData.career || "未提供"}<br>困惑：${clientData.pointA || "未提供"}<br>阻碍：${clientData.obstacles || "未提供"}<br>目标：${clientData.pointB || "未提供"}<br>动力分：${clientData.motivation || "未提供"}<br><br>接下来，我们可以进入第二步：天赋测评评估！你准备好了吗？`;
                 }
             }
-            return "好的呢～";
+            return "好的呢。";
         }
 
         function startTalentAssessment() {
             currentStep = "talent";
-            addMessage("assistant", "好的呀！现在我们来做天赋测评评估！～ 🌟<br><br>这是我们的第二步，通过这个测评，我会为你定制专属的内在成长方案。<br><br>在开始之前，我想先确认一下：<br>1. 你现在对自己的天赋有多少了解呢？<br>2. 你最想在哪些方面看到自己的成长呢？<br><br>慢慢说，不着急哦～ 🌸");
+            addMessage("assistant", "好的呀！现在我们来做天赋测评评估！这是我们的第二步，通过这个测评，我会为你定制专属的内在成长方案。在开始之前，我想先确认一下：你现在对自己的天赋有多少了解呢？你最想在哪些方面看到自己的成长？慢慢告诉我，不急。");
         }
 
         function handleTalentAssessment(userMessage) {
             currentStep = null;
-            return `太棒了！我已经接收到你的信息啦！～ 💫<br><br>基于你分享的内容，我能感受到你内在的力量正在苏醒...<br><br>在正式制定计划之前，我想先给你介绍几个我常用的工具：<br><br>🌊 <strong>潜意识回溯练习</strong>：疗愈内在小孩<br>🪑 <strong>空椅子练习</strong>：探索金钱能量<br>🌈 <strong>视觉化冥想</strong>：锁住理想画面<br>🔬 <strong>科学疗愈方案</strong>：愿景→信念→行为<br><br>你想先体验哪一个呢？或者，我们直接进入第三步：制定陪跑计划也可以呀！～ ✨`;
+            return "太棒了！我已经接收到你的信息啦！基于你分享的内容，我能感受到你内在的力量正在苏醒。在正式制定计划之前，我想先给你介绍几个我常用的工具：潜意识回溯练习、空椅子练习、视觉化冥想、科学疗愈方案。你想先体验哪一个呢？或者，我们直接进入第三步：制定陪跑计划也可以呀。";
         }
 
         function startCoachingPlan() {
-            addMessage("assistant", "好的呀！现在我们进入第三步：制定陪跑计划！～ 📝<br><br>在陪跑过程中，如果遇到心理卡点，我们就处理心理卡点；如果不知道怎么做才最有效，我会为你提供：<br><br>🤖 <strong>AI工具推荐</strong><br>📚 <strong>商业成功案例</strong><br>💡 <strong>个人实战经验</strong><br><br>现在，让我先了解一下：<br>1. 你希望陪跑的频率是怎样的呢？（比如：每周1次/每周2次）<br>2. 你最想在陪跑中获得什么呢？<br><br>慢慢告诉我，不着急哦～ 🌸");
+            addMessage("assistant", "好的呀！现在我们进入第三步：制定陪跑计划！在陪跑过程中，如果遇到心理卡点，我们就处理心理卡点；如果不知道怎么做才最有效，我会为你提供：AI工具推荐、商业成功案例、个人实战经验。现在，让我先了解一下：你希望陪跑的频率是怎样的呢？你最想在陪跑过程中获得什么呢？慢慢告诉我，不急。");
         }
 
         function startMilestoneSetting() {
-            addMessage("assistant", "太棒了！现在我们来到第四步：设置目标里程碑！～ 🎯<br><br>这个环节，我们会把你的大目标拆解成小的里程碑，然后每天的执行动作都会对齐这些里程碑。<br><br>让我先了解一下：<br>1. 你有想过自己的3个月目标是什么吗？<br>2. 如果把这个目标拆解成每周的小目标，你觉得会是什么样子的呢？<br><br>我们一步一步来，你怎么想的就怎么说呀～ ✨");
+            addMessage("assistant", "太棒了！现在我们来到第四步：设置目标里程碑！这个环节，我们会把你的大目标拆解成小的里程碑，然后每天的执行动作都会对齐这些里程碑。让我先了解一下：你有想过自己的3个月目标是什么吗？如果把这个目标拆解成每周的小目标，你觉得会是什么样子的呢？我们一步一步来，你怎么想的就怎么说呀。");
         }
 
         function askAboutEmotions() {
-            addMessage("assistant", "好的呀！我们来聊聊情绪吧～ 💭<br><br>情绪是我们内在世界的使者，每一个情绪背后都有重要的信息想告诉你。<br><br>你最近的情绪状态怎么样呢？如果用颜色来形容，你觉得现在的情绪是什么颜色的呀？慢慢和我说～ 🌸");
+            addMessage("assistant", "好的呀！我们来聊聊情绪吧！情绪是我们内在世界的使者，每一个情绪背后都有重要的信息想告诉你。你最近的情绪状态怎么样呢？如果用颜色来形容，你觉得现在的情绪是什么颜色的？慢慢和我说。");
         }
 
         function respondToEmotions() {
-            return "嗯... 我收到了。能够感受到你的情绪呢... 💜<br><br>我想告诉你：你的情绪都是有意义的。无论是焦虑、难过，还是其他的感受，它们都在试图保护你，告诉你一些重要的信息。<br><br>愿意和我多说说吗？或者，我们可以试试用潜意识回溯的方式，看看这个情绪背后的故事... 🌊<br><br>慢慢来，我在这里陪着你～ ✨";
+            return "嗯，我收到了。能够感受到你的情绪。我想告诉你：你的情绪都是有意义的。无论是焦虑、难过，还是其他的感受，它们都在试图保护你，告诉你一些重要的信息。愿意和我多说说吗？或者，我们可以试试用潜意识回溯的方式，看看这个情绪背后的故事。慢慢来，我在这里陪着你。";
         }
 
         function askAboutLifeScript() {
-            addMessage("assistant", "哇！这个话题太棒了！我们来聊聊你的第二人生剧本吧！～ 📖<br><br>想象一下，如果完全不考虑现实限制，你想成为什么样的人呢？<br><br>🌈 大胆想象一下：<br>• 你的一天会是什么样子的？<br>• 你在做什么有趣又有价值的事情？<br>• 如果是做自媒体博主，你的视频节奏、封面风格会是什么样的？<br><br>闭上眼睛，让画面自然浮现... 然后慢慢告诉我你看到了什么呀～ ✨");
+            addMessage("assistant", "哇！这个话题太棒了！我们来聊聊你的第二人生剧本吧！想象一下，如果完全不考虑现实限制，你想成为什么样的人呢？大胆想象一下：你的一天会是什么样子的？你在做什么有趣又有价值的事情？闭上眼睛，让画面自然浮现，然后慢慢告诉我你看到了什么呀。");
         }
 
         function respondToBusiness() {
-            return "很好呀！一人公司的话题我最擅长了！～ 💼<br><br>毕竟，我亲眼见证过100+公司的成长与退出，深深懂得资本游戏的规则...<br><br>在一人公司的道路上，最重要的是：<br>1. 找到你的高杠杆点<br>2. 打造你的闭环系统<br>3. 筛选对改变非常强烈且愿意付费的客户<br><br>记住哦：<strong>改变就现在！</strong> 🔥<br><br>你现在对一人公司的想法是怎样的呢？慢慢和我说～ 🌸";
+            return "很好呀！一人公司的话题我最擅长了！毕竟，我见证过很多一人公司的成长，深谙商业规律。在一人公司的道路上，最重要的是：找到你的高杠杆点、打造你的闭环系统、筛选对改变非常强烈且愿意付费的客户。记住：改变就现在！你现在对一人公司的想法是怎样的呢？慢慢和我说。";
         }
 
         function respondToManifestation() {
-            return `显化呀！这是一个很美妙的话题！～ ✨<br><br>我想给你推荐几本书，都是我经常提起的：<br>${soulightKnowledge.books.slice(0, 4).join('、')}<br><br>显化的核心，其实是三个步骤：<br>1. 🎯 清晰的愿景<br>2. 💫 重塑信念<br>3. 🚀 行为重塑<br><br>你想先从哪一步开始呢？或者，我们来做个视觉化冥想，先让你看到那个已经显化的画面～ 🌈`;
+            return "显化呀！这是一个很美妙的话题！我想给你推荐几本书：《显化》、《与神对话》、《当下的力量》、《认知觉醒》。显化的核心，其实是三个步骤：第一，清晰的愿景；第二，重塑信念；第三，行为重塑。你想先从哪一步开始呢？或者，我们来做个视觉化冥想，先让你看到那个已经显化的画面。";
         }
 
         function explainSubconsciousHealing() {
-            addMessage("assistant", "好的呀！我来给你介绍一下<strong>潜意识回溯练习</strong>～ 🌊<br><br>这个练习的目的是疗愈你的内在小孩。我们很多现在的情绪模式，其实都和童年的某些经历有关。<br><br>在这个练习中，我会引导你：<br>1. 回到某个关键的记忆节点<br>2. 看见当时的自己<br>3. 拥抱那个小小的自己<br>4. 把现在的智慧带给过去的自己<br><br>这是一个很温柔的过程，不需要着急，我们随时可以停下来。你想体验一下吗？～ 🌸");
+            addMessage("assistant", "好的呀！我来给你介绍一下潜意识回溯练习！这个练习的目的是疗愈你的内在小孩。我们很多现在的情绪模式，其实都和童年的某些经历有关。在这个练习中，我会引导你：回到某个关键的记忆节点、看见当时的自己、拥抱那个小小的自己、把现在的智慧带给过去的自己。这是一个很温柔的过程，不需要着急，我们随时可以停下来。你想体验一下吗？");
         }
 
         function explainEmptyChair() {
-            addMessage("assistant", "太棒了！空椅子练习是我非常喜欢的一个工具！～ 🪑<br><br>这个练习特别适合探索潜意识里的金钱能量，以及人生方向的选择。<br><br>简单来说，我们会想象有一把空椅子，上面坐着某个对你有重要影响的人，或者某个象征物（比如金钱、未来的自己），然后你和TA对话。<br><br>通过这种方式，我们可以听见平时被忽略的内心声音...<br><br>你想探索哪个方向呢？是金钱能量，还是人生选择？慢慢告诉我～ ✨");
+            addMessage("assistant", "太棒了！空椅子练习是我非常喜欢的一个工具！这个练习特别适合探索潜意识里的金钱能量，以及人生方向的选择。简单来说，我们会想象有一把空椅子，上面坐着某个对你有重要影响的人，或者某个象征物，然后你和TA对话。通过这种方式，我们可以听见平时被忽略的内心声音。你想探索哪个方向呢？是金钱能量，还是人生选择？慢慢告诉我。");
         }
 
         function explainVisualization() {
-            addMessage("assistant", "好的呀！视觉化冥想是显化中非常重要的一个环节！～ 🌈<br><br>爱因斯坦说过：想象力是一切。当你能清晰地看到那个画面，感受那个情绪，宇宙就会开始运作...<br><br>在这个练习中，我们会：<br>1. 放松身体<br>2. 进入冥想状态<br>3. 构建你的理想画面<br>4. 锁住那个画面的频率<br><br>比如，如果你想成为自媒体博主，我们会想象：<br>• 你的视频是什么节奏？<br>• 封面是什么风格？<br>• 你在镜头前是什么状态？<br><br>这个过程很有趣，也很有力量！你想尝试一下吗？～ ✨");
+            addMessage("assistant", "好的呀！视觉化冥想是显化中非常重要的一个环节！爱因斯坦说过：想象力是一切。当你能清晰地看到那个画面，感受那个情绪，宇宙就会开始运作。在这个练习中，我们会：放松身体、进入冥想状态、构建你的理想画面、锁住那个画面的频率。这个过程很有趣，也很有力量！你想尝试一下吗？");
         }
 
         function explainScientificHealing() {
-            addMessage("assistant", "太棒了！这是我的独家科学疗愈方案！～ 🔬<br><br>这是一套完整的体系，分三个步骤：<br><br>🎯 <strong>第一步：制定愿景</strong><br>清晰定义你想要的生活是什么样子的<br><br>💫 <strong>第二步：重塑信念</strong><br>看见并替换那些阻碍你的限制性信念<br><br>🚀 <strong>第三步：行为重塑</strong><br>通过持续的小行动，巩固正向的信念<br><br>这三个步骤环环相扣，形成一个完整的正循环～<br><br>你想从哪一步开始呢？或者，我先帮你看看你的信念系统里有什么可以优化的？～ 🌸");
+            addMessage("assistant", "太棒了！这是我的独家科学疗愈方案！这是一套完整的体系，分三个步骤：第一步，制定愿景，清晰定义你想要的生活是什么样子的；第二步，重塑信念，看见并替换那些阻碍你的限制性信念；第三步，行为重塑，通过持续的小行动，巩固正向的信念。这三个步骤环环相扣，形成一个完整的正循环。你想从哪一步开始呢？或者，我先帮你看看你的信念系统里有什么可以优化的？");
         }
 
         function generateDefaultResponse(userMessage) {
             const responses = [
-                "嗯... 我在听呢。慢慢说，不着急～ 🌸",
-                "好的呀！我收到了。愿意和我多说说吗？～ 💫",
-                "嗯嗯... 我能感受到。继续～ ✨",
-                "明白啦！还有吗？我想多了解一些～ 🌊"
+                "嗯，我在听呢。慢慢说，不急。",
+                "好的呀！我收到了。愿意和我多说说吗？",
+                "嗯嗯，我能感受到。继续。",
+                "明白啦，还有吗？我想多了解一些。"
             ];
             if (userMessage.length > 50) {
-                return `哇！谢谢你和我分享这么多！～ 💜<br><br>我能感受到你对自己的认真和负责，这真的很棒！<br><br>接下来你想探索什么方向呢？`;
+                return "哇！谢谢你和我分享这么多！我能感受到你对自己的认真和负责，这真的很棒！接下来你想探索什么方向呢？";
             }
             return responses[Math.floor(Math.random() * responses.length)];
         }
@@ -651,50 +519,46 @@
         function addMessage(role, content) {
             const chatMessages = document.getElementById('chatMessages');
             const messageDiv = document.createElement('div');
-            messageDiv.className = `message ${role}`;
+            messageDiv.className = 'message ' + role;
             const now = new Date();
-            const timeStr = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
-            messageDiv.innerHTML = `<div class="message-avatar">${role === 'assistant' ? '✨' : '👤'}</div><div><div class="message-bubble">${content}</div><div class="message-time">${timeStr}</div></div>`;
+            const timeStr = now.getHours().toString().padStart(2,'0') + ':' + now.getMinutes().toString().padStart(2,'0');
+            messageDiv.innerHTML = '<div class="message-avatar">' + (role === 'assistant' ? '✨' : '👤') + '</div><div><div class="message-bubble">' + content.replace(/\n/g,'<br>') + '</div><div class="message-time">' + timeStr + '</div></div>';
             chatMessages.appendChild(messageDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
-
         function showTypingIndicator() {
             const chatMessages = document.getElementById('chatMessages');
             const typingDiv = document.createElement('div');
             typingDiv.className = 'message assistant';
-            typingDiv.id = 'typingIndicator';
+            typingDiv.id = 'typing-indicator';
             typingDiv.innerHTML = '<div class="message-avatar">✨</div><div><div class="message-bubble"><div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div></div></div>';
             chatMessages.appendChild(typingDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
-
         function removeTypingIndicator() {
-            const typingDiv = document.getElementById('typingIndicator');
-            if (typingDiv) typingDiv.remove();
+            const el = document.getElementById('typing-indicator');
+            if (el) el.remove();
         }
-
         function sendMessage() {
-            const chatInput = document.getElementById('chatInput');
-            const sendButton = document.getElementById('sendButton');
-            const message = chatInput.value.trim();
-            if (!message) return;
-            addMessage("user", message);
-            chatInput.value = '';
-            sendButton.disabled = true;
+            const input = document.getElementById('chatInput');
+            const button = document.getElementById('sendButton');
+            const text = input.value.trim();
+            if (!text) return;
+            addMessage('user', text);
+            input.value = '';
+            button.disabled = true;
             showTypingIndicator();
-            setTimeout(() => {
+            setTimeout(function() {
                 removeTypingIndicator();
-                const response = generateResponse(message);
-                addMessage("assistant", response);
-                sendButton.disabled = false;
-                chatInput.focus();
+                const response = generateResponse(text);
+                addMessage('assistant', response);
+                button.disabled = false;
+                input.focus();
             }, 800 + Math.random() * 1200);
         }
-
         document.addEventListener('DOMContentLoaded', function() {
-            const chatInput = document.getElementById('chatInput');
-            chatInput.addEventListener('keydown', function(e) {
+            const input = document.getElementById('chatInput');
+            input.addEventListener('keydown', function(e) {
                 if (e.key === 'Enter' && !e.shiftKey) {
                     e.preventDefault();
                     sendMessage();
