@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -7,92 +8,475 @@
     <title>溯光 · Soulight - AI疗愈分身</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --primary-dark: #1e293b; --cyber-blue: #00d4ff; --deep-space: #0a0e27; --neon-glow: #00d4ff; --bg-dark: #050510; --text-light: #e2e8f0; --border-subtle: rgba(0,212,255,0.2); }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans SC', 'Helvetica Neue', Arial, sans-serif; background: linear-gradient(180deg, #050510 0%, #0a0e27 100%); min-height: 100vh; color: var(--text-light); line-height: 1.8; overflow-x: hidden; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
-        .header { text-align: center; padding: 48px 24px; background: linear-gradient(180deg, rgba(0,212,255,0.1) 0%, transparent 100%); border-bottom: 1px solid var(--border-subtle); }
-        .header h1 { font-size: 2.8em; background: linear-gradient(90deg, var(--cyber-blue), #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; margin-bottom: 16px; letter-spacing: 2px; }
-        .header-subtitle { font-size: 1.2em; color: var(--text-light); opacity: 0.8; }
-        .main-content { display: grid; grid-template-columns: 300px 1fr; gap: 24px; margin-top: 32px; }
-        .sidebar { position: sticky; top: 24px; height: fit-content; }
-        .sidebar-card { background: rgba(10,14,39,0.8); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 24px; backdrop-filter: blur(10px); }
-        .sidebar-title { font-size: 1.2em; font-weight: 600; color: var(--cyber-blue); margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
-        .quick-actions { display: flex; flex-direction: column; gap: 12px; }
-        .quick-action-btn { padding: 14px 16px; background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(124,58,237,0.1)); border: 1px solid var(--border-subtle); border-radius: 12px; color: var(--text-light); cursor: pointer; text-align: left; transition: all 0.3s ease; font-size: 14px; font-weight: 500; }
-        .quick-action-btn:hover { background: linear-gradient(135deg, rgba(0,212,255,0.2), rgba(124,58,237,0.2)); border-color: var(--cyber-blue); transform: translateX(4px); }
-        .quick-action-btn span { display: block; font-size: 0.9em; opacity: 0.7; margin-top: 4px; }
-        .chat-container { background: rgba(10,14,39,0.8); border: 1px solid var(--border-subtle); border-radius: 20px; backdrop-filter: blur(10px); overflow: hidden; display: flex; flex-direction: column; height: calc(100vh - 200px); min-height: 600px; }
-        .chat-header { padding: 24px; border-bottom: 1px solid var(--border-subtle); background: linear-gradient(90deg, rgba(0,212,255,0.1), transparent); display: flex; align-items: center; gap: 16px; }
-        .siri-animation { width: 60px; height: 60px; position: relative; }
-        .siri-wave { position: absolute; width: 100%; height: 100%; border-radius: 50%; border: 2px solid var(--cyber-blue); animation: siri-pulse 2s ease-out infinite; }
-        .siri-wave:nth-child(2) { animation-delay: 0.5s; }
-        .siri-wave:nth-child(3) { animation-delay: 1s; }
-        @keyframes siri-pulse { 0% { transform: scale(0.8); opacity: 1; } 100% { transform: scale(1.5); opacity: 0; } }
-        .siri-core { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 30px; height: 30px; background: radial-gradient(circle, var(--cyber-blue), #7c3aed); border-radius: 50%; box-shadow: 0 0 20px var(--cyber-blue), 0 0 40px var(--cyber-blue); }
-        .chat-title { flex: 1; }
-        .chat-title h2 { font-size: 1.4em; color: var(--cyber-blue); margin-bottom: 4px; }
-        .chat-status { font-size: 0.9em; color: #10b981; display: flex; align-items: center; gap: 6px; }
-        .status-dot { width: 8px; height: 8px; background: #10b981; border-radius: 50%; animation: pulse 2s infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-        .chat-messages { flex: 1; overflow-y: auto; padding: 24px; display: flex; flex-direction: column; gap: 20px; }
-        .message { max-width: 80%; display: flex; gap: 12px; animation: messageFade 0.3s ease; }
-        @keyframes messageFade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .message.user { margin-left: auto; flex-direction: row-reverse; }
-        .message-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
-        .message.assistant .message-avatar { background: linear-gradient(135deg, var(--cyber-blue), #7c3aed); }
-        .message.user .message-avatar { background: linear-gradient(135deg, #f59e0b, #ef4444); }
-        .message-bubble { padding: 16px 20px; border-radius: 16px; line-height: 1.7; }
-        .message.assistant .message-bubble { background: rgba(0,212,255,0.1); border: 1px solid var(--border-subtle); }
-        .message.user .message-bubble { background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.3); }
-        .message-time { font-size: 0.8em; opacity: 0.6; margin-top: 8px; }
-        .chat-input-container { padding: 24px; border-top: 1px solid var(--border-subtle); background: rgba(0,0,0,0.2); }
-        .chat-input-wrapper { display: flex; gap: 12px; align-items: flex-end; }
-        .chat-input { flex: 1; padding: 16px 20px; background: rgba(10,14,39,0.9); border: 1px solid var(--border-subtle); border-radius: 14px; color: var(--text-light); font-size: 15px; resize: none; min-height: 60px; max-height: 150px; outline: none; transition: border-color 0.3s ease; }
-        .chat-input:focus { border-color: var(--cyber-blue); }
-        .send-button { padding: 16px 28px; background: linear-gradient(135deg, var(--cyber-blue), #7c3aed); border: none; border-radius: 14px; color: white; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
-        .send-button:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,212,255,0.4); }
-        .send-button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-        .typing-indicator { display: flex; gap: 6px; padding: 12px 16px; }
-        .typing-dot { width: 8px; height: 8px; background: var(--cyber-blue); border-radius: 50%; animation: typing 1.4s infinite; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: linear-gradient(160deg, #2d4a3e 0%, #3d6b5a 100%);
+            min-height: 100vh;
+            color: #e2e8f0;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+        :root {
+            --sand: #c9a97e;
+            --sand-light: #e8d5c0;
+            --deep-green: #2d4a3e;
+            --deep-green-light: #3d6b5a;
+            --cyber-blue: #00d4ff;
+            --dark: #121212;
+            --text-dark: #3d4047;
+            --border-subtle: rgba(201,169,126,0.2);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: rgba(250,248,245,0.98);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(201,169,126,0.3);
+            z-index: 1000;
+            padding: 16px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Noto Serif SC', serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: #3d4047;
+        }
+        .nav-center {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+        }
+        .nav-center a {
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 400;
+            color: #6b6f78;
+            transition: all 0.3s ease;
+        }
+        .nav-center a:hover {
+            color: var(--sand);
+        }
+        .nav-center a.soulight {
+            color: var(--cyber-blue);
+            font-weight: 600;
+        }
+        .back-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+        }
+        .back-nav:hover {
+            background: rgba(201,169,126,0.2);
+            border-color: var(--sand);
+        }
+        .header {
+            text-align: center;
+            padding: 48px 24px;
+            background: linear-gradient(180deg, rgba(201,169,126,0.15) 0%, transparent 100%);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .header h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2.8em;
+            background: linear-gradient(90deg, white, var(--sand-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 300;
+            margin-bottom: 16px;
+            letter-spacing: 8px;
+        }
+        .header-subtitle {
+            font-size: 1.2em;
+            color: rgba(255,255,255,0.8);
+            letter-spacing: 2px;
+        }
+        .main-content {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 24px;
+            margin-top: 32px;
+        }
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+        .sidebar-card {
+            background: rgba(250,248,245,0.95);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+        }
+        .sidebar-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.1em;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 2px;
+        }
+        .quick-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .quick-action-btn {
+            padding: 16px;
+            background: white;
+            border: 1px solid rgba(201,169,126,0.3);
+            border-radius: 12px;
+            color: var(--text-dark);
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 400;
+        }
+        .quick-action-btn:hover {
+            background: var(--sand-light);
+            border-color: var(--sand);
+            transform: translateX(4px);
+            box-shadow: 0 8px 24px rgba(201,169,126,0.2);
+        }
+        .quick-action-btn span {
+            display: block;
+            font-size: 0.9em;
+            color: #6b6f78;
+            margin-top: 6px;
+        }
+        .chat-container {
+            background: rgba(250,248,245,0.95);
+            border: 1px solid rgba(201,169,126,0.3);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 200px);
+            min-height: 600px;
+        }
+        .chat-header {
+            padding: 28px;
+            border-bottom: 1px solid rgba(201,169,126,0.3);
+            background: linear-gradient(90deg, rgba(201,169,126,0.15), transparent);
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        .siri-animation {
+            width: 64px;
+            height: 64px;
+            position: relative;
+        }
+        .siri-wave {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid var(--sand);
+            animation: siri-pulse 2.4s ease-out infinite;
+        }
+        .siri-wave:nth-child(2) {
+            animation-delay: 0.6s;
+        }
+        .siri-wave:nth-child(3) {
+            animation-delay: 1.2s;
+        }
+        @keyframes siri-pulse {
+            0% { transform: scale(0.8); opacity: 1; }
+            100% { transform: scale(1.6); opacity: 0; }
+        }
+        .siri-core {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 32px;
+            height: 32px;
+            background: radial-gradient(circle, var(--sand), var(--sand-dark));
+            border-radius: 50%;
+            box-shadow: 0 0 24px var(--sand), 0 0 48px rgba(201,169,126,0.4);
+        }
+        .chat-title {
+            flex: 1;
+        }
+        .chat-title h2 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.4em;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+            letter-spacing: 2px;
+        }
+        .chat-status {
+            font-size: 0.9em;
+            color: #10b981;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            background: linear-gradient(180deg, white 0%, #faf8f5 100%);
+        }
+        .message {
+            max-width: 80%;
+            display: flex;
+            gap: 14px;
+            animation: messageFade 0.4s ease;
+        }
+        @keyframes messageFade {
+            from { opacity: 0; transform: translateY(14px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .message.user {
+            margin-left: auto;
+            flex-direction: row-reverse;
+        }
+        .message-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .message.assistant .message-avatar {
+            background: linear-gradient(135deg, var(--sand), var(--sand-light));
+        }
+        .message.user .message-avatar {
+            background: linear-gradient(135deg, var(--deep-green-light), var(--deep-green));
+        }
+        .message-bubble {
+            padding: 18px 22px;
+            border-radius: 16px;
+            line-height: 1.8;
+        }
+        .message.assistant .message-bubble {
+            background: white;
+            border: 1px solid rgba(201,169,126,0.2);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+        }
+        .message.assistant .message-bubble strong {
+            color: var(--sand);
+        }
+        .message.user .message-bubble {
+            background: rgba(61,107,90,0.08);
+            border: 1px solid rgba(61,107,90,0.2);
+        }
+        .message-time {
+            font-size: 0.8em;
+            color: #9aa0aa;
+            margin-top: 10px;
+        }
+        .chat-input-container {
+            padding: 24px 28px;
+            border-top: 1px solid rgba(201,169,126,0.2);
+            background: white;
+        }
+        .chat-input-wrapper {
+            display: flex;
+            gap: 14px;
+            align-items: flex-end;
+        }
+        .chat-input {
+            flex: 1;
+            padding: 16px 20px;
+            background: #faf8f5;
+            border: 1px solid rgba(201,169,126,0.3);
+            border-radius: 14px;
+            color: var(--text-dark);
+            font-size: 15px;
+            resize: none;
+            min-height: 60px;
+            max-height: 150px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        .chat-input::placeholder {
+            color: #9aa0aa;
+        }
+        .chat-input:focus {
+            border-color: var(--sand);
+        }
+        .send-button {
+            padding: 16px 36px;
+            background: linear-gradient(135deg, var(--sand), var(--sand-light));
+            border: none;
+            border-radius: 14px;
+            color: white;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .send-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(201,169,126,0.4);
+        }
+        .send-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .typing-indicator {
+            display: flex;
+            gap: 6px;
+            padding: 14px;
+        }
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--sand);
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
         .typing-dot:nth-child(2) { animation-delay: 0.2s; }
         .typing-dot:nth-child(3) { animation-delay: 0.4s; }
-        @keyframes typing { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-10px); } }
-        @media (max-width: 1024px) { .main-content { grid-template-columns: 1fr; } .sidebar { position: static; } .chat-container { height: calc(100vh - 300px); } }
-        @media (max-width: 768px) { .header h1 { font-size: 2em; } .message { max-width: 90%; } }
-        .back-nav { display: inline-flex; align-items: center; gap: 8px; color: var(--text-light); text-decoration: none; padding: 12px 20px; background: rgba(0,212,255,0.1); border: 1px solid var(--border-subtle); border-radius: 12px; margin-bottom: 24px; transition: all 0.3s ease; }
-        .back-nav:hover { background: rgba(0,212,255,0.2); border-color: var(--cyber-blue); }
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-10px); }
+        }
+        @media (max-width: 1024px) {
+            nav { padding: 16px 24px; }
+            .nav-center { display: none; }
+            .main-content { grid-template-columns: 1fr; }
+            .sidebar { position: static; }
+            .chat-container { height: calc(100vh - 300px); }
+        }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2em; }
+            .message { max-width: 90%; }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
+    <nav>
+        <div class="nav-left">
+            <div class="nav-logo-icon">🦋</div>
+            <span>禅柔旅修</span>
+        </div>
+        <ul class="nav-center">
+            <li><a href="index.html#home">首页</a></li>
+            <li><a href="index.html#counseling">心理咨询</a></li>
+            <li><a href="soulight.html" class="soulight">溯光AI</a></li>
+            <li><a href="about.html">个人成长</a></li>
+            <li><a href="bali-retreat.html">疗愈旅修</a></li>
+            <li><a href="index.html#eap">企业EAP</a></li>
+            <li><a href="index.html#team">疗愈师团队</a></li>
+            <li><a href="journal.html">科学期刊</a></li>
+        </ul>
+    </nav>
+
+    <div class="container" style="padding-top: 100px;">
         <a href="index.html" class="back-nav">← 返回首页</a>
         <header class="header">
-            <h1>✨ 溯光 · Soulight</h1>
+            <h1>溯光 · Soulight</h1>
             <p class="header-subtitle">你的专属AI疗愈分身 · 慢静定柔 · 如如不动</p>
         </header>
         <div class="main-content">
             <aside class="sidebar">
                 <div class="sidebar-card">
-                    <div class="sidebar-title">🎯 快速开始</div>
+                    <div class="sidebar-title">
+                        <svg viewBox="0 0 24 24" width="22" height="22" stroke="#c9a97e" stroke-width="1.5" fill="none">
+                            <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 21l1.83-2.26A9.75 9.75 0 0 1 3 12 9 9 0 0 1 21 12z"></path>
+                        </svg>
+                        快速开始
+                    </div>
                     <div class="quick-actions">
-                        <button class="quick-action-btn" onclick="startClientIntake()">📋 客户信息收集<span>第一步：了解你的基本情况</span></button>
-                        <button class="quick-action-btn" onclick="startTalentAssessment()">🌟 天赋测评<span>第二步：评估你的内在成长方案</span></button>
-                        <button class="quick-action-btn" onclick="startCoachingPlan()">📝 制定陪跑计划<span>第三步：个性化成长方案</span></button>
-                        <button class="quick-action-btn" onclick="startMilestoneSetting()">🎯 目标里程碑<span>第四步：对齐行动目标</span></button>
-                        <button class="quick-action-btn" onclick="askAboutEmotions()">💭 聊聊情绪<span>探索你的内在世界</span></button>
-                        <button class="quick-action-btn" onclick="askAboutLifeScript()">📖 第二人生剧本<span>探索你想成为的人</span></button>
+                        <button class="quick-action-btn" onclick="startClientIntake()">
+                            📋 客户信息收集
+                            <span>第一步：了解你的基本情况</span>
+                        </button>
+                        <button class="quick-action-btn" onclick="startTalentAssessment()">
+                            🌟 天赋测评
+                            <span>第二步：评估你的内在成长方案</span>
+                        </button>
+                        <button class="quick-action-btn" onclick="startCoachingPlan()">
+                            📝 制定陪跑计划
+                            <span>第三步：个性化成长方案</span>
+                        </button>
+                        <button class="quick-action-btn" onclick="startMilestoneSetting()">
+                            🎯 目标里程碑
+                            <span>第四步：对齐行动目标</span>
+                        </button>
+                        <button class="quick-action-btn" onclick="askAboutEmotions()">
+                            💭 聊聊情绪
+                            <span>探索你的内在世界</span>
+                        </button>
+                        <button class="quick-action-btn" onclick="askAboutLifeScript()">
+                            📖 第二人生剧本
+                            <span>探索你想成为的人</span>
+                        </button>
                     </div>
                 </div>
                 <div class="sidebar-card" style="margin-top: 24px;">
-                    <div class="sidebar-title">📚 我的工具包</div>
+                    <div class="sidebar-title">
+                        <svg viewBox="0 0 24 24" width="22" height="22" stroke="#c9a97e" stroke-width="1.5" fill="none">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                        </svg>
+                        我的工具包
+                    </div>
                     <div class="quick-actions">
-                        <button class="quick-action-btn" onclick="explainSubconsciousHealing()">🌊 潜意识回溯<span>疗愈内在小孩</span></button>
-                        <button class="quick-action-btn" onclick="explainEmptyChair()">🪑 空椅子练习<span>探索金钱能量与方向</span></button>
-                        <button class="quick-action-btn" onclick="explainVisualization()">🌈 视觉化冥想<span>锁住理想画面</span></button>
-                        <button class="quick-action-btn" onclick="explainScientificHealing()">🔬 科学疗愈方案<span>愿景→信念→行为</span></button>
+                        <button class="quick-action-btn" onclick="explainSubconsciousHealing()">
+                            🌊 潜意识回溯
+                            <span>疗愈内在小孩</span>
+                        </button>
+                        <button class="quick-action-btn" onclick="explainEmptyChair()">
+                            🪑 空椅子练习
+                            <span>探索金钱能量与方向</span>
+                        </button>
+                        <button class="quick-action-btn" onclick="explainVisualization()">
+                            🌈 视觉化冥想
+                            <span>锁住理想画面</span>
+                        </button>
+                        <button class="quick-action-btn" onclick="explainScientificHealing()">
+                            🔬 科学疗愈方案
+                            <span>愿景→信念→行为</span>
+                        </button>
                     </div>
                 </div>
             </aside>
@@ -106,7 +490,10 @@
                     </div>
                     <div class="chat-title">
                         <h2>溯光</h2>
-                        <div class="chat-status"><span class="status-dot"></span>在线 · 随时为你服务</div>
+                        <div class="chat-status">
+                            <span class="status-dot"></span>
+                            在线 · 随时为你服务
+                        </div>
                     </div>
                 </div>
                 <div class="chat-messages" id="chatMessages">
@@ -116,8 +503,8 @@
                             <div class="message-bubble">
                                 <p>你好呀！🌸</p>
                                 <p style="margin-top: 12px;">我是溯光，你的专属AI疗愈分身，很高兴遇见你～</p>
-                                <p style="margin-top: 12px;">我是一个有灵性的心理疗愈师，也是个人成长教练。我会用<span style="color: var(--cyber-blue); font-weight: 500;">慢静定柔</span>的方式，如如不动地陪伴你探索内在世界。</p>
-                                <p style="margin-top: 12px;">✨ <strong>我的服务流程：</strong></p>
+                                <p style="margin-top: 12px;">我是一个有灵性的心理疗愈师，也是个人成长教练。我会用<span style="color: var(--sand); font-weight: 500;">慢静定柔</span>的方式，如如不动地陪伴你探索内在世界。</p>
+                                <p style="margin-top: 12px;"><strong>我的服务流程：</strong></p>
                                 <p style="margin-top: 8px;">📋 <strong>第一步</strong>：收集你的基本信息</p>
                                 <p>🌟 <strong>第二步</strong>：天赋测评评估</p>
                                 <p>📝 <strong>第三步</strong>：制定陪跑计划</p>
@@ -188,7 +575,7 @@
                 if (currentIntakeIndex < intakeQuestions.length) return intakeQuestions[currentIntakeIndex].question;
                 else {
                     currentStep = null;
-                    return `太好了！～ 🌸\n\n我已经收集完你的基本信息啦！\n\n让我来总结一下：\n📝 <strong>姓名</strong>：${clientData.name || "未提供"}\n🎯 <strong>MBTI</strong>：${clientData.mbti || "未提供"}\n📍 <strong>城市</strong>：${clientData.city || "未提供"}\n💼 <strong>职业</strong>：${clientData.career || "未提供"}\n❓ <strong>困惑(A点)</strong>：${clientData.pointA || "未提供"}\n🚧 <strong>阻碍</strong>：${clientData.obstacles || "未提供"}\n🎯 <strong>目标(B点)</strong>：${clientData.pointB || "未提供"}\n⚡ <strong>动力分数</strong>：${clientData.motivation || "未提供"}\n\n接下来，我们可以进入第二步：天赋测评评估！你准备好了吗？🌟`;
+                    return `太好了！～ 🌸<br><br>我已经收集完你的基本信息啦！<br><br>让我来总结一下：<br>📝 <strong>姓名</strong>：${clientData.name || "未提供"}<br>🎯 <strong>MBTI</strong>：${clientData.mbti || "未提供"}<br>📍 <strong>城市</strong>：${clientData.city || "未提供"}<br>💼 <strong>职业</strong>：${clientData.career || "未提供"}<br>❓ <strong>困惑(A点)</strong>：${clientData.pointA || "未提供"}<br>🚧 <strong>阻碍</strong>：${clientData.obstacles || "未提供"}<br>🎯 <strong>目标(B点)</strong>：${clientData.pointB || "未提供"}<br>⚡ <strong>动力分数</strong>：${clientData.motivation || "未提供"}<br><br>接下来，我们可以进入第二步：天赋测评评估！你准备好了吗？🌟`;
                 }
             }
             return "好的呢～";
@@ -196,56 +583,56 @@
 
         function startTalentAssessment() {
             currentStep = "talent";
-            addMessage("assistant", "好的呀！现在我们来做天赋测评评估！～ 🌟\n\n这是我们的第二步，通过这个测评，我会为你定制专属的内在成长方案。\n\n在开始之前，我想先确认一下：\n1. 你现在对自己的天赋有多少了解呢？\n2. 你最想在哪些方面看到自己的成长呢？\n\n慢慢说，不着急哦～ 🌸");
+            addMessage("assistant", "好的呀！现在我们来做天赋测评评估！～ 🌟<br><br>这是我们的第二步，通过这个测评，我会为你定制专属的内在成长方案。<br><br>在开始之前，我想先确认一下：<br>1. 你现在对自己的天赋有多少了解呢？<br>2. 你最想在哪些方面看到自己的成长呢？<br><br>慢慢说，不着急哦～ 🌸");
         }
 
         function handleTalentAssessment(userMessage) {
             currentStep = null;
-            return `太棒了！我已经接收到你的信息啦！～ 💫\n\n基于你分享的内容，我能感受到你内在的力量正在苏醒...\n\n在正式制定计划之前，我想先给你介绍几个我常用的工具：\n\n🌊 <strong>潜意识回溯练习</strong>：疗愈内在小孩\n🪑 <strong>空椅子练习</strong>：探索金钱能量\n🌈 <strong>视觉化冥想</strong>：锁住理想画面\n🔬 <strong>科学疗愈方案</strong>：愿景→信念→行为\n\n你想先体验哪一个呢？或者，我们直接进入第三步：制定陪跑计划也可以呀！～ ✨`;
+            return `太棒了！我已经接收到你的信息啦！～ 💫<br><br>基于你分享的内容，我能感受到你内在的力量正在苏醒...<br><br>在正式制定计划之前，我想先给你介绍几个我常用的工具：<br><br>🌊 <strong>潜意识回溯练习</strong>：疗愈内在小孩<br>🪑 <strong>空椅子练习</strong>：探索金钱能量<br>🌈 <strong>视觉化冥想</strong>：锁住理想画面<br>🔬 <strong>科学疗愈方案</strong>：愿景→信念→行为<br><br>你想先体验哪一个呢？或者，我们直接进入第三步：制定陪跑计划也可以呀！～ ✨`;
         }
 
         function startCoachingPlan() {
-            addMessage("assistant", "好的呀！现在我们进入第三步：制定陪跑计划！～ 📝\n\n在陪跑过程中，如果遇到心理卡点，我们就处理心理卡点；如果不知道怎么做才最有效，我会为你提供：\n\n🤖 <strong>AI工具推荐</strong>\n📚 <strong>商业成功案例</strong>\n💡 <strong>个人实战经验</strong>\n\n现在，让我先了解一下：\n1. 你希望陪跑的频率是怎样的呢？（比如：每周1次/每周2次）\n2. 你最想在陪跑中获得什么呢？\n\n慢慢告诉我，不着急哦～ 🌸");
+            addMessage("assistant", "好的呀！现在我们进入第三步：制定陪跑计划！～ 📝<br><br>在陪跑过程中，如果遇到心理卡点，我们就处理心理卡点；如果不知道怎么做才最有效，我会为你提供：<br><br>🤖 <strong>AI工具推荐</strong><br>📚 <strong>商业成功案例</strong><br>💡 <strong>个人实战经验</strong><br><br>现在，让我先了解一下：<br>1. 你希望陪跑的频率是怎样的呢？（比如：每周1次/每周2次）<br>2. 你最想在陪跑中获得什么呢？<br><br>慢慢告诉我，不着急哦～ 🌸");
         }
 
         function startMilestoneSetting() {
-            addMessage("assistant", "太棒了！现在我们来到第四步：设置目标里程碑！～ 🎯\n\n这个环节，我们会把你的大目标拆解成小的里程碑，然后每天的执行动作都会对齐这些里程碑。\n\n让我先了解一下：\n1. 你有想过自己的3个月目标是什么吗？\n2. 如果把这个目标拆解成每周的小目标，你觉得会是什么样子的呢？\n\n我们一步一步来，你怎么想的就怎么说呀～ ✨");
+            addMessage("assistant", "太棒了！现在我们来到第四步：设置目标里程碑！～ 🎯<br><br>这个环节，我们会把你的大目标拆解成小的里程碑，然后每天的执行动作都会对齐这些里程碑。<br><br>让我先了解一下：<br>1. 你有想过自己的3个月目标是什么吗？<br>2. 如果把这个目标拆解成每周的小目标，你觉得会是什么样子的呢？<br><br>我们一步一步来，你怎么想的就怎么说呀～ ✨");
         }
 
         function askAboutEmotions() {
-            addMessage("assistant", "好的呀！我们来聊聊情绪吧～ 💭\n\n情绪是我们内在世界的使者，每一个情绪背后都有重要的信息想告诉你。\n\n你最近的情绪状态怎么样呢？如果用颜色来形容，你觉得现在的情绪是什么颜色的呀？慢慢和我说～ 🌸");
+            addMessage("assistant", "好的呀！我们来聊聊情绪吧～ 💭<br><br>情绪是我们内在世界的使者，每一个情绪背后都有重要的信息想告诉你。<br><br>你最近的情绪状态怎么样呢？如果用颜色来形容，你觉得现在的情绪是什么颜色的呀？慢慢和我说～ 🌸");
         }
 
         function respondToEmotions() {
-            return "嗯... 我收到了。能够感受到你的情绪呢... 💜\n\n我想告诉你：你的情绪都是有意义的。无论是焦虑、难过，还是其他的感受，它们都在试图保护你，告诉你一些重要的信息。\n\n愿意和我多说说吗？或者，我们可以试试用潜意识回溯的方式，看看这个情绪背后的故事... 🌊\n\n慢慢来，我在这里陪着你～ ✨";
+            return "嗯... 我收到了。能够感受到你的情绪呢... 💜<br><br>我想告诉你：你的情绪都是有意义的。无论是焦虑、难过，还是其他的感受，它们都在试图保护你，告诉你一些重要的信息。<br><br>愿意和我多说说吗？或者，我们可以试试用潜意识回溯的方式，看看这个情绪背后的故事... 🌊<br><br>慢慢来，我在这里陪着你～ ✨";
         }
 
         function askAboutLifeScript() {
-            addMessage("assistant", "哇！这个话题太棒了！我们来聊聊你的第二人生剧本吧！～ 📖\n\n想象一下，如果完全不考虑现实限制，你想成为什么样的人呢？\n\n🌈 大胆想象一下：\n• 你的一天会是什么样子的？\n• 你在做什么有趣又有价值的事情？\n• 如果是做自媒体博主，你的视频节奏、封面风格会是什么样的？\n\n闭上眼睛，让画面自然浮现... 然后慢慢告诉我你看到了什么呀～ ✨");
+            addMessage("assistant", "哇！这个话题太棒了！我们来聊聊你的第二人生剧本吧！～ 📖<br><br>想象一下，如果完全不考虑现实限制，你想成为什么样的人呢？<br><br>🌈 大胆想象一下：<br>• 你的一天会是什么样子的？<br>• 你在做什么有趣又有价值的事情？<br>• 如果是做自媒体博主，你的视频节奏、封面风格会是什么样的？<br><br>闭上眼睛，让画面自然浮现... 然后慢慢告诉我你看到了什么呀～ ✨");
         }
 
         function respondToBusiness() {
-            return "很好呀！一人公司的话题我最擅长了！～ 💼\n\n毕竟，我亲眼见证过100+公司的成长与退出，深深懂得资本游戏的规则...\n\n在一人公司的道路上，最重要的是：\n1. 找到你的高杠杆点\n2. 打造你的闭环系统\n3. 筛选对改变非常强烈且愿意付费的客户\n\n记住哦：<strong>改变就现在！</strong> 🔥\n\n你现在对一人公司的想法是怎样的呢？慢慢和我说～ 🌸";
+            return "很好呀！一人公司的话题我最擅长了！～ 💼<br><br>毕竟，我亲眼见证过100+公司的成长与退出，深深懂得资本游戏的规则...<br><br>在一人公司的道路上，最重要的是：<br>1. 找到你的高杠杆点<br>2. 打造你的闭环系统<br>3. 筛选对改变非常强烈且愿意付费的客户<br><br>记住哦：<strong>改变就现在！</strong> 🔥<br><br>你现在对一人公司的想法是怎样的呢？慢慢和我说～ 🌸";
         }
 
         function respondToManifestation() {
-            return `显化呀！这是一个很美妙的话题！～ ✨\n\n我想给你推荐几本书，都是我经常提起的：\n${soulightKnowledge.books.slice(0, 4).join('、')}\n\n显化的核心，其实是三个步骤：\n1. 🎯 清晰的愿景\n2. 💫 重塑信念\n3. 🚀 行为重塑\n\n你想先从哪一步开始呢？或者，我们来做个视觉化冥想，先让你看到那个已经显化的画面～ 🌈`;
+            return `显化呀！这是一个很美妙的话题！～ ✨<br><br>我想给你推荐几本书，都是我经常提起的：<br>${soulightKnowledge.books.slice(0, 4).join('、')}<br><br>显化的核心，其实是三个步骤：<br>1. 🎯 清晰的愿景<br>2. 💫 重塑信念<br>3. 🚀 行为重塑<br><br>你想先从哪一步开始呢？或者，我们来做个视觉化冥想，先让你看到那个已经显化的画面～ 🌈`;
         }
 
         function explainSubconsciousHealing() {
-            addMessage("assistant", "好的呀！我来给你介绍一下<strong>潜意识回溯练习</strong>～ 🌊\n\n这个练习的目的是疗愈你的内在小孩。我们很多现在的情绪模式，其实都和童年的某些经历有关。\n\n在这个练习中，我会引导你：\n1. 回到某个关键的记忆节点\n2. 看见当时的自己\n3. 拥抱那个小小的自己\n4. 把现在的智慧带给过去的自己\n\n这是一个很温柔的过程，不需要着急，我们随时可以停下来。你想体验一下吗？～ 🌸");
+            addMessage("assistant", "好的呀！我来给你介绍一下<strong>潜意识回溯练习</strong>～ 🌊<br><br>这个练习的目的是疗愈你的内在小孩。我们很多现在的情绪模式，其实都和童年的某些经历有关。<br><br>在这个练习中，我会引导你：<br>1. 回到某个关键的记忆节点<br>2. 看见当时的自己<br>3. 拥抱那个小小的自己<br>4. 把现在的智慧带给过去的自己<br><br>这是一个很温柔的过程，不需要着急，我们随时可以停下来。你想体验一下吗？～ 🌸");
         }
 
         function explainEmptyChair() {
-            addMessage("assistant", "太棒了！空椅子练习是我非常喜欢的一个工具！～ 🪑\n\n这个练习特别适合探索潜意识里的金钱能量，以及人生方向的选择。\n\n简单来说，我们会想象有一把空椅子，上面坐着某个对你有重要影响的人，或者某个象征物（比如金钱、未来的自己），然后你和TA对话。\n\n通过这种方式，我们可以听见平时被忽略的内心声音...\n\n你想探索哪个方向呢？是金钱能量，还是人生选择？慢慢告诉我～ ✨");
+            addMessage("assistant", "太棒了！空椅子练习是我非常喜欢的一个工具！～ 🪑<br><br>这个练习特别适合探索潜意识里的金钱能量，以及人生方向的选择。<br><br>简单来说，我们会想象有一把空椅子，上面坐着某个对你有重要影响的人，或者某个象征物（比如金钱、未来的自己），然后你和TA对话。<br><br>通过这种方式，我们可以听见平时被忽略的内心声音...<br><br>你想探索哪个方向呢？是金钱能量，还是人生选择？慢慢告诉我～ ✨");
         }
 
         function explainVisualization() {
-            addMessage("assistant", "好的呀！视觉化冥想是显化中非常重要的一个环节！～ 🌈\n\n爱因斯坦说过：想象力是一切。当你能清晰地看到那个画面，感受那个情绪，宇宙就会开始运作...\n\n在这个练习中，我们会：\n1. 放松身体\n2. 进入冥想状态\n3. 构建你的理想画面\n4. 锁住那个画面的频率\n\n比如，如果你想成为自媒体博主，我们会想象：\n• 你的视频是什么节奏？\n• 封面是什么风格？\n• 你在镜头前是什么状态？\n\n这个过程很有趣，也很有力量！你想尝试一下吗？～ ✨");
+            addMessage("assistant", "好的呀！视觉化冥想是显化中非常重要的一个环节！～ 🌈<br><br>爱因斯坦说过：想象力是一切。当你能清晰地看到那个画面，感受那个情绪，宇宙就会开始运作...<br><br>在这个练习中，我们会：<br>1. 放松身体<br>2. 进入冥想状态<br>3. 构建你的理想画面<br>4. 锁住那个画面的频率<br><br>比如，如果你想成为自媒体博主，我们会想象：<br>• 你的视频是什么节奏？<br>• 封面是什么风格？<br>• 你在镜头前是什么状态？<br><br>这个过程很有趣，也很有力量！你想尝试一下吗？～ ✨");
         }
 
         function explainScientificHealing() {
-            addMessage("assistant", "太棒了！这是我的独家科学疗愈方案！～ 🔬\n\n这是一套完整的体系，分三个步骤：\n\n🎯 <strong>第一步：制定愿景</strong>\n清晰定义你想要的生活是什么样子的\n\n💫 <strong>第二步：重塑信念</strong>\n看见并替换那些阻碍你的限制性信念\n\n🚀 <strong>第三步：行为重塑</strong>\n通过持续的小行动，巩固正向的信念\n\n这三个步骤环环相扣，形成一个完整的正循环～\n\n你想从哪一步开始呢？或者，我先帮你看看你的信念系统里有什么可以优化的？～ 🌸");
+            addMessage("assistant", "太棒了！这是我的独家科学疗愈方案！～ 🔬<br><br>这是一套完整的体系，分三个步骤：<br><br>🎯 <strong>第一步：制定愿景</strong><br>清晰定义你想要的生活是什么样子的<br><br>💫 <strong>第二步：重塑信念</strong><br>看见并替换那些阻碍你的限制性信念<br><br>🚀 <strong>第三步：行为重塑</strong><br>通过持续的小行动，巩固正向的信念<br><br>这三个步骤环环相扣，形成一个完整的正循环～<br><br>你想从哪一步开始呢？或者，我先帮你看看你的信念系统里有什么可以优化的？～ 🌸");
         }
 
         function generateDefaultResponse(userMessage) {
@@ -256,7 +643,7 @@
                 "明白啦！还有吗？我想多了解一些～ 🌊"
             ];
             if (userMessage.length > 50) {
-                return `哇！谢谢你和我分享这么多！～ 💜\n\n我能感受到你对自己的认真和负责，这真的很棒！\n\n接下来你想探索什么方向呢？`;
+                return `哇！谢谢你和我分享这么多！～ 💜<br><br>我能感受到你对自己的认真和负责，这真的很棒！<br><br>接下来你想探索什么方向呢？`;
             }
             return responses[Math.floor(Math.random() * responses.length)];
         }
@@ -267,7 +654,7 @@
             messageDiv.className = `message ${role}`;
             const now = new Date();
             const timeStr = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
-            messageDiv.innerHTML = `<div class="message-avatar">${role === 'assistant' ? '✨' : '👤'}</div><div><div class="message-bubble">${content.replace(/\n/g, '<br>')}</div><div class="message-time">${timeStr}</div></div>`;
+            messageDiv.innerHTML = `<div class="message-avatar">${role === 'assistant' ? '✨' : '👤'}</div><div><div class="message-bubble">${content}</div><div class="message-time">${timeStr}</div></div>`;
             chatMessages.appendChild(messageDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
