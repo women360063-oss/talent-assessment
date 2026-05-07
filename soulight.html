@@ -44,12 +44,22 @@
             font-family: 'Noto Serif SC', serif;
             font-size: 20px; font-weight: 600; color: var(--dark);
         }
-        .nav-logo-icon {
-            width: 40px; height: 40px; border-radius: 8px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-soft));
-            display: flex; align-items: center; justify-content: center;
-            font-size: 20px; color: white;
+        .nav-logo img {
+            width: 40px; height: 40px; border-radius: 8px; object-fit: contain;
         }
+        .nav-cta {
+            padding: 10px 24px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(201,169,126,0.3); }
         .nav-menu {
             display: flex; gap: 32px; list-style: none; align-items: center;
         }
@@ -259,7 +269,7 @@
     <!-- Nav -->
     <nav>
         <div class="nav-logo">
-            <div class="nav-logo-icon">🦋</div>
+            <img src="logo-new.jpg" alt="禅柔旅修">
             <span>禅柔旅修</span>
         </div>
         <ul class="nav-menu">
@@ -271,13 +281,12 @@
             <li><a href="index.html#eap">企业EAP</a></li>
             <li><a href="index.html#team">疗愈师团队</a></li>
             <li><a href="journal.html">科学期刊</a></li>
-            <li><a href="index.html#booking">预约咨询</a></li>
         </ul>
+        <a href="index.html#booking" class="nav-cta">立即预约</a>
     </nav>
 
     <!-- Container -->
     <div class="container">
-        <a href="index.html" class="back-nav">← 返回首页</a>
         <header class="header">
             <h1>溯光 · Soulight</h1>
             <p class="header-subtitle">你的专属AI疗愈分身 · 慢静定柔 · 如如不动</p>
