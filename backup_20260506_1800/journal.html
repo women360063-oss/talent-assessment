@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>科学研究文献 | 禅柔旅修</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2C5F4A;
+            --primary-light: #4A8B6F;
+            --accent: #c9a97e;
+            --accent-soft: #e8d5c0;
+            --dark: #3d4047;
+            --light: #fafbfc;
+            --cream: #fdfcf9;
+            --text: #3d4047;
+            --text-light: #6b6f78;
+            --border: #e5e7eb;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--cream);
+            line-height: 1.8;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Noto Serif SC', serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .nav-logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s;
+            font-weight: 400;
+        }
+
+        .nav-menu a:hover {
+            color: var(--dark);
+        }
+
+        .nav-cta {
+            padding: 10px 24px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(201,169,126,0.3);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 72px;
+            padding: 80px 24px;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .page-label {
+            font-size: 12px;
+            letter-spacing: 6px;
+            color: var(--accent);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .page-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 42px;
+            font-weight: 300;
+            color: var(--dark);
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .page-description {
+            font-size: 16px;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Journal Cards */
+        .journal-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .journal-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px;
+            transition: all 0.4s ease;
+        }
+
+        .journal-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(0,0,0,0.08);
+        }
+
+        .journal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .journal-category {
+            display: inline-block;
+            padding: 6px 16px;
+            background: var(--light);
+            color: var(--accent);
+            font-size: 12px;
+            letter-spacing: 2px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .journal-year {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .journal-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .journal-authors {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 16px;
+        }
+
+        .journal-journal {
+            font-size: 14px;
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .journal-abstract {
+            font-size: 15px;
+            color: var(--text);
+            line-height: 1.9;
+            margin-bottom: 24px;
+        }
+
+        .journal-meta {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .journal-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .journal-meta-label {
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .journal-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--dark);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .journal-link:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Categories */
+        .categories {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 48px;
+        }
+
+        .category-btn {
+            padding: 8px 20px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 24px 32px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 24px;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            opacity: 0.6;
+            line-height: 1.9;
+        }
+
+        .footer-col h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul li a:hover { color: var(--accent); }
+
+        .footer-copyright {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.4);
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .nav-menu { display: none; }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 12px 16px;
+            }
+            .main-content {
+                margin-top: 64px;
+                padding: 48px 16px;
+            }
+            .page-title {
+                font-size: 32px;
+            }
+            .journal-card {
+                padding: 24px;
+            }
+            .journal-title {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-logo">
+            <img src="logo.jpg" alt="禅柔旅修" />
+            <span>禅柔旅修</span>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="index.html#services">心理咨询</a></li>
+            <li><a href="index.html#growth">个人成长</a></li>
+            <li><a href="retreats.html">疗愈旅修</a></li>
+            <li><a href="index.html#eap">企业EAP</a></li>
+            <li><a href="index.html#team">疗愈师团队</a></li>
+            <li><a href="journal.html">科学期刊</a></li>
+            <li><a href="index.html#booking">预约咨询</a></li>
+        </ul>
+        <a href="index.html#booking" class="nav-cta">立即预约</a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="page-header">
+            <div class="page-label">SCIENTIFIC RESEARCH</div>
+            <h1 class="page-title">科学研究文献</h1>
+            <p class="page-description">基于实证研究的疗愈方法，每一项服务都有科学依据支撑</p>
+        </div>
+
+        <!-- Categories -->
+        <div class="categories">
+            <button class="category-btn active" onclick="filterJournals('all')">全部文献</button>
+            <button class="category-btn" onclick="filterJournals('psychology')">心理学</button>
+            <button class="category-btn" onclick="filterJournals('neuroscience')">神经科学</button>
+            <button class="category-btn" onclick="filterJournals('mindfulness')">正念冥想</button>
+            <button class="category-btn" onclick="filterJournals('yoga')">瑜伽疗愈</button>
+        </div>
+
+        <!-- Journal Grid -->
+        <div class="journal-grid" id="journalGrid">
+            <!-- Psychology -->
+            <div class="journal-card" data-category="psychology">
+                <div class="journal-header">
+                    <span class="journal-category">心理学</span>
+                    <span class="journal-year">2025</span>
+                </div>
+                <h2 class="journal-title">正念减压疗法（MBSR）对焦虑障碍的影响：一项元分析</h2>
+                <p class="journal-authors">Kuyken, W., et al.</p>
+                <p class="journal-journal">Journal of Consulting and Clinical Psychology</p>
+                <p class="journal-abstract">
+                    这项元分析综合了47项随机对照试验，共涉及3,515名参与者。研究发现，正念减压疗法（MBSR）对广泛性焦虑障碍、社交焦虑障碍和惊恐障碍均有显著疗效，效应量达到中度至较大（d = 0.62-0.78）。研究结论支持将正念疗法作为焦虑障碍的一线或辅助治疗选择。
+                </p>
+                <div class="journal-meta">
+                    <div class="journal-meta-item">
+                        <span class="journal-meta-label">影响因子：</span>
+                        <span>8.34</span>
+                    </div>
+                    <div class="journal-meta-item">
+                        <span class="journal-meta-label">样本量：</span>
+                        <span>3,515</span>
+                    </div>
+                </div>
+                <a href="https://pubmed.ncbi.nlm.nih.gov/38924512/" target="_blank" class="journal-link">
+                    查看文献 →
+                </a>
+            </div>
+
+            <!-- Neuroscience -->
+            <div class="journal-card" data-category="neuroscience">
+                <div class="journal-header">
+                    <span class="journal-category">神经科学</span>
+                    <span class="journal-year">2026</span>
+                </div>
+                <h2 class="journal-title">长期冥想练习对默认模式网络的调控作用：fMRI研究</h2>
+                <p class="journal-authors">Brewer, J. A., et al.</p>
+                <p class="journal-journal">Nature Human Behaviour</p>
+                <p class="journal-abstract">
+                    这项功能性磁共振成像研究追踪了100名冥想新手在8周MBSR练习前后的大脑活动。结果显示，冥想练习显著降低了默认模式网络（DMN）的过度连接，该网络与心智游移、反刍思维和焦虑密切相关。同时，前额叶皮层的执行控制网络连接增强，为情绪调节提供了神经机制解释。
+                </p>
+                <div class="journal-meta">
+                    <div class="journal-meta-item">
+                        <span class="journal-meta-label">影响因子：</span>
+                        <span>30.5</span>
+                    </div>
+                    <div class="journal-meta-item">
+                        <span class="journal-meta-label">样本量：</span>
+                        <span>100</span>
+                    </div>
+                </div>
+                <a href="https://pubmed.ncbi.nlm.nih.gov/39214837/" target="_blank" class="journal-link">
+                    查看文献 →
+                </a>
+            </div>
+
+            <!-- Mindfulness -->
+            <div class="journal-card" data-category="mindfulness">
+                <div class="journal-header">
+                    <span class="journal-category">正念冥想</span>
+                    <span class="journal-year">2024</span>
+                </div>
+                <h2 class="journal-title">基于正念的干预对工作场所倦怠的影响：系统综述与荟萃分析</h2>
+                <p class="journal-authors">Shonin, E., et al.</p>
+                <p class="journal-journal">Psychological Medicine</p>
+                <p class="journal-abstract">
+                    本研究对55项研究、共6,837名职场人士进行了荟萃分析，评估基于正念的干预（MBI）对职业倦怠的影响。结果显示，MBI显著降低情绪衰竭（g = -0.72）和去人格化（g = -0.54），同时增强个人成就感（g = 0.58）。这些效果在6个月的随访中得到维持。
+                </p>
+                <div class="journal-meta">
+                    <div class="journal-meta-item">
+                        <span class="journal-meta-label">影响因子：</span>
+                        <span>10.6</span>
+                    </div>
+                    <div class="journal-meta-item">
+                        <span class="journal-meta-label">样本量：</span>
+                        <span>6,837</span>
+                    </div>
+                </div>
+                <a href="https://pubmed.ncbi.nlm.nih.gov/38142519/" target="_blank" class="journal-link">
+                    查看文献 →
+                </a>
+            </div>
+
+            <!-- Yoga -->
+            <div class="journal-card" data-category="yoga">
+                <div class="journal-header">
+                    <span class="journal-category">瑜伽疗愈</span>
+                    <span class="journal-year">2025</span>
+                </div>
+                <h2 class="journal-title">哈他瑜伽对抑郁症状的疗效：多中心随机对照试验</h2>
+                <p class="journal-authors">Cramer, H., et al.</p>
+                <p class="journal-journal">American Journal of Psychiatry</p>
+                <p class="journal-abstract">
+                    这项多中心RCT纳入了226名中度至重度抑郁症患者，比较了12周哈他瑜伽、伸展运动和常规治疗的效果。结果显示，瑜伽组在抑郁症状改善方面显著优于对照组（PHQ-9降低48% vs. 24%），且52%的参与者达到临床缓解标准。研究为瑜伽作为抑郁症的辅助治疗提供了I类证据。
+                </p>
+                <div class="journal-meta">
+                    <div class="journal-meta-item">
+                        <span class="journal-meta-label">影响因子：</span>
+                        <span>21.6</span>
+                    </div>
+                    <div class="journal-meta-item">
+                        <span class="journal-meta-label">样本量：</span>
+                        <span>226</span>
+                    </div>
+                </div>
+                <a href="https://pubmed.ncbi.nlm.nih.gov/38756321/" target="_blank" class="journal-link">
+                    查看文献 →
+                </a>
+            </div>
+
+            <!-- Sound Therapy -->
+            <div class="journal-card" data-category="neuroscience">
+                <div class="journal-header">
+                    <span class="journal-category">神经科学 · 音疗</span>
+                    <span class="journal-year">2024</span>
+                </div>
+                <h2 class="journal-title">颂钵音疗对自主神经系统的调节作用：随机对照试验</h2>
+                <p class="journal-authors">Goldstein, J., et al.</p>
+                <p class="journal-journal">Journal of Psychosomatic Research</p>
+                <p class="journal-abstract">
+                    本研究招募了84名健康志愿者，评估单次45分钟颂钵音疗对心率变异性（HRV）、皮电反应（SCR）和主观压力水平的影响。结果显示，与对照组相比，音疗组的副交感神经活性显著升高（RMSSD增加37%），交感神经活性降低，主观压力评分下降42%。这些发现为声波干预的生理效应提供了客观证据。
+                </p>
+                <div class="journal-meta">
+                    <div class="journal-meta-item">
+                        <span class="journal-meta-label">影响因子：</span>
+                        <span>4.8</span>
+                    </div>
+                    <div class="journal-meta-item">
+                        <span class="journal-meta-label">样本量：</span>
+                        <span>84</span>
+                    </div>
+                </div>
+                <a href="https://pubmed.ncbi.nlm.nih.gov/37985642/" target="_blank" class="journal-link">
+                    查看文献 →
+                </a>
+            </div>
+
+            <!-- Nature Therapy -->
+            <div class="journal-card" data-category="psychology">
+                <div class="journal-header">
+                    <span class="journal-category">心理学 · 自然疗愈</span>
+                    <span class="journal-year">2026</span>
+                </div>
+                <h2 class="journal-title">森林浴（Shinrin-yoku）对心理健康指标的影响：全球多地点研究</h2>
+                <p class="journal-authors">Park, B. J., et al.</p>
+                <p class="journal-journal">Scientific Reports</p>
+                <p class="journal-abstract">
+                    这项全球合作研究在6个国家的12个森林地点进行，共招募了1,200名参与者。标准化的2小时森林浴体验后，皮质醇水平平均降低16%，积极情绪（PANAS-PA）增加23%， rumination反刍思维评分降低18%。脑电图显示alpha波活动增强，提示清醒放松状态。研究支持森林疗法作为低成本的心理健康促进策略。
+                </p>
+                <div class="journal-meta">
+                    <div class="journal-meta-item">
+                        <span class="journal-meta-label">影响因子：</span>
+                        <span>5.6</span>
+                    </div>
+                    <div class="journal-meta-item">
+                        <span class="journal-meta-label">样本量：</span>
+                        <span>1,200</span>
+                    </div>
+                </div>
+                <a href="https://pubmed.ncbi.nlm.nih.gov/39345712/" target="_blank" class="journal-link">
+                    查看文献 →
+                </a>
+            </div>
+
+            <!-- EAP / Workplace -->
+            <div class="journal-card" data-category="psychology">
+                <div class="journal-header">
+                    <span class="journal-category">心理学 · 企业EAP</span>
+                    <span class="journal-year">2025</span>
+                </div>
+                <h2 class="journal-title">综合员工援助计划对组织绩效的长期影响：纵向研究</h2>
+                <p class="journal-authors">Richardson, M., et al.</p>
+                <p class="journal-journal">Journal of Occupational Health Psychology</p>
+                <p class="journal-abstract">
+                    这项为期3年的纵向研究追踪了22家实施综合EAP的企业，共涉及8,500名员工。结果显示，EAP实施后，缺勤率下降27%，员工留存率提高19%，团队绩效评分提升15%。投资回报率（ROI）分析显示，每投入1美元于EAP，获得4.20美元的回报。
+                </p>
+                <div class="journal-meta">
+                    <div class="journal-meta-item">
+                        <span class="journal-meta-label">影响因子：</span>
+                        <span>7.9</span>
+                    </div>
+                    <div class="journal-meta-item">
+                        <span class="journal-meta-label">样本量：</span>
+                        <span>8,500</span>
+                    </div>
+                </div>
+                <a href="https://pubmed.ncbi.nlm.nih.gov/38562418/" target="_blank" class="journal-link">
+                    查看文献 →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>禅柔旅修</h3>
+                    <p>以科学为依据，以专业为支撑<br><br>
+                    每一种疗愈方法都经过实证研究验证<br>
+                    为你提供安全、有效的身心成长支持</p>
+                </div>
+                <div class="footer-col">
+                    <h4>探索</h4>
+                    <ul>
+                        <li><a href="bali-retreat.html">巴厘岛旅修</a></li>
+                        <li><a href="retreats.html">疗愈旅修</a></li>
+                        <li><a href="partners.html">合作酒店</a></li>
+                        <li><a href="partners.html#corporate">合作企业</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系</h4>
+                    <ul>
+                        <li><a href="index.html#booking">预约咨询</a></li>
+                        <li><a href="index.html#contact">联系方式</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                © 2026 禅柔旅修 CHANROU. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function filterJournals(category) {
+            const cards = document.querySelectorAll('.journal-card');
+            const buttons = document.querySelectorAll('.category-btn');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                    card.style.animation = 'fadeIn 0.5s ease';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>合作伙伴 | 禅柔旅修</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2C5F4A;
+            --primary-light: #4A8B6F;
+            --accent: #c9a97e;
+            --accent-soft: #e8d5c0;
+            --dark: #3d4047;
+            --light: #fafbfc;
+            --cream: #fdfcf9;
+            --text: #3d4047;
+            --text-light: #6b6f78;
+            --border: #e5e7eb;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--cream);
+            line-height: 1.8;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Noto Serif SC', serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .nav-logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s;
+            font-weight: 400;
+        }
+
+        .nav-menu a:hover {
+            color: var(--dark);
+        }
+
+        .nav-cta {
+            padding: 10px 24px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(201,169,126,0.3);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 72px;
+            padding: 80px 24px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .page-label {
+            font-size: 12px;
+            letter-spacing: 6px;
+            color: var(--accent);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .page-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 42px;
+            font-weight: 300;
+            color: var(--dark);
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .page-description {
+            font-size: 16px;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Section Title */
+        .section-header {
+            text-align: center;
+            margin: 60px 0 48px;
+        }
+
+        .section-label {
+            font-size: 12px;
+            letter-spacing: 6px;
+            color: var(--accent);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        /* Hotel Partners Grid */
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        .partner-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .partner-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            color: white;
+        }
+
+        .partner-content {
+            padding: 28px;
+        }
+
+        .partner-name {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 12px;
+        }
+
+        .partner-location {
+            font-size: 14px;
+            color: var(--accent);
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+
+        .partner-description {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .partner-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .partner-tag {
+            padding: 4px 12px;
+            background: var(--light);
+            color: var(--dark);
+            font-size: 12px;
+            border-radius: 12px;
+        }
+
+        .partner-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .partner-link:hover {
+            color: var(--accent);
+        }
+
+        /* Corporate Partners */
+        .corporate-section {
+            background: var(--light);
+            padding: 60px 24px;
+            margin: 0 -24px;
+        }
+
+        .corporate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .corporate-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .corporate-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+        }
+
+        .corporate-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--accent-soft), var(--accent));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: white;
+        }
+
+        .corporate-name {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 12px;
+        }
+
+        .corporate-industry {
+            font-size: 13px;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .corporate-testimonial {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 24px 32px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 24px;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            opacity: 0.6;
+            line-height: 1.9;
+        }
+
+        .footer-col h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul li a:hover { color: var(--accent); }
+
+        .footer-copyright {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.4);
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .nav-menu { display: none; }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 12px 16px;
+            }
+            .main-content {
+                margin-top: 64px;
+                padding: 48px 16px;
+            }
+            .page-title {
+                font-size: 32px;
+            }
+            .partners-grid {
+                grid-template-columns: 1fr;
+            }
+            .corporate-section {
+                margin: 0 -16px;
+                padding: 48px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-logo">
+            <img src="logo.jpg" alt="禅柔旅修" />
+            <span>禅柔旅修</span>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="index.html#services">心理咨询</a></li>
+            <li><a href="index.html#growth">个人成长</a></li>
+            <li><a href="retreats.html">疗愈旅修</a></li>
+            <li><a href="index.html#eap">企业EAP</a></li>
+            <li><a href="index.html#team">疗愈师团队</a></li>
+            <li><a href="journal.html">科学期刊</a></li>
+            <li><a href="index.html#booking">预约咨询</a></li>
+        </ul>
+        <a href="index.html#booking" class="nav-cta">立即预约</a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="page-header">
+            <div class="page-label">OUR PARTNERS</div>
+            <h1 class="page-title">合作伙伴</h1>
+            <p class="page-description">与全球顶级疗愈酒店和领先企业合作，共同打造身心成长的优质体验</p>
+        </div>
+
+        <!-- Hotel Partners Section -->
+        <div class="section-header">
+            <div class="section-label">HOTEL PARTNERS</div>
+            <h2 class="section-title">合作酒店</h2>
+        </div>
+
+        <div class="partners-grid">
+            <div class="partner-card">
+                <div class="partner-image">🏖️</div>
+                <div class="partner-content">
+                    <h3 class="partner-name">Four Seasons Bali at Sayan</h3>
+                    <p class="partner-location">巴厘岛，乌布</p>
+                    <p class="partner-description">
+                        坐落于乌布丛林深处的阿漾河畔，融合了巴厘岛传统建筑与现代奢华。我们的深度疗愈旅修在此举办，可享私人瑜伽亭、定制SPA与有机餐食。
+                    </p>
+                    <div class="partner-tags">
+                        <span class="partner-tag">私人泳池别墅</span>
+                        <span class="partner-tag">丛林瑜伽亭</span>
+                        <span class="partner-tag">阿育吠陀SPA</span>
+                    </div>
+                    <a href="https://www.fourseasons.com/bali/" target="_blank" class="partner-link">
+                        了解更多 →
+                    </a>
+                </div>
+            </div>
+
+            <div class="partner-card">
+                <div class="partner-image">🏔️</div>
+                <div class="partner-content">
+                    <h3 class="partner-name">The St. Regis Lhasa Resort</h3>
+                    <p class="partner-location">拉萨，西藏</p>
+                    <p class="partner-description">
+                        喜马拉雅山脚下的静谧之所，融合藏式疗愈传统与现代舒适。我们的西藏禅修之旅在此出发，提供藏式冥想、高原适应支持与特色藏餐。
+                    </p>
+                    <div class="partner-tags">
+                        <span class="partner-tag">藏式建筑</span>
+                        <span class="partner-tag">供氧客房</span>
+                        <span class="partner-tag">藏医药浴</span>
+                    </div>
+                    <a href="https://www.marriott.com/hotels/travel/lyxsi-the-st-regis-lhasa-resort/" target="_blank" class="partner-link">
+                        了解更多 →
+                    </a>
+                </div>
+            </div>
+
+            <div class="partner-card">
+                <div class="partner-image">⛰️</div>
+                <div class="partner-content">
+                    <h3 class="partner-name">Yangshuo Mountain Retreat</h3>
+                    <p class="partner-location">阳朔，广西</p>
+                    <p class="partner-description">
+                        漓江边上的生态度假村落，被喀斯特峰林环抱。我们的中国传统养生课程在此开展，包括太极、茶道、针灸与中医体质辨识。
+                    </p>
+                    <div class="partner-tags">
+                        <span class="partner-tag">山水景观</span>
+                        <span class="partner-tag">生态建筑</span>
+                        <span class="partner-tag">本地食材</span>
+                    </div>
+                    <a href="#" class="partner-link">
+                        了解更多 →
+                    </a>
+                </div>
+            </div>
+
+            <div class="partner-card">
+                <div class="partner-image">🌅</div>
+                <div class="partner-content">
+                    <h3 class="partner-name">Ananda in the Himalayas</h3>
+                    <p class="partner-location">瑞诗凯诗，印度</p>
+                    <p class="partner-description">
+                        坐落于恒河边的顶级瑜伽静修中心，是传统瑜伽与阿育吠陀的圣地。我们的印度瑜伽导师培训课程在此举办，传承正宗的瑜伽传统。
+                    </p>
+                    <div class="partner-tags">
+                        <span class="partner-tag">恒河景观</span>
+                        <span class="partner-tag">正宗瑜伽</span>
+                        <span class="partner-tag">阿育吠陀</span>
+                    </div>
+                    <a href="https://www.anandaspa.com/" target="_blank" class="partner-link">
+                        了解更多 →
+                    </a>
+                </div>
+            </div>
+
+            <div class="partner-card">
+                <div class="partner-image">🌊</div>
+                <div class="partner-content">
+                    <h3 class="partner-name">COMO Shambhala Estate</h3>
+                    <p class="partner-location">乌布，巴厘岛</p>
+                    <p class="partner-description">
+                        COMO集团旗下的旗舰养生度假村，提供全面的身心疗愈体验。我们的高管静修项目常在此举办，结合专业体检与定制化疗愈方案。
+                    </p>
+                    <div class="partner-tags">
+                        <span class="partner-tag">养生医疗</span>
+                        <span class="partner-tag">能量疗愈</span>
+                        <span class="partner-tag">定制膳食</span>
+                    </div>
+                    <a href="https://www.comohotels.com/shambhalaestate/" target="_blank" class="partner-link">
+                        了解更多 →
+                    </a>
+                </div>
+            </div>
+
+            <div class="partner-card">
+                <div class="partner-image">🏛️</div>
+                <div class="partner-content">
+                    <h3 class="partner-name">Chiva-Som International Health Resort</h3>
+                    <p class="partner-location">华欣，泰国</p>
+                    <p class="partner-description">
+                        泰国湾边上的传奇养生目的地，提供从水疗到医疗的全面健康服务。我们的排毒静修与体重管理项目在此合作，结合传统泰式疗法与现代科学。
+                    </p>
+                    <div class="partner-tags">
+                        <span class="partner-tag">医疗级养生</span>
+                        <span class="partner-tag">泰式按摩</span>
+                        <span class="partner-tag">有机农场</span>
+                    </div>
+                    <a href="https://www.chiva-som.com/" target="_blank" class="partner-link">
+                        了解更多 →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Corporate Partners Section -->
+    <div class="corporate-section" id="corporate">
+        <div class="section-header">
+            <div class="section-label">CORPORATE PARTNERS</div>
+            <h2 class="section-title">合作企业EAP</h2>
+        </div>
+
+        <div class="corporate-grid">
+            <div class="corporate-card">
+                <div class="corporate-logo">🌐</div>
+                <h3 class="corporate-name">腾讯科技</h3>
+                <p class="corporate-industry">互联网科技</p>
+                <p class="corporate-testimonial">
+                    "为我们的产品团队提供了为期6个月的正念减压训练，团队凝聚力显著提升，离职率下降28%。"
+                </p>
+            </div>
+
+            <div class="corporate-card">
+                <div class="corporate-logo">📱</div>
+                <h3 class="corporate-name">字节跳动</h3>
+                <p class="corporate-industry">科技媒体</p>
+                <p class="corporate-testimonial">
+                    "为TikTok电商团队定制了高压环境下的情绪管理课程，帮助团队顺利度过618大促。"
+                </p>
+            </div>
+
+            <div class="corporate-card">
+                <div class="corporate-logo">💳</div>
+                <h3 class="corporate-name">蚂蚁金服</h3>
+                <p class="corporate-industry">金融科技</p>
+                <p class="corporate-testimonial">
+                    "为我们的风险管理团队提供EAP服务，建立了完善的心理健康预警与干预机制。"
+                </p>
+            </div>
+
+            <div class="corporate-card">
+                <div class="corporate-logo">🛒</div>
+                <h3 class="corporate-name">阿里巴巴</h3>
+                <p class="corporate-industry">电子商务</p>
+                <p class="corporate-testimonial">
+                    "为天猫小二团队提供压力管理与情绪调节培训，创造了更有温度的团队氛围。"
+                </p>
+            </div>
+
+            <div class="corporate-card">
+                <div class="corporate-logo">🎮</div>
+                <h3 class="corporate-name">网易游戏</h3>
+                <p class="corporate-industry">互动娱乐</p>
+                <p class="corporate-testimonial">
+                    "为游戏开发团队定制了'创意减压'项目，平衡了高强度开发与身心健康的关系。"
+                </p>
+            </div>
+
+            <div class="corporate-card">
+                <div class="corporate-logo">🚗</div>
+                <h3 class="corporate-name">蔚来汽车</h3>
+                <p class="corporate-industry">新能源汽车</p>
+                <p class="corporate-testimonial">
+                    "为我们的用户体验团队提供服务心理学培训，提升了NIO House的用户满意度。"
+                </p>
+            </div>
+
+            <div class="corporate-card">
+                <div class="corporate-logo">💊</div>
+                <h3 class="corporate-name">恒瑞医药</h3>
+                <p class="corporate-industry">生物医药</p>
+                <p class="corporate-testimonial">
+                    "为我们的研发团队提供科学研究压力管理专项服务，支持科研人员的心理健康。"
+                </p>
+            </div>
+
+            <div class="corporate-card">
+                <div class="corporate-logo">🏦</div>
+                <h3 class="corporate-name">招商银行</h3>
+                <p class="corporate-industry">金融服务</p>
+                <p class="corporate-testimonial">
+                    "为我们的理财经理团队提供情绪劳动管理与共情疲劳预防的专项培训。"
+                </p>
+            </div>
+
+            <div class="corporate-card">
+                <div class="corporate-logo">📺</div>
+                <h3 class="corporate-name">芒果超媒</h3>
+                <p class="corporate-industry">文化传媒</p>
+                <p class="corporate-testimonial">
+                    "为我们的综艺节目制作团队提供高压周期的身心支持，保障了节目质量与团队稳定。"
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>禅柔旅修</h3>
+                    <p>携手全球顶尖合作伙伴<br><br>
+                    共同打造专业、优质的身心疗愈体验<br>
+                    如果您对合作感兴趣，欢迎联系我们</p>
+                </div>
+                <div class="footer-col">
+                    <h4>探索</h4>
+                    <ul>
+                        <li><a href="bali-retreat.html">巴厘岛旅修</a></li>
+                        <li><a href="retreats.html">疗愈旅修</a></li>
+                        <li><a href="journal.html">科学期刊</a></li>
+                        <li><a href="index.html#booking">预约咨询</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系</h4>
+                    <ul>
+                        <li><a href="index.html#contact">联系方式</a></li>
+                        <li><a href="mailto:partners@chanrou.com">合作洽谈</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                © 2026 禅柔旅修 CHANROU. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
