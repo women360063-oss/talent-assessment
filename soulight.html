@@ -20,7 +20,7 @@
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Noto Sans SC', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans SC', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background: linear-gradient(160deg, var(--primary) 0%, var(--primary-light) 100%);
             color: var(--text);
             line-height: 1.8;
@@ -69,7 +69,22 @@
         }
         .nav-menu a:hover { color: var(--dark); }
         .nav-menu a.soulight {
-            color: var(--accent); font-weight: 600;
+            background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+            animation: soulight-glow 3s ease-in-out infinite;
+        }
+        @keyframes soulight-glow {
+            0%, 100% {
+                opacity: 1;
+                filter: brightness(1);
+            }
+            50% {
+                opacity: 0.9;
+                filter: brightness(1.2);
+            }
         }
         /* Main Container */
         .container {

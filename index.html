@@ -25,7 +25,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Noto Sans SC', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans SC', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             color: var(--text);
             background: var(--cream);
             line-height: 1.8;
@@ -90,8 +90,22 @@
         }
 
         .nav-menu a.soulight {
-            color: var(--accent);
+            background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             font-weight: 600;
+            animation: soulight-glow 3s ease-in-out infinite;
+        }
+        @keyframes soulight-glow {
+            0%, 100% {
+                opacity: 1;
+                filter: brightness(1);
+            }
+            50% {
+                opacity: 0.9;
+                filter: brightness(1.2);
+            }
         }
 
         .nav-cta {
@@ -910,7 +924,7 @@
         <h1>身心归位 · 向内自愈</h1>
         <p class="hero-subtitle">心理咨询 · 个人成长 · 疗愈旅修定制 · 企业EAP员工关爱</p>
         <p class="hero-slogan">禅于心 · 柔于行 · 旅愈身心</p>
-        <a href="#booking" class="hero-cta">开启疗愈之旅</a>
+        <a href="javascript:void(0)" class="hero-cta" onclick="scrollToBooking()">开启疗愈之旅</a>
         <div class="scroll-hint">SCROLL</div>
     </section>
 
@@ -1271,6 +1285,12 @@
         function handleSubmit(event) {
             event.preventDefault();
             alert('预约信息已提交！我们将在12小时内与你联系。');
+        }
+        function scrollToBooking() {
+            const bookingSection = document.getElementById('booking');
+            if (bookingSection) {
+                bookingSection.scrollIntoView({ behavior: 'smooth' });
+            }
         }
     </script>
 </body>
