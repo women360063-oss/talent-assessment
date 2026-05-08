@@ -19,6 +19,10 @@
             --charcoal: #1A1A1A;
             --text: #333333;
             --text-light: #666666;
+            --primary: #2C5F4A;
+            --primary-light: #4A8B6F;
+            --accent: #c9a97e;
+            --accent-soft: #e8d5c0;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -131,7 +135,7 @@
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: linear-gradient(160deg, #1a2e26 0%, #2D4A3E 30%, #3D6B5A 60%, #5a8a72 100%);
+            background: linear-gradient(160deg, var(--primary) 0%, var(--primary-light) 100%);
         }
 
         .hero-bg::before {
@@ -184,11 +188,17 @@
 
         .hero-subtitle {
             font-size: 17px;
-            font-weight: 300;
-            opacity: 0.75;
-            max-width: 550px;
-            margin: 0 auto 50px;
-            line-height: 1.9;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 20px;
+        }
+
+        .hero-slogan {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 24px;
+            color: white;
+            margin-bottom: 40px;
+            letter-spacing: 4px;
+            font-weight: 400;
         }
 
         .hero-cta {
@@ -1008,10 +1018,8 @@
         <div class="hero-content">
             <div class="hero-label">CHANROU WELLNESS</div>
             <h1>身心归位 · 向内自愈</h1>
-            <p class="hero-subtitle">
-                心理咨询 · 个人成长 · 疗愈旅修定制 · 企业EAP员工关爱<br>
-                禅于心 · 柔于行 · 旅愈身心
-            </p>
+            <p class="hero-subtitle">心理咨询 · 个人成长 · 疗愈旅修定制 · 企业EAP员工关爱</p>
+            <p class="hero-slogan">禅于心 · 柔于行 · 旅愈身心</p>
             <a href="#cta" class="hero-cta">开启疗愈之旅</a>
         </div>
         <div class="scroll-hint">SCROLL</div>
