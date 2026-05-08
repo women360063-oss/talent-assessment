@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>禅柔旅修 · 身心归位 向内自愈 | CHANROU Wellness</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sand: #C4A882;
+            --sand-light: #E8DCC8;
+            --sand-dark: #8B7355;
+            --stone: #5C5C5C;
+            --stone-light: #8A8A8A;
+            --deep-green: #2D4A3E;
+            --deep-green-light: #3D6B5A;
+            --cream: #FAF8F5;
+            --warm-white: #F5F0EB;
+            --charcoal: #1A1A1A;
+            --text: #333333;
+            --text-light: #666666;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            color: var(--text);
+            background: var(--cream);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* ===== 导航栏 - Six Senses 风格极简 ===== */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 30px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.5s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(250,248,245,0.95);
+            backdrop-filter: blur(20px);
+            padding: 20px 60px;
+            box-shadow: 0 1px 20px rgba(0,0,0,0.03);
+        }
+
+        .logo {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: white;
+            letter-spacing: 6px;
+            text-decoration: none;
+        }
+
+        .navbar.scrolled .logo { color: var(--charcoal); }
+
+        .nav-links {
+            display: flex;
+            gap: 45px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            position: relative;
+            opacity: 0.9;
+        }
+
+        .navbar.scrolled .nav-links a { color: var(--text); }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px; left: 0;
+            width: 0; height: 1px;
+            background: var(--sand);
+            transition: width 0.4s;
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:hover { opacity: 1; }
+
+        .nav-cta {
+            padding: 12px 28px;
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.4);
+            font-size: 12px;
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: all 0.4s;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+
+        .navbar.scrolled .nav-cta {
+            color: var(--charcoal);
+            border-color: var(--charcoal);
+        }
+
+        .nav-cta:hover {
+            background: var(--sand);
+            border-color: var(--sand);
+            color: white;
+        }
+
+        /* ===== Hero - 全屏沉浸 ===== */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(160deg, #1a2e26 0%, #2D4A3E 30%, #3D6B5A 60%, #5a8a72 100%);
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="15" cy="25" r="0.8" fill="rgba(255,255,255,0.08)"/><circle cx="85" cy="15" r="1.2" fill="rgba(255,255,255,0.06)"/><circle cx="45" cy="75" r="0.6" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="65" r="0.9" fill="rgba(255,255,255,0.07)"/><circle cx="25" cy="55" r="1" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: 300px 300px;
+            animation: drift 25s linear infinite;
+        }
+
+        @keyframes drift {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(20px, -30px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 60%;
+            background: linear-gradient(to top, rgba(26,46,38,0.7) 0%, transparent 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            max-width: 900px;
+            padding: 0 30px 120px;
+        }
+
+        .hero-label {
+            font-size: 11px;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            opacity: 0.7;
+        }
+
+        .hero h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 56px;
+            font-weight: 300;
+            line-height: 1.3;
+            margin-bottom: 25px;
+            letter-spacing: 6px;
+        }
+
+        .hero-subtitle {
+            font-size: 17px;
+            font-weight: 300;
+            opacity: 0.75;
+            max-width: 550px;
+            margin: 0 auto 50px;
+            line-height: 1.9;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 16px 48px;
+            background: var(--sand);
+            color: white;
+            border: none;
+            font-size: 13px;
+            letter-spacing: 4px;
+            cursor: pointer;
+            transition: all 0.4s;
+            text-decoration: none;
+        }
+
+        .hero-cta:hover {
+            background: var(--sand-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(196,168,130,0.3);
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            opacity: 0.5;
+            font-size: 11px;
+            letter-spacing: 4px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; transform: translateX(-50%) translateY(0); }
+            50% { opacity: 0.8; transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* ===== 品牌宣言 - Six Senses 风格大留白 ===== */
+        .manifesto {
+            padding: 160px 60px;
+            background: var(--cream);
+            text-align: center;
+        }
+
+        .manifesto-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .manifesto-label {
+            font-size: 11px;
+            letter-spacing: 6px;
+            color: var(--sand);
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        .manifesto h2 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 40px;
+            font-weight: 300;
+            color: var(--charcoal);
+            margin-bottom: 40px;
+            line-height: 1.5;
+            letter-spacing: 2px;
+        }
+
+        .manifesto p {
+            font-size: 17px;
+            color: var(--text-light);
+            line-height: 2;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        /* ===== 核心服务 - 卡片式展示 ===== */
+        .services {
+            padding: 0 60px 120px;
+            background: var(--cream);
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .services-label {
+            font-size: 11px;
+            letter-spacing: 6px;
+            color: var(--sand);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .services-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 36px;
+            font-weight: 300;
+            color: var(--charcoal);
+            letter-spacing: 3px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            position: relative;
+            overflow: hidden;
+            background: white;
+            border: 1px solid rgba(0,0,0,0.04);
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+        }
+
+        .service-image {
+            height: 280px;
+            background: linear-gradient(135deg, var(--deep-green) 0%, var(--deep-green-light) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.3) 100%);
+        }
+
+        .service-image-icon {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            font-size: 40px;
+            z-index: 2;
+            color: white;
+            opacity: 0.9;
+        }
+
+        .service-content {
+            padding: 35px 30px 40px;
+        }
+
+        .service-content h3 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 22px;
+            font-weight: 400;
+            margin-bottom: 15px;
+            color: var(--charcoal);
+        }
+
+        .service-content p {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .service-link {
+            font-size: 12px;
+            letter-spacing: 3px;
+            color: var(--sand);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.3s;
+        }
+
+        .service-link:hover { gap: 15px; }
+
+        /* ===== 科学疗愈理念 ===== */
+        .philosophy {
+            padding: 140px 60px;
+            background: var(--warm-white);
+        }
+
+        .philosophy-header {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+
+        .philosophy-label {
+            font-size: 11px;
+            letter-spacing: 6px;
+            color: var(--sand);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .philosophy-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 36px;
+            font-weight: 300;
+            color: var(--charcoal);
+            letter-spacing: 3px;
+        }
+
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 40px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .philosophy-item {
+            text-align: center;
+            padding: 40px 20px;
+            transition: all 0.4s;
+        }
+
+        .philosophy-item:hover { transform: translateY(-5px); }
+
+        .philosophy-icon {
+            width: 80px;
+            height: 80px;
+            border: 1px solid var(--sand-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 32px;
+            color: var(--sand-dark);
+            transition: all 0.4s;
+        }
+
+        .philosophy-item:hover .philosophy-icon {
+            background: var(--sand);
+            border-color: var(--sand);
+            color: white;
+        }
+
+        .philosophy-item h4 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 18px;
+            font-weight: 400;
+            margin-bottom: 15px;
+            color: var(--charcoal);
+        }
+
+        .philosophy-item p {
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* ===== 服务流程 - 时间线 ===== */
+        .process {
+            padding: 140px 60px;
+            background: var(--cream);
+        }
+
+        .process-header {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+
+        .process-label {
+            font-size: 11px;
+            letter-spacing: 6px;
+            color: var(--sand);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .process-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 36px;
+            font-weight: 300;
+            color: var(--charcoal);
+            letter-spacing: 3px;
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 100px;
+            right: 100px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--sand-light), transparent);
+        }
+
+        .process-step {
+            flex: 1;
+            text-align: center;
+            padding: 0 30px;
+            position: relative;
+        }
+
+        .step-circle {
+            width: 80px;
+            height: 80px;
+            border: 1px solid var(--sand-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            background: var(--cream);
+            position: relative;
+            z-index: 2;
+            transition: all 0.4s;
+        }
+
+        .step-circle span {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 24px;
+            color: var(--sand);
+            transition: color 0.4s;
+        }
+
+        .process-step:hover .step-circle {
+            background: var(--sand);
+            border-color: var(--sand);
+        }
+
+        .process-step:hover .step-circle span { color: white; }
+
+        .step-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 18px;
+            font-weight: 400;
+            margin-bottom: 15px;
+            color: var(--charcoal);
+        }
+
+        .step-desc {
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* ===== 案例见证 ===== */
+        .stories {
+            padding: 140px 60px;
+            background: var(--deep-green);
+            color: white;
+        }
+
+        .stories-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .stories-label {
+            font-size: 11px;
+            letter-spacing: 6px;
+            color: var(--sand-light);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .stories-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 36px;
+            font-weight: 300;
+            letter-spacing: 3px;
+        }
+
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .story-card {
+            background: rgba(255,255,255,0.05);
+            padding: 50px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.4s;
+        }
+
+        .story-card:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-5px);
+        }
+
+        .story-quote {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 20px;
+            font-weight: 300;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .story-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .story-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--sand);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            font-family: 'Noto Serif SC', serif;
+        }
+
+        .story-info h5 {
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .story-info p {
+            font-size: 12px;
+            opacity: 0.6;
+        }
+
+        .story-service {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: var(--sand-light);
+        }
+
+        /* ===== 疗愈师团队 ===== */
+        .team {
+            padding: 140px 60px;
+            background: var(--cream);
+        }
+
+        .team-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .team-label {
+            font-size: 11px;
+            letter-spacing: 6px;
+            color: var(--sand);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .team-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 36px;
+            font-weight: 300;
+            color: var(--charcoal);
+            letter-spacing: 3px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 50px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .member-photo {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            margin: 0 auto 35px;
+            background: linear-gradient(135deg, var(--sand-light), var(--sand));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .member-photo::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border: 2px solid var(--sand);
+            border-radius: 50%;
+            opacity: 0.4;
+        }
+
+        .member-name {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 8px;
+            color: var(--charcoal);
+        }
+
+        .member-role {
+            font-size: 13px;
+            color: var(--sand);
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .member-bio {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.8;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .member-cta {
+            margin-top: 25px;
+            padding: 10px 30px;
+            background: transparent;
+            border: 1px solid var(--sand-light);
+            color: var(--sand-dark);
+            font-size: 12px;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.4s;
+        }
+
+        .member-cta:hover {
+            background: var(--sand);
+            border-color: var(--sand);
+            color: white;
+        }
+
+        /* ===== 服务保障 ===== */
+        .guarantee {
+            padding: 100px 60px;
+            background: var(--warm-white);
+            text-align: center;
+        }
+
+        .guarantee-label {
+            font-size: 11px;
+            letter-spacing: 6px;
+            color: var(--sand);
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        .guarantee-grid {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .guarantee-item {
+            text-align: center;
+        }
+
+        .guarantee-icon {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--sand);
+        }
+
+        .guarantee-item h4 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 18px;
+            font-weight: 400;
+            margin-bottom: 10px;
+            color: var(--charcoal);
+        }
+
+        .guarantee-item p {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        /* ===== CTA 区域 ===== */
+        .cta-section {
+            padding: 140px 60px;
+            background: var(--charcoal);
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(196,168,130,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        .cta-label {
+            font-size: 11px;
+            letter-spacing: 6px;
+            color: var(--sand);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .cta-section h2 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 44px;
+            font-weight: 300;
+            margin-bottom: 25px;
+            letter-spacing: 4px;
+            position: relative;
+        }
+
+        .cta-section p {
+            font-size: 17px;
+            opacity: 0.7;
+            max-width: 500px;
+            margin: 0 auto 50px;
+            line-height: 1.8;
+            position: relative;
+        }
+
+        .cta-form {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .cta-form input {
+            flex: 1;
+            padding: 18px 25px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: white;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .cta-form input::placeholder { color: rgba(255,255,255,0.4); }
+        .cta-form input:focus { border-color: var(--sand); background: rgba(255,255,255,0.12); }
+
+        .cta-form button {
+            padding: 18px 40px;
+            background: var(--sand);
+            color: white;
+            border: none;
+            font-size: 13px;
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: all 0.4s;
+            white-space: nowrap;
+        }
+
+        .cta-form button:hover {
+            background: var(--sand-light);
+            color: var(--charcoal);
+        }
+
+        .cta-note {
+            margin-top: 25px;
+            font-size: 12px;
+            opacity: 0.4;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        /* ===== 页脚 ===== */
+        .footer {
+            padding: 80px 60px 40px;
+            background: #0F0F0F;
+            color: white;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto 60px;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 26px;
+            margin-bottom: 20px;
+            letter-spacing: 4px;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            opacity: 0.5;
+            line-height: 1.9;
+            max-width: 350px;
+        }
+
+        .footer-col h4 {
+            font-size: 12px;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+            color: var(--sand);
+            text-transform: uppercase;
+        }
+
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 12px; }
+
+        .footer-col a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover { color: var(--sand); }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 30px;
+            text-align: center;
+            font-size: 11px;
+            opacity: 0.3;
+            letter-spacing: 2px;
+        }
+
+        /* ===== 动画类 ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 1024px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .philosophy-grid { grid-template-columns: repeat(3, 1fr); }
+            .stories-grid { grid-template-columns: 1fr; }
+            .team-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .guarantee-grid { gap: 40px; }
+        }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 20px 30px; }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 32px; }
+            .hero-content { padding-bottom: 80px; }
+
+            .services-grid,
+            .philosophy-grid,
+            .team-grid { grid-template-columns: 1fr; }
+
+            .process-steps { flex-direction: column; gap: 50px; }
+            .process-steps::before { display: none; }
+
+            .cta-form { flex-direction: column; }
+            .guarantee-grid { flex-direction: column; gap: 40px; }
+            .footer-grid { grid-template-columns: 1fr; }
+
+            section { padding: 80px 30px !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="logo">
+            <img src="logo-new.jpg" alt="禅柔旅修" style="width:40px;height:40px;max-width:40px;max-height:40px;object-fit:contain;border-radius:8px;">
+            禅柔旅修
+        </a>
+        <ul class="nav-links">
+            <li><a href="#services">心理咨询</a></li>
+            <li><a href="#philosophy">个人成长</a></li>
+            <li><a href="soulight.html" class="soulight">溯光AI</a></li>
+            <li><a href="#stories">真实案例</a></li>
+            <li><a href="#team">疗愈师团队</a></li>
+        </ul>
+        <button class="nav-cta">预约咨询</button>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-label">CHANROU WELLNESS</div>
+            <h1>身心归位 · 向内自愈</h1>
+            <p class="hero-subtitle">
+                心理咨询 · 个人成长 · 疗愈旅修定制 · 企业EAP员工关爱<br>
+                禅于心 · 柔于行 · 旅愈身心
+            </p>
+            <a href="#cta" class="hero-cta">开启疗愈之旅</a>
+        </div>
+        <div class="scroll-hint">SCROLL</div>
+    </section>
+
+    <!-- 品牌宣言 -->
+    <section class="manifesto">
+        <div class="manifesto-inner fade-in">
+            <div class="manifesto-label">Our Philosophy</div>
+            <h2>在喧嚣世界中<br>为你保留一方归心的净土</h2>
+            <p>
+                我们相信，真正的疗愈不是逃避，而是回归。当身心重新找到它的位置，
+                内在的自愈力量便会自然流淌。禅柔旅修以科学为根基，以东方智慧为灵魂，
+                陪伴每一位来访者完成从"失衡"到"归位"的旅程。
+            </p>
+        </div>
+    </section>
+
+    <!-- 核心服务 -->
+    <section class="services" id="services">
+        <div class="services-header fade-in">
+            <div class="services-label">Core Services</div>
+            <h2 class="services-title">四大核心服务</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-image">
+                    <div class="service-image-icon">💬</div>
+                </div>
+                <div class="service-content">
+                    <h3>一对一心理咨询</h3>
+                    <p>针对焦虑、压力、亲密关系、原生家庭、职场内耗等情绪困扰，提供专业疏导。线上线下灵活可选，全程严格保密。</p>
+                    <a href="#" class="service-link">了解详情 →</a>
+                </div>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-image" style="background: linear-gradient(135deg, #3D6B5A 0%, #5a8a72 100%);">
+                    <div class="service-image-icon">🌱</div>
+                </div>
+                <div class="service-content">
+                    <h3>个人成长服务</h3>
+                    <p>自我认知探索、情绪管理、心理韧性提升、成长目标规划。助力自我突破，实现全方位个人成长。</p>
+                    <a href="#" class="service-link">了解详情 →</a>
+                </div>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-image" style="background: linear-gradient(135deg, #5a8a72 0%, #7aaa92 100%);">
+                    <div class="service-image-icon">🏔️</div>
+                </div>
+                <div class="service-content">
+                    <h3>疗愈旅修定制</h3>
+                    <p>单人/闺蜜/小众团体定制，融合正念、静修、自然体验。一站式行程规划，实现身心双重疗愈。</p>
+                    <a href="#" class="service-link">立即定制 →</a>
+                </div>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-image" style="background: linear-gradient(135deg, #8B7355 0%, #C4A882 100%);">
+                    <div class="service-image-icon">🏢</div>
+                </div>
+                <div class="service-content">
+                    <h3>企业EAP方案</h3>
+                    <p>职场减压讲座、团体疗愈、一对一保密咨询、年度员工心理关怀。提升团队凝聚力，缓解职业倦怠。</p>
+                    <a href="#" class="service-link">商务合作 →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 科学疗愈理念 -->
+    <section class="philosophy" id="philosophy">
+        <div class="philosophy-header fade-in">
+            <div class="philosophy-label">Scientific Healing</div>
+            <h2 class="philosophy-title">科学疗愈 · 向内熵减 · 归序重启</h2>
+        </div>
+        <div class="philosophy-grid">
+            <div class="philosophy-item fade-in">
+                <div class="philosophy-icon">🧠</div>
+                <h4>心理学</h4>
+                <p>依托中国科学院心理研究所、剑桥大学情绪研究成果，提供科学心理疏导</p>
+            </div>
+            <div class="philosophy-item fade-in">
+                <div class="philosophy-icon">⚡</div>
+                <h4>神经科学</h4>
+                <p>重构大脑情绪处理模式，确保服务科学性与有效性</p>
+            </div>
+            <div class="philosophy-item fade-in">
+                <div class="philosophy-icon">☯️</div>
+                <h4>东方哲学</h4>
+                <p>融合正念、内观、身心合一理念，打造贴合中国人的本土化疗愈方案</p>
+            </div>
+            <div class="philosophy-item fade-in">
+                <div class="philosophy-icon">🔄</div>
+                <h4>认知行为科学</h4>
+                <p>通过行为锚定与刻意练习，重塑自动化反应模式</p>
+            </div>
+            <div class="philosophy-item fade-in">
+                <div class="philosophy-icon">🔮</div>
+                <h4>量子心智科学</h4>
+                <p>结合意识聚焦与潜意识解绑技术，实现心智调频与内在赋能</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服务流程 -->
+    <section class="process" id="process">
+        <div class="process-header fade-in">
+            <div class="process-label">Our Process</div>
+            <h2 class="process-title">六步疗愈流程</h2>
+        </div>
+        <div class="process-steps">
+            <div class="process-step fade-in">
+                <div class="step-circle"><span>1</span></div>
+                <div class="step-title">免费沟通评估</div>
+                <div class="step-desc">初步了解需求，无任何隐形消费，专业顾问一对一沟通</div>
+            </div>
+            <div class="process-step fade-in">
+                <div class="step-circle"><span>2</span></div>
+                <div class="step-title">方案定制</div>
+                <div class="step-desc">结合客户需求与性格特质，打造1V1专属疗愈方案</div>
+            </div>
+            <div class="process-step fade-in">
+                <div class="step-circle"><span>3</span></div>
+                <div class="step-title">匹配疗愈师</div>
+                <div class="step-desc">根据需求精准匹配持证疗愈师，提供师资介绍</div>
+            </div>
+            <div class="process-step fade-in">
+                <div class="step-circle"><span>4</span></div>
+                <div class="step-title">开启服务</div>
+                <div class="step-desc">线上/线下灵活开展，全程专业陪伴，及时解答疑问</div>
+            </div>
+            <div class="process-step fade-in">
+                <div class="step-circle"><span>5</span></div>
+                <div class="step-title">回访跟进</div>
+                <div class="step-desc">跟踪疗愈效果，根据反馈及时调整方案，确保效果</div>
+            </div>
+            <div class="process-step fade-in">
+                <div class="step-circle"><span>6</span></div>
+                <div class="step-title">长期陪伴</div>
+                <div class="step-desc">提供后续支持，助力身心持续成长，实现长期稳定</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 真实案例 -->
+    <section class="stories" id="stories">
+        <div class="stories-header fade-in">
+            <div class="stories-label">Real Stories</div>
+            <h2 class="stories-title">真实疗愈见证</h2>
+        </div>
+        <div class="stories-grid">
+            <div class="story-card fade-in">
+                <div class="story-quote">
+                    "长期被焦虑裹挟，职场迷茫、亲密关系紧张，甚至出现失眠。通过12次心理咨询，在咨询师引导下梳理情绪卡点，学会接纳自我、调节情绪，不仅摆脱了焦虑，还实现了职场晋升。"
+                </div>
+                <div class="story-author">
+                    <div class="story-avatar">L</div>
+                    <div class="story-info">
+                        <h5>匿名来访者</h5>
+                        <p>32岁 · 互联网产品经理</p>
+                    </div>
+                </div>
+                <div class="story-service">心理咨询 · 12次疗程</div>
+            </div>
+            <div class="story-card fade-in">
+                <div class="story-quote">
+                    "创业失败后陷入自我怀疑，情绪低落。通过8次个人成长陪伴，探索自我优势，建立清晰认知，制定可落地的成长计划，逐步摆脱自我否定，重新启动创业项目。"
+                </div>
+                <div class="story-author">
+                    <div class="story-avatar">W</div>
+                    <div class="story-info">
+                        <h5>匿名来访者</h5>
+                        <p>29岁 · 连续创业者</p>
+                    </div>
+                </div>
+                <div class="story-service">个人成长 · 8次疗程</div>
+            </div>
+            <div class="story-card fade-in">
+                <div class="story-quote">
+                    "高压工作导致身心透支，对生活失去热情。参与3天单人静心疗愈旅修，在自然环境中进行正念练习，放下内心执念，重新认识自我，明确了个人成长方向。"
+                </div>
+                <div class="story-author">
+                    <div class="story-avatar">Z</div>
+                    <div class="story-info">
+                        <h5>匿名来访者</h5>
+                        <p>28岁 · 互联网从业者</p>
+                    </div>
+                </div>
+                <div class="story-service">疗愈旅修 · 3天2夜</div>
+            </div>
+            <div class="story-card fade-in">
+                <div class="story-quote">
+                    "团队长期面临高压工作，职业倦怠严重，效率下降。定制EAP计划后，开展职场压力疏导与团体疗愈，员工情绪管理能力显著提升，离职率下降30%。"
+                </div>
+                <div class="story-author">
+                    <div class="story-avatar">T</div>
+                    <div class="story-info">
+                        <h5>某互联网公司</h5>
+                        <p>50人团队 · HR总监</p>
+                    </div>
+                </div>
+                <div class="story-service">企业EAP · 年度方案</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 疗愈师团队 -->
+    <section class="team" id="team">
+        <div class="team-header fade-in">
+            <div class="team-label">Our Team</div>
+            <h2 class="team-title">专业疗愈师团队</h2>
+        </div>
+        <div class="team-grid">
+            <div class="team-member fade-in">
+                <div class="member-photo">👩‍⚕️</div>
+                <div class="member-name">陈安然</div>
+                <div class="member-role">持证心理咨询师</div>
+                <div class="member-bio">
+                    中国科学院心理研究所认证，10年心理咨询经验，剑桥大学情绪研究访问学者
+                </div>
+                <button class="member-cta">预约这位疗愈师</button>
+            </div>
+            <div class="team-member fade-in">
+                <div class="member-photo">🧘‍♀️</div>
+                <div class="member-name">林静怡</div>
+                <div class="member-role">正念疗愈师</div>
+                <div class="member-bio">
+                    正念冥想认证导师，8年疗愈旅修带领经验，东方哲学与心理学融合实践者
+                </div>
+                <button class="member-cta">预约这位疗愈师</button>
+            </div>
+            <div class="team-member fade-in">
+                <div class="member-photo">👨‍⚕️</div>
+                <div class="member-name">王明德</div>
+                <div class="member-role">企业EAP专家</div>
+                <div class="member-bio">
+                    组织心理学硕士，15年企业培训与EAP服务经验，服务过50+知名企业团队
+                </div>
+                <button class="member-cta">预约这位疗愈师</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服务保障 -->
+    <section class="guarantee">
+        <div class="guarantee-label fade-in">Our Promise</div>
+        <div class="guarantee-grid fade-in">
+            <div class="guarantee-item">
+                <div class="guarantee-icon">🔒</div>
+                <h4>严格保密</h4>
+                <p>所有咨询内容严格保密<br>签署专业保密协议</p>
+            </div>
+            <div class="guarantee-item">
+                <div class="guarantee-icon">📜</div>
+                <h4>正规资质</h4>
+                <p>所有疗愈师均持有<br>国家认证专业资质</p>
+            </div>
+            <div class="guarantee-item">
+                <div class="guarantee-icon">🎯</div>
+                <h4>精准匹配</h4>
+                <p>根据您的需求特质<br>匹配最适合的疗愈师</p>
+            </div>
+            <div class="guarantee-item">
+                <div class="guarantee-icon">💎</div>
+                <h4>效果保障</h4>
+                <p>定期回访跟踪效果<br>及时调整疗愈方案</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="cta">
+        <div class="cta-label">Begin Your Journey</div>
+        <h2>开启你的疗愈之旅</h2>
+        <p>填写预约信息，我们将在12小时内与你联系，为你提供专属的疗愈方案</p>
+        <div class="cta-form">
+            <input type="text" placeholder="您的姓名">
+            <input type="tel" placeholder="手机号码">
+            <button>预约咨询</button>
+        </div>
+        <div class="cta-note">首次咨询免费 · 无任何隐形消费 · 专业顾问一对一沟通</div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>禅柔旅修</h3>
+                <p>CHANROU WELLNESS<br><br>
+                禅于心 · 柔于行 · 旅愈身心<br><br>
+                以科学为根基，以东方智慧为灵魂，<br>
+                陪伴每一位来访者完成从失衡到归位的旅程。</p>
+            </div>
+            <div class="footer-col">
+                <h4>服务</h4>
+                <ul>
+                    <li><a href="#">心理咨询</a></li>
+                    <li><a href="#">个人成长</a></li>
+                    <li><a href="#">疗愈旅修</a></li>
+                    <li><a href="#">企业EAP</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>关于</h4>
+                <ul>
+                    <li><a href="#">品牌故事</a></li>
+                    <li><a href="#">疗愈师团队</a></li>
+                    <li><a href="#">科学期刊</a></li>
+                    <li><a href="#">合作机构</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>联系</h4>
+                <ul>
+                    <li><a href="#">微信：chanrou2026</a></li>
+                    <li><a href="#">邮箱：hello@chanrou.com</a></li>
+                    <li><a href="#">小红书：@禅柔旅修</a></li>
+                    <li><a href="#">预约咨询</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2026 禅柔旅修 CHANROU WELLNESS. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 80) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // 滚动入场动画
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -60px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
