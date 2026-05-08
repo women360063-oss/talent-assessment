@@ -10,24 +10,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --sand: #C4A882;
-            --sand-light: #E8DCC8;
-            --sand-dark: #8B7355;
-            --stone: #5C5C5C;
-            --stone-light: #8A8A8A;
-            --deep-green: #2C5F4A;
-            --deep-green-light: #4A8B6F;
-            --cream: #FAF8F5;
-            --warm-white: #F5F0EB;
-            --charcoal: #1A1A1A;
-            --text: #333333;
-            --text-light: #666666;
             --primary: #2C5F4A;
-            --accent: #C4A882;
-            --accent-soft: #E8DCC8;
-            --dark: #1A1A1A;
-            --light: #F5F0EB;
-            --border: rgba(0,0,0,0.04);
+            --primary-light: #4A8B6F;
+            --accent: #c9a97e;
+            --accent-soft: #e8d5c0;
+            --dark: #3d4047;
+            --light: #fafbfc;
+            --cream: #fdfcf9;
+            --text: #3d4047;
+            --text-light: #6b6f78;
+            --border: #e5e7eb;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -40,23 +32,18 @@
             overflow-x: hidden;
         }
 
-        /* ===== 导航栏 - Six Senses 风格极简 ===== */
+        /* Navigation */
         nav {
             position: fixed;
             top: 0; left: 0; right: 0;
             z-index: 1000;
-            padding: 30px 60px;
+            padding: 16px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: all 0.5s ease;
-        }
-
-        nav.scrolled {
-            background: rgba(250,248,245,0.95);
-            backdrop-filter: blur(20px);
-            padding: 20px 60px;
-            box-shadow: 0 1px 20px rgba(0,0,0,0.03);
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
         }
 
         .nav-logo {
@@ -64,12 +51,10 @@
             align-items: center;
             gap: 10px;
             font-family: 'Noto Serif SC', serif;
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 600;
-            color: white;
+            color: var(--dark);
         }
-
-        nav.scrolled .nav-logo { color: var(--dark); }
 
         .nav-logo-icon {
             width: 40px; height: 40px; border-radius: 8px;
@@ -78,37 +63,24 @@
             font-size: 20px; color: white;
         }
 
-        .nav-links {
+        .nav-menu {
             display: flex;
-            gap: 45px;
+            gap: 32px;
             list-style: none;
+            align-items: center;
         }
 
-        .nav-links a {
+        .nav-menu a {
+            color: var(--text-light);
             text-decoration: none;
-            color: white;
-            font-size: 13px;
+            font-size: 15px;
+            transition: color 0.3s ease;
             font-weight: 400;
-            letter-spacing: 2px;
-            transition: all 0.3s;
-            position: relative;
-            opacity: 0.9;
         }
 
-        .nav-links a:hover {
-            opacity: 1;
+        .nav-menu a:hover {
+            color: var(--dark);
         }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -6px; left: 0;
-            width: 0; height: 1px;
-            background: var(--sand);
-            transition: width 0.4s;
-        }
-
-        .nav-links a:hover::after { width: 100%; }
 
         .nav-menu a.soulight {
             color: #00d4ff;
@@ -116,48 +88,40 @@
         }
 
         .nav-cta {
-            padding: 12px 28px;
-            background: transparent;
+            padding: 10px 24px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-soft));
             color: white;
-            border: 1px solid rgba(255,255,255,0.4);
-            font-size: 12px;
-            letter-spacing: 3px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
             cursor: pointer;
-            transition: all 0.4s;
-            font-family: 'Noto Sans SC', sans-serif;
             text-decoration: none;
-        }
-
-        nav.scrolled .nav-cta {
-            color: var(--dark);
-            border-color: var(--dark);
+            transition: all 0.3s ease;
         }
 
         .nav-cta:hover {
-            background: var(--sand);
-            border-color: var(--sand);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(201,169,126,0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 72px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px 24px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(160deg, var(--primary) 0%, var(--primary-light) 100%);
             color: white;
         }
 
-        /* ===== Hero - 全屏沉浸 ===== */
-        .hero {
-            height: 100vh;
-            position: relative;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            overflow: hidden;
-        }
-
         .hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: linear-gradient(160deg, #1a2e26 0%, #2C5F4A 30%, #4A8B6F 60%, #5a8a72 100%);
-        }
-
-        .hero::after {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -172,65 +136,54 @@
             100% { transform: translate(0,0); }
         }
 
-        .hero-overlay {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            height: 60%;
-            background: linear-gradient(to top, rgba(42,63,46,0.7) 0%, transparent 100%);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            color: white;
-            max-width: 900px;
-            padding: 0 30px 120px;
-        }
-
         .hero-label {
             font-size: 11px;
             letter-spacing: 8px;
             text-transform: uppercase;
             margin-bottom: 30px;
-            opacity: 0.7;
+            opacity: 0.8;
         }
 
         .hero h1 {
             font-family: 'Noto Serif SC', serif;
             font-size: 56px;
             font-weight: 300;
-            line-height: 1.3;
-            margin-bottom: 25px;
             letter-spacing: 6px;
+            margin-bottom: 20px;
+            line-height: 1.3;
         }
 
         .hero-subtitle {
             font-size: 17px;
-            font-weight: 300;
-            opacity: 0.75;
-            max-width: 550px;
-            margin: 0 auto 50px;
-            line-height: 1.9;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 20px;
+        }
+
+        .hero-slogan {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 24px;
+            color: white;
+            margin-bottom: 40px;
+            letter-spacing: 4px;
+            font-weight: 400;
         }
 
         .hero-cta {
             display: inline-block;
-            padding: 16px 48px;
-            background: var(--sand);
+            padding: 12px 28px;
+            background: var(--accent);
             color: white;
             border: none;
-            font-size: 13px;
-            letter-spacing: 4px;
+            border-radius: 8px;
+            font-size: 14px;
+            letter-spacing: 3px;
             cursor: pointer;
-            transition: all 0.4s;
             text-decoration: none;
+            transition: all 0.3s ease;
         }
 
         .hero-cta:hover {
-            background: var(--sand-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(201,169,126,0.3);
+            background: var(--accent-soft);
         }
 
         .scroll-hint {
@@ -238,54 +191,9 @@
             bottom: 40px;
             left: 50%;
             transform: translateX(-50%);
-            color: white;
-            opacity: 0.5;
+            opacity: 0.6;
             font-size: 11px;
             letter-spacing: 4px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%,100% { opacity: 0.5; transform: translateX(-50%) translateY(0); }
-            50% { opacity: 0.8; transform: translateX(-50%) translateY(8px); }
-        }
-
-        /* ===== 品牌宣言 - Six Senses 风格大留白 ===== */
-        .manifesto {
-            padding: 160px 60px;
-            background: var(--cream);
-            text-align: center;
-        }
-
-        .manifesto-inner {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .manifesto-label {
-            font-size: 11px;
-            letter-spacing: 6px;
-            color: var(--sand);
-            margin-bottom: 40px;
-            text-transform: uppercase;
-        }
-
-        .manifesto h2 {
-            font-family: 'Noto Serif SC', serif;
-            font-size: 40px;
-            font-weight: 300;
-            color: var(--charcoal);
-            margin-bottom: 40px;
-            line-height: 1.5;
-            letter-spacing: 2px;
-        }
-
-        .manifesto p {
-            font-size: 17px;
-            color: var(--text-light);
-            line-height: 2;
-            max-width: 650px;
-            margin: 0 auto;
         }
 
         /* Sections */
@@ -976,7 +884,7 @@
             <img src="logo-transparent.png" alt="禅柔旅修" style="width:36px;height:36px;max-width:36px;max-height:36px;object-fit:contain;border-radius:8px;">
             <span>禅柔旅修</span>
         </div>
-        <ul class="nav-links">
+        <ul class="nav-menu">
             <li><a href="#services">心理咨询</a></li>
             <li><a href="about.html">个人成长</a></li>
             <li><a href="soulight.html" class="soulight">溯光AI</a></li>
@@ -990,26 +898,20 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <div class="hero-label">CHANROU WELLNESS</div>
-            <h1>身心归位 · 向内自愈</h1>
-            <p class="hero-subtitle">心理咨询 · 个人成长 · 疗愈旅修定制 · 企业EAP员工关爱</p>
-            <a href="#booking" class="hero-cta">开启疗愈之旅</a>
-            <div class="scroll-hint">SCROLL</div>
-        </div>
+        <div class="hero-label">CHANROU WELLNESS</div>
+        <h1>身心归位 · 向内自愈</h1>
+        <p class="hero-subtitle">心理咨询 · 个人成长 · 疗愈旅修定制 · 企业EAP员工关爱</p>
+        <p class="hero-slogan">禅于心 · 柔于行 · 旅愈身心</p>
+        <a href="#booking" class="hero-cta">开启疗愈之旅</a>
+        <div class="scroll-hint">SCROLL</div>
     </section>
 
-    <!-- 品牌宣言 -->
-    <section class="manifesto">
-        <div class="manifesto-inner fade-in">
-            <div class="manifesto-label">OUR PHILOSOPHY</div>
-            <h2>在喧嚣世界中<br>为你保留一方归心的净土</h2>
-            <p>
-                我们相信，真正的疗愈不是逃避，而是回归。当身心重新找到它的位置，
-                内在的自愈力量便会自然流淌。禅柔旅修以科学为根基，以东方智慧为灵魂，
-                陪伴每一位来访者完成从"失衡"到"归位"的旅程。
-            </p>
+    <!-- Brand Manifesto -->
+    <section class="section">
+        <div class="section-header fade-in">
+            <div class="section-label">OUR PHILOSOPHY</div>
+            <h2 class="section-title">在喧嚣世界中<br>为你保留一方归心的净土</h2>
+            <p class="section-desc">禅柔旅修是一个以科学实证为基础的轻奢身心疗愈平台，融合心理学、神经科学、认知行为科学、意识科学与东方哲学，通过内在资源秩序重塑，帮助人们从无序熵增回归有序熵减，切断自动驾驶模式，重建稳定内核，拿回人生主控权。</p>
         </div>
     </section>
 
@@ -1346,16 +1248,6 @@
     </footer>
 
     <script>
-        // Navbar scroll effect
-        const navbar = document.querySelector('nav');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
