@@ -77,6 +77,24 @@
         .nav-menu a:hover {
             color: var(--dark);
         }
+        .nav-menu a.soulight {
+            background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+            animation: soulight-glow 3s ease-in-out infinite;
+        }
+        @keyframes soulight-glow {
+            0%, 100% {
+                opacity: 1;
+                filter: brightness(1);
+            }
+            50% {
+                opacity: 0.9;
+                filter: brightness(1.2);
+            }
+        }
 
         .nav-cta {
             padding: 10px 24px;
