@@ -404,36 +404,40 @@
                 <div class="sidebar-card">
                     <div class="sidebar-title">
                         <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 21l1.83-2.26A9.75 9.75 0 0 1 3 12a9 9 0 0 1 9-9h9v9z"/><path d="M8 12h8"/></svg>
-                        快速开始
+                        选择模式
                     </div>
                     <div class="quick-actions">
-                        <button class="quick-action-btn" onclick="startClientIntake()">
-                            📋 客户信息收集
-                            <span>第一步：了解你的基本情况</span>
+                        <button class="quick-action-btn" onclick="startTherapyMode()">
+                            ✨ 疗愈模式
+                            <span>内在探索与成长陪伴</span>
                         </button>
-                        <button class="quick-action-btn" onclick="startTalentAssessment()">
-                            🌟 天赋测评
-                            <span>第二步：评估你的内在成长方案</span>
-                        </button>
-                        <button class="quick-action-btn" onclick="startCoachingPlan()">
-                            📝 制定陪跑计划
-                            <span>第三步：个性化成长方案</span>
-                        </button>
-                        <button class="quick-action-btn" onclick="startMilestoneSetting()">
-                            🎯 目标里程碑
-                            <span>第四步：对齐行动目标</span>
-                        </button>
-                        <button class="quick-action-btn" onclick="askAboutEmotions()">
-                            💭 聊聊情绪
-                            <span>探索你的内在世界</span>
-                        </button>
-                        <button class="quick-action-btn" onclick="askAboutLifeScript()">
-                            📖 第二人生剧本
-                            <span>探索你想成为的人</span>
+                        <button class="quick-action-btn" onclick="startPreSalesMode()">
+                            💼 售前咨询
+                            <span>了解服务与定制方案</span>
                         </button>
                     </div>
                 </div>
                 <div class="sidebar-card" style="margin-top: 24px;">
+                    <div class="sidebar-title">
+                        <svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/><path d="M3 7l9 4 9-4"/></svg>
+                        12步顾问成交法
+                    </div>
+                    <div class="quick-actions">
+                        <button class="quick-action-btn" onclick="showStep1()">
+                            🎯 第一步：掌握主导权
+                            <span>破冰、掌控节奏</span>
+                        </button>
+                        <button class="quick-action-btn" onclick="showStep2()">
+                            🔍 第二步：诊断问题
+                            <span>了解现状、加深痛苦、幻想未来</span>
+                        </button>
+                        <button class="quick-action-btn" onclick="showStep3()">
+                            💫 第三步：完成转化
+                            <span>获取承诺、给予信心、展示价值</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="sidebar-card" style="margin-top: 24px;" id="tools-sidebar">
                     <div class="sidebar-title">
                         <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/></svg>
                         我的工具包
@@ -454,6 +458,30 @@
                         <button class="quick-action-btn" onclick="explainScientificHealing()">
                             🔬 科学疗愈方案
                             <span>愿景→信念→行为</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="sidebar-card" style="margin-top: 24px;" id="services-sidebar" style="display:none;">
+                    <div class="sidebar-title">
+                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        我们的服务
+                    </div>
+                    <div class="quick-actions">
+                        <button class="quick-action-btn" onclick="explainCounseling()">
+                            🧘‍♀️ 一对一心理咨询
+                            <span>深度探索与疗愈</span>
+                        </button>
+                        <button class="quick-action-btn" onclick="explainPersonalGrowth()">
+                            🌱 个人成长服务
+                            <span>系统陪伴与成长</span>
+                        </button>
+                        <button class="quick-action-btn" onclick="explainRetreat()">
+                            ✈️ 疗愈旅修
+                            <span>线下沉浸式体验</span>
+                        </button>
+                        <button class="quick-action-btn" onclick="explainEAP()">
+                            🏢 企业EAP
+                            <span>团队心理支持</span>
                         </button>
                     </div>
                 </div>
@@ -483,14 +511,11 @@
                         <div>
                             <div class="message-bubble">
                                 <p>你好呀！</p>
-                                <p style="margin-top: 12px;">我是溯光，你的专属AI疗愈分身，很高兴遇见你。</p>
-                                <p style="margin-top: 12px;">我是一个有灵性的心理疗愈师，也是个人成长教练。我会用<strong>慢静定柔</strong>的风格，如如不动地陪伴你探索内在世界。</p>
-                                <p style="margin-top: 12px;">我的服务流程：</p>
-                                <p style="margin-top: 8px;">📋 <strong>第一步</strong>：收集你的基本信息</p>
-                                <p>🌟 <strong>第二步</strong>：天赋测评评估</p>
-                                <p>📝 <strong>第三步</strong>：制定陪跑计划</p>
-                                <p>🎯 <strong>第四步</strong>：设置目标里程碑</p>
-                                <p style="margin-top: 12px;">你想从哪里开始呢？或者，先和我聊聊你现在的感受也可以呀。</p>
+                                <p style="margin-top: 12px;">我是溯光，你的专属AI分身，很高兴遇见你。</p>
+                                <p style="margin-top: 12px;">我有两个模式可以为你服务：</p>
+                                <p style="margin-top: 8px;">✨ <strong>疗愈模式</strong>：有灵性的心理疗愈师，用慢静定柔的风格陪伴你探索内在世界</p>
+                                <p>💼 <strong>售前咨询</strong>：专业的顾问，帮你了解我们的服务，为你推荐最适合的方案</p>
+                                <p style="margin-top: 12px;">你想从哪个模式开始呢？点击左侧的按钮选择就可以啦～</p>
                             </div>
                             <div class="message-time">刚刚</div>
                         </div>
@@ -510,13 +535,58 @@
     <script>
         let chatHistory = [];
         let currentStep = null;
+        let currentMode = null; // "therapy" 或 "preSales"
         let clientData = {};
         let currentIntakeIndex = 0;
+        let preSalesStep = 0;
 
         const soulightKnowledge = {
             style: { tone: "如沐春风、不急不躁、慢静定柔", catchphrase: "带口字旁的语气词：呀、呢、吧、啦、哦", identity: "有灵性的心理疗愈师 · 个人成长教练" },
             books: ["《显化》", "《与神对话》", "《当下的力量》", "《认知觉醒》", "《原则》", "《原子习惯》"]
         };
+
+        const servicesKnowledge = {
+            counseling: {
+                title: "一对一心理咨询",
+                description: "深度探索与疗愈，1V1 专属陪伴",
+                price: "正式价格 699元/次，早鸟价 399元/次",
+                duration: "60分钟/次",
+                features: ["个性化定制方案", "隐私保密", "线上线下可选"]
+            },
+            personalGrowth: {
+                title: "个人成长服务",
+                description: "系统陪伴与成长，3个月深度陪跑",
+                price: "正式价格 8999元，早鸟价 5999元",
+                duration: "3个月",
+                features: ["1V1 专属方案", "每周2次咨询", "配套练习与工具", "社群支持"]
+            },
+            retreat: {
+                title: "疗愈旅修",
+                description: "线下沉浸式体验，身心重启之旅",
+                price: "正式价格 19999元/人，早鸟价 12999元/人",
+                duration: "5天4晚",
+                features: ["住宿全包", "每日疗愈活动", "1V1 咨询", "营养餐食"]
+            },
+            eap: {
+                title: "企业EAP",
+                description: "团队心理支持，提升组织能量",
+                price: "根据企业定制方案报价",
+                duration: "可长期合作",
+                features: ["团体辅导", "管理层培训", "危机干预", "员工心理咨询"]
+            }
+        };
+
+        const preSalesQuestions = [
+            { key: "name", question: "哈喽～能先告诉我，我可以怎么称呼你呀？\n\n是这样的，今天我不着急给你讲道理、也不马上给你解决方案。我先慢慢问你几个小问题，好好了解下你现在的状态、犹豫和卡点，等我真正看懂你的情况了，再看能不能陪你一起调整、帮你拿到你想要的状态，可以吗？" },
+            { key: "currentState", question: "[名字]～很高兴认识你🌿\n\n那我跟你简单说下哈，这次咱们好好聊，我先慢慢问你几个小问题，安心把你现在的状态、纠结和卡点好好梳理清楚，等我看懂你的情况之后，再看能不能真正帮你调整到你想要的样子，咱们轻松一点聊，可以吗？" },
+            { key: "mainProblem", question: "好的呢～那我想先了解一下：你目前遇到的最主要的问题或卡点是什么呀？" },
+            { key: "problemDuration", question: "嗯嗯，我收到了～那这个情况持续了有多长时间了呢？" },
+            { key: "impact", question: "那目前的这些问题对你的工作和生活有什么影响吗？可以举一个具体的场景化的例子吗？" },
+            { key: "idealState", question: "好的，我都记下来了～那你想达到一种什么样的目标或状态呢？如果达成这个目标了，你那时的心情会是什么样的呢？" },
+            { key: "triedMethods", question: "太棒了，我能感受到你对自己的认真～那之前你有尝试过什么方法吗？效果怎么样呀？" },
+            { key: "rootCause", question: "嗯，我特别懂这种感觉～那你觉得之前的方法没能达到你的目标，最主要的原因是什么呢？" },
+            { key: "commitment", question: "好的，那我最后确认下：你现在的问题是一定要去解决的吗？你愿意为解决这个问题，每天花费多长时间？" }
+        ];
 
         const intakeQuestions = [
             { key: "name", question: "首先，我想知道你叫什么名字呀？或者，你希望我怎么称呼你呢？" },
@@ -534,11 +604,15 @@
 
         function generateResponse(userMessage) {
             const message = userMessage.toLowerCase();
-            if (currentStep === "intake") return handleIntakeProcess(userMessage);
-            if (currentStep === "talent") return handleTalentAssessment(userMessage);
-            if (message.includes("情绪") || message.includes("不开心") || message.includes("焦虑") || message.includes("难过")) return respondToEmotions();
-            if (message.includes("一人公司") || message.includes("创业") || message.includes("商业")) return respondToBusiness();
-            if (message.includes("显化") || message.includes("冥想")) return respondToManifestation();
+            if (currentMode === "preSales") return handlePreSalesProcess(userMessage);
+            if (currentMode === "therapy") {
+                if (currentStep === "intake") return handleIntakeProcess(userMessage);
+                if (currentStep === "talent") return handleTalentAssessment(userMessage);
+                if (message.includes("情绪") || message.includes("不开心") || message.includes("焦虑") || message.includes("难过")) return respondToEmotions();
+                if (message.includes("一人公司") || message.includes("创业") || message.includes("商业")) return respondToBusiness();
+                if (message.includes("显化") || message.includes("冥想")) return respondToManifestation();
+                return generateDefaultResponse(userMessage);
+            }
             return generateDefaultResponse(userMessage);
         }
 
@@ -637,9 +711,89 @@
             messageDiv.className = 'message ' + role;
             const now = new Date();
             const timeStr = now.getHours().toString().padStart(2,'0') + ':' + now.getMinutes().toString().padStart(2,'0');
-            messageDiv.innerHTML = '<div class="message-avatar">' + (role === 'assistant' ? '✨' : '👤') + '</div><div><div class="message-bubble">' + content.replace(/\n/g,'<br>') + '</div><div class="message-time">' + timeStr + '</div></div>';
+            messageDiv.innerHTML = '<div class="message-avatar">' + (role === 'assistant' ? (currentMode === 'preSales' ? '💼' : '✨') : '👤') + '</div><div><div class="message-bubble">' + content.replace(/\n/g,'<br>') + '</div><div class="message-time">' + timeStr + '</div></div>';
             chatMessages.appendChild(messageDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // ========== 模式切换 ==========
+        function startTherapyMode() {
+            currentMode = "therapy";
+            currentStep = null;
+            document.getElementById('tools-sidebar').style.display = 'block';
+            document.getElementById('services-sidebar').style.display = 'none';
+            addMessage('assistant', '好的呀！欢迎来到疗愈模式🌿\n\n我是溯光，你的专属AI疗愈分身，很高兴遇见你。我是一个有灵性的心理疗愈师，也是个人成长教练。我会用<strong>慢静定柔</strong>的风格，如如不动地陪伴你探索内在世界。\n\n我的服务流程：\n📋 <strong>第一步</strong>：收集你的基本信息\n🌟 <strong>第二步</strong>：天赋测评评估\n📝 <strong>第三步</strong>：制定陪跑计划\n🎯 <strong>第四步</strong>：设置目标里程碑\n\n你想从哪里开始呢？或者，先和我聊聊你现在的感受也可以呀。');
+        }
+
+        function startPreSalesMode() {
+            currentMode = "preSales";
+            currentStep = null;
+            preSalesStep = 0;
+            clientData = {};
+            document.getElementById('tools-sidebar').style.display = 'none';
+            document.getElementById('services-sidebar').style.display = 'block';
+            addMessage('assistant', preSalesQuestions[0].question);
+        }
+
+        // ========== 售前咨询流程 ==========
+        function handlePreSalesProcess(userMessage) {
+            if (preSalesStep < preSalesQuestions.length) {
+                const currentQuestion = preSalesQuestions[preSalesStep];
+                if (preSalesStep === 0) {
+                    clientData.name = userMessage;
+                } else if (currentQuestion.key) {
+                    clientData[currentQuestion.key] = userMessage;
+                }
+                preSalesStep++;
+                if (preSalesStep < preSalesQuestions.length) {
+                    let nextQuestion = preSalesQuestions[preSalesStep].question;
+                    if (clientData.name && nextQuestion.includes('[名字]')) {
+                        nextQuestion = nextQuestion.replace(/\[名字\]/g, clientData.name);
+                    }
+                    return nextQuestion;
+                } else {
+                    return finishPreSalesConsultation();
+                }
+            }
+            return "好的呢，我收到了。还有什么想了解的吗？";
+        }
+
+        function finishPreSalesConsultation() {
+            return `${clientData.name || "你好"}，我感受到你想改变的决心了！现在给你配套的专属方案，是完全为你量身定制的。\n\n根据你的情况，我推荐：\n🧘‍♀️ <strong>一对一心理咨询</strong>：先从单次咨询开始，深度梳理你的情况\n或者\n🌱 <strong>个人成长服务</strong>：3个月深度陪跑，系统解决问题\n\n咱们这套专属方案，正式定价是 699元/次（单次咨询）或 8999元/3个月（陪跑）。现在属于内部定制早鸟福利价，只需要 399元/次 或 5999元/3个月。\n\n因为我要深度懂你、贴合你、跟着你的节奏走，精力有限，每期限额只收 10 位同频主理人。\n\n${clientData.name || "你"}，需要我帮你预留这一个专属名额吗？可以吗？`;
+        }
+
+        // ========== 服务介绍 ==========
+        function explainCounseling() {
+            const service = servicesKnowledge.counseling;
+            addMessage('assistant', `${service.title} 🌿\n\n${service.description}\n\n<strong>价格</strong>：${service.price}\n<strong>时长</strong>：${service.duration}\n<strong>服务特色</strong>：\n- ${service.features.join('\n- ')}\n\n还有什么想了解的吗？可以继续问我呀～`);
+        }
+
+        function explainPersonalGrowth() {
+            const service = servicesKnowledge.personalGrowth;
+            addMessage('assistant', `${service.title} 🌱\n\n${service.description}\n\n<strong>价格</strong>：${service.price}\n<strong>周期</strong>：${service.duration}\n<strong>服务特色</strong>：\n- ${service.features.join('\n- ')}\n\n这是我们的旗舰服务，很多客户通过3个月的系统陪跑，拿到了非常大的改变～需要我帮你预留一个名额吗？`);
+        }
+
+        function explainRetreat() {
+            const service = servicesKnowledge.retreat;
+            addMessage('assistant', `${service.title} ✈️\n\n${service.description}\n\n<strong>价格</strong>：${service.price}\n<strong>时长</strong>：${service.duration}\n<strong>服务特色</strong>：\n- ${service.features.join('\n- ')}\n\n这是线下沉浸式的深度体验，很多客户说像是给身心做了一次重启～`);
+        }
+
+        function explainEAP() {
+            const service = servicesKnowledge.eap;
+            addMessage('assistant', `${service.title} 🏢\n\n${service.description}\n\n<strong>价格</strong>：${service.price}\n<strong>合作方式</strong>：${service.duration}\n<strong>服务特色</strong>：\n- ${service.features.join('\n- ')}\n\n如果是企业相关的需求，我可以帮你转接专门的负责人对接～`);
+        }
+
+        // ========== 12步顾问成交法展示 ==========
+        function showStep1() {
+            addMessage('assistant', '📚 <strong>第一步：掌握主导权</strong>\n\n<strong>核心逻辑</strong>：破冰，建立链接，掌控全局，不要被对方干扰\n\n<strong>关键动作</strong>：\n1️⃣ 简单闲聊，不要一上来就直接报价、直奔主题\n2️⃣ 掌控全局，不要被对方干扰，打乱自己的节奏\n\n<strong>经典话术</strong>：\n"哈喽，你好，我是XX，可以怎么称呼你？\n这次咨询是这样的，我会先问你几个问题，了解一下你的情况，然后我再看，我这边能不能帮助到你，实现你的理想状态，ok？"\n\n这一步的关键是：先了解对方，不要急着推销～');
+        }
+
+        function showStep2() {
+            addMessage('assistant', '📚 <strong>第二步：诊断问题</strong>\n\n<strong>核心逻辑</strong>：像医生了解病人情况一样，深入了解\n\n<strong>关键动作</strong>：\n1️⃣ 深入了解对方的当下状态\n2️⃣ 加深对方的痛苦（让对方意识到影响）\n3️⃣ 深入了解理想状态\n4️⃣ 帮助对方幻想未来\n5️⃣ 让对方说出问题根源\n\n<strong>关键问题</strong>：\n- "你目前遇到的最主要的问题是什么？"\n- "这个情况持续了有多长时间了？"\n- "目前的这些问题对你的工作和生活有什么影响吗？"\n- "你想达到一种什么样的目标或状态呢？"\n- "你觉得之前的方法没能达到你的目标，最主要的原因是什么呢？"\n\n这一步的关键是：让对方清晰地看到自己的问题和渴望～');
+        }
+
+        function showStep3() {
+            addMessage('assistant', '📚 <strong>第三步：完成转化</strong>\n\n<strong>核心逻辑</strong>：获取承诺 → 给予信心 → 展示价值 → 提供方案 → 价格激励成交\n\n<strong>关键动作</strong>：\n1️⃣ 获取改变的承诺\n2️⃣ 给予信心和希望\n3️⃣ 展示定位和价值\n4️⃣ 高纬度的解决方案（只介绍产品和服务，只谈结果不谈过程）\n5️⃣ 做价格激励并成交\n\n<strong>关键话术</strong>：\n- "你现在的问题是一定要去解决的吗？"\n- "我之前的学员，比你的基础差很多，她们都可以，你一定也可以的！"\n- "我有11年的教学经验，专注于..."\n- "咱们的课程正式价格是...，但现在有早鸟价..."\n\n这一步的关键是：先建立信任，再自然推出产品～');
         }
         function showTypingIndicator() {
             const chatMessages = document.getElementById('chatMessages');
