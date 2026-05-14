@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HealWealthy - 下载中心</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/new-design.css">
+  <style>
+    /* Download Center specific styles */
+    .download-hero {
+      padding-top: 120px;
+      padding-bottom: 80px;
+      background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-warm-white) 100%);
+      text-align: center;
+    }
+    
+    .download-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+    
+    .download-card {
+      background: white;
+      border-radius: 16px;
+      padding: 32px;
+      border: 1px solid var(--color-beige);
+      transition: all 0.3s ease;
+    }
+    
+    .download-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(107, 91, 79, 0.1);
+      border-color: var(--color-sage-light);
+    }
+    
+    .download-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    
+    .download-icon.html { background: linear-gradient(135deg, #E44D26, #F16529); color: white; }
+    .download-icon.word { background: linear-gradient(135deg, #2B579A, #185ABD); color: white; }
+    .download-icon.pdf { background: linear-gradient(135deg, #B80000, #E53935); color: white; }
+    .download-icon.ppt { background: linear-gradient(135deg, #D24726, #ED6C47); color: white; }
+    
+    .download-title {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--color-charcoal);
+      margin-bottom: 8px;
+    }
+    
+    .download-desc {
+      font-size: 0.9rem;
+      color: var(--color-brown);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    
+    .download-meta {
+      display: flex;
+      gap: 16px;
+      font-size: 0.8rem;
+      color: var(--color-taupe);
+      margin-bottom: 20px;
+    }
+    
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      border-radius: 100px;
+      border: none;
+      background: var(--color-sage);
+      color: white;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: var(--font-sans);
+    }
+    
+    .download-btn:hover {
+      background: var(--color-charcoal);
+      transform: translateY(-2px);
+    }
+    
+    .download-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    /* File sections */
+    .file-section {
+      padding: 60px clamp(24px, 6vw, 80px);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--color-beige), transparent);
+    }
+    
+    /* Upload area */
+    .upload-area {
+      border: 2px dashed var(--color-beige);
+      border-radius: 16px;
+      padding: 60px 40px;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .upload-area:hover, .upload-area.dragover {
+      border-color: var(--color-sage);
+      background: rgba(139, 154, 125, 0.05);
+    }
+    
+    .upload-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+    
+    /* File list */
+    .file-list {
+      margin-top: 32px;
+    }
+    
+    .file-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px;
+      border-radius: 12px;
+      background: var(--color-warm-white);
+      border: 1px solid var(--color-beige);
+      margin-bottom: 12px;
+    }
+    
+    .file-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    
+    .file-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+    
+    .file-name {
+      font-weight: 500;
+      color: var(--color-charcoal);
+    }
+    
+    .file-size {
+      font-size: 0.8rem;
+      color: var(--color-taupe);
+    }
+    
+    .file-actions {
+      display: flex;
+      gap: 12px;
+    }
+    
+    .btn-small {
+      padding: 8px 16px;
+      font-size: 0.85rem;
+    }
+    
+    .btn-delete {
+      background: transparent;
+      color: var(--color-brown);
+      border: 1px solid var(--color-beige);
+    }
+    
+    .btn-delete:hover {
+      background: #FFEBEE;
+      color: #D32F2F;
+      border-color: #D32F2F;
+    }
+    
+    /* Toast notification */
+    .toast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--color-charcoal);
+      color: white;
+      padding: 16px 32px;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      opacity: 0;
+    }
+    
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+    
+    .toast.success {
+      background: var(--color-sage);
+    }
+    
+    .toast.error {
+      background: #D32F2F;
+    }
+    
+    @media (max-width: 768px) {
+      .download-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .file-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+      
+      .file-actions {
+        width: 100%;
+      }
+      
+      .download-btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <a href="index.html" class="header__logo">HEALWEALTHY</a>
+    <nav class="header__nav" id="nav">
+      <a href="index.html#services">心理咨询</a>
+      <a href="index.html#philosophy">个人成长</a>
+      <a href="index.html#services">AI疗愈</a>
+      <a href="index.html#retreat">疗愈旅修</a>
+    </nav>
+    <a href="index.html#contact" class="header__cta" style="display: inline-flex; text-decoration: none;">预约咨询</a>
+    <button class="header__menu-btn" id="menuBtn" aria-label="菜单">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- Download Hero -->
+  <section class="download-hero">
+    <div class="container" style="max-width: 800px; margin: 0 auto; padding: 0 24px;">
+      <h1 class="section__title" style="color: var(--color-charcoal);">📥 下载中心</h1>
+      <p class="section__desc" style="color: var(--color-brown);">
+        下载 HealWealthy 的各种资源文件，包括网页、文档、演示文稿等。
+      </p>
+    </div>
+  </section>
+
+  <!-- Website Files -->
+  <section class="file-section">
+    <div class="section__header reveal" style="margin-bottom: 20px;">
+      <div class="section__tag">🌐 网页文件</div>
+      <h2 class="section__title">HealWealthy 网站页面</h2>
+      <p class="section__desc">下载核心网页文件，用于本地预览或部署</p>
+    </div>
+    
+    <div class="download-grid">
+      <div class="download-card reveal">
+        <div class="download-icon html">🟠</div>
+        <h3 class="download-title">soulight.html</h3>
+        <p class="download-desc">溯光AI - 核心功能页面，智能疗愈对话系统</p>
+        <div class="download-meta">
+          <span>📄 HTML 文件</span>
+          <span>📅 2026-05-14</span>
+        </div>
+        <button class="download-btn" onclick="downloadDemoFile('soulight.html', 'html')">
+          <span>⬇️</span> 下载文件
+        </button>
+      </div>
+      
+      <div class="download-card reveal">
+        <div class="download-icon html">🟠</div>
+        <h3 class="download-title">about.html</h3>
+        <p class="download-desc">关于我们 - 品牌故事和创始人介绍</p>
+        <div class="download-meta">
+          <span>📄 HTML 文件</span>
+          <span>📅 2026-05-14</span>
+        </div>
+        <button class="download-btn" onclick="downloadDemoFile('about.html', 'html')">
+          <span>⬇️</span> 下载文件
+        </button>
+      </div>
+      
+      <div class="download-card reveal">
+        <div class="download-icon html">🟠</div>
+        <h3 class="download-title">bali-retreat.html</h3>
+        <p class="download-desc">巴厘岛旅修 - 疗愈旅修详情页</p>
+        <div class="download-meta">
+          <span>📄 HTML 文件</span>
+          <span>📅 2026-05-14</span>
+        </div>
+        <button class="download-btn" onclick="downloadDemoFile('bali-retreat.html', 'html')">
+          <span>⬇️</span> 下载文件
+        </button>
+      </div>
+      
+      <div class="download-card reveal">
+        <div class="download-icon html">🟠</div>
+        <h3 class="download-title">journal.html</h3>
+        <p class="download-desc">心理日记 - 情绪记录和反思页面</p>
+        <div class="download-meta">
+          <span>📄 HTML 文件</span>
+          <span>📅 2026-05-14</span>
+        </div>
+        <button class="download-btn" onclick="downloadDemoFile('journal.html', 'html')">
+          <span>⬇️</span> 下载文件
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Document Files -->
+  <section class="file-section">
+    <div class="section__header reveal" style="margin-bottom: 20px;">
+      <div class="section__tag">📚 文档资料</div>
+      <h2 class="section__title">文档和演示文稿</h2>
+      <p class="section__desc">下载品牌文档、服务介绍等资料</p>
+    </div>
+    
+    <div class="download-grid">
+      <div class="download-card reveal">
+        <div class="download-icon word">📘</div>
+        <h3 class="download-title">品牌手册.docx</h3>
+        <p class="download-desc">HealWealthy 完整品牌手册和VI规范</p>
+        <div class="download-meta">
+          <span>📄 Word 文件</span>
+          <span>📊 2.4 MB</span>
+        </div>
+        <button class="download-btn" onclick="downloadDemoFile('品牌手册.docx', 'word')">
+          <span>⬇️</span> 下载文件
+        </button>
+      </div>
+      
+      <div class="download-card reveal">
+        <div class="download-icon pdf">📕</div>
+        <h3 class="download-title">服务介绍.pdf</h3>
+        <p class="download-desc">详细的服务介绍和价格方案</p>
+        <div class="download-meta">
+          <span>📄 PDF 文件</span>
+          <span>📊 4.8 MB</span>
+        </div>
+        <button class="download-btn" onclick="downloadDemoFile('服务介绍.pdf', 'pdf')">
+          <span>⬇️</span> 下载文件
+        </button>
+      </div>
+      
+      <div class="download-card reveal">
+        <div class="download-icon ppt">📙</div>
+        <h3 class="download-title">疗愈师培训.pptx</h3>
+        <p class="download-desc">疗愈师培训课程演示文稿</p>
+        <div class="download-meta">
+          <span>📄 PowerPoint</span>
+          <span>📊 12.5 MB</span>
+        </div>
+        <button class="download-btn" onclick="downloadDemoFile('疗愈师培训.pptx', 'ppt')">
+          <span>⬇️</span> 下载文件
+        </button>
+      </div>
+      
+      <div class="download-card reveal">
+        <div class="download-icon pdf">📕</div>
+        <h3 class="download-title">用户案例集.pdf</h3>
+        <p class="download-desc">真实用户疗愈案例合集</p>
+        <div class="download-meta">
+          <span>📄 PDF 文件</span>
+          <span>📊 8.2 MB</span>
+        </div>
+        <button class="download-btn" onclick="downloadDemoFile('用户案例集.pdf', 'pdf')">
+          <span>⬇️</span> 下载文件
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Upload & Manage -->
+  <section class="file-section">
+    <div class="section__header reveal" style="margin-bottom: 20px;">
+      <div class="section__tag">📤 上传文件</div>
+      <h2 class="section__title">上传和管理文件</h2>
+      <p class="section__desc">上传新文件到下载中心，支持多种格式</p>
+    </div>
+    
+    <div class="upload-area reveal" id="uploadArea">
+      <div class="upload-icon">📁</div>
+      <h3 style="font-family: var(--font-serif); color: var(--color-charcoal); margin-bottom: 12px;">拖拽文件到这里上传</h3>
+      <p style="color: var(--color-brown); margin-bottom: 20px;">或者点击选择文件，支持 HTML、Word、PDF、PPT 等格式</p>
+      <input type="file" id="fileInput" style="display: none;" multiple accept=".html,.htm,.docx,.doc,.pdf,.pptx,.ppt">
+      <button class="download-btn" onclick="document.getElementById('fileInput').click()">
+        <span>📁</span> 选择文件
+      </button>
+    </div>
+    
+    <div class="file-list" id="fileList">
+      <!-- Uploaded files will appear here -->
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <div class="footer__brand">HEALWEALTHY</div>
+        <p class="footer__tagline">身心合一 · 向内探索 · 自然疗愈<br>以科学为依据，以人文关怀为灵魂</p>
+      </div>
+      <div>
+        <h4 class="footer__col-title">快速链接</h4>
+        <ul class="footer__links">
+          <li><a href="index.html">首页</a></li>
+          <li><a href="index.html#services">服务</a></li>
+          <li><a href="index.html#contact">联系我们</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 HealWealthy. All rights reserved.</span>
+      <span>隐私政策 · 服务条款</span>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const nav = document.getElementById('nav');
+    if (menuBtn) {
+      menuBtn.addEventListener('click', () => {
+        nav.classList.toggle('open');
+      });
+    }
+
+    // Header background on scroll
+    const header = document.querySelector('.header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.05)';
+      } else {
+        header.style.boxShadow = 'none';
+      }
+    });
+
+    // Scroll reveal
+    const revealElements = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, index * 100);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealElements.forEach(el => observer.observe(el));
+
+    // Toast notification
+    function showToast(message, type = 'success') {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.className = `toast ${type}`;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+
+    // Download demo file
+    function downloadDemoFile(filename, type) {
+      let content = '';
+      let mimeType = 'text/plain';
+      
+      if (type === 'html') {
+        content = generateSampleHTML(filename);
+        mimeType = 'text/html';
+      } else if (type === 'word') {
+        content = `这是一个 Word 文档（${filename}）的示例内容。\n\n在实际使用中，这里会有真正的 Word 文件内容。`;
+        mimeType = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+      } else if (type === 'pdf') {
+        content = `这是一个 PDF 文档（${filename}）的示例内容。\n\n在实际使用中，这里会有真正的 PDF 文件内容。`;
+        mimeType = 'application/pdf';
+      } else if (type === 'ppt') {
+        content = `这是一个 PowerPoint 演示文稿（${filename}）的示例内容。\n\n在实际使用中，这里会有真正的 PPT 文件内容。`;
+        mimeType = 'application/vnd.openxmlformats-officedocument.presentationml.presentation';
+      }
+      
+      const blob = new Blob([content], { type: mimeType });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      
+      showToast(`✅ 文件 "${filename}" 下载成功！`, 'success');
+    }
+
+    // Generate sample HTML
+    function generateSampleHTML(filename) {
+      const templates = {
+        'soulight.html': `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>溯光AI - HealWealthy</title>
+  <style>
+    body { font-family: 'Segoe UI', system-ui, sans-serif; margin: 0; padding: 40px; background: linear-gradient(135deg, #FAF8F5, #FEFDFB); min-height: 100vh; }
+    .container { max-width: 800px; margin: 0 auto; background: white; border-radius: 20px; padding: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+    h1 { color: #3D3530; font-family: 'Noto Serif SC', serif; }
+    .chat { margin-top: 30px; }
+    .message { padding: 16px; border-radius: 12px; margin-bottom: 16px; }
+    .user { background: #8B9A7D; color: white; text-align: right; }
+    .ai { background: #E8E2D9; color: #3D3530; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>✨ 溯光AI - 你的智能疗愈分身</h1>
+    <p style="color: #6B5B4F;">这是溯光AI页面的示例文件</p>
+    <div class="chat">
+      <div class="message ai">你好！我是溯光AI，很高兴认识你。今天想聊些什么呢？</div>
+      <div class="message user">我最近感觉有些焦虑...</div>
+      <div class="message ai">谢谢你的信任。焦虑是很常见的情绪，让我们一起来探索一下...</div>
+    </div>
+  </div>
+</body>
+</html>`,
+        'about.html': `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>关于我们 - HealWealthy</title>
+  <style>
+    body { font-family: 'Segoe UI', system-ui, sans-serif; margin: 0; padding: 40px; background: linear-gradient(135deg, #FAF8F5, #FEFDFB); min-height: 100vh; }
+    .container { max-width: 800px; margin: 0 auto; background: white; border-radius: 20px; padding: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+    h1 { color: #3D3530; font-family: 'Noto Serif SC', serif; }
+    p { color: #6B5B4F; line-height: 1.8; }
+    .founder { display: flex; gap: 30px; margin-top: 30px; padding: 30px; background: #FEFDFB; border-radius: 16px; }
+    .avatar { width: 100px; height: 100px; background: linear-gradient(135deg, #8B9A7D, #B5C4A8); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>💖 关于我们</h1>
+    <p>HealWealthy 是一个以科学实证为基础的轻奢身心疗愈平台，融合心理学、神经科学、认知行为科学与东方哲学。</p>
+    <div class="founder">
+      <div class="avatar">🦋</div>
+      <div>
+        <h3 style="margin: 0 0 8px 0; color: #3D3530;">小龙虾</h3>
+        <p style="margin: 0;">创始人 · 身心疗愈师</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>`,
+        'bali-retreat.html': `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>巴厘岛旅修 - HealWealthy</title>
+  <style>
+    body { font-family: 'Segoe UI', system-ui, sans-serif; margin: 0; padding: 40px; background: linear-gradient(135deg, #FAF8F5, #FEFDFB); min-height: 100vh; }
+    .container { max-width: 800px; margin: 0 auto; background: white; border-radius: 20px; padding: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+    h1 { color: #3D3530; font-family: 'Noto Serif SC', serif; }
+    .image { width: 100%; height: 300px; background: linear-gradient(135deg, #8B9A7D, #B5C4A8); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 60px; margin: 20px 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🏝️ 巴厘岛疗愈旅修</h1>
+    <div class="image">🌴</div>
+    <p style="color: #6B5B4F; line-height: 1.8;">在自然中找回内心的秩序 · 7天6夜深度疗愈体验</p>
+    <ul style="color: #6B5B4F; line-height: 2.2;">
+      <li>🌅 乌布梯田冥想</li>
+      <li>🧘 专业瑜伽课程</li>
+      <li>🌊 海滩疗愈散步</li>
+      <li>🌸 神庙能量净化</li>
+    </ul>
+  </div>
+</body>
+</html>`,
+        'journal.html': `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>心理日记 - HealWealthy</title>
+  <style>
+    body { font-family: 'Segoe UI', system-ui, sans-serif; margin: 0; padding: 40px; background: linear-gradient(135deg, #FAF8F5, #FEFDFB); min-height: 100vh; }
+    .container { max-width: 800px; margin: 0 auto; background: white; border-radius: 20px; padding: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+    h1 { color: #3D3530; font-family: 'Noto Serif SC', serif; }
+    .entry { border-left: 4px solid #8B9A7D; padding: 20px; margin: 20px 0; background: #FEFDFB; border-radius: 0 12px 12px 0; }
+    .date { color: #A89B8C; font-size: 0.9rem; margin-bottom: 8px; }
+    textarea { width: 100%; min-height: 120px; padding: 16px; border: 1px solid #E8E2D9; border-radius: 12px; font-family: inherit; font-size: 1rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📔 心理日记</h1>
+    <p style="color: #6B5B4F; margin-bottom: 30px;">记录你的情绪和思考，看见自己的成长</p>
+    <textarea placeholder="今天感觉怎么样？记录你的心情..."></textarea>
+    <div class="entry">
+      <div class="date">2026-05-14</div>
+      <p style="color: #3D3530;">今天做了一个冥想，感觉内心平静了很多。继续坚持！</p>
+    </div>
+    <div class="entry">
+      <div class="date">2026-05-12</div>
+      <p style="color: #3D3530;">和咨询师聊了原生家庭的话题，有很多新的领悟...</p>
+    </div>
+  </div>
+</body>
+</html>`
+      };
+      return templates[filename] || templates['soulight.html'];
+    }
+
+    // Upload functionality
+    const uploadArea = document.getElementById('uploadArea');
+    const fileInput = document.getElementById('fileInput');
+    const fileList = document.getElementById('fileList');
+    
+    // Drag and drop
+    uploadArea.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      uploadArea.classList.add('dragover');
+    });
+    
+    uploadArea.addEventListener('dragleave', () => {
+      uploadArea.classList.remove('dragover');
+    });
+    
+    uploadArea.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadArea.classList.remove('dragover');
+      handleFiles(e.dataTransfer.files);
+    });
+    
+    fileInput.addEventListener('change', (e) => {
+      handleFiles(e.target.files);
+    });
+    
+    // Store uploaded files
+    let uploadedFiles = JSON.parse(localStorage.getItem('uploadedFiles') || '[]');
+    renderUploadedFiles();
+    
+    function handleFiles(files) {
+      for (const file of files) {
+        const fileInfo = {
+          name: file.name,
+          size: file.size,
+          type: getFileType(file.name),
+          date: new Date().toLocaleDateString('zh-CN'),
+          id: Date.now() + Math.random()
+        };
+        uploadedFiles.unshift(fileInfo);
+      }
+      localStorage.setItem('uploadedFiles', JSON.stringify(uploadedFiles));
+      renderUploadedFiles();
+      showToast(`✅ 成功上传 ${files.length} 个文件！`, 'success');
+    }
+    
+    function getFileType(filename) {
+      const ext = filename.split('.').pop().toLowerCase();
+      if (ext === 'html' || ext === 'htm') return 'html';
+      if (ext === 'docx' || ext === 'doc') return 'word';
+      if (ext === 'pdf') return 'pdf';
+      if (ext === 'pptx' || ext === 'ppt') return 'ppt';
+      return 'other';
+    }
+    
+    function getFileIcon(type) {
+      const icons = {
+        html: '🟠',
+        word: '📘',
+        pdf: '📕',
+        ppt: '📙',
+        other: '📄'
+      };
+      return icons[type] || '📄';
+    }
+    
+    function getFileIconBg(type) {
+      const bgs = {
+        html: 'linear-gradient(135deg, #E44D26, #F16529)',
+        word: 'linear-gradient(135deg, #2B579A, #185ABD)',
+        pdf: 'linear-gradient(135deg, #B80000, #E53935)',
+        ppt: 'linear-gradient(135deg, #D24726, #ED6C47)',
+        other: 'linear-gradient(135deg, #6B5B4F, #A89B8C)'
+      };
+      return bgs[type] || bgs.other;
+    }
+    
+    function formatFileSize(bytes) {
+      if (bytes < 1024) return bytes + ' B';
+      if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+      return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+    }
+    
+    function renderUploadedFiles() {
+      if (uploadedFiles.length === 0) {
+        fileList.innerHTML = '';
+        return;
+      }
+      
+      fileList.innerHTML = `
+        <h3 style="font-family: var(--font-serif); color: var(--color-charcoal); margin-bottom: 20px;">📁 已上传文件 (${uploadedFiles.length})</h3>
+        ${uploadedFiles.map(file => `
+          <div class="file-item">
+            <div class="file-info">
+              <div class="file-icon" style="background: ${getFileIconBg(file.type)}; color: white;">
+                ${getFileIcon(file.type)}
+              </div>
+              <div>
+                <div class="file-name">${file.name}</div>
+                <div class="file-size">${formatFileSize(file.size)} · ${file.date}</div>
+              </div>
+            </div>
+            <div class="file-actions">
+              <button class="download-btn btn-small" onclick="downloadDemoFile('${file.name}', '${file.type}')">
+                <span>⬇️</span> 下载
+              </button>
+              <button class="download-btn btn-small btn-delete" onclick="deleteFile(${file.id})">
+                <span>🗑️</span> 删除
+              </button>
+            </div>
+          </div>
+        `).join('')}
+      `;
+    }
+    
+    function deleteFile(id) {
+      if (confirm('确定要删除这个文件吗？')) {
+        uploadedFiles = uploadedFiles.filter(f => f.id !== id);
+        localStorage.setItem('uploadedFiles', JSON.stringify(uploadedFiles));
+        renderUploadedFiles();
+        showToast('文件已删除', 'success');
+      }
+    }
+  </script>
+</body>
+</html>
