@@ -656,10 +656,8 @@
         }
 
         function startClientIntake() {
-            currentStep = "intake";
-            currentIntakeIndex = 0;
-            clientData = {};
-            addMessage("assistant", intakeQuestions[0].question);
+            currentStep = "intake-waiting";
+            addMessage("assistant", "哈喽～能先告诉我，我可以怎么称呼你呀？\n\n接下来我会收集一些信息，帮助我更好地了解你。我会问你这些问题：\n📋 11个问题清单：\n1. 你叫什么名字？（MBTI知道也可以说）\n2. 出生日期（不确定时间也没关系）\n3. 现在在哪个城市？\n4. 做什么行业或职业？\n5. 目前最大的困惑是什么？（我们的起点A点）\n6. 遇到了哪些阻碍？\n7. 这些阻碍什么时候开始的？持续多久了？\n8. 你想解决什么问题？达成什么目标？（我们想去的B点）\n9. 你现在有什么资源或机会能帮你达成目标？\n10. 如果用0-10分打分，你的动力有几分？\n\n准备好了吗？你可以一条一条回答，也可以一次性告诉我！慢慢来，不急～🌿");
         }
 
         function handleIntakeProcess(userMessage) {
