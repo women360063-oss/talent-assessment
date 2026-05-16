@@ -555,8 +555,8 @@
         let currentCoachingIndex = 0;
         let currentMilestoneIndex = 0;
         let preSalesStep = 0;
-        // 售后Agent API - 直连源站绕过Cloudflare Pages
-        const SALES_API_URL = 'http://82.156.191.219:8080/api/chat';
+        // 售后Agent API - 通过Cloudflare Pages Function代理
+        const SALES_API_URL = '/api/chat';
         let salesSessionId = null;
         let salesApiFailed = false; // API是否已失败，fallback到本地模式
 
