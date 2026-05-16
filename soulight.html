@@ -555,6 +555,10 @@
         let currentCoachingIndex = 0;
         let currentMilestoneIndex = 0;
         let preSalesStep = 0;
+        // 售后Agent API
+        const SALES_API_URL = '/api/chat';
+        let salesSessionId = null;
+        let salesApiFailed = false; // API是否已失败，fallback到本地模式
 
         const soulightKnowledge = {
             style: { tone: "如沐春风、不急不躁、慢静定柔", catchphrase: "带口字旁的语气词：呀、呢、吧、啦、哦", identity: "有灵性的心理疗愈师 · 个人成长教练" },
@@ -813,10 +817,22 @@
             currentStep = null;
             preSalesStep = 0;
             clientData = {};
+            salesSessionId = null;
+            salesApiFailed = false;
             document.getElementById('therapy-steps-sidebar').style.display = 'none';
             document.getElementById('tools-sidebar').style.display = 'none';
             document.getElementById('services-sidebar').style.display = 'block';
-            addMessage('assistant', preSalesQuestions[0].question);
+            // 尝试API获取AI开场白，失败则fallback本地
+            salesApiChat('').then(function(data) {
+                if (data && data.session_id) {
+                    salesSessionId = data.session_id;
+                    addMessage('assistant', data.reply);
+                } else {
+                    addMessage('assistant', preSalesQuestions[0].question);
+                }
+            }).catch(function() {
+                addMessage('assistant', preSalesQuestions[0].question);
+            });
         }
 
         // ========== 售前咨询流程 ==========
@@ -892,6 +908,26 @@
             const el = document.getElementById('typing-indicator');
             if (el) el.remove();
         }
+        // ========== 售前Agent API调用 ==========
+        async function salesApiChat(message) {
+            if (salesApiFailed) return null;
+            try {
+                const body = { message: message };
+                if (salesSessionId) body.session_id = salesSessionId;
+                const resp = await fetch(SALES_API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(body)
+                });
+                if (!resp.ok) throw new Error('API error: ' + resp.status);
+                return await resp.json();
+            } catch(e) {
+                console.warn('Sales API failed, fallback to local:', e);
+                salesApiFailed = true;
+                return null;
+            }
+        }
+
         function sendMessage() {
             const input = document.getElementById('chatInput');
             const button = document.getElementById('sendButton');
@@ -901,6 +937,32 @@
             input.value = '';
             button.disabled = true;
             showTypingIndicator();
+
+            // 售前模式：调用真实LLM API，失败则fallback本地
+            if (currentMode === 'preSales') {
+                salesApiChat(text).then(function(data) {
+                    removeTypingIndicator();
+                    if (data && data.session_id) {
+                        salesSessionId = data.session_id;
+                        addMessage('assistant', data.reply);
+                    } else {
+                        // fallback到本地售前流程
+                        const response = handlePreSalesProcess(text);
+                        addMessage('assistant', response);
+                    }
+                    button.disabled = false;
+                    input.focus();
+                }).catch(function(err) {
+                    removeTypingIndicator();
+                    const response = handlePreSalesProcess(text);
+                    addMessage('assistant', response);
+                    button.disabled = false;
+                    input.focus();
+                });
+                return;
+            }
+
+            // 疗愈模式：保留原有本地逻辑
             setTimeout(function() {
                 removeTypingIndicator();
                 const response = generateResponse(text);
