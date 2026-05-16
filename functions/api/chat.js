@@ -10,18 +10,29 @@ export async function onRequestPost(context) {
     
     const resp = await fetch(ORIGIN_API, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 
+        'Content-Type': 'application/json',
+        'User-Agent': 'Cloudflare-Pages-Function/1.0',
+      },
       body: JSON.stringify(body),
     });
 
-    const data = await resp.json();
-    return new Response(JSON.stringify(data), {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      },
-    });
+    const text = await resp.text();
+    try {
+      const data = JSON.parse(text);
+      return new Response(JSON.stringify(data), {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
+      });
+    } catch(e) {
+      return new Response(JSON.stringify({ error: 'Origin returned non-JSON', detail: text.substring(0, 200) }), {
+        status: 502,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
   } catch (e) {
     return new Response(JSON.stringify({ error: e.message }), {
       status: 500,
@@ -42,17 +53,28 @@ export async function onRequestGet(context) {
     
     const resp = await fetch(ORIGIN_API + '?' + params.toString(), {
       method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-    });
-
-    const data = await resp.json();
-    return new Response(JSON.stringify(data), {
-      status: 200,
-      headers: {
+      headers: { 
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
+        'User-Agent': 'Cloudflare-Pages-Function/1.0',
       },
     });
+
+    const text = await resp.text();
+    try {
+      const data = JSON.parse(text);
+      return new Response(JSON.stringify(data), {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
+      });
+    } catch(e) {
+      return new Response(JSON.stringify({ error: 'Origin returned non-JSON', detail: text.substring(0, 200) }), {
+        status: 502,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
   } catch (e) {
     return new Response(JSON.stringify({ error: e.message }), {
       status: 500,
