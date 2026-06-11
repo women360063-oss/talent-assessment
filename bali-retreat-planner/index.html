@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>巴厘岛旅修客户展示页</title>
+  <link rel="stylesheet" href="./src/styles.css">
+</head>
+<body class="customer-page">
+  <header class="hero customer-hero">
+    <nav class="topbar" aria-label="主导航">
+      <a class="brand-text" href="./customer.html" aria-label="Bali Wellness Chanrou">
+        <span class="brand-main">
+          <b>BALI</b>
+          <b>WELLNESS</b>
+        </span>
+        <span class="brand-divider">×</span>
+        <span class="brand-sub">
+          <strong>CHANROU</strong>
+          <small>旅修 · 身心 · 觉醒</small>
+          <em>RETREAT · RENEW · RISE</em>
+        </span>
+      </a>
+      <div class="nav-links">
+        <a href="#program">产品</a>
+        <a href="#journey">行程</a>
+        <a href="#booking">咨询</a>
+      </div>
+    </nav>
+
+    <section class="hero-content">
+      <p class="eyebrow">巴厘岛旅修｜潜意识疗愈｜认知落地｜归位生活</p>
+      <h1>身心归位 向内自愈</h1>
+      <p class="lead">在这个时空让身心慢慢归位，让本真内在与现实世界重新联接</p>
+      <a class="primary-action" href="#program">查看方案</a>
+    </section>
+  </header>
+
+  <main>
+    <section class="section customer-program-section" id="program">
+      <div class="customer-program-card">
+        <div>
+          <p class="eyebrow dark">Retreat Program</p>
+          <h2 id="customerProgramName"></h2>
+          <p id="customerProgramPromise"></p>
+        </div>
+        <aside>
+          <span>最终售价参考</span>
+          <strong id="customerPrice"></strong>
+          <small>正式报价以酒店房态、课程档期和车辆确认结果为准。</small>
+        </aside>
+      </div>
+      <form class="customer-options" id="customerPlannerForm">
+        <label>
+          <span>旅修主题</span>
+          <select name="programType">
+            <option value="subconscious-healing" selected>潜意识疗愈</option>
+            <option value="healing-vacation">身心疗愈 + 轻度假</option>
+            <option value="deep-healing">深度身心灵旅修</option>
+            <option value="sport-reset">轻运动恢复旅修</option>
+          </select>
+        </label>
+        <label>
+          <span>行程天数</span>
+          <select name="durationDays">
+            <option value="5">5天4晚</option>
+            <option value="6">6天5晚</option>
+            <option value="7" selected>7天6晚</option>
+            <option value="8">8天7晚</option>
+          </select>
+        </label>
+        <label>
+          <span>酒店档位</span>
+          <select name="hotelTier">
+            <option value="fiveStar" selected>五星度假酒店</option>
+            <option value="cliffLuxury">悬崖顶奢酒店</option>
+          </select>
+        </label>
+        <label>
+          <span>出行季度</span>
+          <select name="quarter">
+            <option value="q1">Q1 1-3月</option>
+            <option value="q2" selected>Q2 4-6月</option>
+            <option value="q3">Q3 7-9月</option>
+            <option value="q4">Q4 10-12月</option>
+          </select>
+        </label>
+      </form>
+    </section>
+
+    <section class="section customer-route-section">
+      <div class="section-heading">
+        <p class="eyebrow dark">Route</p>
+        <h2>推荐旅修动线</h2>
+        <p>我们会优先控制转场强度，把核心体验、住宿恢复和自由整合时间放在同一条清晰动线里。</p>
+      </div>
+      <div class="customer-route-output" id="customerRouteOutput"></div>
+    </section>
+
+    <section class="section customer-itinerary-section" id="journey">
+      <div class="section-heading">
+        <p class="eyebrow dark">Daily Journey</p>
+        <h2>每日行程</h2>
+        <p>行程会保留体验、节奏、地点和服务说明，方便你判断这条路线是否适合自己的身心状态。</p>
+      </div>
+      <div class="customer-itinerary" id="customerItinerary"></div>
+    </section>
+
+    <section class="section customer-service-section">
+      <div class="customer-service-grid">
+        <article>
+          <span>费用包含</span>
+          <ul>
+            <li>所选酒店档位住宿参考报价</li>
+            <li>核心旅修体验、课程和预约协助</li>
+            <li>行程内专车接送和跨区转场安排</li>
+            <li>旅前偏好确认、每日节奏提醒和旅后整合建议</li>
+          </ul>
+        </article>
+        <article>
+          <span>费用不含</span>
+          <ul>
+            <li>国际机票、签证、个人购物和自由餐酒水</li>
+            <li>临时新增地点、房型升级和酒店现场加购项目</li>
+            <li>个人原因产生的改期、取消或额外等待费用</li>
+            <li>个人旅行保险</li>
+          </ul>
+        </article>
+        <article class="insurance-note-card">
+          <span>保险建议</span>
+          <h3>建议客户自行购买巴厘岛当地相关保险</h3>
+          <p>建议出发前自行购买覆盖医疗、意外、行程延误、行李损失和高风险活动的旅行保险；如包含瑜伽、冷热浴、高尔夫、网球或户外体验，请确认保险条款覆盖对应项目。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section customer-booking-section" id="booking">
+      <div class="customer-booking-card">
+        <div>
+          <p class="eyebrow dark">Next Step</p>
+          <h2>获取 1 对 1 定制报价</h2>
+          <p>发送出行人数、预算、日期和偏好，定制师会继续确认酒店房态、课程档期和车辆安排。</p>
+        </div>
+        <a href="mailto:hello@example.com?subject=巴厘岛旅修定制咨询">联系定制师</a>
+      </div>
+    </section>
+  </main>
+
+  <script src="./src/customer.bundle.js"></script>
+</body>
+</html>

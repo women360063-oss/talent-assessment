@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>巴厘岛旅修后台管理</title>
+  <link rel="stylesheet" href="./src/styles.css">
+</head>
+<body>
+  <header class="hero">
+    <nav class="topbar" aria-label="主导航">
+      <a class="brand-text" href="#" aria-label="禅柔旅修首页">
+        <span class="brand-main">
+          <b>BALI</b>
+          <b>WELLNESS</b>
+        </span>
+        <span class="brand-divider">×</span>
+        <span class="brand-sub">
+          <strong>CHANROU</strong>
+          <small>旅修 · 身心 · 觉醒</small>
+          <em>RETREAT · RENEW · RISE</em>
+        </span>
+      </a>
+      <div class="nav-links">
+        <a href="#planner">规划器</a>
+        <a href="#planningStandard">方案</a>
+        <a href="#itinerary">行程</a>
+        <a href="#places">地点库</a>
+        <a href="#quote">报价</a>
+        <a href="./customer.html">客户页</a>
+      </div>
+    </nav>
+
+    <section class="hero-content">
+      <p class="eyebrow">巴厘岛旅修｜潜意识疗愈｜认知落地｜归位生活</p>
+      <h1>身心归位 向内自愈</h1>
+      <p class="lead">在这个时空让身心慢慢归位，让本真内在与现实世界重新联接</p>
+      <a class="primary-action" href="#planner">开始规划</a>
+    </section>
+  </header>
+
+  <main>
+    <section class="section planner-section" id="planner">
+      <div class="section-heading">
+        <p class="eyebrow dark">后台管理</p>
+        <h2>主理人与老板端路线规划器</h2>
+        <p>用于内部测算产品定位、建议售价、利润空间、成本构成、资源复核和报价前准备，不作为客户直接展示页。</p>
+      </div>
+
+      <form class="planner-card" id="plannerForm">
+        <fieldset>
+          <legend>定制模块</legend>
+          <label class="radio-card">
+            <input type="checkbox" name="modules" value="spiritual" checked>
+            <span>
+              <strong>心灵疗愈</strong>
+              <small>潜意识、音疗、冥想、仪式感</small>
+            </span>
+          </label>
+          <label class="radio-card">
+            <input type="checkbox" name="modules" value="body" checked>
+            <span>
+              <strong>身体疗愈</strong>
+              <small>SPA、阿育吠陀、冷热浴、睡眠恢复</small>
+            </span>
+          </label>
+          <label class="radio-card">
+            <input type="checkbox" name="modules" value="movement">
+            <span>
+              <strong>运动</strong>
+              <small>瑜伽、网球、高尔夫、健身、轻训练</small>
+            </span>
+          </label>
+          <label class="radio-card">
+            <input type="checkbox" name="modules" value="vacation" checked>
+            <span>
+              <strong>度假</strong>
+              <small>五星酒店、泳池、沙滩、日落、自由时间</small>
+            </span>
+          </label>
+          <label class="radio-card">
+            <input type="checkbox" name="modules" value="sightseeing">
+            <span>
+              <strong>观光</strong>
+              <small>稻田、寺庙、日落、自然拍照点</small>
+            </span>
+          </label>
+        </fieldset>
+
+        <div class="controls-grid">
+          <label>
+            <span>行程天数</span>
+            <select name="durationDays">
+              <option value="5">5天4晚</option>
+              <option value="6">6天5晚</option>
+              <option value="7" selected>7天6晚</option>
+              <option value="8">8天7晚</option>
+            </select>
+          </label>
+          <label>
+            <span>酒店档位</span>
+            <select name="hotelTier">
+              <option value="fiveStar" selected>五星度假酒店</option>
+              <option value="cliffLuxury">悬崖顶奢</option>
+            </select>
+          </label>
+          <label>
+            <span>出行季度</span>
+            <select name="quarter">
+              <option value="q1">Q1 1-3月</option>
+              <option value="q2" selected>Q2 4-6月</option>
+              <option value="q3">Q3 7-9月</option>
+              <option value="q4">Q4 10-12月</option>
+            </select>
+          </label>
+        </div>
+      </form>
+    </section>
+
+    <section class="section summary-section" aria-live="polite">
+      <div class="summary-grid">
+        <article class="summary-card">
+          <span>产品定位</span>
+          <strong id="programName"></strong>
+          <p id="programPromise"></p>
+        </article>
+        <article class="summary-card">
+          <span>建议售价</span>
+          <strong id="priceRange"></strong>
+          <p>基于路线复杂度、酒店舒适度和体验密度。</p>
+        </article>
+        <article class="summary-card">
+          <span>利润测算</span>
+          <strong id="profitRange"></strong>
+          <p id="profitDetail"></p>
+        </article>
+        <article class="summary-card">
+          <span>路线效率</span>
+          <strong id="routeEfficiency"></strong>
+          <p id="routeEfficiencyDetail"></p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section professional-section" id="planningStandard">
+      <div class="section-heading">
+        <p class="eyebrow dark">专业方案</p>
+        <h2>路线规划交付总览</h2>
+        <p>把路线从“推荐地点”升级为可执行的旅行方案：清楚说明规划依据、地图动线、预订资源、人工复核和服务流程。</p>
+      </div>
+      <div class="planning-standard-output" id="planningStandardOutput"></div>
+    </section>
+
+    <section class="section route-section">
+      <div class="section-heading compact">
+        <p class="eyebrow dark">路线预览</p>
+        <h2>推荐动线</h2>
+      </div>
+      <div class="map-output" id="mapOutput"></div>
+      <div class="route-output" id="routeOutput"></div>
+    </section>
+
+    <section class="section" id="itinerary">
+      <div class="section-heading">
+        <p class="eyebrow dark">每日安排</p>
+        <h2>行程详情页</h2>
+        <p>按传统旅行产品方式展开每天的地点、时间、接驳和核心体验，方便直接给客户看。</p>
+      </div>
+      <div class="timeline" id="timeline"></div>
+    </section>
+
+    <section class="section commercial-section" id="commercialDetails">
+      <div class="section-heading">
+        <p class="eyebrow dark">内部测算</p>
+        <h2>费用、边界、成本与预订须知</h2>
+        <p>此区域仅供主理人和老板端查看，包含成本、毛利、供应商复核和报价前风险项，不对客户展示。</p>
+      </div>
+      <div class="commercial-details" id="commercialDetailsOutput"></div>
+    </section>
+
+    <section class="section places-section" id="places">
+      <div class="section-heading">
+        <p class="eyebrow dark">后台地点库</p>
+        <h2>有效地点库与灵活调整</h2>
+        <p>这里展示所有当前可用地点。出现客户偏好、天气、房态、课程档期或体力变化时，可以沿着既有动线替换同区地点，或按客户需求追加/移除体验。</p>
+      </div>
+      <div class="place-adjustment-note">
+        <strong>调整原则</strong>
+        <p>优先在当前动线同一区域内替换，避免破坏车程和预约节奏；跨区新增地点需要同步复核车辆费用、转场时间、预约档期和客户体力。</p>
+      </div>
+      <div class="active-place-library" id="activePlaceLibrary"></div>
+      <div class="places-layout">
+        <div>
+          <h3>保留地点</h3>
+          <div class="place-list" id="selectedPlaces"></div>
+        </div>
+        <div>
+          <h3>暂不放入主线</h3>
+          <div class="place-list" id="excludedPlaces"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section quote-section" id="quote">
+      <div class="section-heading">
+        <p class="eyebrow dark">定制报价</p>
+        <h2>获取定制报价</h2>
+        <p>当前是 MVP 版本：提交后先在本地生成报价摘要，后续可以接表单、CRM、微信或邮件。</p>
+      </div>
+      <div class="quote-layout">
+        <form class="quote-card" id="quoteForm">
+          <label>
+            <span>称呼</span>
+            <input name="name" type="text" placeholder="例如 Helena">
+          </label>
+          <label>
+            <span>联系方式</span>
+            <input name="contact" type="text" placeholder="微信 / 手机 / 邮箱">
+          </label>
+          <label>
+            <span>人数</span>
+            <select name="travelers">
+              <option value="1">1 人</option>
+              <option value="2" selected>2 人</option>
+              <option value="4">4 人</option>
+              <option value="6">6 人小团</option>
+            </select>
+          </label>
+          <label>
+            <span>出行时间</span>
+            <input name="travelMonth" type="text" placeholder="例如 2026 年 8 月">
+          </label>
+          <button type="submit">生成报价摘要</button>
+        </form>
+        <article class="quote-result" id="quoteResult">
+          <h3>报价摘要</h3>
+          <p>选择路线后，点击生成报价摘要。</p>
+        </article>
+      </div>
+      <aside class="wechat-cta" aria-label="添加定制师微信">
+        <div>
+          <span>下一步</span>
+          <h3>添加定制师微信，获取 1 对 1 路线报价</h3>
+          <p>发送你的出行人数、预算、日期和偏好，定制师会基于当前动线继续确认酒店、课程、车辆和利润空间。</p>
+        </div>
+        <div class="wechat-card">
+          <strong>微信号</strong>
+          <span>zensoft-retreat</span>
+          <small>可替换为真实微信号或二维码</small>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <script src="./src/app.bundle.js"></script>
+</body>
+</html>
