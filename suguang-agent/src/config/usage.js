@@ -1,0 +1,42 @@
+window.SUGUANG_USAGE_PLANS = {
+  aiTrial: {
+    id: 'aiTrial',
+    label: '199 情绪译码年卡',
+    dailyMessages: 12,
+    dailyTokens: 36000,
+    maxInputChars: 4500,
+    followUpSla: '48 小时内人工确认是否适配',
+  },
+  aiCompanion: {
+    id: 'aiCompanion',
+    label: '599 陪伴执行 7 次',
+    dailyMessages: 40,
+    dailyTokens: 65000,
+    maxInputChars: 8000,
+    followUpSla: '24 小时内人工跟进关键节点',
+  },
+  growthYear: {
+    id: 'growthYear',
+    label: '1299 模式改写计划',
+    dailyMessages: 25,
+    dailyTokens: 48000,
+    maxInputChars: 7000,
+    followUpSla: '关键节点人工复核队列',
+  },
+  humanCalibration: {
+    id: 'humanCalibration',
+    label: '1999 阶段跃迁计划',
+    dailyMessages: 35,
+    dailyTokens: 70000,
+    maxInputChars: 9000,
+    followUpSla: '阶段关口前优先整理议题',
+  },
+  humanRetainer: {
+    id: 'humanRetainer',
+    label: '29800 人生系统重建',
+    dailyMessages: 80,
+    dailyTokens: 160000,
+    maxInputChars: 12000,
+    followUpSla: '人工陪跑优先响应',
+  },
+};
