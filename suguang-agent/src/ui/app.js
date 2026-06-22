@@ -20,6 +20,7 @@
   const leadForm = document.querySelector('#leadForm');
   const leadNotice = document.querySelector('#leadNotice');
   const leadPath = document.querySelector('#leadPath');
+  const leadTopic = document.querySelector('#leadForm textarea[name="topic"]');
   const roleSwitcher = document.querySelector('#roleSwitcher');
   const modelForm = document.querySelector('#modelForm');
   const byokFields = document.querySelector('#byokFields');
@@ -209,6 +210,21 @@
     saveConversationState();
   }
 
+  function syncLeadDraftFromConversation(text) {
+    if (!leadForm || !/转人工|人工咨询|真人咨询|联系人工|人工跟进|加微信|微信/.test(text)) return;
+    if (leadPath) leadPath.value = state.profile.suggestedPath || '转人工咨询 / 人工确认适配';
+    if (leadForm.elements.status) leadForm.elements.status.value = 'follow_up';
+    if (leadTopic && !leadTopic.value.trim()) {
+      const latestUserMessages = state.messages
+        .filter((item) => item.role === 'user')
+        .slice(-3)
+        .map((item) => item.content)
+        .join('\n');
+      leadTopic.value = latestUserMessages || text;
+    }
+    if (leadNotice) leadNotice.textContent = '已生成转人工摘要。请补充称呼和联系方式后保存。';
+  }
+
   function addMessage(role, content) {
     state.messages.push({ role, content, time: new Date().toISOString() });
     renderMessage(role, content);
@@ -372,6 +388,7 @@
     const result = window.SuguangAgent.answer(trimmed, state.profile, requestedRole);
     state.profile = result.profile;
     renderProfile();
+    syncLeadDraftFromConversation(trimmed);
 
     if (!shouldUseRemoteModel()) {
       addMessage('agent', result.reply);

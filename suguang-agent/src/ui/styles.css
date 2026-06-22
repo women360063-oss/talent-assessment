@@ -159,6 +159,28 @@ select, input, textarea { width: 100%; border: 1px solid var(--line); border-rad
 
 .agent-section { display: grid; grid-template-columns: minmax(240px, .75fr) minmax(360px, 1.25fr) minmax(260px, .8fr); gap: 18px; background: #eef3ef; align-items: start; }
 .agent-context, .chat-panel, .lead-panel { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 20px; box-shadow: 0 12px 34px rgba(25,33,29,.08); }
+.mvp-capabilities {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+.mvp-capabilities article {
+  display: grid;
+  gap: 5px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfaf5;
+}
+.mvp-capabilities strong {
+  color: var(--green);
+  font-size: 14px;
+}
+.mvp-capabilities span {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
 .profile-panel { display: grid; grid-template-columns: 92px 1fr; gap: 10px; margin: 22px 0 0; }
 .profile-panel dt { color: var(--muted); }
 .profile-panel dd { margin: 0; font-weight: 800; }

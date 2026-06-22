@@ -61,6 +61,9 @@ window.SuguangAgent = (() => {
   }
 
   function detectIntent(text) {
+    if (/转人工|人工咨询|真人咨询|联系人工|人工跟进|加微信|微信/.test(text)) return '转人工咨询';
+    if (/下单|购买|买|付款|付费|开通|选择套餐|选套餐|推荐套餐/.test(text)) return '购买 / 套餐选择';
+    if (/心理咨询|咨询师|潜意识|冥想|练习|内在小孩|金钱能量/.test(text)) return '心理咨询 / 练习';
     if (/预约|咨询|报名|联系|价格|多少钱|服务/.test(text)) return '预约 / 服务咨询';
     if (/怎么办|方法|解决|改变|行动/.test(text)) return '寻求方法';
     if (/为什么|看清|不知道|迷茫/.test(text)) return '理解问题';
@@ -240,7 +243,7 @@ window.SuguangAgent = (() => {
       service.delivery + '\n\n' +
       '周期/时长：' + service.duration + '\n' +
       '参考价格：' + service.price + '\n\n' +
-      '这类服务的重点不是让你被信息淹没，而是让你每天有秩序、有反馈、有复盘地往前走。';
+      '这类服务的重点不是让你被信息淹没，而是把真实触发点转成清晰行动，并在执行后有复盘。';
   }
 
   function findBrandServiceBySalesService(serviceName) {
@@ -269,8 +272,34 @@ window.SuguangAgent = (() => {
       '如果你现在还没有真实支付链接，就先把这个购买页接到微信/小鹅通/Stripe/人工收款二维码；Agent 这里负责把用户从“愿意开始”带到“付款开通 → 开始服务”。';
   }
 
+  function answerPackageChoice(profile, text) {
+    const service = matchSalesService(profile.sales?.data || {}, text);
+    const lines = Object.values(sales().services).map((item) => {
+      return item.price + '：' + item.name + '，' + item.description;
+    });
+    return roleIntro('sales') + '\n\n' +
+      '可以。我先按你这句话做一个快速分流，当前更接近「' + service.name + '」。\n\n' +
+      '五档套餐是：\n' + lines.join('\n') + '\n\n' +
+      '如果你已经确定要买，我可以下一步直接给你付款开通流程。你回复「购买推荐方案」即可。\n\n' +
+      '如果你还不确定，我建议先回复「开始诊断」，我会用 9 个问题帮你判断，不会一上来推高价档。';
+  }
+
+  function answerHumanHandoff(profile, topic, text) {
+    const recommendation = profile.sales?.recommendation || profile.suggestedPath || '待人工确认';
+    return '可以，我现在把你转入人工跟进路径。\n\n' +
+      '给人工看的摘要：\n' +
+      '1. 当前议题：' + (topic?.label || profile.topic || '待识别') + '\n' +
+      '2. 用户原话：' + text + '\n' +
+      '3. 当前建议路径：' + recommendation + '\n' +
+      '4. 需要人工确认：议题是否适合溯光、是否需要真人咨询、推荐档位是否匹配、是否存在医疗/危机/法律/投资等边界。\n\n' +
+      '你现在可以在右侧「保存预约意向」里填称呼、微信/邮箱/电话和想聊的问题。保存后，这条线索会进入本地跟进队列，也可以导出给人工处理。\n\n' +
+      '正式上线时，这一步建议接入企业微信/个人微信二维码、CRM 或自动通知。当前 MVP 先完成线索保存和人工摘要。';
+  }
+
   function answerStartPaidService(profile, text) {
-    const planName = profile.sales?.recommendation || profile.suggestedPath || profile.service?.plan || '溯光 AI 陪伴服务';
+    const suggested = profile.suggestedPath || '';
+    const usableSuggested = /元|计划|年卡|重建|服务|协议/.test(suggested) ? suggested : '';
+    const planName = profile.sales?.recommendation || usableSuggested || profile.service?.plan || '溯光 AI 陪伴服务';
     const focus = text
       .replace(/已付款|付款了|付好了|开始服务|直接开始|开通了|我买了|买好了/g, '')
       .replace(/[，,。.\s]/g, '')
@@ -342,13 +371,21 @@ window.SuguangAgent = (() => {
 
   function answerAsTherapist(text, topic, service, role) {
     return roleIntro(role.id) + '\n\n' + topic.response +
-      '\n\n我不会急着把你推向某个服务。我们先把感受放稳一点：' + topic.question +
-      '\n\n如果你之后想继续落到行动，我可以再帮你切回售前咨询，看看是初筛测评、1:1 咨询还是长期陪跑更适合。';
+      '\n\n我们先走一个简版咨询流程：\n' +
+      '1. 看见情绪：这件事里最重的感受是什么？\n' +
+      '2. 找到渴望：你真正想守住或长出的是什么？\n' +
+      '3. 松动旧结构：你习惯性的旧反应是什么？\n' +
+      '4. 落到行动：今天能做的一个最小动作是什么？\n\n' +
+      '先从第一步开始：' + topic.question +
+      '\n\n如果你想做练习，可以直接说「做潜意识练习」。我会先确认安全环境，再给你简版引导。';
   }
 
   function answer(text, profile = initialProfile(), requestedRole) {
     const safety = detectSafety(text);
-    const roleId = requestedRole || detectRole(text, safety);
+    const explicitRole = /心理咨询师|心理咨询|潜意识|冥想|内在小孩|命运交还|金钱能量|理想场景|SATS|sats|肯定语/.test(text)
+      ? 'therapist'
+      : null;
+    const roleId = explicitRole || requestedRole || detectRole(text, safety);
     const role = roles()[roleId];
     if (safety === 'crisis') {
       return {
@@ -371,6 +408,73 @@ window.SuguangAgent = (() => {
 
     const topicKey = detectTopic(text);
     const topic = knowledge().topics[topicKey];
+    const currentIntent = detectIntent(text);
+
+    if (/已付款|付款了|付好了|开始服务|直接开始|开通了|我买了|买好了/.test(text)) {
+      const suggested = profile.suggestedPath || '';
+      const usableSuggested = /元|计划|年卡|重建|服务|协议/.test(suggested) ? suggested : '';
+      const planName = profile.sales?.recommendation || usableSuggested || profile.service?.plan || '溯光 AI 陪伴服务';
+      return {
+        profile: {
+          ...profile,
+          role: 'therapist',
+          topic: topic.label,
+          intent: '已购服务 / 正式陪伴',
+          suggestedPath: planName,
+          sales: {
+            ...(profile.sales || initialProfile().sales),
+            active: false,
+            stage: '服务中',
+            playbookStep: 0,
+            playbookLabel: '已开通服务'
+          },
+          service: {
+            active: true,
+            plan: planName,
+            startedAt: new Date().toISOString(),
+            currentFocus: text
+          }
+        },
+        reply: answerStartPaidService(profile, text),
+        role: roles().therapist
+      };
+    }
+
+    if (/转人工|人工咨询|真人咨询|联系人工|人工跟进|加微信|微信/.test(text)) {
+      return {
+        profile: {
+          ...profile,
+          role: 'support',
+          topic: topic.label,
+          intensity: detectIntensity(text),
+          intent: '转人工咨询',
+          suggestedPath: '转人工咨询 / 人工确认适配',
+          sales: {
+            ...(profile.sales || initialProfile().sales),
+            active: false
+          }
+        },
+        reply: answerHumanHandoff(profile, topic, text),
+        role: roles().support
+      };
+    }
+
+    if (/选择套餐|选套餐|推荐套餐|下单|怎么下单|引导下单/.test(text) && !/已付款|付款了|付好了|开始服务|开通了/.test(text)) {
+      return {
+        profile: {
+          ...profile,
+          role: 'sales',
+          topic: topic.label,
+          intensity: detectIntensity(text),
+          intent: '购买 / 套餐选择',
+          suggestedPath: '套餐选择中'
+        },
+        reply: answerPackageChoice(profile, text),
+        service: matchSalesService(profile.sales?.data || {}, text),
+        role: roles().sales
+      };
+    }
+
     if (profile.service?.active) {
       return {
         profile: {
@@ -391,20 +495,20 @@ window.SuguangAgent = (() => {
       };
     }
     const exerciseReply = /潜意识|冥想|内在小孩|命运交还|金钱能量|理想场景|SATS|sats|肯定语|显化/.test(text)
-      ? answerExerciseQuestion(text, role)
+      ? answerExerciseQuestion(text, roles().therapist)
       : '';
     if (exerciseReply) {
       return {
         profile: {
           ...profile,
-          role: roleId,
+          role: 'therapist',
           topic: topic.label,
           intensity: detectIntensity(text),
           intent: '潜意识练习 / 冥想引导',
           suggestedPath: '潜意识练习简版引导'
         },
         reply: exerciseReply,
-        role
+        role: roles().therapist
       };
     }
     const infoReply = /档位|价格|费用|多少钱|有效期|适合谁|适合什么|区别|隐私|API Key|key|怎么开始|五步法|替代咨询|服务/.test(text)
@@ -430,8 +534,27 @@ window.SuguangAgent = (() => {
         role: roleId,
         topic: topic.label,
         intensity: detectIntensity(text),
-        intent: detectIntent(text)
+        intent: currentIntent
       };
+      if (/购买推荐方案|确认购买|我要购买|我要下单|付款开通|直接开通/.test(text)) {
+        const service = matchService(currentProfile);
+        return {
+          profile: {
+            ...currentProfile,
+            suggestedPath: currentProfile.sales?.recommendation || service.name,
+            sales: {
+              ...currentProfile.sales,
+              active: false,
+              stage: '待付款',
+              playbookStep: 12,
+              playbookLabel: '付款开通'
+            }
+          },
+          reply: answerPurchaseNextStep(currentProfile),
+          service,
+          role
+        };
+      }
       const service = matchService(currentProfile);
       if (/开始售前诊断|开始诊断|重新诊断|做诊断/.test(text)) {
         const freshProfile = {
@@ -548,7 +671,13 @@ window.SuguangAgent = (() => {
       suggestedPath: ''
     };
     const service = matchService(nextProfile);
-    nextProfile.suggestedPath = roleId === 'support' ? '客服答疑 / 预约入口' : service.name;
+    if (roleId === 'support') {
+      nextProfile.suggestedPath = '客服答疑 / 预约入口';
+    } else if (roleId === 'therapist') {
+      nextProfile.suggestedPath = '心理咨询 / 五步法陪伴';
+    } else {
+      nextProfile.suggestedPath = service.name;
+    }
 
     const matchedExample = findExample(roleId, text);
     let reply = '';
